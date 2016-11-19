@@ -1,0 +1,7 @@
+.env
+Dockerfile
+node_modules
+client/node_modules
+client/app/*.js
+client/app/*.js.map
+npm-debug.log
