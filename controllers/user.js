@@ -6,7 +6,6 @@ var User = require('../models/users');
 exports.postUsers = function(req, res) {
   // Create a new instance of the User model
 
-  console.log("postUsers()");
   var user = new User();
 
   //Set the user properties that came from the POST data
@@ -20,7 +19,7 @@ exports.postUsers = function(req, res) {
     if (err)
       return res.send(err);
 
-    res.json({ message: 'User added to the locker!', data: user });
+    res.json({ message: 'User added', data: user });
   });
 };
 
@@ -60,7 +59,7 @@ exports.putUser = function(req, res) {
       if(err) 
         return res.send(err);
 
-      res.json({ message: 'user updated' });
+      res.json({ message: 'User updated' });
 
     });
   });
@@ -73,7 +72,7 @@ exports.deleteUser = function(req, res) {
     if (err)
       return res.send(err);
 
-    res.json({ message: 'User removed from the locker!' });
+    res.json({ message: 'User removed' });
 
   });
 };

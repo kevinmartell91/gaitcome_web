@@ -30,7 +30,7 @@ var pacientSchema = new Schema({
   medic_diagostic: [{
   	name: String,
     level: String,
-    percentage: String
+    percentage: String,
     created_at: { type: Date, default: Date.now }
   }],
 
@@ -48,7 +48,7 @@ var pacientSchema = new Schema({
 //   next();
 // });
 
-var pacientsSchema = mongoose.model('Pacient',pacientSchema);
+var Pacient = mongoose.model('Pacient',pacientSchema);
 
 module.exports = Pacient;
 

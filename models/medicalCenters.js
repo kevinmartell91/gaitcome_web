@@ -8,7 +8,7 @@ var medicalCenterSchema = new Schema({
 	email: String,
 	country: String
 
-}),
+});
 
 var MedicalCenter = mongoose.model('MedicalCenter',medicalCenterSchema);
 

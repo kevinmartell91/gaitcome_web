@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var psycotherapistSchema = new Schema({
+var therapistSchema = new Schema({
 
   names: String,
   lastname: String,
@@ -31,12 +31,14 @@ var psycotherapistSchema = new Schema({
   	_id: String,
     name: String,
     status_request: String, // pending(0 day to more), accepted 
-    requested_at: { type: Date, default: Date.now }
-    accepted_at: Date,
-  },
+    requested_at: { type: Date, default: Date.now },
+    accepted_at: Date
+  }
 
-}),
+});
 
-var Psycotherapist = mongoose.model('Psycotherapist',psycotherapistSchema);
+var Therapist = mongoose.model('Therapist', therapistSchema);
 
-module.exports = Psycotherapist;
+module.exports = Therapist;
+
+
