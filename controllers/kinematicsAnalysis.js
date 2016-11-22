@@ -7,13 +7,16 @@ exports.postKinematicsAnalysiss = function(req, res) {
   // Create a new instance of the KinematicsAnalysis model
 
   var kinematics_analysis = new KinematicsAnalysis();
- console.log('postKinematicsAnalysiss()');
+
   //Set the kinematics_analysis properties that came from the POST data
-  //kinematics_analysis.lkne = req.body.lkne;
-  var json = JSON.stringify(eval(req.body.spl_knee));
-  console.log(req.body.spl_kne);
-  console.log(json);
-  kinematics_analysis.spl_knee = json;
+  
+  kinematics_analysis.patient_id = req.body.patient_id;
+  kinematics_analysis.medical_center_id = req.body.medical_center_id;
+  kinematics_analysis.therapist_id = req.body.therapist_id;
+  kinematics_analysis.accesories = req.body.accesories;
+  kinematics_analysis.accesories_descriptions = req.body.accesories_descriptions;
+  kinematics_analysis.spl_kne = req.body.spl_kne;
+  kinematics_analysis.lkne = req.body.lkne;
 
   // Save the kinematics_analysis and check for errors
   kinematics_analysis.save(function(err) {
@@ -54,7 +57,13 @@ exports.putKinematicsAnalysis = function(req, res) {
     if (err)
       return res.send(err);
 
-    kinematics_analysis.quantity = req.body.quantity;
+    kinematics_analysis.patient_id = req.body.patient_id;
+    kinematics_analysis.medical_center_id = req.body.medical_center_id;
+    kinematics_analysis.therapist_id = req.body.therapist_id;
+    kinematics_analysis.accesories = req.body.accesories;
+    kinematics_analysis.accesories_descriptions = req.body.accesories_descriptions;
+    //kinematics_analysis.spl_kne = req.body.spl_kne;
+    //kinematics_analysis.lkne = req.body.lkne;
 
     kinematics_analysis.save(function(err){
       if(err) 
