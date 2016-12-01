@@ -1,18 +1,32 @@
 {
-  "name": "angular-quickstart",
-  "version": "1.0.0",
+  "name": "gaitcome-front-end-angular2",
+  "version": "0.1.0",
+  "description": "Gaitcome web platform front-end",
+  "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
+    "start": "tsc && concurrently \"tsc -w\" \"npm run serve\" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "wsrv -s -o -l",
+    "postinstall": "typings install",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "typings": "typings"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angular/angular.io/blob/master/LICENSE"
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinmartell91/gaitcome_web"
+  },
+  "keywords": [
+    "angular2",
+    "material-design-lite",
+    "node"
   ],
+  "author": "kevinmartell91@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinmartell91/gaitcome_web/issues"
+  },
+  "homepage": "https://github.com/DenisVuyka/ng2samples-blank#readme",
   "dependencies": {
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
@@ -24,7 +38,10 @@
     "@angular/router": "~3.1.1",
     "@angular/upgrade": "~2.1.1",
     "angular-in-memory-web-api": "~0.1.13",
+    "angular2-mdl": "2.5.1",
+    "chart.js": "2.4.0",
     "core-js": "^2.4.1",
+    "ng2-charts": "1.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
@@ -33,8 +50,9 @@
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
-    "concurrently": "^3.0.0",
-    "lite-server": "^2.2.2",
-    "typescript": "^2.0.3"
+    "concurrently": "^2.0.0",
+    "typescript": "^2.0.0",
+    "typings": "^1.0.4",
+    "wsrv": "^0.1.0"
   }
 }
