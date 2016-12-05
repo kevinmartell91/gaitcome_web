@@ -8,14 +8,31 @@ import { PacientService } from './pacient.service';
 
 // Component decorator
 @Component({
-    selector: 'comment-list',
+    selector: 'pacient-module',
     template: `
+
+    <style>
+    mdl-radio, mdl-checkbox, mdl-switch {
+      display: inline;
+    }
+  </style>
+
     <a *ngFor="let pacient of pacients"  [routerLink]="['/pacient', pacient._id]"  class="col-1-4">
-        <div class="mdl-typography--display-1-color-contrast">{{pacient.names}}
-        </div>
 
 
-            <button class="mdl-button mdl-button--raised mdl-js-button dialog-button" data-upgraded=",MaterialButton">{{pacient.names}}</button>
+
+<mdl-list>
+  <mdl-list-item mdl-ripple>
+    <mdl-list-item-primary-content>
+      <mdl-icon mdl-list-item-avatar>person</mdl-icon>
+      {{pacient.names}}
+    </mdl-list-item-primary-content>
+    <mdl-list-item-secondary-action>
+      <mdl-checkbox mdl-ripple></mdl-checkbox>
+    </mdl-list-item-secondary-action>
+  </mdl-list-item>
+  
+</mdl-list>
 
       </a>
     `,

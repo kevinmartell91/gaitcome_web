@@ -1,5 +1,6 @@
 import { Component }          from '@angular/core';
 
+
 @Component({
   moduleId: module.id,
   selector: 'my-app',
@@ -7,8 +8,9 @@ import { Component }          from '@angular/core';
   // template: `
   //   <h1>{{title}}</h1>
   //   <nav>
-  //     <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  //     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  //     <a routerLink="/homepage" routerLinkActive="active">Homepage</a>
+  //     <a routerLink="/pacients" routerLinkActive="active">Pacientes</a>
+  //     <a routerLink="/login" routerLinkActive="active">Login</a>
   //   </nav>
   //   <router-outlet></router-outlet>
   // `,

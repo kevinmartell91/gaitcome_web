@@ -1,6 +1,6 @@
 # Angular 2 with Material Design Lite
 
-This repository holds basic project that can be used as a quick start template when learning and prototyping with Angular 2, TypeScript and Material Design Lite.
+This site is still under construction; however, you can clone the repo and see what is under development.
 
 ## Prerequisites
 
@@ -18,8 +18,8 @@ Older versions produce errors.
 
 Clone this repo into new project folder (e.g., `ng2-app`).
 ```bash
-git clone https://github.com/DenisVuyka/ng2samples-material ng2-material
-cd ng2-material
+git clone https://github.com/kevinmartell91/gaitcome_web.git
+cd gaitcome_web
 ```
 
 Discard everything "git-like" by deleting the `.git` folder.
@@ -40,7 +40,7 @@ git commit -m "Initial commit"
 
 Create a *remote repository* for this project on the service of your choice.
 
-Grab its address (e.g. *`https://github.com/<my-org>/ng2-material.git`*) and push the *local repo* to the *remote*.
+Grab its address (e.g. *`https://github.com/<my-org>/gaitcome_web.git`*) and push the *local repo* to the *remote*.
 ```bash
 git remote add origin <repo-address>
 git push -u origin master

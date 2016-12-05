@@ -27,8 +27,8 @@ var PacientComponent = (function () {
     };
     PacientComponent = __decorate([
         core_1.Component({
-            selector: 'comment-list',
-            template: "\n    <a *ngFor=\"let pacient of pacients\"  [routerLink]=\"['/pacient', pacient._id]\"  class=\"col-1-4\">\n        <div class=\"mdl-typography--display-1-color-contrast\">{{pacient.names}}\n        </div>\n\n\n            <button class=\"mdl-button mdl-button--raised mdl-js-button dialog-button\" data-upgraded=\",MaterialButton\">{{pacient.names}}</button>\n\n      </a>\n    ",
+            selector: 'pacient-module',
+            template: "\n\n    <style>\n    mdl-radio, mdl-checkbox, mdl-switch {\n      display: inline;\n    }\n  </style>\n\n    <a *ngFor=\"let pacient of pacients\"  [routerLink]=\"['/pacient', pacient._id]\"  class=\"col-1-4\">\n\n\n\n<mdl-list>\n  <mdl-list-item mdl-ripple>\n    <mdl-list-item-primary-content>\n      <mdl-icon mdl-list-item-avatar>person</mdl-icon>\n      {{pacient.names}}\n    </mdl-list-item-primary-content>\n    <mdl-list-item-secondary-action>\n      <mdl-checkbox mdl-ripple></mdl-checkbox>\n    </mdl-list-item-secondary-action>\n  </mdl-list-item>\n  \n</mdl-list>\n\n      </a>\n    ",
         }), 
         __metadata('design:paramtypes', [pacient_service_1.PacientService])
     ], PacientComponent);

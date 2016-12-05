@@ -1,9 +1,12 @@
 # Gaitcome Web Platform
 
-Gaitcome MEAN app (Mongodb, Espress, Angular 2, Node)
+Gaitcome MEAN app (Mongodb, Espress, Angular 2, Node) + Material Design
+
+This site is still under construction; however, you can clone the repo and see what is under development.
 
 ### View App
-In progress...
+
+Sample view in client side
 
 ### Usage
 
@@ -13,4 +16,4 @@ In progress...
 
 3: cd into the Client directory and run `tsc` to compile the Typescript
 
-4: run `npm start` or `nodemon` from the terminal, and navigate to localhost:3000 in the browser
+4: return root diretory and run `npm start` or `nodemon` from the terminal, and navigate to localhost:8080 in the browser
