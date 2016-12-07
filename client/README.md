@@ -1,79 +1,31 @@
-# Angular 2 with Material Design Lite
+# GaitcomeWeb
 
-This site is still under construction; however, you can clone the repo and see what is under development.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
 
-## Prerequisites
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Node.js and npm are essential to Angular 2 development.
+## Code scaffolding
 
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank"
-title="Installing Node.js and updating npm">Get it now</a>
-if it's not already installed on your machine.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
 
-**Verify that you are running at least node `v5.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
+## Build
 
-## Create a new project based on the template
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-Clone this repo into new project folder (e.g., `ng2-app`).
-```bash
-git clone https://github.com/kevinmartell91/gaitcome_web.git
-cd gaitcome_web
-```
+## Running unit tests
 
-Discard everything "git-like" by deleting the `.git` folder.
-```bash
-rm -rf .git  // non-Windows
-rd .git /S/Q // windows
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### Create a new git repo
+## Running end-to-end tests
 
-If you'd rather preserve your work under source control, consider taking the following steps.
-Initialize this project as a *local git repo* and make the first commit:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-Create a *remote repository* for this project on the service of your choice.
+## Deploying to Github Pages
 
-Grab its address (e.g. *`https://github.com/<my-org>/gaitcome_web.git`*) and push the *local repo* to the *remote*.
-```bash
-git remote add origin <repo-address>
-git push -u origin master
-```
+Run `ng github-pages:deploy` to deploy to Github Pages.
 
-## Install npm packages
+## Further help
 
-> See npm and nvm version notes above
-
-Install the npm packages described in the `package.json` and verify that it works:
-
-**Attention Windows Developers:  You must run all of these commands in administrator mode**.
-
-```bash
-npm install
-npm start
-```
-
-The `npm start` command first compiles the application,
-then simultaneously re-compiles and runs the `wsrv` web server.
-Both the compiler and the server watch for file changes.
-
-Shut it down manually with Ctrl-C.
-
-You're ready to write your application.
-
-### npm scripts
-
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
-
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run serve` - runs the [wsrv](https://www.npmjs.com/package/wsrv), a light-weight, static file server with excellent support for Angular apps that use routing.
-* `npm run typings` - runs the typings tool.
-* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
+To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
