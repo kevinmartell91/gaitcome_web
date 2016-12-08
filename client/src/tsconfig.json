@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "",
-    "declaration": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
@@ -16,3 +16,8 @@
     ]
   }
 }
+    // "module": "commonjs",
+    // "allowSyntheticDefaultImports": true,
+    // "noEmitHelpers": true,
+    // "strictNullChecks": false,
+    // "baseUrl": "./src",
