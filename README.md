@@ -16,5 +16,7 @@ Sample view in client folder
 
 3: return root diretory and run `npm start` or `nodemon` from the terminal, and navigate to localhost:8080 in the browser
 
+4:  Some help if working with remotes && branchs
 
 https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches
+https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
