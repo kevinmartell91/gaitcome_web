@@ -8,14 +8,17 @@ import { CommonModule }  from '@angular/common';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 
+
+import { AuthGuard }            from './pages/login/auth-guard.service';
+import { AuthService }          from './pages/login/auth.service';
+
+
 import { routing } from './app-routing.module';
   
 
 @NgModule({
   declarations: [
     AppComponent
-    // PagesComponent, not necessary because lazy loading was implemented
-    // ThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,10 @@ import { routing } from './app-routing.module';
     PagesModule,
     routing
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

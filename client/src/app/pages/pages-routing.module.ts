@@ -5,17 +5,34 @@ import { Routes, RouterModule } from '@angular/router';
 // import { HomepageComponent } from './homepage/homepage.component';
 // import { LoginModule } from './login/login.module';
 
+import { AuthGuard }          from './login/auth-guard.service';
+
 import { PagesComponent } from './pages.component';
 
 export const routes : Routes = [
-	{ path: 'login',
+	{ 
+	  path: 'login',
 	  loadChildren: 'app/pages/login/login.module#LoginModule',
 	},
 	{
       path: 'register',
 	  loadChildren: 'app/pages/register/register.module#RegisterModule',
 	},
-	{ path: '',
+	{ 
+	  path: 'dashboard-attorney',
+	  loadChildren: 'app/pages/dashboard-attorney/dashboard-attorney.module#DashboardAttorneyModule',
+	},
+	{
+      path: 'dashboard-medical-center',
+	  loadChildren: 'app/pages/dashboard-medical-center/dashboard-medical-center.module#DashboardMedicalCenterModule',
+      canLoad: [AuthGuard]
+	},
+	{
+      path: 'dashboard-therapist',
+	  loadChildren: 'app/pages/dashboard-therapist/dashboard-therapist.module#DashboardTherapistModule',
+	},
+	{ 
+	  path: '',
 	  component: PagesComponent,
 	  children: [
 	    { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -26,3 +43,18 @@ export const routes : Routes = [
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
+
+
+// @NgModule({
+//   imports: [
+//     RouterModule.forChild( routes )
+//   ],
+//   exports: [
+//     RouterModule
+//   ],
+//   providers: [
+//     // CanDeactivateGuard
+//   ]
+// })
+// export class AppRoutingModule {}
+

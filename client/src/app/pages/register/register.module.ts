@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
-import { routing } from './register-routing.module';
+import { routing } from './register-routing';
 
 @NgModule({
   imports: [
