@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomepageComponent } from './homepage.component';
-import { routing } from './homepage-routing.module';
+import { routing } from './homepage-routing';
 
 @NgModule({
   imports: [
