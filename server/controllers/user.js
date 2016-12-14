@@ -13,6 +13,7 @@ exports.postUsers = function(req, res) {
   user.type = req.body.type;
   user.quantity = req.body.quantity;
   user.userId = req.body.userId;
+  user.password = req.body.password;
 
   // Save the user and check for errors
   user.save(function(err) {
@@ -76,3 +77,4 @@ exports.deleteUser = function(req, res) {
 
   });
 };
+

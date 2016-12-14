@@ -1,28 +1,74 @@
-// const express = require('express');
-// const router = express.Router();
-
-//  GET api listing. 
-// router.get('/', (req, res) => {
-//   res.send('api works');
-// });
-
-// module.exports = router;
-
-
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var app = express();
 
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('api works');
-});
 
 var userController = require('../controllers/user');
 var pacientController = require('../controllers/pacients');
 var therapistController = require('../controllers/therapists');
 var medicalCenterController = require('../controllers/medicalCenters');
 var kinematicsAnalysisController = require('../controllers/kinematicsAnalysis');
+var authenticationController = require('../controllers/authentication');
+
+
+// used to create, sign, and verify tokens
+// sample =>https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+var jwt    = require('jsonwebtoken'); 
+var configJWT = require('../config/jwt');
+// secret variable
+app.set('superSecret', configJWT.secret); 
+
+
+
+
+// Create endpoint handlers for /authenticate
+router.route('/authenticate')
+  .post(authenticationController.postAuthenticate);
+
+
+
+
+// route middleware to verify a token
+router.use(function(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;    
+        console.log(`server req.decoded : ${eq.decoded}`);
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({ 
+        success: false, 
+        message: 'No token provided.' 
+    });
+    
+  }
+});  
+
+
+
+
+/* GET api listing. */
+router.get('/', (req, res) => {
+  res.send('api works');
+});
 
 // Create endpoint handlers for /users/:user_id
 router.route('/users/:user_id')

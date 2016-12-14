@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 var mongoose = require('mongoose');
 
 // Connect to Mongo database 
@@ -14,9 +15,13 @@ const api = require('./server/routes/api');
 
 const app = express();
 
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// use morgan to log requests to the console
+app.use(morgan('dev'));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'client/dist')));
