@@ -20,13 +20,14 @@ var configJWT = require('../config/jwt');
 app.set('superSecret', configJWT.secret); 
 
 
-
+/* GET api listing. */
+router.get('/', (req, res) => {
+  res.send('api works');
+});
 
 // Create endpoint handlers for /authenticate
 router.route('/authenticate')
   .post(authenticationController.postAuthenticate);
-
-
 
 
 // route middleware to verify a token
@@ -45,7 +46,7 @@ router.use(function(req, res, next) {
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;    
-        console.log(`server req.decoded : ${eq.decoded}`);
+        console.log(`server req.decoded : ${req.decoded}`);
         next();
       }
     });
@@ -62,13 +63,6 @@ router.use(function(req, res, next) {
   }
 });  
 
-
-
-
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('api works');
-});
 
 // Create endpoint handlers for /users/:user_id
 router.route('/users/:user_id')

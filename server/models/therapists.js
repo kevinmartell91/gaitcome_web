@@ -16,6 +16,9 @@ var therapistSchema = new Schema({
   num_ndta: Number,
   is_active: Boolean,
 
+  username: String,
+  password: String,
+
   address: {
   	street: String,
   	city: String,

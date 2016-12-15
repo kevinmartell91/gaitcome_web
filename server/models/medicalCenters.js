@@ -6,7 +6,10 @@ var medicalCenterSchema = new Schema({
 	name: String,
 	tax_identification: String,
 	email: String,
-	country: String
+	country: String,
+	
+	username: String,
+  	password: String,
 
 });
 

@@ -24,6 +24,9 @@ exports.postTherapists = function(req, res) {
   therapist.num_ndta = req.body.num_ndta;
   therapist.is_active = req.body.is_active;
 
+  therapist.username = req.body.username;
+  therapist.password = req.body.password;
+
 
   therapist.address = {
     street: req.body.street,

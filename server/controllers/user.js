@@ -9,10 +9,10 @@ exports.postUsers = function(req, res) {
   var user = new User();
 
   //Set the user properties that came from the POST data
-  user.name = req.body.name;
   user.type = req.body.type;
   user.quantity = req.body.quantity;
   user.userId = req.body.userId;
+  user.username = req.body.username;
   user.password = req.body.password;
 
   // Save the user and check for errors

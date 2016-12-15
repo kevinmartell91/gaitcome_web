@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
+	
   isLoggedIn: boolean = false;
 
   // store the URL so we can redirect after logging in
@@ -23,40 +24,51 @@ export class AuthService {
 	    // set token if saved in local storage
 	    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	    this.token = currentUser && currentUser.token;
-
 	}
 
-	login(username: string, password: string): Observable<boolean> {
+	login(username: string, password: string, login_type: string): Observable<boolean> {
 
 		// add authorization header with jwt token
+		// candidate to be a added to share folder
         let headers = new Headers();
         headers.append('Accept', 'application/json');
 		headers.append('Content-Type', 'application/json');
 
         let options = new RequestOptions({ headers: headers });
-        let body = JSON.stringify({ name: username, password: password ,login_type:"user"});
+        let body = JSON.stringify({ username: username,
+        							password: password,
+        							login_type: login_type });
         
-        console.log(`AuthService_login()_body : ${body}` );
+// console.log(`AuthService_login()_body : ${body}` );
 
 	    return this.http.post('/api/authenticate', body, options)
 	        .map((response: Response) => {
+
 	            // login successful if there's a jwt token in the response
 	            let token = response.json() && response.json().token;
+
 	            if (token) {
 	                // set token property
 	                this.token = token;
-       				console.log(`AuthService_Token : ${token}`);
+
+// console.log(`AuthService_Token : ${token}`);
+
+       				// store username login_type and jwt token in local storage to keep user logged in between page refreshes
+	                localStorage.setItem('currentUser', 
+	                					  JSON.stringify({ username: username, 
+	                					  				   login_type: login_type,
+	                					  				   token: token 
+	                					  				})
+	                					);
 
        				this.isLoggedIn = true;
-
-	                // store username and jwt token in local storage to keep user logged in between page refreshes
-	                localStorage.setItem('currentUser', JSON.stringify({ name: username, token: token }));
-
 	                // return true to indicate successful login
 	                return true;
+
 	            } else {
 	                // return false to indicate failed login
 	                return false;
+
 	            }
 	        });
 	}

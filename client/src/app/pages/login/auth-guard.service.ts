@@ -31,12 +31,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   checkLogin(url: string): boolean {
 
-     console.log(`auth-guard.service isLoggedIn : ${this.authService.isLoggedIn}`);
 
-    if (this.authService.isLoggedIn) 
-      // && localStorage.getItem('currentUser')) 
+    let localStorage_login_type = JSON.parse(localStorage.getItem('currentUser')).login_type;
+    
+    console.log(`auth-guard.service isLoggedIn : ${this.authService.isLoggedIn}`);
+
+    if (this.authService.isLoggedIn)
     { 
-
       return true; 
     }
 

@@ -21,6 +21,7 @@ export const routes : Routes = [
 	{ 
 	  path: 'dashboard-attorney',
 	  loadChildren: 'app/pages/dashboard-attorney/dashboard-attorney.module#DashboardAttorneyModule',
+      canLoad: [AuthGuard]
 	},
 	{
       path: 'dashboard-medical-center',
@@ -30,6 +31,7 @@ export const routes : Routes = [
 	{
       path: 'dashboard-therapist',
 	  loadChildren: 'app/pages/dashboard-therapist/dashboard-therapist.module#DashboardTherapistModule',
+      canLoad: [AuthGuard]
 	},
 	{ 
 	  path: '',

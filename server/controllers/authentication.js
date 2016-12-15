@@ -6,6 +6,7 @@ var configJWT = require('../config/jwt');
 app.set('superSecret', configJWT.secret); 
 
 var User = require('../models/users');
+var Pacient = require('../models/pacients');
 var Therapist = require('../models/therapists');
 var MedicalCenter = require('../models/medicalCenters');
 
@@ -14,14 +15,16 @@ exports.postAuthenticate = function(req, res) {
 
 	var Entity;
 	switch (req.body.login_type){
-	  case 'user':           Entity = (User); break;
+    case 'user':           Entity = (User); break;
+	  case 'pacient':        Entity = (Pacient); break;
 	  case 'therapist':      Entity = (Therapist); break;
 	  case 'medical_center': Entity = (MedicalCenter);
 	}
 
-  // find the MedicalCenter Login
+  // Multilogin
+  // find the MedicalCenter / patien / therapist  Login
   Entity.findOne({
-    name: req.body.name
+    username: req.body.username
   }, function(err, user) {
 
     if (err) throw err;

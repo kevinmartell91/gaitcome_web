@@ -14,6 +14,9 @@ exports.postMedicalCenters = function(req, res) {
   medicalCenter.email = req.body.email;
   medicalCenter.country = req.body.country;
 
+  medicalCenter.username = req.body.username;
+  medicalCenter.password = req.body.password;
+
   // Save the medicalCenter and check for errors
   medicalCenter.save(function(err) {
     if (err)
