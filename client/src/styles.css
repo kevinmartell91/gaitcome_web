@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 
 html,
@@ -19,6 +18,14 @@ body.modal-open {
     padding-right:0 !important;
 }
 
+h2 {
+    color: #f05a6d;
+}
+
+h4 {
+    color: #98D5EC;
+}
+
 hr {
     max-width: 120px;
     border-width: 3px;
@@ -33,12 +40,12 @@ hr.light {
 }
 
 hr.primary {
-    border-color: #F05A6D;
+    border-color: #f05a6d;
     opacity: 1;
 }
 
 a {
-    color: #F05A6D;
+    color: #f05a6d;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -50,7 +57,8 @@ a:focus {
     outline: 0;
 }
 
-p {
+.card-group p {
+    color: #808C93;
     font-size: 17px;
     line-height: 1.7;
     margin-bottom: 20px;
@@ -71,7 +79,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #F05A6D;
+    background-color: #f05a6d;
 }
 
 .bg-alt {
@@ -96,7 +104,7 @@ p {
 }
 
 .text-primary {
-    color: #F05A6D;
+    color: #f05a6d;
 }
 
 section {
@@ -126,14 +134,18 @@ footer h4, footer h6 {
 }
 
 .navbar-brand {
+    color: #f05a6d;
+    padding: 1px;
+    line-height: 1.90em;
     -webkit-transition: padding .2s ease-in;
     -moz-transition: padding .2s ease-in;
     transition: padding .2s ease-in;
+    float:none;
 }
 
 .navbar-brand:hover,
 .navbar-brand:focus {
-    color: #F05A6D;
+    color: #f05a6d;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
@@ -152,12 +164,12 @@ footer h4, footer h6 {
 
 .navbar-default .nav>li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: #F05A6D;
+    color: #f05a6d;
 }
 
 .navbar-default .nav .nav-link.active,
 .navbar-default .nav .nav-link.active:focus {
-    color: #F05A6D !important;
+    color: #f05a6d !important;
     background-color: transparent;
 }
 
@@ -170,9 +182,6 @@ footer h4, footer h6 {
     .navbar-default .navbar-nav {
         float:none !important;
     }
-    .navbar-default .navbar-brand img {
-        display:inline;
-    }
 }
 
 @media(min-width:48em) {
@@ -183,7 +192,10 @@ footer h4, footer h6 {
     }
 
     .navbar-brand {
-        padding: 12px;
+        color: #f05a6d;
+        float: left;
+        padding: 9px;
+        padding-left: 1px;
     }
 
     .navbar-default .navbar-brand:hover,
@@ -295,11 +307,11 @@ textarea {
 
 .btn.btn-primary {
     background-color: transparent;
-    border:1px solid #F05A6D;
+    border:1px solid #f05a6d;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
-    color:#F05A6D;
+    color:#f05a6d;
 }
 
 .btn.btn-primary:hover {
@@ -307,11 +319,11 @@ textarea {
 }
 
 .btn-primary-outline {
-    border-color:#F05A6D;
-    color:#F05A6D;
+    border-color:#f05a6d;
+    color:#f05a6d;
 }
 .btn-primary-outline:hover {
-    background-color:#F05A6D;
+    background-color:#f05a6d;
 }
 
 .btn-xl {
@@ -340,4 +352,3 @@ img::-moz-selection {
     color: #fff;
     background: 0 0;
 }
-

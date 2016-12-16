@@ -1,4 +1,4 @@
-<h3>Dashboard-medical-center works!</h3>
+<!-- <h3>Dashboard-medical-center works!</h3>
 <nav>
   <a routerLink="./" routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
@@ -6,6 +6,70 @@
   <a routerLink="./therapist-list" routerLinkActive="active">Manage therapist</a>
   <a routerLink="../dashboard-attorney" routerLinkActive="active">To attorney dashboard</a>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
 
 
+<div  mdl-shadow="2">
+  <mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed  #mdlLayout1="mdlLayout">
+    <mdl-layout-header>
+      <mdl-layout-header-row>
+        <mdl-layout-title>Gaitcome</mdl-layout-title>
+        <mdl-layout-spacer></mdl-layout-spacer>
+
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+          <a class="mdl-navigation__link" routerLink="./"
+              routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+          <a class="mdl-navigation__link" routerLink="./attorney-list"
+              routerLinkActive="active">Pacientes</a>
+          <a class="mdl-navigation__link" routerLink="./therapist-list"
+              routerLinkActive="active">Terapeutas</a>
+          
+          <a class="mdl-navigation__link" routerLink="#"
+              routerLinkActive="active">Resevar A.C</a>
+          <a class="mdl-navigation__link" routerLink="./result-list"
+              routerLinkActive="active">Resultdos</a>
+
+          <p>Cerene</p>    
+
+          <a class="nav-link page-scroll" mdl-button #btn1="mdlButton" (click)="m1.toggle($event, btn1)" mdl-button-type="icon" mdl-ripple><mdl-icon>more_vert</mdl-icon></a>
+          <mdl-menu #m1="mdlMenu" mdl-menu-position="bottom-right">
+             <mdl-menu-item mdl-ripple (click)="action()">Cerrar sesión</mdl-menu-item>
+             <mdl-menu-item mdl-ripple disabled mdl-menu-item-full-bleed-divider>Configuación</mdl-menu-item>
+             <mdl-menu-item mdl-ripple disabled>Opción 01</mdl-menu-item>
+             <mdl-menu-item disabled>Opción 02</mdl-menu-item>
+          </mdl-menu>
+
+        </nav>
+      </mdl-layout-header-row>
+    </mdl-layout-header>
+    <mdl-layout-drawer>
+      <mdl-layout-title>Dashboard</mdl-layout-title>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" routerLink="./"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="mdlLayout1.closeDrawer()">Dashboard</a>
+        <a class="mdl-navigation__link" routerLink="./attorney-list"
+            routerLinkActive="active" (click)="mdlLayout1.closeDrawer()">Manage Attorney</a>
+        <a class="mdl-navigation__link" routerLink="./therapist-list"
+            routerLinkActive="active" (click)="mdlLayout1.closeDrawer()">Manage therapist</a>
+        <a class="mdl-navigation__link" routerLink="#"
+              routerLinkActive="active" (click)="mdlLayout1.closeDrawer()">Resevar A.C</a>
+          <a class="mdl-navigation__link" routerLink="./result-list"
+              routerLinkActive="active" (click)="mdlLayout1.closeDrawer()">Resultdos</a>
+
+        <a class="mdl-navigation__link" routerLink="#"
+          routerLinkActive="active" (click)="mdlLayout1.closeDrawer()">
+          <i class="material-icons">cloud</i>
+        </a>
+
+      </nav>
+    </mdl-layout-drawer>
+    <mdl-layout-content>
+
+
+      <router-outlet></router-outlet>
+
+
+    </mdl-layout-content>
+  </mdl-layout>
+</div>

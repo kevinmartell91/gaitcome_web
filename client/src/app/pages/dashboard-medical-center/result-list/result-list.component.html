@@ -1,0 +1,29 @@
+<div class="margin-container">
+<div mdl-shadow="2">
+   <mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
+ 
+      <mdl-layout-drawer class="drawer-results">
+         <mdl-layout-title>result-list works!</mdl-layout-title>
+         <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" >Receintes</a>
+            <a class="mdl-navigation__link" >Buscar</a>
+         </nav>
+      </mdl-layout-drawer>
+      <mdl-layout-content>
+         <!-- Your content goes here -->
+         
+         <mdl-table-selectable mdl-shadow="2"
+	       [table-model]="tableModel"
+	       [table-model-selected]="selected"
+	       (table-model-selectionChanged)="selectionChanged($event)">
+	   </mdl-table-selectable>
+
+
+
+
+         <!-- Your content goes here -->
+
+      </mdl-layout-content>
+   </mdl-layout>
+</div>
+</div>

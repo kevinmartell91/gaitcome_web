@@ -1,4 +1,47 @@
-<p>
-  register works!
-  <a routerLink="../dashboard-medical-center/attorney-list" routerLinkActive="active">goto manage Attorney</a>
-</p>
+<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+  <div class="form-register text-xs-center">
+    <div class="card col-xs-12 col-md-4">
+
+      <div class="card-header" data-background-color="blue">
+        <h5 class="title">Regístrese</h5>
+        <p class="category">Gaitcome</p>
+      </div>
+
+      <div class="card-content">
+        <div class="users-group">
+
+
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <mdl-icon>location_city</mdl-icon>
+          </button>
+
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./attorney"
+            routerLinkActive="active">
+            <mdl-icon>accessible</mdl-icon>
+          </button>
+
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./therapist"
+            routerLinkActive="active">
+            <mdl-icon>group_add</mdl-icon>
+          </button>
+      </div>
+
+        <router-outlet></router-outlet>
+
+        <button mdl-button mdl-colored mdl-ripple>Ya tiene un cuenta</button>
+
+        <p class="tems-and-conditions">
+          By pressing Create Account you agree to our
+          Terms of Service, Privacy
+          Policy and Notice of Privacy
+          Practices
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>

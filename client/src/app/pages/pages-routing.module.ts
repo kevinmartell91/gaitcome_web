@@ -26,7 +26,7 @@ export const routes : Routes = [
 	{
       path: 'dashboard-medical-center',
 	  loadChildren: 'app/pages/dashboard-medical-center/dashboard-medical-center.module#DashboardMedicalCenterModule',
-      canLoad: [AuthGuard]
+      // canLoad: [AuthGuard]
 	},
 	{
       path: 'dashboard-therapist',

@@ -16,6 +16,7 @@ var therapistSchema = new Schema({
   num_ndta: Number,
   is_active: Boolean,
 
+  // Will be send by email
   username: String,
   password: String,
 
