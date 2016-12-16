@@ -34,6 +34,7 @@ var pacientSchema = new Schema({
     created_at: { type: Date, default: Date.now }
   }],
 
+  // Will be send by email
   username: String,
   password: String,
 

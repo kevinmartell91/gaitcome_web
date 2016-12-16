@@ -1,4 +1,30 @@
-<p>
-  register works!
-  <a routerLink="../dashboard-medical-center/attorney-list" routerLinkActive="active">goto manage Attorney</a>
-</p>
+<div align="center">
+  <mdl-card mdl-shadow="2">
+
+    <mdl-card-title>
+      <h1 mdl-card-title-text>Registrese</h1>
+    </mdl-card-title>
+
+    <mdl-card-supporting-text text-align="center">
+      By pressing Create Account you agree to our Terms of Service, Privacy Policy and Notice of Privacy Practices
+    </mdl-card-supporting-text>
+
+    <mdl-card-actions mdl-card-border>
+      <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Centro Medico</a>
+      <a routerLink="./attorney" routerLinkActive="active"> Apoderado</a>
+      <a routerLink="./therapist" routerLinkActive="active">Terapeuta</a>
+
+      <router-outlet></router-outlet>
+
+      <button mdl-button mdl-colored mdl-ripple>Ya tiene un cuenta</button>
+    </mdl-card-actions>
+
+
+    <mdl-card-menu>
+      <button mdl-button mdl-button-type="icon" mdl-ripple>
+          <mdl-icon>share</mdl-icon>
+        </button>
+    </mdl-card-menu>
+    
+  </mdl-card>
+</div>
