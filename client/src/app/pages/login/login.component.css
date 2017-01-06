@@ -1,13 +1,49 @@
-.mdl-textfield__input {
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,.12);
-    display: block;
-    font-size: 16px;
-    font-family: "Helvetica","Arial",sans-serif;
-    margin: 0;
-    padding: 4px 0;
-    width: 60%;
-    background: 0 0;
-    text-align: center;
-    color: inherit;
+/*
+
+h2 {
+  color: #ffffff;
 }
+
+.tems-and-conditions {
+  font-size: 9px;
+}*/
+.form-login {
+    max-width: 420px;
+    padding: 25px;
+    margin: 0 auto;
+}
+.margin-container {
+    margin-top: 80px;
+}
+/*
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+
+.card .card-header {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #00BCD4;
+}
+
+.card .card-content {
+    padding: 15px 20px;
+}
+
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color="purple"] {
+    background: linear-gradient(60deg, #ab47bc, #8e24aa);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}*/

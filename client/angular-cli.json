@@ -20,7 +20,12 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/chart.js/dist/Chart.bundle.min.js",
+        "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js",
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/angular2-mdl/bundle/angular2-mdl.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

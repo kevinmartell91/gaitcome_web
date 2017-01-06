@@ -1,8 +1,21 @@
-.mdl-card {
+
+/*.mdl-card {
     font-size: 25px;
     font-weight: 400;
     min-height: 200px;
     width: 530px;
     background: #fff;
     border-radius: 10px;
+}*/
+
+.form-register {
+    max-width: 520px;
+    padding: 25px;
+    margin: 0 auto;
+}
+.tems-and-conditions {
+  font-size: 9px;
+}
+.users-group {
+    margin-top: 12px;
 }

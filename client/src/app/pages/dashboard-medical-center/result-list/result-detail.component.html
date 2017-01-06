@@ -1,0 +1,174 @@
+<div class="row">
+
+  <div class="col-xs-2">
+
+    <div class="event">
+      <h5 class="event-heading division_line">
+        <a href="#">John Smith</a> <small>@gmail.com</small>
+      </h5>
+
+      <p>February 22, 2014 at 01:59 PM</p>
+      <p class="fs-mini">
+        Check out this awesome photo I made in Italy
+        last summer. Seems it was lost somewhere
+        deep inside my brand new HDD 40TB.
+        Thanks god I found it!
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="col-xs-6">
+    <div class="row">
+      <iframe  width="560"
+        height="315" [src]="url" frameborder="0"
+        allowfullscreen></iframe>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <iframe  width="560"
+          height="315" [src]="url" frameborder="0"
+          allowfullscreen></iframe>
+      </div>
+      <div class="col-md-6">
+
+        <iframe  width="560"
+          height="315" [src]="url" frameborder="0"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="col-xs-3">
+    <div class="chart_decoration">
+      <p>Rodilla [Grados]</p>
+      <canvas id="hip_img" baseChart width="288"
+        height="220" [datasets]="lineChartData"
+        [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend"
+        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+
+    <div class="chart_decoration">
+      <p>Pelvis [Grados]</p>
+      <canvas id="hip_img" baseChart width="288"
+        height="220" [datasets]="lineChartData"
+        [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend"
+        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+
+    <div class="chart_decoration">
+      <p>Cadera [Grados]</p>
+      <canvas id="hip_img" baseChart width="288"
+        height="220" [datasets]="lineChartData"
+        [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend"
+        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+
+    <div class="chart_decoration">
+      <p>Tobillo [Grados]</p>
+      <canvas id="hip_img" baseChart width="288"
+        height="220" [datasets]="lineChartData"
+        [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend"
+        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+    <h1>Two range charts</h1>
+
+  <canvas id="cvs" width="600" height="250" >[No canvas support]</canvas>
+       
+   
+ <script type="text/javascript">
+    window.onload = function ()
+    {
+        var line1 = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [4,3,3,3,5,2,4],
+                [8,5,6,8,9,7,8]
+            ],
+            options: {
+                backgroundImage: './assets/images/pic01.png',
+                filled: true,
+                filledRange: true,
+                linewidth: 3,
+                colors: ['red'],
+                fillstyle: 'rgba(255,0,0,0.2)',
+                ymax: 10,
+                tickmarks: null,
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                textAccessible: true
+            }
+        }).draw()
+        
+        var line2 = new RGraph.Line({
+            id: 'cvs',
+            data: [6,4,4.5,5.5,7,4.5,6],
+            options: {
+                backgroundGrid: false,
+                ylabels: false,
+                noaxes: true,
+                colors: ['black'],
+                linewidth: 3,
+                ymax: 10,
+                textAccessible: true
+            }
+        }).draw()
+
+        var line3 = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [1,2,4,2,2,4,3],
+                [0,1,2,0,0,1,0]
+            ],
+            options: {
+                backgroundGrid: false,
+                ylabels: false,
+                noaxes: true,
+                filled: true,
+                filledRange: true,
+                linewidth: 3,
+                colors: ['blue'],
+                fillstyle: 'rgba(0,0,255,0.2)',
+                ymax: 10,
+                tickmarks: null,
+                textAccessible: true
+            }
+        }).draw()
+        
+        var line4 = new RGraph.Line({
+            id: 'cvs',
+            data: [0.5,1.5,3,0.5,1,2.5,1.5],
+            options: {
+                backgroundGrid: false,
+                ylabels: false,
+                noaxes: true,
+                colors: ['black'],
+                linewidth: 3,
+                ymax: 10,
+                textAccessible: true
+            }
+        }).draw();
+    };
+ </script>

@@ -1,30 +1,47 @@
-<div align="center">
-  <mdl-card mdl-shadow="2">
+<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+  <div class="form-register text-xs-center">
+    <div class="card col-xs-12 col-md-4">
 
-    <mdl-card-title>
-      <h1 mdl-card-title-text>Registrese</h1>
-    </mdl-card-title>
+      <div class="card-header" data-background-color="blue">
+        <h5 class="title">Regístrese</h5>
+        <p class="category">Gaitcome</p>
+      </div>
 
-    <mdl-card-supporting-text text-align="center">
-      By pressing Create Account you agree to our Terms of Service, Privacy Policy and Notice of Privacy Practices
-    </mdl-card-supporting-text>
-
-    <mdl-card-actions mdl-card-border>
-      <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Centro Medico</a>
-      <a routerLink="./attorney" routerLinkActive="active"> Apoderado</a>
-      <a routerLink="./therapist" routerLinkActive="active">Terapeuta</a>
-
-      <router-outlet></router-outlet>
-
-      <button mdl-button mdl-colored mdl-ripple>Ya tiene un cuenta</button>
-    </mdl-card-actions>
+      <div class="card-content">
+        <div class="users-group">
 
 
-    <mdl-card-menu>
-      <button mdl-button mdl-button-type="icon" mdl-ripple>
-          <mdl-icon>share</mdl-icon>
-        </button>
-    </mdl-card-menu>
-    
-  </mdl-card>
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <mdl-icon>location_city</mdl-icon>
+            </button>
+
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./attorney"
+            routerLinkActive="active">
+            <mdl-icon>accessible</mdl-icon>
+          </button>
+
+          <button mdl-button mdl-button-type="fab"
+            mdl-ripple routerLink="./therapist"
+            routerLinkActive="active">
+            <mdl-icon>group_add</mdl-icon>
+          </button>
+          
+        </div>
+
+        <router-outlet></router-outlet>
+
+        <button mdl-button mdl-colored mdl-ripple>Ya tiene un cuenta</button>
+
+        <p class="tems-and-conditions">
+          By pressing Create Account you agree to our
+          Terms of Service, Privacy Policy
+          and Notice of Privacy Practices
+        </p>
+
+      </div>
+    </div>
+  </div>
 </div>

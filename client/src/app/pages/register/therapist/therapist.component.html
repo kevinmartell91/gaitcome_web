@@ -1,70 +1,68 @@
 <p>
-  therapist works!
 </p>
-<form [formGroup]="form" align="center">
-		  <p>
-		    <mdl-textfield 
-		    			   label="Nombres" 
-		    			   name="names" 
-		    			   type="text" 
-		    			   formControlName="names" 
-		    			   floating-label></mdl-textfield>
-		  </p>
-	
-		  <p>
-		    <mdl-textfield 
-		    			   label="Apellidos" 
-		    			   name="lastname" 
-		    			   type="text" 
-		    			   formControlName="lastName" 
-		    			   floating-label></mdl-textfield>
-		  </p>
+<p>
+  Como terapueta
+</p>
+<form [formGroup]="form" class="card-group">
 
-		  <p>
-		    <mdl-textfield
-		            label="Email"
-		            name="email"
-		            type="text"
-		            formControlName="email"
-		            floating-label
-		            pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$"
-		            error-msg="Please provide a correct email!"></mdl-textfield>
-		  </p>
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <mdl-textfield label="Nombres" name="names"
+          type="text" formControlName="names"
+          floating-label></mdl-textfield>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <mdl-textfield label="Apellidos" name="lastname"
+          type="text" formControlName="lastName"
+          floating-label></mdl-textfield>
+      </p>
+    </div>
+  </div>
 
-		  <p>
-		    <mdl-textfield
-			        type="text"
-			        label="Número de DNI"
-			        name="id_Document_num"
-			        pattern="-?[0-9]*(\.[0-9]+)?"
-			        error-msg="Caracteres no numéricos!"
-			        formControlName="id_Document_num"
-			        floating-label ></mdl-textfield>
-		  <p>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        <mdl-textfield label="Email" name="email"
+          type="text" formControlName="email"
+          floating-label pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$"
+          error-msg="Please provide a correct email!"></mdl-textfield>
+      </p>
+    </div>
+  </div>
 
-		  <p>
-		    <mdl-textfield
-			        type="text"
-			        label="Número de CTMP"
-			        name="num_ctmp"
-			        pattern="-?[0-9]*(\.[0-9]+)?"
-			        error-msg="Caracteres no numéricos!"
-			        formControlName="num_ctmp"
-			        floating-label ></mdl-textfield>
-		  <p>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <mdl-textfield type="text" label="Número de DNI"
+          name="id_Document_num" pattern="-?[0-9]*(\.[0-9]+)?"
+          error-msg="Caracteres no numéricos!"
+          formControlName="id_Document_num"
+          floating-label></mdl-textfield>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <mdl-textfield type="text" label="Número de CTMP"
+          name="num_ctmp" pattern="-?[0-9]*(\.[0-9]+)?"
+          error-msg="Caracteres no numéricos!"
+          formControlName="num_ctmp" floating-label></mdl-textfield>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <mdl-textfield type="text" label="Número de NDTA"
+          name="num_ndta" pattern="-?[0-9]*(\.[0-9]+)?"
+          error-msg="Caracteres no numéricos!"
+          formControlName="num_ndta" floating-label></mdl-textfield>
+      </p>
+    </div>
+  </div>
 
-		  <p>
-		    <mdl-textfield
-			        type="text"
-			        label="Número de NDTA"
-			        name="num_ndta"
-			        pattern="-?[0-9]*(\.[0-9]+)?"
-			        error-msg="Caracteres no numéricos!"
-			        formControlName="num_ndta"
-			        floating-label ></mdl-textfield>
-		  <p>
-		    <button mdl-button (click)="onSubmit()"  [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">Crear Cuenta</button>
-		  </p>
- </form>
-
-
+  <p>
+    <button mdl-button (click)="onSubmit()" [disabled]="!form.valid"
+      mdl-button-type="raised" mdl-ripple mdl-colored="primary">Crear Cuenta</button>
+  </p>
+</form>

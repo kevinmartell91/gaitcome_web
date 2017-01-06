@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { MdlModule } from 'angular2-mdl';
+// import { MaterialModule } from '@angular/material';
 
 import { routing } from './login-routing';
 
@@ -13,6 +14,7 @@ import { routing } from './login-routing';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    // MaterialModule,
     MdlModule,
     routing
   ],

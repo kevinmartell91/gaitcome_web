@@ -18,7 +18,10 @@ let moduleID: string;
   moduleId: moduleID,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: [
+    './login.component.css',
+    '../../theme/theme.component.css'
+  ]
 })
 export class LoginComponent implements OnInit{
 
@@ -28,6 +31,20 @@ export class LoginComponent implements OnInit{
   // loading = false;
   // error = '';
 
+favoriteSeason: string;
+
+  seasons = [
+    'Winter',
+    'Spring',
+    'Summer',
+    'Autumn',
+  ];
+tiles = [
+    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  ];
 
   public user: User;
   /* standing data goes here*/
