@@ -4,8 +4,10 @@ import { DashboardMedicalCenterComponent } from './dashboard-medical-center.comp
 import { AttorneyListComponent } from './attorney-list/attorney-list.component';
 import { TherapistListComponent } from './therapist-list/therapist-list.component';
 import { MedicalCenterComponent } from './medical-center/medical-center.component';
+
 import { MdlModule } from 'angular2-mdl';
 // import { MaterialModule } from '@angular/material';
+import { PolymerElement } from '@vaadin/angular2-polymer';
 
 
 import { routing } from './dashboard-medical-center.routing';
@@ -25,7 +27,9 @@ import { ResultListComponent } from './result-list/result-list.component';
     DashboardMedicalCenterComponent,
     AttorneyListComponent, 
     TherapistListComponent, 
-    MedicalCenterComponent, ResultListComponent
+    MedicalCenterComponent, 
+    ResultListComponent,
+    // PolymerElement('vaadin-grid')
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
