@@ -18,6 +18,10 @@ import { routing } from './app-routing.module';
 import { MdlModule } from 'angular2-mdl'
 // import { MaterialModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { PolymerElement } from '@vaadin/angular2-polymer';
+// import { ChartModule } from 'angular2-highcharts';
+
+
   
 
 @NgModule({
@@ -34,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MdlModule,
     // MaterialModule.forRoot(),
     NgbModule.forRoot(),
+    // ChartModule,
     routing
   ],
   providers: [

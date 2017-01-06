@@ -4,14 +4,19 @@ import { DashboardMedicalCenterComponent } from './dashboard-medical-center.comp
 import { AttorneyListComponent } from './attorney-list/attorney-list.component';
 import { TherapistListComponent } from './therapist-list/therapist-list.component';
 import { MedicalCenterComponent } from './medical-center/medical-center.component';
+import { ResultListComponent } from './result-list/result-list.component';
+import { ResultDetailComponent } from './result-list/result-detail.component';
+
 import { MdlModule } from 'angular2-mdl';
 // import { MaterialModule } from '@angular/material';
 
-
 import { routing } from './dashboard-medical-center.routing';
-
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { ResultListComponent } from './result-list/result-list.component';
+import { ChartModule } from 'angular2-highcharts';
+
+
+
+
 
 @NgModule({
   imports: [
@@ -19,13 +24,16 @@ import { ResultListComponent } from './result-list/result-list.component';
     ChartsModule,
     // MaterialModule,
     MdlModule,
+    ChartModule,
     routing
   ],
   declarations: [
     DashboardMedicalCenterComponent,
     AttorneyListComponent, 
     TherapistListComponent, 
-    MedicalCenterComponent, ResultListComponent
+    MedicalCenterComponent, 
+    ResultListComponent,
+    ResultDetailComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

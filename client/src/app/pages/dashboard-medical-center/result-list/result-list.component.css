@@ -3,6 +3,9 @@
 	width: 80px;
 }*/
 
-.margin-container {
-    margin-top: 80px;
+vaadin-grid {
+  height: 600px;
 }
+/*.margin-container {
+  margin-top: 80px;
+}*/

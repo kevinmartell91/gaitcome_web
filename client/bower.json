@@ -1,0 +1,22 @@
+{
+  "name": "gaitcome-web-client",
+  "description": "",
+  "main": "",
+  "authors": [
+    "kevinmartell91 <kevinmartell91@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kevinmartell91/gaitcome_web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vaadin-grid": "^1.2.1",
+    "vaadin-charts": "3.2.0"
+  }
+}

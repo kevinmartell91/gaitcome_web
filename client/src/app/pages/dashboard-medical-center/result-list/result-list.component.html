@@ -10,18 +10,36 @@
          </nav>
       </mdl-layout-drawer>
       <mdl-layout-content>
-         <!-- Your content goes here -->
          
-         <mdl-table-selectable mdl-shadow="2"
+
+       <p>
+      <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
+    </p>
+    <vaadin-grid frozen-columns="2" [items]="displayedPeople" selection-mode="multi" (sort-order-changed)="sortPeople($event)">
+      <table>
+        <colgroup>
+          <col sortable name="firstName">
+          <col sortable name="lastName">
+          <col sortable name="email" width="250">
+          <col sortable name="address.phone" hidable>
+          <col sortable name="address.street" hidable>
+          <col sortable name="address.city" hidable>
+          <col sortable name="address.state" hidable>
+          <col sortable name="address.zip" hidable>
+          <col sortable name="address.country" hidable hidden>
+        </colgroup>
+      </table>
+    </vaadin-grid>
+         
+         <!-- <mdl-table-selectable mdl-shadow="2"
 	       [table-model]="tableModel"
 	       [table-model-selected]="selected"
 	       (table-model-selectionChanged)="selectionChanged($event)">
 	   </mdl-table-selectable>
+ -->
 
+      <button (click)='onSelect()'> click me </button>
 
-
-
-         <!-- Your content goes here -->
 
       </mdl-layout-content>
    </mdl-layout>

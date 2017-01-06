@@ -41,3 +41,6 @@ Thumbs.db
 
 # assets files and external libs
 /src/assets
+
+# bower components
+/src/assets/bower_components
