@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpModule, Http, Response} from '@angular/http';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
-// import { PolymerElement } from '@vaadin/angular2-polymer'; not needed in this part, just in the loader(lazy)
 
 export class Person {
   firstName: string;
@@ -23,7 +23,11 @@ export class ResultListComponent implements OnInit {
   people: Person[] = [];
   displayedPeople: Person[] = [];
 
-  constructor (private http: Http) {}
+  constructor (
+    private http: Http,
+    private route: ActivatedRoute,
+    private router: Router
+ )  {}
 
   ngOnInit() {
     this.getPeople();
@@ -66,6 +70,14 @@ export class ResultListComponent implements OnInit {
     return this.http.get(url)
       .map((res: Response) => res.json())
   }
+
+  onSelect() {
+    let hard_id: string = '3143214321';
+    // Relative navigation back to the crises
+    this.router.navigate(['../result', hard_id ], { relativeTo: this.route });
+
+  }
+
 }
 // import { Component, OnInit } from '@angular/core';
 // import {

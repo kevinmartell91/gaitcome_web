@@ -25,7 +25,7 @@
         "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js",
         "../node_modules/chart.js/dist/Chart.min.js",
         "../node_modules/angular2-mdl/bundle/angular2-mdl.js",
-        "../src/assets/bower_components/webcomponentsjs/webcomponents.min.js"
+        "../node_modules/highcharts/highcharts-more.src.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

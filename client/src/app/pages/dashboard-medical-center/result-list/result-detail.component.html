@@ -1,99 +1,142 @@
-<div class="row">
+<div class="margin-container">
 
-  <div class="col-xs-2">
 
-    <div class="event">
-      <h5 class="event-heading division_line">
-        <a href="#">John Smith</a> <small>@gmail.com</small>
-      </h5>
-
-      <p>February 22, 2014 at 01:59 PM</p>
-      <p class="fs-mini">
-        Check out this awesome photo I made in Italy
-        last summer. Seems it was lost somewhere
-        deep inside my brand new HDD 40TB.
-        Thanks god I found it!
-      </p>
-
-    </div>
+  <div class="row col-xl-12" >
+    <vaadin-area-chart id="basic-area" timeline>
+      <chart-title>US and USSR nuclear stockpiles</chart-title>
+      <x-axis allow-decimals="false">
+      </x-axis>
+      <y-axis min="0">
+        <title>Nuclear weapon states</title>
+      </y-axis>
+        <area-chart point-start="1940">
+          
+        </area-chart>
+      <data-series name="USA">
+        <data>null, null, null, null, null, 6, 11, 32, 50, 235, 369, 640, 1005, 1436, 2063,
+          3057, 4618, 6444, 9822, 15468, 20434, 24126, 27387, 29459, 31056, 31982, 32040,
+          31233, 29224, 27342, 26662, 26956, 27912, null, 28965, 27826, 25579, 25722,
+          24826,
+          24605, 24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586, 22380,
+          21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950, 10871, 10824, 10577,
+          10527, 10475, 10421, 10358, 10295, 10104
+        </data>
+      </data-series>
+      <data-series name="USSR/Russia">
+        <data>null, null, null, null, null, null, null, null, null, null, 5, 25, 50, 120,
+          150, 200, 426, 660, 869, 1060, 1605, 2471, 3322, 4238, 5221, 6129, 7089, 8339,
+          9399, 10538, 11643, 13092, 14478, 15915, 17385, 19055, 21205, 23044, 25393,
+          27935, 30062,
+          32049, 33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000, 35000,
+          33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000, 21000, 20000, 19000,
+          18000, 18000, 17000, 16000
+        </data>
+      </data-series>
+    </vaadin-area-chart>
 
   </div>
 
+  <div class="row">
 
-  <div class="col-xs-6">
-    <div class="row">
-      <iframe  width="560"
-        height="315" [src]="url" frameborder="0"
-        allowfullscreen></iframe>
+    <div class="col-xs-2">
+
+      <div class="event">
+        <h5 class="event-heading division_line">
+          <a href="#">John Smith</a> <small>@gmail.com</small>
+        </h5>
+
+        <p>February 22, 2014 at 01:59 PM</p>
+        <p class="fs-mini">
+          Check out this awesome photo I made in Italy
+          last summer. Seems it was lost somewhere
+          deep inside my brand new HDD 40TB.
+          Thanks god I found it!
+        </p>
+
+      </div>
+
     </div>
-    <div class="row">
-      <div class="col-md-6">
+
+
+    <div class="col-xs-6">
+      <div class="row">
         <iframe  width="560"
           height="315" [src]="url" frameborder="0"
           allowfullscreen></iframe>
       </div>
-      <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <iframe  width="560"
+            height="315" [src]="url" frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+        <div class="col-md-6">
 
-        <iframe  width="560"
-          height="315" [src]="url" frameborder="0"
-          allowfullscreen></iframe>
+          <iframe  width="560"
+            height="315" [src]="url" frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-xs-3">
+      <div class="chart_decoration">
+        <p>Rodilla [Grados]</p>
+        <canvas id="hip_img" baseChart width="288"
+          height="220" [datasets]="lineChartData"
+          [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend"
+          [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+      <div class="chart_decoration">
+        <p>Pelvis [Grados]</p>
+        <canvas id="hip_img" baseChart width="288"
+          height="220" [datasets]="lineChartData"
+          [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend"
+          [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+      <div class="chart_decoration">
+        <p>Cadera [Grados]</p>
+        <canvas id="hip_img" baseChart width="288"
+          height="220" [datasets]="lineChartData"
+          [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend"
+          [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+      <div class="chart_decoration">
+        <p>Tobillo [Grados]</p>
+        <canvas id="hip_img" baseChart width="288"
+          height="220" [datasets]="lineChartData"
+          [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend"
+          [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
 
+
+
   </div>
 
-
-  <div class="col-xs-3">
-    <div class="chart_decoration">
-      <p>Rodilla [Grados]</p>
-      <canvas id="hip_img" baseChart width="288"
-        height="220" [datasets]="lineChartData"
-        [labels]="lineChartLabels" [options]="lineChartOptions"
-        [colors]="lineChartColors" [legend]="lineChartLegend"
-        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
-    </div>
-
-    <div class="chart_decoration">
-      <p>Pelvis [Grados]</p>
-      <canvas id="hip_img" baseChart width="288"
-        height="220" [datasets]="lineChartData"
-        [labels]="lineChartLabels" [options]="lineChartOptions"
-        [colors]="lineChartColors" [legend]="lineChartLegend"
-        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
-    </div>
-
-    <div class="chart_decoration">
-      <p>Cadera [Grados]</p>
-      <canvas id="hip_img" baseChart width="288"
-        height="220" [datasets]="lineChartData"
-        [labels]="lineChartLabels" [options]="lineChartOptions"
-        [colors]="lineChartColors" [legend]="lineChartLegend"
-        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
-    </div>
-
-    <div class="chart_decoration">
-      <p>Tobillo [Grados]</p>
-      <canvas id="hip_img" baseChart width="288"
-        height="220" [datasets]="lineChartData"
-        [labels]="lineChartLabels" [options]="lineChartOptions"
-        [colors]="lineChartColors" [legend]="lineChartLegend"
-        [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
-    </div>
+  <div>
+    <!-- <chart [options]="options"></chart> -->
   </div>
-
-
 
 </div>
 
 
 
 
-
-
+<!-- 
     <h1>Two range charts</h1>
 
   <canvas id="cvs" width="600" height="250" >[No canvas support]</canvas>
@@ -172,3 +215,4 @@
         }).draw();
     };
  </script>
+ -->

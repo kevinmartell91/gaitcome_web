@@ -6,6 +6,7 @@ import { AttorneyListComponent } from './attorney-list/attorney-list.component';
 import { MedicalCenterComponent } from './medical-center/medical-center.component';
 import { TherapistListComponent } from './therapist-list/therapist-list.component';
 import { ResultListComponent} from './result-list/result-list.component'
+import { ResultDetailComponent } from './result-list/result-detail.component';
 
 import { AuthGuard }                from '../login/auth-guard.service';
 
@@ -22,7 +23,8 @@ export const routes: Routes = [
           { path: 'attorney-list', component: AttorneyListComponent },
           { path: 'therapist-list', component: TherapistListComponent },
           { path: 'result-list', component : ResultListComponent},
-          { path: '', component: MedicalCenterComponent },
+          { path: 'result/:id', component : ResultDetailComponent},
+          { path: '', component: MedicalCenterComponent }
         ]
       }
     ]

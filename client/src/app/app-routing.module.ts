@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'pages/homepage' },
+  // { path: '**', redirectTo: 'PageNotFoundComponent' },  <= TODO
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

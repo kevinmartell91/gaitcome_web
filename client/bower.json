@@ -16,6 +16,11 @@
     "tests"
   ],
   "dependencies": {
+<<<<<<< HEAD
     "vaadin-grid": "^1.2.1"
+=======
+    "vaadin-grid": "^1.2.1",
+    "vaadin-charts": "3.2.0"
+>>>>>>> add-result-detail-UI
   }
 }

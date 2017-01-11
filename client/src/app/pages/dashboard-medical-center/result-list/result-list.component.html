@@ -15,7 +15,7 @@
        <p>
       <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
     </p>
-    <vaadin-grid frozen-columns="2" [items]="displayedPeople" selection-mode="multi" (sort-order-changed)="sortPeople($event)">
+   <!--  <vaadin-grid frozen-columns="2" [items]="displayedPeople" selection-mode="multi" (sort-order-changed)="sortPeople($event)">
       <table>
         <colgroup>
           <col sortable name="firstName">
@@ -36,9 +36,9 @@
 	       [table-model-selected]="selected"
 	       (table-model-selectionChanged)="selectionChanged($event)">
 	   </mdl-table-selectable>
- -->
+ --> -->
 
-
+      <button (click)='onSelect()'> click me </button>
 
 
       </mdl-layout-content>
