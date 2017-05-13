@@ -138,7 +138,7 @@ exports.putTherapist = function(req, res) {
 // Create endpoint /api/therapists/:therapist_id for DELETE
 exports.deleteTherapist = function(req, res) {
 
-  Therapist.remove(req.params.therapist_id, function(err) {
+  Therapist.findByIdAndRemove(req.params.therapist_id, function(err) {
     if (err)
       return res.send(err);
 

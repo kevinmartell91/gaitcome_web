@@ -131,7 +131,7 @@ exports.putPacient = function(req, res) {
 };
 
 exports.deletePacient = function(req, res) {
-  Pacient.remove(req.params.pacient_id, function(err) {
+  Pacient.findByIdAndRemove(req.params.pacient_id, function(err) {
     if(err)
       return res.send(err);
 

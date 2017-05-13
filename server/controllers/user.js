@@ -7,7 +7,7 @@ exports.postUsers = function(req, res) {
   // Create a new instance of the User model
 
   var user = new User();
-
+  console.log(req.body);
   //Set the user properties that came from the POST data
   user.type = req.body.type;
   user.quantity = req.body.quantity;
@@ -69,7 +69,7 @@ exports.putUser = function(req, res) {
 // Create endpoint /api/users/:beer_id for DELETE
 exports.deleteUser = function(req, res) {
 
-  User.remove(req.params.user_id, function(err) {
+  User.findByIdAndRemove(req.params.user_id, function(err) {
     if (err)
       return res.send(err);
 

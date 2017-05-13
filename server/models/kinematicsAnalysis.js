@@ -48,7 +48,7 @@ var kinematicsAnalysisSchema = new Schema({
 
 	patient_descriptions : String,
 
-	// MARKERS POSCITIONS 
+	// MARKERS 3d POSITIONS 
 	lkne: [{ _id:false, x: Number, y: Number, z: Number }],
 	rkne: [{ _id:false, x: Number, y: Number, z: Number }],
 	lank: [{ _id:false, x: Number, y: Number, z: Number }],
@@ -64,8 +64,9 @@ var kinematicsAnalysisSchema = new Schema({
 	ltrc: [{ _id:false, x: Number, y: Number, z: Number }],
 	rtrc: [{ _id:false, x: Number, y: Number, z: Number }],
 
-	//UNIT ANGLES 
-	spl_kne: [ Number ],
+	// ANGLES LIST 
+	spl_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	//spl_kne: [ Number ],
 	spl_ank: [ Number ],
 	spl_plv: [ Number ],
 	spl_hip: [ Number ],

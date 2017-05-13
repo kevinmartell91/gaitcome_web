@@ -33,8 +33,15 @@ router.route('/authenticate')
 // route middleware to verify a token
 router.use(function(req, res, next) {
 
+  //console.log(`route middleware to verify a token : ${req.headers['x-access-token']}`);
+  // console.log(`route middleware to verify a token from ws : ${req.headers['x-access-token']}`);
   // check header or url parameters or post parameters for token
+  
+  // from server 8080
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  
+  // from postman
+  //var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
   // decode token
   if (token) {
@@ -46,7 +53,8 @@ router.use(function(req, res, next) {
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;    
-        console.log(`server req.decoded : ${req.decoded}`);
+        //console.log(`server req.decoded kevin : ${req.decoded}`);
+        console.log('Token accepted');
         next();
       }
     });

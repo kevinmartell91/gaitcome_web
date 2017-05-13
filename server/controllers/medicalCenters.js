@@ -74,7 +74,7 @@ exports.putMedicalCenter = function(req, res) {
 // Create endpoint /api/medicalCenters/:beer_id for DELETE
 exports.deleteMedicalCenter = function(req, res) {
 
-  MedicalCenter.remove(req.params.medical_center_id, function(err) {
+  MedicalCenter.findByIdAndRemove(req.params.medical_center_id, function(err) {
     if (err)
       return res.send(err);
 
