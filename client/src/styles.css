@@ -26,6 +26,18 @@ h4 {
     color: #98D5EC;
 }
 
+h3 {
+    color: #f05a6d;
+}
+
+h5 {
+    color: #98D5EC;
+}
+
+h6 {
+    color: #f05a6d;
+}
+
 hr {
     max-width: 120px;
     border-width: 3px;

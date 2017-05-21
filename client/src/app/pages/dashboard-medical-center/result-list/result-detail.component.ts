@@ -47,7 +47,7 @@ export class SplKne {
          normal_ranges: Array<Array<number>>;
         // patient_angles: number[][];
          patient_angles: Array<Array<number>>;
-    }
+}
 export class KinematicsAnalysis {
     _id: string;
     therapist_id: string;
@@ -64,7 +64,6 @@ export class KinematicsAnalysis {
     spl_kne: SplKne;
     // spl_kne: SeriesAngles;
 }
-
 export class Person {
   firstName: string;
   lastName: string;
@@ -73,7 +72,10 @@ export class Person {
 @Component({
   selector: 'app-medical-center',
   templateUrl: './result-detail.component.html',
-  styleUrls: ['./result-detail.component.css']
+  styleUrls: [
+    './result-detail.component.css',
+    '../../../theme/theme.component.css'
+  ]
 })
 
 // @Component({
@@ -123,6 +125,7 @@ export class ResultDetailComponent implements OnInit {
     private router: Router
   ) { 
 
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.video.id);    
   }
 
   ngOnInit() {
@@ -138,8 +141,11 @@ export class ResultDetailComponent implements OnInit {
     );
 
 
-    this.getAnalysis();
+    //this.getAnalysis();
 
+    var json = {"_id":"5917e445512fd60c985238fe","therapist_id":"Julia Santa Ana","medical_center_id":"Cerene SAC","patient_id":"Camila Sedano","__v":0,"created_at":"2017-05-14T04:59:49.547Z","tp_hip":[],"tp_plv":[],"tp_ank":[],"tp_kne":[],"fp_hip":[],"fp_plv":[],"fp_ank":[],"fp_kne":[],"spr_hip":[],"spr_plv":[],"spr_ank":[],"spr_kne":[],"spl_hip":[],"spl_plv":[],"spl_ank":[],"spl_kne":{"normal_ranges":[[0,14.72677596,3.825136612],[3.03030303,15.10928962,3.825136612],[6.060606061,15.30054645,3.825136612],[9.090909091,15.30054645,4.016393443],[12.12121212,14.72677596,4.207650273],[15.15151515,14.53551913,4.398907104],[18.18181818,14.3442623,4.590163934],[21.21212121,13.96174863,4.781420765],[24.24242424,13.96174863,5.163934426],[27.27272727,14.15300546,5.546448087],[30.3030303,13.96174863,5.737704918],[33.33333333,13.7704918,5.928961749],[36.36363636,13.7704918,6.120218579],[39.39393939,13.57923497,6.120218579],[42.42424242,13.57923497,5.928961749],[45.45454545,13.96174863,5.546448087],[48.48484848,14.3442623,5.163934426],[51.51515152,14.3442623,4.972677596],[54.54545455,14.15300546,4.781420765],[57.57575758,13.96174863,4.590163934],[60.60606061,13.19672131,4.207650273],[63.63636364,12.81420765,4.016393443],[66.66666667,13.00546448,4.016393443],[69.6969697,13.00546448,4.016393443],[72.72727273,13.38797814,4.207650273],[75.75757576,13.7704918,4.590163934],[78.78787879,14.15300546,4.781420765],[81.81818182,14.15300546,4.972677596],[84.84848485,24.15300546,20.163934426],[87.87878788,34.3442623,25.355191257],[90.90909091,24.3442623,20.163934426],[93.93939394,24.15300546,18.972677596],[96.96969697,14.15300546,4.781420765],[100,14.53551913,4.207650273]],"patient_angles":[[0,0],[4.545454545,0.25],[9.090909091,7.41],[13.63636364,11.64],[18.18181818,3.6],[22.72727273,19.55],[27.27272727,15.62],[31.81818182,12.5],[36.36363636,22.42],[40.90909091,20.74],[45.45454545,32.62],[50,2.69],[54.54545455,2.81],[59.09090909,32.63],[63.63636364,22.77],[68.18181818,12.68],[72.72727273,6.56],[77.27272727,2.39],[81.81818182,2.3],[86.36363636,2],[90.90909091,1.85],[95.45454545,1.49],[100,2.08]]},"rtrc":[],"ltrc":[],"rbwt":[],"lbwt":[],"rfwt":[],"lfwt":[],"rhee":[],"lhee":[],"rtoe":[],"ltoe":[],"rank":[],"lank":[],"rkne":[],"lkne":[{"x":123.31,"y":543.4,"z":54.54},{"x":123.31,"y":543.4,"z":54.54},{"x":123.31,"y":543.4,"z":54.54},{"x":123.31,"y":543.4,"z":54.54},{"x":123.31,"y":543.4,"z":54.54}],"accesories_descriptions":{"assited_walk":"No se necesito","treadmills":"Solo para precalentamiento","walker":"Si se utlizÃ³","orthoses":"No se necesito","parallel_bars":""},"accesories":{"is_assited_walk":true,"is_treadmills":true,"is_walker":true,"is_orthoses":true,"is_parallel_bars":false}};
+    this.kinematicsAnalysis = json;
+    this.hardShowGraph(this.kinematicsAnalysis);
   }
 
   getAnalysis() {
@@ -153,7 +159,7 @@ export class ResultDetailComponent implements OnInit {
     this._getJSON(this.URL_WEB_SERVICE + this.hard_id, options)
       .subscribe(json => {
         this.kinematicsAnalysis = json;
-        this.cookDataTest(this.kinematicsAnalysis);
+        this.showGraph(this.kinematicsAnalysis);
       })
   }
 
@@ -168,7 +174,7 @@ export class ResultDetailComponent implements OnInit {
         return Observable.throw(error.json().error || 'Server error');
   }
 
-  public cookDataTest(kinematicsAnalysis: KinematicsAnalysis){
+  public showGraph(kinematicsAnalysis: KinematicsAnalysis){
 
     this.options = {
         
@@ -217,6 +223,166 @@ export class ResultDetailComponent implements OnInit {
       series: [
         {
           name: 'Norma range',
+          //data: kinematicsAnalysis.spl_kne.normal_ranges,
+          data: [
+            [0, 14.72677596, 3.825136612],
+            [3.03030303, 15.10928962, 3.825136612],
+            [6.060606061, 15.30054645, 3.825136612],
+            [9.090909091, 15.30054645, 4.016393443],
+            [12.12121212, 14.72677596, 4.207650273],
+            [15.15151515, 14.53551913, 4.398907104],
+            [18.18181818, 14.3442623, 4.590163934],
+            [21.21212121, 13.96174863, 4.781420765],
+            [24.24242424, 13.96174863, 5.163934426],
+            [27.27272727, 14.15300546, 5.546448087],
+            [30.3030303, 13.96174863, 5.737704918],
+            [33.33333333, 13.7704918, 5.928961749],
+            [36.36363636, 13.7704918, 6.120218579],
+            [39.39393939, 13.57923497, 6.120218579],
+            [42.42424242, 13.57923497, 5.928961749],
+            [45.45454545, 13.96174863, 5.546448087],
+            [48.48484848, 14.3442623, 5.163934426],
+            [51.51515152, 14.3442623, 4.972677596],
+            [54.54545455, 14.15300546, 4.781420765],
+            [57.57575758, 13.96174863, 4.590163934],
+            [60.60606061, 13.19672131, 4.207650273],
+            [63.63636364, 12.81420765, 4.016393443],
+            [66.66666667, 13.00546448, 4.016393443],
+            [69.6969697, 13.00546448, 4.016393443],
+            [72.72727273, 13.38797814, 4.207650273],
+            [75.75757576, 13.7704918, 4.590163934],
+            [78.78787879, 14.15300546, 4.781420765],
+            [81.81818182, 14.15300546, 4.972677596],
+            [84.84848485, 14.15300546, 5.163934426],
+            [87.87878788, 14.3442623, 5.355191257],
+            [90.90909091, 14.3442623, 5.163934426],
+            [93.93939394, 14.15300546, 4.972677596],
+            [96.96969697, 14.15300546, 4.781420765],
+            [100, 14.53551913, 4.207650273]
+          ],
+          type: 'arearange',
+          lineWidth: 0,
+          linkedTo: ':previous',
+          fillOpacity: 0.3,
+          zIndex: 0
+        },
+        {
+          name: 'Left side',
+          //data : kinematicsAnalysis.spl_kne.patient_angles,
+          data: [
+              [0, 0],
+              [4.545454545, 0.25],
+              [9.090909091, 1.41],
+              [13.63636364, 1.64],
+              [18.18181818, 1.6],
+              [22.72727273, 2.55],
+              [27.27272727, 2.62],
+              [31.81818182, 2.5],
+              [36.36363636, 2.42],
+              [40.90909091, 2.74],
+              [45.45454545, 2.62],
+              [50, 2.69],
+              [54.54545455, 2.81],
+              [59.09090909, 2.63],
+              [63.63636364, 2.77],
+              [68.18181818, 2.68],
+              [72.72727273, 2.56],
+              [77.27272727, 2.39],
+              [81.81818182, 2.3],
+              [86.36363636, 2],
+              [90.90909091, 1.85],
+              [95.45454545, 1.49],
+              [100, 2.08]
+          ],
+          dashStyle: 'longdash'
+        }, 
+        {
+          name: 'Rigth side',
+          data: [
+              [0, 3],
+              [5.0, 0.28],
+              [11.0, 0.25],
+              [17.64705882, 0.2],
+              [23.52941176, 0.28],
+              [29.41176471, 0.28],
+              [35.29411765, 0.47],
+              [41.17647059, 0.79],
+              [47.05882353, 0.72],
+              [52.94117647, 1.02],
+              [58.82352941, 1.12],
+              [64.70588235, 1.2],
+              [70.58823529, 1.18],
+              [76.47058824, 1.19],
+              [82.35294118, 1.85],
+              [88.23529412, 2.22],
+              [94.11764706, 1.15],
+              [100, 3,]
+          ],
+          dashStyle: 'longdash'
+        }, 
+        {
+          navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+          }
+        }
+      ],
+    };
+    
+  }
+
+  public hardShowGraph(kinematicsAnalysis: KinematicsAnalysis){
+
+    this.options = {
+        
+      chart: {
+          type: 'spline',
+          height: 350
+          // width: 300
+      },
+      title: {
+          text: 'Keen - Flex/Ext [deg]'
+      },
+      subtitle: {
+          // text: 'kinematic analysis'
+          text: ''
+      },
+      xAxis: {
+          type: 'float',
+          // dateTimeLabelFormats: { // don't display the dummy year
+          //     month: '%e. %b',
+          //     year: '%Y'
+          // },
+          title: {
+              text: 'Gait cicle'
+          }
+
+      },
+      yAxis: {
+          title: {
+              text: 'Ext / Flex'
+          },
+          max: 30,
+          min: -5
+      },
+      tooltip: {
+          headerFormat: '<b>{series.name}</b><br>',
+          // pointFormat: '{point.x:%Y}: {point.y:.2f} m',
+      pointFormat: 'Ang: {point.y:.2f}°',
+          crosshairs: true,
+          shared: false,
+      },
+      plotOptions: {
+          spline: {
+              marker: {
+                  enabled: false
+              }
+          }
+      },
+      series: [
+        {
+          name: 'Rangos Normales',
           data: kinematicsAnalysis.spl_kne.normal_ranges,
           // data: [
           //   [0, 14.72677596, 3.825136612],
@@ -261,7 +427,7 @@ export class ResultDetailComponent implements OnInit {
           zIndex: 0
         },
         {
-          name: 'Left side',
+          name: 'Izquierda',
           data : kinematicsAnalysis.spl_kne.patient_angles,
           // data: [
           //     [0, 0],
@@ -291,7 +457,7 @@ export class ResultDetailComponent implements OnInit {
           dashStyle: 'longdash'
         }, 
         {
-          name: 'Rigth side',
+          name: 'Derecha',
           data: [
               [0, 3],
               [5.0, 0.28],
@@ -313,14 +479,15 @@ export class ResultDetailComponent implements OnInit {
               [100, 3,]
           ],
           dashStyle: 'longdash'
-        }, 
-        {
-          navigation: {
-            menuItemStyle: {
-                fontSize: '10px'
-            }
-          }
         }
+        // , 
+        // {
+        //   navigation: {
+        //     menuItemStyle: {
+        //         fontSize: '10px'
+        //     }
+        //   }
+        // }
       ],
     };
     

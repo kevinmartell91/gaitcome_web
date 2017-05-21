@@ -8,6 +8,8 @@ import { routing } from './dashboard-therapist.routing';
     CommonModule,
     routing
   ],
-  declarations: [DashboardTherapistComponent]
+  declarations: [
+  	DashboardTherapistComponent
+  ]
 })
 export class DashboardTherapistModule { }
