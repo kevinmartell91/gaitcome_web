@@ -1,11 +1,208 @@
 <div class="margin-container">
-   
-   <h4 *ngIf="kinematicsAnalysis">
+    <div class="content">
+        <div class="container-fluid">
+
+            <!-- Details result -->
+           <!--  <div class="row">
+
+                <div class="col-md-12">    
+                    <h4 class="category" *ngIf="kinematicsAnalysis">{{kinematicsAnalysis.patient_id}}</h4>
+                </div>    
+
+
+                <div class="col-md-9" *ngIf="kinematicsAnalysis">
+                    <div class="col-md-2">
+                        <p class="category">Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
+                            Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
+                            Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_walker">
+
+                            Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
+                            Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
+                            Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
+                    </div>
+                </div>
+
+            </div> -->
+
+            <div class="row">
+                 
+                <!-- youtube videos of gait analysis -->
+                <div class="col-md-4">
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                      <div>
+                        <div class="header" role="tab" id="headingOne">
+                          <!-- <h4 class="title">  -->
+                            <a *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              {{kinematicsAnalysis.patient_id}}
+                            </a>
+                          <!-- </h4> -->
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="card-block">
+                            
+                            <div class="row">
+                              <div class="category division_line_single_value">
+                                <div class="col-md-11">
+                                  <p>Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
+                                </div>
+
+                                <div class="col-md-1">
+
+                                    <p class="rigth">23</p>
+                                </div>   
+                              </div>
+                            </div>
+
+                            <p class="category division_line_single_value">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
+                                Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
+                                Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_walker">
+
+                                Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
+                                Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
+                                Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div>
+                        <div class="header" role="tab" id="headingTwo">
+                          <!-- <h6 class="mb-0"> -->
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Videos
+                            </a>
+                          <!-- </h6> -->
+                        </div>
+                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                          <div class="card-block">
+                            
+                            <div class="row">
+                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+
+                            <div class="row">
+                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="row">
+                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div>
+                        <div class="header" role="tab" id="headingThree">
+                          <!-- <h5 class="mb-0"> -->
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Collapsible Group Item #3
+                            </a>
+                          <!-- </h5> -->
+                        </div>
+                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                          <div class="card-block">
+                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Graphics of gait analysis -->
+                <div class="col-md-8">
+
+                    <div class="col-md-12">
+
+                        <!-- <div class="card"> -->
+
+                        <!-- <div class="card-content"> -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                            <div class="col-md-4">
+                                <chart [options]="options" align="center"></chart>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                        <!-- </div> -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="margin-container">
+
+        <!-- <h4 *ngIf="kinematicsAnalysis">
         Paciente: {{kinematicsAnalysis.patient_id}}
         Centro medico: {{kinematicsAnalysis.medical_center_id}}
         Terapeuta : {{kinematicsAnalysis.therapist_id}}
-    </h4>
-   <h5 *ngIf="kinematicsAnalysis">
+         </h4>
+            <h5 *ngIf="kinematicsAnalysis">
 
         is_assited_walk : {{kinematicsAnalysis.accesories.is_assited_walk}}
         is_treadmills : {{kinematicsAnalysis.accesories.is_treadmills}}
@@ -18,162 +215,55 @@
         {{kinematicsAnalysis.accesories_descriptions.walker}}
         {{kinematicsAnalysis.accesories_descriptions.orthoses}}
         {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}
-    </h5>
-<!--  http://stackoverflow.com/questions/34734671/observable-type-error-cannot-read-property-of-undefined
-   <div> analysis._id: '| async': {{kinematicsAnalysis._id| async}}</div>
-   <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
-   <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
-   <div> analysis.therapist_id.normal_ranges: '| async': {{kinematicsAnalysis.spl_kne.normal_ranges| async}}</div>
-   <div> analysis.therapist_id.patient_angles: '| async': {{kinematicsAnalysis.spl_kne.patient_angles| async}}</div> -->
-    
-<!-- OK
-    <li *ngFor="let person of kinematicsAnalysiss">
-            <a href="#" [routerLink]="['/persons', person._id]">
-          {{person._id}}
-          </a>
-    </li> -->
-   
-  <!-- Graphics of gait analysis -->
-  <div>
-    <div class="row">
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <chart [options]="options" align="center"></chart>
-        </div>
-    </div>
-  </div>
+        </h5> -->
+            <!--  http://stackoverflow.com/questions/34734671/observable-type-error-cannot-read-property-of-undefined
+        <div> analysis._id: '| async': {{kinematicsAnalysis._id| async}}</div>
+        <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
+        <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
+        <div> analysis.therapist_id.normal_ranges: '| async': {{kinematicsAnalysis.spl_kne.normal_ranges| async}}</div>
+        <div> analysis.therapist_id.patient_angles: '| async': {{kinematicsAnalysis.spl_kne.patient_angles| async}}</div> -->
 
-  <!-- youtube videos of gait analysis -->
-  <div class="col-xs-6">
-    <div class="row">
-      <iframe  width="560"
-        height="315" [src]="url" frameborder="0"
-        allowfullscreen></iframe>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <iframe  width="560"
-          height="315" [src]="url" frameborder="0"
-          allowfullscreen></iframe>
-      </div>
-      <div class="col-md-6">
+            <!-- OK
+        <li *ngFor="let person of kinematicsAnalysiss">
+                <a href="#" [routerLink]="['/persons', person._id]">
+              {{person._id}}
+              </a>
+        </li> -->
 
-        <iframe  width="560"
-          height="315" [src]="url" frameborder="0"
-          allowfullscreen></iframe>
-      </div>
+       
+        
+
     </div>
-  </div>
-    
 </div>
 
+<div class="card">
+                        
+                        <div class="card-header" data-background-color="red">
+                            <p class="category">Videos</p>
+                        </div>
+
+                        <div class="card-content">
+                            <!-- youtube videos of gait analysis -->
+                            <div class="row">
+                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+
+                        </div>  
+
+                    </div>
 
 
 
-<!-- 
-    <h1>Two range charts</h1>
 
-  <canvas id="cvs" width="600" height="250" >[No canvas support]</canvas>
-       
-   
- <script type="text/javascript">
-    window.onload = function ()
-    {
-        var line1 = new RGraph.Line({
-            id: 'cvs',
-            data: [
-                [4,3,3,3,5,2,4],
-                [8,5,6,8,9,7,8]
-            ],
-            options: {
-                backgroundImage: './assets/images/pic01.png',
-                filled: true,
-                filledRange: true,
-                linewidth: 3,
-                colors: ['red'],
-                fillstyle: 'rgba(255,0,0,0.2)',
-                ymax: 10,
-                tickmarks: null,
-                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-                textAccessible: true
-            }
-        }).draw()
-        
-        var line2 = new RGraph.Line({
-            id: 'cvs',
-            data: [6,4,4.5,5.5,7,4.5,6],
-            options: {
-                backgroundGrid: false,
-                ylabels: false,
-                noaxes: true,
-                colors: ['black'],
-                linewidth: 3,
-                ymax: 10,
-                textAccessible: true
-            }
-        }).draw()
-
-        var line3 = new RGraph.Line({
-            id: 'cvs',
-            data: [
-                [1,2,4,2,2,4,3],
-                [0,1,2,0,0,1,0]
-            ],
-            options: {
-                backgroundGrid: false,
-                ylabels: false,
-                noaxes: true,
-                filled: true,
-                filledRange: true,
-                linewidth: 3,
-                colors: ['blue'],
-                fillstyle: 'rgba(0,0,255,0.2)',
-                ymax: 10,
-                tickmarks: null,
-                textAccessible: true
-            }
-        }).draw()
-        
-        var line4 = new RGraph.Line({
-            id: 'cvs',
-            data: [0.5,1.5,3,0.5,1,2.5,1.5],
-            options: {
-                backgroundGrid: false,
-                ylabels: false,
-                noaxes: true,
-                colors: ['black'],
-                linewidth: 3,
-                ymax: 10,
-                textAccessible: true
-            }
-        }).draw();
-    };
- </script>
- -->

@@ -27,15 +27,34 @@ exports.postKinematicsAnalysiss = function(req, res) {
     res.json({ message: 'kinematic analysis added', data: kinematics_analysis });
   });
 };
-
+ 
 // Create endpoint /api/kinematics_analysis for GET
 exports.getKinematicsAnalysiss = function(req, res) {
 
-  KinematicsAnalysis.find(function(err, kinematics_analysis) {
+  console.log ("IN getKinematicsAnalysiss ");
+  var query = {};
+
+  if(req.query.medical_center_id !== ""){
+    query.medical_center_id = req.query.medical_center_id;
+  }
+  if(req.query.patient_id !== ""){
+    query.patient_id = req.query.patient_id;
+  }
+  if(req.query.therapist_id !== ""){
+    query.therapist_id = req.query.therapist_id;
+  }
+  console.log("query to exec", query);
+
+
+// var query = KinematicsAnalysis.findOne({ 'medical_center_id': medical_center_id });
+// var searchQuery = {name: {$in: names}};
+  KinematicsAnalysis.find(query,function(err, kinematics_analysiss) {
+  // KinematicsAnalysis.find(function(err, kinematics_analysis) {
     if (err)
       return res.send(err);
-
-    res.json(kinematics_analysis);
+     // console.log("data from server", kinematics_analysiss);
+     // console.log("data from server JSON.parse", JSON.parse(kinematics_analysis));
+    res.json(kinematics_analysiss);
   });
 };
 

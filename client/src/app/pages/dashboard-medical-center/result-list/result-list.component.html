@@ -1,47 +1,96 @@
+<!-- <div class="margin-container container-fluid"> -->
 <div class="margin-container">
-<div mdl-shadow="2">
-   <mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
- 
-      <mdl-layout-drawer class="drawer-results">
-         <mdl-layout-title>result-list works!</mdl-layout-title>
-         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" >Receintes</a>
-            <a class="mdl-navigation__link" >Buscar</a>
-         </nav>
-      </mdl-layout-drawer>
-      <mdl-layout-content>
-         
+  
+  <div class="container">
 
-       <p>
-      <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
-    </p>
-   <!--  <vaadin-grid frozen-columns="2" [items]="displayedPeople" selection-mode="multi" (sort-order-changed)="sortPeople($event)">
-      <table>
-        <colgroup>
-          <col sortable name="firstName">
-          <col sortable name="lastName">
-          <col sortable name="email" width="250">
-          <col sortable name="address.phone" hidable>
-          <col sortable name="address.street" hidable>
-          <col sortable name="address.city" hidable>
-          <col sortable name="address.state" hidable>
-          <col sortable name="address.zip" hidable>
-          <col sortable name="address.country" hidable hidden>
-        </colgroup>
-      </table>
-    </vaadin-grid>
-         
-         <!-- <mdl-table-selectable mdl-shadow="2"
-	       [table-model]="tableModel"
-	       [table-model-selected]="selected"
-	       (table-model-selectionChanged)="selectionChanged($event)">
-	   </mdl-table-selectable>
- --> -->
+    <div class="row">
 
-      <button (click)='onSelect()'> click me </button>
+      <div class="col-md-2">
+
+        <div class="row">
+          <h6>Pacients</h6>
+          <ul class="heros vertical-menu">  
+            <li *ngFor = "let patient of patients"
+              [class.selected]="patient === selectedPatient"
+                (click)="onSelectPaciente(patient)">{{patient.names}}
+                <!-- <button (click)="doFilter('patient')">{{patient.names}}</button> -->
+            </li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <h6>Therapist</h6>
+          <ul class="heros vertical-menu">  
+            <li *ngFor = "let therapist of therapists"
+              [class.selected]="therapist === selectedTherapist"
+                (click)="onSelectTherapist(therapist)">{{therapist.username}}
+                <!-- <button (click)="doFilter('therapist')">{{therapist.username}}</button> -->
+            </li>
+          </ul>
+        </div>
+
+      </div>  
 
 
-      </mdl-layout-content>
-   </mdl-layout>
-</div>
-</div>
+      <div class="col-md-5">
+        <h6>Resultados</h6>
+        <span class="bd-booticon outline">B</span>
+        <ul class="heros vertical-menu">  
+          <li *ngFor = "let kinematicsAnalysis of kinematicsAnalysiss"
+            [class.selected]="kinematicsAnalysis === selectedKinematicsAnalysis"
+              (click)="onSelectKinematicAnalysis(kinematicsAnalysis)">
+              <!-- <span class="badge">{{kinematicsAnalysis._id}} (click)="gotoDetail()</span>--> {{kinematicsAnalysis.created_at}} 
+          </li>
+          <button type="button" class="btn btn-primary btn-sm" (click)="gotoDetail()"> ver</button>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h6>Resultado seleccionadd</h6>
+
+        <div *ngIf="selectedKinematicsAnalysis">
+          <h6>
+            {{selectedKinematicsAnalysis._id | uppercase}} is my hero
+          </h6>
+          <button type="button" class="btn btn-primary btn-sm" (click)="gotoDetail()">View Details</button>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+    <!-- <div class="margin-container">
+    <div mdl-shadow="2">
+       <mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
+     
+          <mdl-layout-drawer class="drawer-results">
+             <mdl-layout-title>result-list works!</mdl-layout-title>
+             <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" >Receintes</a>
+                <a class="mdl-navigation__link" >Buscar</a>
+             </nav>
+          </mdl-layout-drawer>
+          <mdl-layout-content>
+             
+
+           <p>
+          <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
+        </p>
+       
+
+          <button (click)='onSelect()'> click me </button>
+
+
+          </mdl-layout-content>
+       </mdl-layout>
+    </div>
+    </div> -->
+
+  
+
