@@ -10,7 +10,7 @@ import { routing } from './pages-routing.module';
     routing
   ],
   declarations: [
-    PagesComponent
+    PagesComponent,
   ]
 
 })
