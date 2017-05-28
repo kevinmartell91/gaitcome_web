@@ -1,3 +1,19 @@
+  <h6>Therapist</h6>
+  <ul class="heros vertical-menu">  
+    <li *ngFor = "let therapist of therapists"
+      
+        (click)="select(therapist)">{{therapist.username}}
+        <!-- <button (click)="doFilter('therapist')">{{therapist.username}}</button> -->
+    </li>
+  </ul>
+          
+<div class="row">
+    <template ngbModalContainer></template>
+    <button class="btn btn-lg btn-outline-primary" (click)="showAddTherapistComponent()">Add Therapist</button>
+
+      
+</div>   
+<!-- 
 <div class="margin-container">
 <div class="content">
   <div class="container-fluid">
@@ -23,12 +39,7 @@
                     </div>
     </div>
 
-    <div class="row">
-<template ngbModalContainer></template>
-        <button class="btn btn-lg btn-outline-primary" (click)="showAddTherapistComponent()">Add Therapist</button>
-
-          
-    </div>
+   
 
     <div class="row">
         <button type="button" class="btn btn-primary btn-sm" (click)="onShowForm()">show</button>
@@ -43,4 +54,4 @@
     
   </div>
 </div>
-</div>
+</div> -->

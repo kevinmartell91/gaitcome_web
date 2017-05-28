@@ -1,0 +1,82 @@
+<!-- <div class="margin-container container-fluid"> -->
+<div class="margin-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2">
+        <!-- Patient list | child component-->
+        <div class="row">
+           <app-patient-list [token]="token"
+                              [medical_center_id]="medical_center_id"
+                              (onSelect)="patientSelected($event)">
+            </app-patient-list>
+        </div>
+        <!-- Therapist list |  child component -->
+        <div class="row">
+          <app-therapist-list [token]="token"
+                              [medical_center_id]="medical_center_id"
+                              (onSelect)="therapistSelected($event)">
+          </app-therapist-list>
+        </div>
+      </div>  
+
+
+      <!-- Result list | child component -->
+      <div class="col-md-5">
+        <app-result-list [token]="token"
+                         [medical_center_id]="medical_center_id"
+                         [therapist_id]="currentTherapist" 
+                         [patient_id]="currentPatient" 
+                         [headersOptions]="optionsHeader" 
+                         (onSelect)="kinematicAnalysisSelected($event)">
+        </app-result-list>                              
+      
+      </div>
+      
+
+      <!-- Result Preview | child component -->
+      <div class="col-md-4">
+        <div *ngIf="currentKinematicsAnalysis">
+          <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+          </app-result-preview>   
+          <button type="button" class="btn btn-primary btn-sm" (click)="gotoDetail()">View Details</button> 
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <button type="button" class="btn btn-primary btn-sm" (click)="doFilter()">buscar</button> 
+    </div>
+  </div>
+
+
+    <!-- <div class="margin-container">
+    <div mdl-shadow="2">
+       <mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
+     
+          <mdl-layout-drawer class="drawer-results">
+             <mdl-layout-title>result-list works!</mdl-layout-title>
+             <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" >Receintes</a>
+                <a class="mdl-navigation__link" >Buscar</a>
+             </nav>
+          </mdl-layout-drawer>
+          <mdl-layout-content>
+             
+
+           <p>
+          <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
+        </p>
+       
+
+          <button (click)='onSelect()'> click me </button>
+
+
+          </mdl-layout-content>
+       </mdl-layout>
+    </div>
+    </div> -->
+
+  
+
