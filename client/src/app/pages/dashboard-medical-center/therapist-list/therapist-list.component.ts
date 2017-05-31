@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { AddTherapistComponent } from "../../therapist/add-therapist/add-therapist.component";
+import { TherapistAddComponent } from "../../therapist/therapist-add/therapist-add.component";
 
 @Component({
   selector: 'app-therapist-list',
@@ -26,12 +26,11 @@ export class TherapistListComponent implements OnInit {
   }
 
   showAddTherapistComponent() {
-    const modalRef = this.modalService.open(AddTherapistComponent);
+    const modalRef = this.modalService.open(TherapistAddComponent);
     modalRef.componentInstance.name = 'World';
   }
 
 }
-
 
 
 @Component({

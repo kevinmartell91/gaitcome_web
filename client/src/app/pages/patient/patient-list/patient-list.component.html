@@ -1,0 +1,8 @@
+  <h6>Pacients</h6>
+  <ul class="heros vertical-menu">  
+    <li *ngFor = "let patient of patients"
+        (click)="select(patient)">{{patient.names}}
+        
+        <!-- <button (click)="doFilter('patient')">{{patient.names}}</button> -->
+    </li>
+  </ul>
