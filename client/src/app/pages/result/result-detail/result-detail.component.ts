@@ -70,7 +70,7 @@ export class Person {
 }
 
 @Component({
-  selector: 'app-medical-center',
+  selector: 'app-result-detail',
   templateUrl: './result-detail.component.html',
   styleUrls: [
     './result-detail.component.css',

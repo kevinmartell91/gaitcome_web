@@ -1,0 +1,33 @@
+<h6>Resultados</h6>
+<span class="bd-booticon outline">B</span>
+<ul class="heros vertical-menu">  
+  <li *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss'
+    
+      (click)="select(kinematicsAnalysis)">
+      <!-- <span class="badge">{{kinematicsAnalysis._id}} (click)="gotoDetail()</span>--> {{kinematicsAnalysis.created_at}} 
+  </li>
+</ul>
+
+<h4>Change log:</h4>
+    <ul>
+      <li *ngFor="let change of changeLog">{{change}}</li>
+    </ul>
+
+<!--  <table class="table">
+    <tr>
+        <th>#</th>
+        <th>Game</th>
+        <th>Platform</th> 
+        <th>Release</th>
+    </tr>
+    <tr *ngFor='let game of kinematicsAnalysiss; let i = index'>
+        <td>{{i + 1}}</td>
+        <td>{{game.created_at}}</td>
+        <td>{{game.created_at}}</td>
+        <td>{{game.created_at}}</td>
+  		<td>
+  			<button type="button" class="btn btn-primary btn-sm"> ver</button>
+ 		</td>
+    </tr>
+ </table>
+ -->

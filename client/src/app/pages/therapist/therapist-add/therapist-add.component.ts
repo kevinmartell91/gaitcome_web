@@ -10,10 +10,10 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 
 @Component({
   selector: 'add-therapist',
-  templateUrl: './add-therapist.component.html',
-  styleUrls: ['./add-therapist.component.css']
+  templateUrl: './therapist-add.component.html',
+  styleUrls: ['./therapist-add.component.css']
 })
-export class AddTherapistComponent implements OnInit {
+export class TherapistAddComponent implements OnInit {
 
   public disableForm = false;
   public form: FormGroup;

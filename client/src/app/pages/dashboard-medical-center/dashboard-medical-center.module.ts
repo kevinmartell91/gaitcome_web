@@ -4,10 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
 import { AttorneyListComponent } from './attorney-list/attorney-list.component';
-import { TherapistListComponent, NgbdModalContent } from './therapist-list/therapist-list.component';
-import { MedicalCenterComponent } from './medical-center/medical-center.component';
-import { ResultListComponent } from './result-list/result-list.component';
-import { ResultDetailComponent } from './result-list/result-detail.component';
+import { MedicalCenterComponent } from '../medicalCenter/medical-center.component';
+import { TherapistListComponent } from '../therapist/therapist-list/therapist-list.component';
+import { ResultsComponent} from './results/results.component'
+import { ResultListComponent} from '../result/result-list/result-list.component'
+import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
+import { ResultPreviewComponent } from '../result/result-preview/result-preview.component';
 
 import { MdlModule } from 'angular2-mdl';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,8 +21,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
 
 //reused code
-import { AddTherapistComponent } from '../therapist/add-therapist/add-therapist.component';
-
+import { TherapistAddComponent } from '../therapist/therapist-add/therapist-add.component';
+import { PatientListComponent } from '../patient/patient-list/patient-list.component';
 
 
 
@@ -37,18 +39,22 @@ import { AddTherapistComponent } from '../therapist/add-therapist/add-therapist.
     routing
   ],
   declarations: [
-    AddTherapistComponent,
+    TherapistAddComponent,
     AttorneyListComponent, 
     DashboardMedicalCenterComponent,
     MedicalCenterComponent, 
-    NgbdModalContent,
+    PatientListComponent,
     ResultListComponent,
     ResultDetailComponent,
+    ResultsComponent,
+    ResultPreviewComponent,
     TherapistListComponent
   ],
   entryComponents: [
-    AddTherapistComponent,
-    NgbdModalContent
+    TherapistAddComponent,
+    PatientListComponent,
+    ResultsComponent,
+    ResultPreviewComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

@@ -34,56 +34,50 @@ export class KinematicsAnalysis {
 }
 
 @Component({
-  selector: 'my-grid-columns-component',
-  templateUrl: './result-list.component.html',
-  styleUrls: ['./result-list.component.css'],
+  selector: 'app-results-component',
+  templateUrl: './results.component.html',
+  styleUrls: ['./results.component.css'],
   providers: [
     HttpModule
   ]
 })
-export class ResultListComponent implements OnInit {
+export class ResultsComponent implements OnInit {
   people: Person[] = [];
   displayedPeople: Person[] = [];
   URL_WEB_SERVICE_ANALYSIS:string = 'http://localhost:8080/api/kinematics_analysis/';
   URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
   URL_WEB_SERVICE_THERAPISTS:string = 'http://localhost:8080/api/therapists/';
   token: string = '';
-
-
-
-
-
-  kinematicsAnalysiss: any[] = [];
-  selectedKinematicsAnalysis: any;
-  d:KinematicsAnalysis;
-
-  patients:any[]=[];
-  selectedPatient:any;
-
-  therapists:any[] =[];
-  selectedTherapist:any;
-
-
-
   medical_center_id:string = '591e7542583a7b2b751d4ec3';
   therapist_id:string = '';
   patient_id:string = '';
 
 
-  constructor (
-    private http: Http,
-    private route: ActivatedRoute,
-    private router: Router
- )  {}
+  kinematicsAnalysiss: any[] = [];
+  currentKinematicsAnalysis: any;
+  k:any;
+
+  patients:any[]=[];
+  currentPatient:any;
+
+  therapists:any[] =[];
+  currentTherapist:any;
+
+  optionsHeader: RequestOptions;
+
+  
+  constructor(  private http: Http,
+                private route: ActivatedRoute,
+                private router: Router )  {}
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     // this.token = currentUser && currentUser.token;
     this.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Im1lZGljYWxDZW50ZXJzLnJlcXVlc3RlZF9hdCI6ImRlZmF1bHQiLCJfX3YiOiJpbml0IiwiYWRkcmVzcy5jb3VudHJ5IjoiaW5pdCIsImFkZHJlc3MuemlwIjoiaW5pdCIsImFkZHJlc3Muc3RhdGUiOiJpbml0IiwiYWRkcmVzcy5jaXR5IjoiaW5pdCIsImFkZHJlc3Muc3RyZWV0IjoiaW5pdCIsIm1lZGljYWxDZW50ZXJzLmFjY2VwdGVkX2F0IjoiaW5pdCIsIm1lZGljYWxDZW50ZXJzLnN0YXR1c19yZXF1ZXN0IjoiaW5pdCIsIm1lZGljYWxDZW50ZXJzLm5hbWUiOiJpbml0IiwibWVkaWNhbENlbnRlcnMuX2lkIjoiaW5pdCIsIm5hbWVzIjoiaW5pdCIsImdlbmRlciI6ImluaXQiLCJpZF9Eb2N1bWVudF90eXBlIjoiaW5pdCIsImlkX0RvY3VtZW50X251bSI6ImluaXQiLCJiaXJ0aCI6ImluaXQiLCJlbWFpbCI6ImluaXQiLCJwaG9uZSI6ImluaXQiLCJjZWxscGhvbmUiOiJpbml0IiwibnVtX2N0bXAiOiJpbml0IiwibnVtX25kdGEiOiJpbml0IiwiaXNfYWN0aXZlIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnsibWVkaWNhbENlbnRlcnMucmVxdWVzdGVkX2F0Ijp0cnVlfSwiaW5pdCI6eyJfX3YiOnRydWUsImFkZHJlc3MuY291bnRyeSI6dHJ1ZSwiYWRkcmVzcy56aXAiOnRydWUsImFkZHJlc3Muc3RhdGUiOnRydWUsImFkZHJlc3MuY2l0eSI6dHJ1ZSwiYWRkcmVzcy5zdHJlZXQiOnRydWUsIm1lZGljYWxDZW50ZXJzLmFjY2VwdGVkX2F0Ijp0cnVlLCJtZWRpY2FsQ2VudGVycy5zdGF0dXNfcmVxdWVzdCI6dHJ1ZSwibWVkaWNhbENlbnRlcnMubmFtZSI6dHJ1ZSwibWVkaWNhbENlbnRlcnMuX2lkIjp0cnVlLCJuYW1lcyI6dHJ1ZSwiZ2VuZGVyIjp0cnVlLCJpZF9Eb2N1bWVudF90eXBlIjp0cnVlLCJpZF9Eb2N1bWVudF9udW0iOnRydWUsImJpcnRoIjp0cnVlLCJlbWFpbCI6dHJ1ZSwicGhvbmUiOnRydWUsImNlbGxwaG9uZSI6dHJ1ZSwibnVtX2N0bXAiOnRydWUsIm51bV9uZHRhIjp0cnVlLCJpc19hY3RpdmUiOnRydWUsInVzZXJuYW1lIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImFkZHJlc3MiOnsiY291bnRyeSI6IlBlcnUiLCJ6aXAiOjQ1NzY0NSwic3RhdGUiOiJMaW1hIiwiY2l0eSI6IkxpbWEiLCJzdHJlZXQiOiJDYWxsZSBBbGFtZWRhIFNhbnRvcyAzNDQgRHB0byAzMDQifSwibWVkaWNhbENlbnRlcnMiOnsicmVxdWVzdGVkX2F0IjoiMjAxNi0xMi0xNVQwMTo1Mzo0Mi4xMzJaIiwiYWNjZXB0ZWRfYXQiOiIyMDE2LTExLTIwVDA0OjE5OjEzLjAwMFoiLCJzdGF0dXNfcmVxdWVzdCI6IjEiLCJuYW1lIjoiTHVpcyBNYW51ZWwiLCJfaWQiOiIzNDU2Nzg5MDQ1NjU4NDhmcjVnciJ9LCJfX3YiOjAsIm5hbWVzIjoiSG9ydGVuY2lhIiwiZ2VuZGVyIjoiNCIsImlkX0RvY3VtZW50X3R5cGUiOiJETkkiLCJpZF9Eb2N1bWVudF9udW0iOjEyMzQ1Njc4LCJiaXJ0aCI6IjIwMTYtMTEtMjBUMDQ6MTk6MTMuMDAwWiIsImVtYWlsIjoibWFudWVsQGdtYWlsLmNvbSIsInBob25lIjoiMjM0IDU0IDEzIiwiY2VsbHBob25lIjoiOTk5IDk5OSA5OTkiLCJudW1fY3RtcCI6NjU0MiwibnVtX25kdGEiOjU0NTM0NTQzLCJpc19hY3RpdmUiOmZhbHNlLCJ1c2VybmFtZSI6InRlcmFwZXV0YSIsInBhc3N3b3JkIjoiYWRtaW4iLCJfaWQiOiI1ODUxZjYwMTczZGMxMTA3MmEwYTFhOTIifSwiX3ByZXMiOnsiJF9fb3JpZ2luYWxfc2F2ZSI6W251bGwsbnVsbF0sIiRfX29yaWdpbmFsX3ZhbGlkYXRlIjpbbnVsbF0sIiRfX29yaWdpbmFsX3JlbW92ZSI6W251bGxdfSwiX3Bvc3RzIjp7IiRfX29yaWdpbmFsX3NhdmUiOltdLCIkX19vcmlnaW5hbF92YWxpZGF0ZSI6W10sIiRfX29yaWdpbmFsX3JlbW92ZSI6W119LCJpYXQiOjE0ODE3NjY4MjJ9.xDNN-rILCYc5vqVJzpLn3DIqOqMMPTEBuYHgvISoHPw';
 
-    this.getKinematicAnalysiss();
-    this.getPatientes();
-    this.getTherapist();
+    // this.getKinematicAnalysiss();
+    // this.getPatientes();
+    // this.getTherapist();
     
     var json = 
     [
@@ -3781,11 +3775,11 @@ export class ResultListComponent implements OnInit {
         }
       }
     ] 
-
     for (var i = 0; i < json.length; i++) {
-      this.d = json[i] as KinematicsAnalysis;
-      this.kinematicsAnalysiss.push(this.d);
+      this.k = json[i] ;
+      this.kinematicsAnalysiss.push(this.k);
     }
+
   }
 
   filterPeople(event: any) {
@@ -3793,6 +3787,7 @@ export class ResultListComponent implements OnInit {
     this.displayedPeople = this.people.filter((person: Person) =>
       !filterText || person.firstName.toLowerCase().indexOf(filterText) > -1
     );
+
   }
 
   sortPeople(event: any) {
@@ -3816,40 +3811,38 @@ export class ResultListComponent implements OnInit {
     });
   }
 
-  getKinematicAnalysiss() {
-    this._getJSON(this.URL_WEB_SERVICE_ANALYSIS, this.getHeaders())
-      .subscribe(json => this.kinematicsAnalysiss = json)
-      // .subscribe(json => this.displayedPeople = this.people = json.result)
-  }
+  // getKinematicAnalysiss() {
+  //   this._getJSON(this.URL_WEB_SERVICE_ANALYSIS, this.getHeaders())
+  //     .subscribe(json => this.kinematicsAnalysiss = json)
+  //     // .subscribe(json => this.displayedPeople = this.people = json.result)
+  // }
 
-  getPatientes() {
-    this._getJSON(this.URL_WEB_SERVICE_PATIENTS, this.getHeaders())
-      .subscribe(json => this.patients = json)
-  }
+  // getPatientes() {
+  //   this._getJSON(this.URL_WEB_SERVICE_PATIENTS, this.getHeaders())
+  //     .subscribe(json => this.patients = json)
+  // }
 
-  getTherapist() {
-    this._getJSON(this.URL_WEB_SERVICE_THERAPISTS, this.getHeaders())
-      .subscribe(json => this.therapists = json)
-  }
+  // getTherapist() {
+  //   this._getJSON(this.URL_WEB_SERVICE_THERAPISTS, this.getHeaders())
+  //     .subscribe(json => this.therapists = json)
+  // }
  
-  onSelectKinematicAnalysis (kinematicsAnalysis: KinematicsAnalysis) {
-    this.selectedKinematicsAnalysis = kinematicsAnalysis;
-  }
+  
 
-  onSelectPaciente(patient:any) {
-    console.log("selected patient");
-    this.selectedPatient = patient;
-    this.doFilter('patient');
-  }
+  // onSelectPaciente(patient:any) {
+  //   console.log("selected patient");
+  //   this.currentPatient = patient;
+  //   this.doFilter('patient');
+  // }
 
-  onSelectTherapist(therapist: any) {
-    console.log("selected therapist");
-    this.selectedTherapist = therapist;
-    this.doFilter('therapist');
-  }
+  // onSelectTherapist(therapist: any) {
+  //   console.log("selected therapist");
+  //   this.currentTherapist = therapist;
+  //   this.doFilter('therapist');
+  // }
 
   gotoDetail() {
-      this.router.navigate(['../result', this.selectedKinematicsAnalysis._id ], { relativeTo: this.route });
+      this.router.navigate(['../result', this.currentKinematicsAnalysis._id ], { relativeTo: this.route });
 
   }
 
@@ -3859,19 +3852,19 @@ export class ResultListComponent implements OnInit {
     switch (type) {
       case "therapist":
 
-        if(this.therapist_id === this.selectedTherapist._id) {
+        if(this.therapist_id === this.currentTherapist._id) {
           this.therapist_id = '';
         } else {
-          this.therapist_id = this.selectedTherapist._id;
+          this.therapist_id = this.currentTherapist._id;
         }
         break;
 
       case "patient":
 
-        if(this.patient_id === this.selectedPatient._id) {
+        if(this.patient_id === this.currentPatient._id) {
           this.patient_id = '';
         } else {
-          this.patient_id = this.selectedPatient._id;
+          this.patient_id = this.currentPatient._id;
         }
         break;  
       
@@ -3881,8 +3874,9 @@ export class ResultListComponent implements OnInit {
     }
 
     // clear the array for new data
-    this.kinematicsAnalysiss = [];
-    this.getKinematicAnalysiss();
+    // this.kinematicsAnalysiss = [];
+    // this.getKinematicAnalysiss();
+    this.optionsHeader = this.getHeaders();
   }  
 
   getHeaders() {
@@ -3903,9 +3897,27 @@ export class ResultListComponent implements OnInit {
     return options;
   }
 
-  _getJSON(url: string, option: RequestOptions): Observable<any> {
-    return this.http.get(url,option)
-      .map((res: Response) => res.json())
+  // _getJSON(url: string, option: RequestOptions): Observable<any> {
+  //   return this.http.get(url,option)
+  //     .map((res: Response) => res.json())
+  // }
+
+
+  kinematicAnalysisSelected (kinematicsAnalysis: any) {
+    this.currentKinematicsAnalysis = kinematicsAnalysis;
+  }
+
+  therapistSelected(therapist: any) {
+    this.currentTherapist = therapist;
+    this.doFilter("therapist");
+
+  }
+
+  patientSelected(patient: any) {
+    console.log("patientSelected" , patient )  
+    this.currentPatient= patient;
+    this.doFilter("patient");
+
   }
 
 }
