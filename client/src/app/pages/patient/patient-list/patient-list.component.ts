@@ -11,8 +11,10 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./patient-list.component.css',
   			  '../../dashboard-medical-center/results/results.component.css']
 })
+
 export class PatientListComponent implements OnInit {
 
+  
   
   constructor( private http: Http 
                ) { }

@@ -26,7 +26,6 @@ import { PatientListComponent } from '../patient/patient-list/patient-list.compo
 
 
 
-
 @NgModule({
   imports: [
     ChartModule,

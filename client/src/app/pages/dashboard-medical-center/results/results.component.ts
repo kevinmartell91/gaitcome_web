@@ -3903,10 +3903,6 @@ export class ResultsComponent implements OnInit {
   // }
 
 
-
-
-
-
   kinematicAnalysisSelected (kinematicsAnalysis: any) {
     this.currentKinematicsAnalysis = kinematicsAnalysis;
   }

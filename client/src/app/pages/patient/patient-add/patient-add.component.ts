@@ -9,6 +9,7 @@ export class PatientAddComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
   }
 

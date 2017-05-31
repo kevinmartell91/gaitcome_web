@@ -33,7 +33,6 @@ export class TherapistListComponent implements OnInit {
 }
 
 
-
 @Component({
   selector: 'ngbd-modal-content',
   template: `
