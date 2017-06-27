@@ -1,4 +1,134 @@
+<div class="modal-header">
+    <h2 class="modal-title">Terapueta</h2>
+    <button type="button" class="close" aria-h6="Close" 
+    		(click)="activeModal.dismiss('Cross click')">
+    	<span aria-hidden="true">&times;</span>
+ 	</button>
+</div>
 
-<p>
-  patient-add works!
-</p>
+<div class="modal-body">
+    <form [formGroup]="form" class="card-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="field-group">
+                    <div class="col-md-3">
+                        <mdl-icon class="mdl_icon_person">account_circle</mdl-icon>
+                    </div>
+                    <div class="col-md-9  col-xs-12">
+                        <div class="row">
+                            <mdl-textfield label="Nombres" 
+                            			   name="names" 
+                            			   type="text" 
+                            			   formControlName="names" f
+                            			   loating-label></mdl-textfield>
+                        </div>
+
+                        <div class="row">
+                            <mdl-textfield label="Apellidos" 
+                            			   name="lastname" 
+                            			   type="text" 
+                            			   formControlName="lastName" 
+                            			   floating-label></mdl-textfield>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">email</mdl-icon>
+                    <mdl-textfield label="Email" 
+                    			   name="email" 
+                    			   type="text" 
+                    			   formControlName="email" 
+                    			   pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
+                    			   error-msg="Please provide a correct email!"
+                    			   floating-label></mdl-textfield>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="field-group">
+
+                    <mdl-icon class="mdl_icon">settings_cell</mdl-icon>
+                    <mdl-textfield type="text" 
+                    			   label="N° de celular" 
+                    			   name="cellphone" 
+                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
+                    			   error-msg="Caracteres no numéricos!" 
+                    			   formControlName="cellphone" 
+                    			   floating-label></mdl-textfield>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">settings_phone</mdl-icon>
+                    <mdl-textfield type="text"
+                    			   label="Teléfono" 
+                    			   name="phone" 
+                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
+                    			   error-msg="Caracteres no numéricos!" 
+                    			   formControlName="phone" 
+                    			   floating-label></mdl-textfield>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">credit_card</mdl-icon>
+                    <mdl-textfield type="text" 
+                    			   label="N° de DNI" 
+                    			   name="id_Document_num" 
+                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
+                    			   error-msg="Caracteres no numéricos!" 
+                    			   formControlName="id_Document_num" 
+                    			   floating-label></mdl-textfield>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                    			   label="N° de CTMP" 
+                    			   name="num_ctmp" 
+                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
+                    			   error-msg="Caracteres no numéricos!" 
+                    			   formControlName="num_ctmp" 
+                    			   floating-label></mdl-textfield>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                    			   label="N° de NDTA" 
+                    			   name="num_ndta" 
+                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
+                    			   error-msg="Caracteres no numéricos!" 
+                    			   formControlName="num_ndta" 
+                    			   floating-label></mdl-textfield>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class="modal-footer__actions">
+        <button mdl-button 
+        		(click)="onSubmit()" [disabled]="!form.valid" 
+        		mdl-button-type="raised" 
+        		mdl-ripple mdl-colored="primary">Crear Cuenta</button>
+        <button mdl-button 
+        		(click)="activeModal.close('Close click')">Close</button>
+    </div>
+
+</div>

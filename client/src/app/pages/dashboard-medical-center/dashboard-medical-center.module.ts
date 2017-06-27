@@ -24,6 +24,10 @@ import { ChartModule } from 'angular2-highcharts';
 import { TherapistAddComponent } from '../therapist/therapist-add/therapist-add.component';
 import { PatientListComponent } from '../patient/patient-list/patient-list.component';
 
+import { ResultDrawerComponent } from '../result/result-detail/result-detail.component';
+import { VideoDrawerComponent } from '../result/result-detail/result-detail.component';
+
+
 
 
 @NgModule({
@@ -47,8 +51,10 @@ import { PatientListComponent } from '../patient/patient-list/patient-list.compo
     ResultListComponent,
     ResultDetailComponent,
     ResultsComponent,
+    ResultDrawerComponent,
     ResultPreviewComponent,
-    TherapistListComponent
+    TherapistListComponent,
+    VideoDrawerComponent
   ],
   entryComponents: [
     TherapistAddComponent,

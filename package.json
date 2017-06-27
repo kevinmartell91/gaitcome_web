@@ -5,6 +5,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "angular-2-data-table": "0.1.2",
     "body-parser": "1.15.2",
     "express": "4.14.0",
     "jsonwebtoken": "7.2.1",

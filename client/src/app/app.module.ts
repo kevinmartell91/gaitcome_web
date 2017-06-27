@@ -19,6 +19,8 @@ import { MdlModule } from 'angular2-mdl'
 // import { MaterialModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// import { DataTableModule } from 'angular-2-data-table';
+
 
   
 
@@ -28,7 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    // DataTableModule,
     HttpModule,
+    // DataTableModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

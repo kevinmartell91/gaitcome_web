@@ -1,11 +1,19 @@
-  <h6>Therapist</h6>
-  <ul class="heros vertical-menu">  
+  <h2>Therapist</h2>
+  <ul class="therapists">  
     <li *ngFor = "let therapist of therapists"
       
-        (click)="select(therapist)">{{therapist.username}}
+        (click)="select(therapist)"
+        [class.selected]="therapist === currentTherapist">
+        {{therapist.username}}
         <!-- <button (click)="doFilter('therapist')">{{therapist.username}}</button> -->
     </li>
   </ul>
+  <mdl-card class="demo-card-image" mdl-shadow="2">
+    <mdl-card-title mdl-card-expand></mdl-card-title>
+    <mdl-card-actions>
+      <span class="demo-card-image__filename">fjdfjksfjdsjafdsafjdslafdsafdhjsaljlhlkhlkhlkh</span>
+    </mdl-card-actions>
+  </mdl-card>
           
 <div class="row">
     <template ngbModalContainer></template>

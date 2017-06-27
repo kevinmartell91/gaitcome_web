@@ -143,6 +143,8 @@ footer h4, footer h6 {
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s;
+    border-bottom: 1px #e1e4e8 solid;      
+    z-index: 0 ;
 }
 
 .navbar-brand {
@@ -155,6 +157,7 @@ footer h4, footer h6 {
     float:none;
 }
 
+
 .navbar-brand:hover,
 .navbar-brand:focus {
     color: #f05a6d;
@@ -162,6 +165,7 @@ footer h4, footer h6 {
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
     background-color: #001A33;
+    /*background-color: #001A33;*/
 }
 .navbar-default .navbar-toggle, .navbar-default .navbar-collapse {
     border-color: transparent;
@@ -182,6 +186,7 @@ footer h4, footer h6 {
 .navbar-default .nav .nav-link.active,
 .navbar-default .nav .nav-link.active:focus {
     color: #f05a6d !important;
+    /*color: #f05 !important;*/
     background-color: transparent;
 }
 
@@ -200,11 +205,13 @@ footer h4, footer h6 {
     .navbar-default {
         border-color: transparent;
         background-color: #fff;
+        /*background-color: #f05a6d;*/
         min-height: 60px;
     }
 
     .navbar-brand {
         color: #f05a6d;
+        /*color: #fff;*/
         float: left;
         padding: 9px;
         padding-left: 1px;
@@ -226,10 +233,12 @@ footer h4, footer h6 {
     .navbar-default .nav > li>a:hover,
     .navbar-default .nav>li>a:focus:hover {
         color: #001A33;
+        /*color: #001A33;*/
     }
 
     #topNav {
       background-color:#fff;
+      /*background-color:#f05a6d;*/
     }
     
 }
@@ -367,4 +376,15 @@ img::-moz-selection {
 
 .margin-container {
     margin-top: 80px;
+}
+
+.border-bottom {
+  border-bottom: 1px #e1e4e8 solid;
+  z-index: 100;
+}
+
+.mdl-textfield {
+    padding: 20px 0px 30px;
+    width: 100%; 
+    max-width: 100%; 
 }

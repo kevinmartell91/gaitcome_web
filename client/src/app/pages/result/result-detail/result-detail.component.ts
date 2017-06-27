@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,
+         trigger, state, style, transition, animate } from '@angular/core';
 import { HttpModule, Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -73,8 +74,48 @@ export class Person {
   selector: 'app-result-detail',
   templateUrl: './result-detail.component.html',
   styleUrls: [
-    './result-detail.component.css',
-    '../../../theme/theme.component.css'
+    './result-detail.component.css'
+    // '../../../theme/theme.component.css'
+  ],
+  animations: [
+    trigger('slideInOutVideo', [
+      state('in', style({
+        transform: 'translate3d(8%, -5%, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(-130%, 0, 0)'
+      })),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ]),
+    trigger('slideInOutDetails', [
+      state('in', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(-100%, 0, 0)'
+      })),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ]),
+    trigger('slideInOutGraphis', [
+      state('in', style({
+        transform: 'translate3d(20%, 0, 0)'
+      })),
+      state('out', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('in_graph_video', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('out_graph_video', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      transition('in_graph_video => out_graph_video', animate('400ms ease-in-out')),
+      transition('out_graph_video => in_graph_video', animate('400ms ease-in-out')),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ]),
   ]
 })
 
@@ -99,11 +140,15 @@ export class Person {
 //         <button (click)="addPoint()">Click to add random points</button>
 //     `
 // })
+
+
+
+
 export class ResultDetailComponent implements OnInit {
 
   url: any; 
   name:string;
-  video: any = {id: 'wzrnuUOoFNM'};
+  video: any = {id: '0qLblUty41c'};
   baseUrl:string = 'https://www.youtube.com/embed/';
   URL_WEB_SERVICE:string = 'http://localhost:8080/api/kinematics_analysis/';
   hard_id : any; 
@@ -506,8 +551,217 @@ export class ResultDetailComponent implements OnInit {
     // onSeriesHide(series) {
     //   alert(`${series.name} is selected`);
     // }
+
+    menuState:string = 'out';
+    videoState:string = 'out';
+    graphState:string = 'out_graph_video';
+    dynamicColDetail:string= '';
+    dynamicColGraph:string= 'col-md-12';
+
+ 
+  toggleDetails() {
+    // 1-line if statement that toggles the value:
+    this.menuState = this.menuState === 'out' ? 'in' : 'out';
+    this.dynamicColDetail= this.dynamicColDetail === '' ? 'col-md-1' : '';
+    this.dynamicColGraph= this.dynamicColGraph === 'col-md-12' ? 'col-md-11' : 'col-md-12';
+  }
+
+  toggleVideo() {
+    // 1-line if statement that toggles the value:
+    this.videoState = this.videoState === 'out' ? 'in' : 'out';
+    this.graphState = this.graphState === 'out_graph_video' ? 'in_graph_video' : 'out_graph_video';
+  }
  
 }
+
+
+@Component({
+  selector: 'app-details-drawer',
+  styles: [`
+      :host {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        position: fixed;
+        left: 0;
+        right: auto;
+        bottom: 0;
+        top: 10%;
+        width: 100%;
+        min-width: 250px;
+        z-index: 0;
+        overflow-y: auto;
+      }
+      .division_line_multiple_value{
+            border-bottom: 1px solid #e0e0e0;
+            border-top: 0;
+            margin: 0 0 15px;
+            padding: 0 0 16px;
+        }
+
+        .division_line_single_value {
+            border-bottom: 1px solid #e0e0e0;
+            border-top: 0;
+            margin: 0 0 5px;
+            padding: 0 0 3px;
+        }
+       
+      
+  `],
+  template: `
+        <div class="margin-container col-md-12">
+                      <div id="accordion" role="tablist" aria-multiselectable="true">
+                      <div>
+                        <div class="header" role="tab" id="headingOne">
+                          <!-- <h4 class="title">  -->
+                            <a *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              {{kinematicsAnalysis.patient_id}}
+                            </a>
+                          <!-- </h4> -->
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="card-block">
+                            
+                            <div class="row">
+                              <div class="category division_line_single_value">
+                                <div class="col-md-11">
+                                  <p>Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
+                                </div>
+
+                                <div class="col-md-1">
+
+                                    <p class="rigth">23</p>
+                                </div>   
+                              </div>
+                            </div>
+
+                            <p class="category division_line_single_value">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
+                                Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
+                                Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_walker">
+
+                                Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
+                                Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
+                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
+                                Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div>
+                        <div class="header" role="tab" id="headingTwo">
+                          <!-- <h6 class="mb-0"> -->
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Videos
+                            </a>
+                          <!-- </h6> -->
+                        </div>
+                        
+                      </div>
+
+
+                      <div>
+                        <div class="header" role="tab" id="headingThree">
+                          <!-- <h5 class="mb-0"> -->
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Collapsible Group Item #3
+                            </a>
+                          <!-- </h5> -->
+                        </div>
+                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                          <div class="card-block">
+                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+
+
+                </div>
+
+    `
+})
+
+export class ResultDrawerComponent {
+
+  @Input() kinematicsAnalysis: any;
+  constructor(){}
+
+ 
+}
+
+@Component({
+  selector: 'app-video-drawer',
+  styles: [`
+      :host {
+          opacity: 0.6;
+          background: black;
+          color: #fff;
+          position: fixed;
+          left: 0;
+          right: auto;
+          bottom: 0;
+          width: 40%;
+          min-width: 250px;
+          z-index: 8000;
+        
+      }
+
+      #mask {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        background-color: black;
+        opacity: 0.7;
+
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+}
+      
+      
+  `],
+  template: `
+    <div >
+
+      <div class="row justify-content-center">
+         <div class="col align-items-center">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c?
+            fs=1&amp;wmode=transparent" frameborder="0" allowfullscreen></iframe>
+         </div>
+      </div>
+    </div>  
+        
+    `
+})
+  // <div class="margin-container ccontainer">
+  //   <div class="row">
+  //     <div class="col align-self-start">
+  //     </div>
+  //   </div>
+  // </div>
+
+export class VideoDrawerComponent {
+
+
+  
+  constructor(){}
+
+ 
+}
+
 
 
 

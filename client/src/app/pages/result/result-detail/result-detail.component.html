@@ -1,155 +1,20 @@
 <div class="margin-container">
+    <div class="name_position">
+        <h2>Camila sedano</h2>
+    </div>
     <div class="content">
-        <div class="container-fluid">
-
-            <!-- Details result -->
-           <!--  <div class="row">
-
-                <div class="col-md-12">    
-                    <h4 class="category" *ngIf="kinematicsAnalysis">{{kinematicsAnalysis.patient_id}}</h4>
-                </div>    
-
-
-                <div class="col-md-9" *ngIf="kinematicsAnalysis">
-                    <div class="col-md-2">
-                        <p class="category">Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-                            Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-                            Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_walker">
-
-                            Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-                            Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p class="category" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-                            Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
-                    </div>
-                </div>
-
-            </div> -->
+        <div class="container">
 
             <div class="row">
-                 
-                <!-- youtube videos of gait analysis -->
-                <div class="col-md-4">
-                    <div id="accordion" role="tablist" aria-multiselectable="true">
-                      <div>
-                        <div class="header" role="tab" id="headingOne">
-                          <!-- <h4 class="title">  -->
-                            <a *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              {{kinematicsAnalysis.patient_id}}
-                            </a>
-                          <!-- </h4> -->
-                        </div>
 
-                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="card-block">
-                            
-                            <div class="row">
-                              <div class="category division_line_single_value">
-                                <div class="col-md-11">
-                                  <p>Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
-                                </div>
-
-                                <div class="col-md-1">
-
-                                    <p class="rigth">23</p>
-                                </div>   
-                              </div>
-                            </div>
-
-                            <p class="category division_line_single_value">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
-                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-                                Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
-                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-                                Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
-                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_walker">
-
-                                Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
-                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-                                Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
-                            <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-                                Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
-
-
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div>
-                        <div class="header" role="tab" id="headingTwo">
-                          <!-- <h6 class="mb-0"> -->
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              Videos
-                            </a>
-                          <!-- </h6> -->
-                        </div>
-                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="card-block">
-                            
-                            <div class="row">
-                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                            </div>
-
-
-                            <div class="row">
-                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                            </div>
-
-                            <div class="row">
-                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                            </div>
-
-
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div>
-                        <div class="header" role="tab" id="headingThree">
-                          <!-- <h5 class="mb-0"> -->
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              Collapsible Group Item #3
-                            </a>
-                          <!-- </h5> -->
-                        </div>
-                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="card-block">
-                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                </div>
-
-
+              <!--   <div [class]="dynamicColDetail">
+                </div> -->
 
                 <!-- Graphics of gait analysis -->
-                <div class="col-md-8">
+                <!-- <div [class]="dynamicColGraph" [@slideInOutGraphis]="graphState"> -->
+                <div [@slideInOutGraphis]="graphState">
 
-                    <div class="col-md-12">
 
-                        <!-- <div class="card"> -->
-
-                        <!-- <div class="card-content"> -->
                         <div class="row">
                             <div class="col-md-4">
                                 <chart [options]="options" align="center"></chart>
@@ -187,7 +52,7 @@
 
                         <!-- </div> -->
 
-                    </div>
+
                 </div>
 
             </div>
@@ -195,75 +60,30 @@
         </div>
     </div>
 
-    <div class="margin-container">
-
-        <!-- <h4 *ngIf="kinematicsAnalysis">
-        Paciente: {{kinematicsAnalysis.patient_id}}
-        Centro medico: {{kinematicsAnalysis.medical_center_id}}
-        Terapeuta : {{kinematicsAnalysis.therapist_id}}
-         </h4>
-            <h5 *ngIf="kinematicsAnalysis">
-
-        is_assited_walk : {{kinematicsAnalysis.accesories.is_assited_walk}}
-        is_treadmills : {{kinematicsAnalysis.accesories.is_treadmills}}
-        is_walker : {{kinematicsAnalysis.accesories.is_walker}}
-        is_orthoses : {{kinematicsAnalysis.accesories.is_orthoses}}
-        is_parallel_bars : {{kinematicsAnalysis.accesories.is_parallel_bars}}
-
-        {{kinematicsAnalysis.accesories_descriptions.assited_walk}}
-        {{kinematicsAnalysis.accesories_descriptions.treadmills}}
-        {{kinematicsAnalysis.accesories_descriptions.walker}}
-        {{kinematicsAnalysis.accesories_descriptions.orthoses}}
-        {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}
-        </h5> -->
-            <!--  http://stackoverflow.com/questions/34734671/observable-type-error-cannot-read-property-of-undefined
-        <div> analysis._id: '| async': {{kinematicsAnalysis._id| async}}</div>
-        <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
-        <div> analysis.therapist_id: '| async': {{kinematicsAnalysis.therapist_id| async}}</div>
-        <div> analysis.therapist_id.normal_ranges: '| async': {{kinematicsAnalysis.spl_kne.normal_ranges| async}}</div>
-        <div> analysis.therapist_id.patient_angles: '| async': {{kinematicsAnalysis.spl_kne.patient_angles| async}}</div> -->
-
-            <!-- OK
-        <li *ngFor="let person of kinematicsAnalysiss">
-                <a href="#" [routerLink]="['/persons', person._id]">
-              {{person._id}}
-              </a>
-        </li> -->
-
-       
-        
-
-    </div>
 </div>
 
-<div class="card">
-                        
-                        <div class="card-header" data-background-color="red">
-                            <p class="category">Videos</p>
-                        </div>
 
-                        <div class="card-content">
-                            <!-- youtube videos of gait analysis -->
-                            <div class="row">
-                                <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
-                                </div>
-
-                            </div>
-
-                        </div>  
-
-                    </div>
+<!-- youtube videos of gait analysis -->
+<div class="drawer-detils ">                
+    <app-details-drawer [@slideInOutDetails]="menuState"
+                [kinematicsAnalysis] ="kinematicsAnalysis">
+        
+    </app-details-drawer>
 
 
+     <app-video-drawer [@slideInOutVideo]="videoState">
+        
+    </app-video-drawer>
 
-
+</div>  
+                 
+<div class="drawer_details">
+        <button mdl-button  mdl-button-type="fab"  mdl-colored="accent" mdl-ripple (click)="toggleDetails()" >
+            <mdl-icon>toc</mdl-icon>
+        </button>
+</div>
+<div class="drawer_video">
+        <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="toggleVideo()">
+            <mdl-icon>movie</mdl-icon>
+        </button>
+</div>   
