@@ -65,6 +65,8 @@ export class ResultsComponent implements OnInit {
 
   optionsHeader: RequestOptions;
 
+  currentMultipleKinematicsAnalysisSelected: any[] =[];
+
   
   constructor(  private http: Http,
                 private route: ActivatedRoute,
@@ -3907,6 +3909,11 @@ export class ResultsComponent implements OnInit {
     this.currentKinematicsAnalysis = kinematicsAnalysis;
   }
 
+  multipleKinematicAnalysisSelected (multipleKinematicsAnalysis: any[]) {
+    this.currentMultipleKinematicsAnalysisSelected = multipleKinematicsAnalysis;
+      console.log(this.currentMultipleKinematicsAnalysisSelected);
+  }
+
   therapistSelected(therapist: any) {
     this.currentTherapist = therapist;
     this.doFilter("therapist");
@@ -3919,6 +3926,7 @@ export class ResultsComponent implements OnInit {
     this.doFilter("patient");
 
   }
+
 
 }
 // import { Component, OnInit } from '@angular/core';

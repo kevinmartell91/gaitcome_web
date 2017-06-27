@@ -1,8 +1,44 @@
-  <h6>Pacients</h6>
-  <ul class="heros vertical-menu">  
-    <li *ngFor = "let patient of patients"
-        (click)="select(patient)">{{patient.names}}
+  
+
+<div class="row justify-content-between">
+
+	<div class="col-md-8">
+		<h2>Pacients</h2>
+    </div>
+    <div class="col-md-1">
+		<mdl-icon  class="col icon material-icons" mdl-tooltip-large="Print" (click)="switchView('list')">print</mdl-icon>
+    </div>
+    <div class="col-md-1">
+		<mdl-icon  class="col icon material-icons" [mdl-tooltip]="tt1" mdl-tooltip-position="top" (click)="switchView('photo')">add</mdl-icon>
+    </div>
+	<!-- <div class="col-ms-1">
+		<button type="button" class="btn btn-primary btn-sm" (click)="switchView('list')">l</button> 
+	</div>
+	<div class="col-ms-1">
+		<button type="button" class="btn btn-primary btn-sm" (click)="switchView('photo')">p</button> 
+	</div> -->
+
+
+</div>
+
+<ul class="patients">  
+    <li  *ngFor = "let patient of patients"
+        (click)="select(patient)"
+        [class.selected]="patient === currentPatient">
         
+		<div *ngIf="listView">  
+				{{patient.names}}        
+
+		</div>
+		<div *ngIf="photoView">
+				<mdl-chip mdl-label={{patient.names}}>
+				  <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">A</span>
+				</mdl-chip>
+		        
+		</div>  
+
         <!-- <button (click)="doFilter('patient')">{{patient.names}}</button> -->
     </li>
-  </ul>
+
+
+</ul>

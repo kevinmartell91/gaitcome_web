@@ -5,6 +5,7 @@ import { HttpModule, Http, Response, Headers,
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
+
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
@@ -19,8 +20,11 @@ export class PatientListComponent implements OnInit {
   constructor( private http: Http 
                ) { }
 
+  listView:boolean = true;
+  photoView:boolean = false;
   p: any;
   patients: any[] = [];
+  currentPatient: any;
   @Input()  medical_center_id:string ;
   @Input() token: string;
   @Output() onSelect = new  EventEmitter<any>();
@@ -110,6 +114,7 @@ export class PatientListComponent implements OnInit {
 
   // EventEmitter -> expose to parent component
   select(patietnt: any) {
+  	this.currentPatient  = patietnt;
     this.onSelect.emit(patietnt);
   }
   // Service methods
@@ -140,6 +145,17 @@ export class PatientListComponent implements OnInit {
   _getJSON(url: string, option: RequestOptions): Observable<any> {
     return this.http.get(url,option)
       .map((res: Response) => res.json())
+  }
+
+  switchView(view:string) {
+  	if( view === 'list'){
+  		this.listView = true;
+  		this.photoView = false;
+  	}
+  	if( view === 'photo'){
+  		this.listView = false;
+  		this.photoView = true;
+  	}
   }
 
 }
