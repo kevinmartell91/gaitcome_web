@@ -1,33 +1,39 @@
-<h6>Resultados</h6>
-<span class="bd-booticon outline">B</span>
-<ul class="heros vertical-menu">  
-  <li *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss'
-    
-      (click)="select(kinematicsAnalysis)">
-      <!-- <span class="badge">{{kinematicsAnalysis._id}} (click)="gotoDetail()</span>--> {{kinematicsAnalysis.created_at}} 
+<h2>Resultados</h2>
+<!-- <span class="bd-booticon outline">B</span> -->
+
+<ul  class="results">  
+  <li class="row" *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
+  (mouseout)="mouseOvered=null"   (mouseover)="mouseOvered=kinematicsAnalysis"
+  >
+<!-- [class.selected]="kinematicsAnalysis === multipleKinematicsAnalysiss"  -->
+
+
+      <mdl-checkbox  class="col-md-1" (click)="multipleSelect(kinematicsAnalysis._id)">
+      </mdl-checkbox>
+     
+      <div class="col-md-8">{{kinematicsAnalysis.created_at}}</div>
+<!--       <button [class.btn-success]="mouseOvered" 
+              (mouseout)="mouseOvered=false" 
+              (mouseover)="mouseOvered=true">
+        over me
+      </button> -->
+      <!-- <div *ngIf="mouseOvered === kinematicsAnalysis"> -->
+        <!-- <button type="button" class="col-md-1 btn btn-primary btn-sm view" (click)="select(kinematicsAnalysis)">
+          <mdl-icon >content paste</mdl-icon>
+        </button> -->
+      <div class="col-md-1">
+        <mdl-icon  class="icon material-icons" mdl-tooltip-large="ver resumen"
+          (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+      </div>
+
   </li>
+
 </ul>
 
-<h4>Change log:</h4>
+<!-- <h4>Change log:</h4>
     <ul>
       <li *ngFor="let change of changeLog">{{change}}</li>
     </ul>
-
-<!--  <table class="table">
-    <tr>
-        <th>#</th>
-        <th>Game</th>
-        <th>Platform</th> 
-        <th>Release</th>
-    </tr>
-    <tr *ngFor='let game of kinematicsAnalysiss; let i = index'>
-        <td>{{i + 1}}</td>
-        <td>{{game.created_at}}</td>
-        <td>{{game.created_at}}</td>
-        <td>{{game.created_at}}</td>
-  		<td>
-  			<button type="button" class="btn btn-primary btn-sm"> ver</button>
- 		</td>
-    </tr>
- </table>
  -->
+
+  {{selecteds | json}}

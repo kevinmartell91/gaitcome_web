@@ -21,6 +21,7 @@ export class TherapistListComponent implements OnInit {
 
   t: any;
   therapists: any[] = [];
+  currentTherapist:any;
   @Input()  medical_center_id:string ;
   @Input() token: string;
   @Output() onSelect = new  EventEmitter<any>();
@@ -179,6 +180,7 @@ export class TherapistListComponent implements OnInit {
 
   // EventEmitter -> expose to parent component
   select(therapist: any) {
+    this.currentTherapist = therapist;
     this.onSelect.emit(therapist);
   }
   // Service methods
