@@ -1,0 +1,70 @@
+.modal-header {
+    padding: 8px 8px 8px 24px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    /*flex-direction: row-reverse;*/
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    padding: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.modal-footer {
+    padding: 0px;
+    text-align: right;
+    border-top: 1px solid rgba(229, 229, 229, 0.01);
+}
+
+.modal-footer__actions {
+    padding: 8px 8px 8px 24px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+
+.close {
+    margin-left: auto;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+}
+
+.mdl_icon {
+    flex-shrink: 0;
+    margin-top: 20px;
+    opacity: .3;
+    text-align: left;
+    width: 40px;
+    font-size: 30px;
+}
+
+.mdl_icon_person {
+    flex-shrink: 0;
+    margin-top: 0px;
+    margin-left: -17px;
+    opacity: .2;
+    text-align: left;
+    /*width: 100%;*/
+    font-size: 131px;
+    font-size: 300%
+}
+
+.field-group{
+    padding: 0px 0px 0px 9px;
+    display: flex;
+}
