@@ -13,11 +13,8 @@ import { ResultPreviewComponent } from '../result/result-preview/result-preview.
 
 import { MdlModule } from 'angular2-mdl';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { MaterialModule } from '@angular/material';
-//import { PolymerElement } from '@vaadin/angular2-polymer';
 
 import { routing } from './dashboard-medical-center.routing';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
 
 //reused code
@@ -33,9 +30,7 @@ import { VideoDrawerComponent } from '../result/result-detail/result-detail.comp
 @NgModule({
   imports: [
     ChartModule,
-    ChartsModule,
     CommonModule,
-    // MaterialModule,
     FormsModule,
     NgbModule,
     MdlModule,

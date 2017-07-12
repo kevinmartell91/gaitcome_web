@@ -28,7 +28,7 @@ Highcharts.setOptions({
 });
 
 // Plug the highcharts-3d module
-//Highcharts3d(Highcharts);
+//Highcharts3d(Highcharts); 
 
 export class PatientAngles {
     interval: number;
@@ -729,13 +729,11 @@ export class ResultDrawerComponent {
         -moz-filter: blur(0px);
         -o-filter: blur(0px);
         -ms-filter: blur(0px);
-}
-      
-      
-  `],
+      }
+    `
+  ],
   template: `
     <div >
-
       <div class="row justify-content-center">
          <div class="col align-items-center">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c?

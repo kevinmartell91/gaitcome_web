@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h2 class="modal-title">Terapueta</h2>
     <button type="button" class="close" aria-h6="Close" 
-    		(click)="activeModal.dismiss('Cross click')">
+            data-dismiss="modal">
     	<span aria-hidden="true">&times;</span>
  	</button>
 </div>
@@ -127,8 +127,7 @@
         		(click)="onSubmit()" [disabled]="!form.valid" 
         		mdl-button-type="raised" 
         		mdl-ripple mdl-colored="primary">Crear Cuenta</button>
-        <button mdl-button 
-        		(click)="activeModal.close('Close click')">Close</button>
+        <button mdl-button data-dismiss="modal">Close</button>
     </div>
 
 </div>

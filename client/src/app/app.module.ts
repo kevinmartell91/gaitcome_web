@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule }  from '@angular/common';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
@@ -16,13 +17,15 @@ import { AuthService }          from './pages/login/auth.service';
 import { routing } from './app-routing.module';
 
 import { MdlModule } from 'angular2-mdl'
-// import { MaterialModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// import { DataTableModule } from 'angular-2-data-table';
+import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
-
-  
+declare var require: any;
+export function highchartsFactory() {
+  return require('highcharts');
+}
 
 @NgModule({
   declarations: [
@@ -30,21 +33,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
-    // DataTableModule,
+    BrowserAnimationsModule,
     HttpModule,
-    // DataTableModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     PagesModule,
     MdlModule,
-    // MaterialModule.forRoot(),
     NgbModule.forRoot(),
     routing
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    {
+      provide: HighchartsStatic,
+      useFactory: highchartsFactory
+    }
   ],
   bootstrap: [AppComponent]
 })
