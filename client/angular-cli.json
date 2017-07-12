@@ -13,22 +13,25 @@
       ],
       "index": "index.html",
       "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.json",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "mobile": false,
       "styles": [
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/chart.js/dist/Chart.bundle.min.js",
         "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js",
-        "../node_modules/chart.js/dist/Chart.min.js",
         "../node_modules/angular2-mdl/bundle/angular2-mdl.js",
-        "../node_modules/highcharts/highcharts-more.src.js"
+        "../node_modules/highcharts/highcharts-more.src.js",
+        "../node_modules/@angular/animations/bundles/animations.umd.js",
+        "../node_modules/@angular/animations/bundles/animations-browser.umd.js",
+        "../node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
@@ -41,6 +44,17 @@
       "config": "./protractor.conf.js"
     }
   },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"

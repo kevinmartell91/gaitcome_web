@@ -35,7 +35,8 @@ export class TherapistAddComponent implements OnInit {
 
   constructor( private fb: FormBuilder, 
                public http : Http,
-               public activeModal: NgbActiveModal) { 
+               //public activeModal: NgbActiveModal
+               ) { 
     // this.complexForm = fb.group ({
     // 	 // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
     //   'firstName' : [null, Validators.required],
