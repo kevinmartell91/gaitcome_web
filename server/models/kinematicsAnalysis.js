@@ -48,7 +48,7 @@ var kinematicsAnalysisSchema = new Schema({
 
 	patient_descriptions : String,
 
-	// MARKERS 3d POSITIONS 
+	// MARKERS 3d POSITIONS => from MATLAB
 	lkne: [{ _id:false, x: Number, y: Number, z: Number }],
 	rkne: [{ _id:false, x: Number, y: Number, z: Number }],
 	lank: [{ _id:false, x: Number, y: Number, z: Number }],
@@ -64,8 +64,10 @@ var kinematicsAnalysisSchema = new Schema({
 	ltrc: [{ _id:false, x: Number, y: Number, z: Number }],
 	rtrc: [{ _id:false, x: Number, y: Number, z: Number }],
 
-	// ANGLES LIST 
+	// BOOK this data after have the 3d position from matlab
+	// ANGLES LIST work with api and show the data in the view
 	spl_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	//							 [0% - 100%, ang]					[0% - 100%, lim-inf , lim-sup]				
 	//spl_kne: [ Number ],
 	spl_ank: [ Number ],
 	spl_plv: [ Number ],
