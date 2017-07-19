@@ -1,13 +1,15 @@
 <div class="modal-header">
-    <h2 class="modal-title">Terapueta</h2>
+    <h2 class="modal-title">Patient</h2>
     <button type="button" class="close" aria-h6="Close" 
-    		(click)="activeModal.dismiss('Cross click')">
-    	<span aria-hidden="true">&times;</span>
- 	</button>
+            data-dismiss="modal">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 <div class="modal-body">
     <form [formGroup]="form" class="card-group">
+
+        <!-- name , last name -->
         <div class="row">
             <div class="col-md-12">
                 <div class="field-group">
@@ -17,118 +19,242 @@
                     <div class="col-md-9  col-xs-12">
                         <div class="row">
                             <mdl-textfield label="Nombres" 
-                            			   name="names" 
-                            			   type="text" 
-                            			   formControlName="names" f
-                            			   loating-label></mdl-textfield>
+                                           name="names" 
+                                           type="text" 
+                                           formControlName="names" 
+                                           ></mdl-textfield>
                         </div>
 
                         <div class="row">
                             <mdl-textfield label="Apellidos" 
-                            			   name="lastname" 
-                            			   type="text" 
-                            			   formControlName="lastName" 
-                            			   floating-label></mdl-textfield>
+                                           name="lastname" 
+                                           type="text" 
+                                           formControlName="lastName" 
+                                           ></mdl-textfield>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- DNI & birth -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="field-group">
-                    <mdl-icon class="mdl_icon">email</mdl-icon>
-                    <mdl-textfield label="Email" 
-                    			   name="email" 
-                    			   type="text" 
-                    			   formControlName="email" 
-                    			   pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
-                    			   error-msg="Please provide a correct email!"
-                    			   floating-label></mdl-textfield>
+                    <mdl-icon class="mdl_icon">settings_phone</mdl-icon>
+                    <mdl-textfield type="text"
+                                   label="DNI" 
+                                   name="id_Document_num" 
+                                   pattern="-?[0-9]*(\.[0-9]+)?" 
+                                   error-msg="Caracteres no numéricos!" 
+                                   formControlName="id_Document_num" 
+                                   ></mdl-textfield>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
             <div class="col-md-6">
                 <div class="field-group">
 
                     <mdl-icon class="mdl_icon">settings_cell</mdl-icon>
                     <mdl-textfield type="text" 
-                    			   label="N° de celular" 
-                    			   name="cellphone" 
-                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                    			   error-msg="Caracteres no numéricos!" 
-                    			   formControlName="cellphone" 
-                    			   floating-label></mdl-textfield>
+                                   label="Nacimiento (yyyy-mm-dd)" 
+                                   name="birth" 
+                                   pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
+                                   error-msg="Caracteres no numéricos!" 
+                                   formControlName="birth" 
+                                   ></mdl-textfield>
                 </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="field-group">
-                    <mdl-icon class="mdl_icon">settings_phone</mdl-icon>
-                    <mdl-textfield type="text"
-                    			   label="Teléfono" 
-                    			   name="phone" 
-                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                    			   error-msg="Caracteres no numéricos!" 
-                    			   formControlName="phone" 
-                    			   floating-label></mdl-textfield>
-                </div>
-
             </div>
         </div>
 
+        <!--  Address-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="Direccion" 
+                                   name="address_street" 
+                                   formControlName="address_street" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="City" 
+                                   name="address_city" 
+                                   formControlName="address_city" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="State" 
+                                   name="address_state" 
+                                   formControlName="address_state" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">credit_card</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="Zip" 
+                                   name="address_zip" 
+                                   pattern="-?[0-9]*(\.[0-9]+)?" 
+                                   error-msg="Caracteres no numéricos!" 
+                                   formControlName="address_zip" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">card_membership</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="Country" 
+                                   name="address_country" 
+                                   formControlName="address_country" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical diagnostic -->
+        <h5>Medical diagnostic</h5>
         <div class="row">
             <div class="col-md-4">
                 <div class="field-group">
                     <mdl-icon class="mdl_icon">credit_card</mdl-icon>
                     <mdl-textfield type="text" 
-                    			   label="N° de DNI" 
-                    			   name="id_Document_num" 
-                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                    			   error-msg="Caracteres no numéricos!" 
-                    			   formControlName="id_Document_num" 
-                    			   floating-label></mdl-textfield>
+                                   label="Name" 
+                                   name="medic_diagostic_name" 
+                                   formControlName="medic_diagostic_name" 
+                                   ></mdl-textfield>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="field-group">
                     <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                     <mdl-textfield type="text" 
-                    			   label="N° de CTMP" 
-                    			   name="num_ctmp" 
-                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                    			   error-msg="Caracteres no numéricos!" 
-                    			   formControlName="num_ctmp" 
-                    			   floating-label></mdl-textfield>
+                                   label="Level"
+                                   name="medic_diagostic_level" 
+                                   formControlName="medic_diagostic_level" 
+                                   ></mdl-textfield>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="field-group">
                     <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                     <mdl-textfield type="text" 
-                    			   label="N° de NDTA" 
-                    			   name="num_ndta" 
-                    			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                    			   error-msg="Caracteres no numéricos!" 
-                    			   formControlName="num_ndta" 
-                    			   floating-label></mdl-textfield>
+                                   label="Percentage" 
+                                   name="medic_diagostic_percentage" 
+                                   formControlName="medic_diagostic_percentage" 
+                                   ></mdl-textfield>
                 </div>
             </div>
         </div>
+
+
+                <!-- Attorney -->
+        <h5>Attorney</h5>
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="field-group">
+                    <div class="col-md-3">
+                        <mdl-icon class="mdl_icon_person">account_circle</mdl-icon>
+                    </div>
+                    <div class="col-md-9  col-xs-12">
+                        <div class="row">
+                            <mdl-textfield label="Nombres" 
+                                           name="attorney_names" 
+                                           type="text" 
+                                           formControlName="attorney_names" 
+                                           ></mdl-textfield>
+                        </div>
+
+                        <div class="row">
+                            <mdl-textfield label="Apellidos" 
+                                           name="attorney_lastname" 
+                                           type="text" 
+                                           formControlName="attorney_lastName" 
+                                           ></mdl-textfield>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">email</mdl-icon>
+                    <mdl-textfield label="Parentesco" 
+                                   name="attorney_relationship" 
+                                   type="text" 
+                                   formControlName="attorney_relationship" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">settings_phone</mdl-icon>
+                    <mdl-textfield type="text"
+                                   label="Teléfono" 
+                                   name="attorney_phone" 
+                                   pattern="-?[0-9]*(\.[0-9]+)?" 
+                                   error-msg="Caracteres no numéricos!" 
+                                   formControlName="attorney_phone" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="field-group">
+
+                    <mdl-icon class="mdl_icon">settings_cell</mdl-icon>
+                    <mdl-textfield type="text" 
+                                   label="N° de celular" 
+                                   name="attorney_cellphone" 
+                                   pattern="-?[0-9]*(\.[0-9]+)?" 
+                                   error-msg="Caracteres no numéricos!" 
+                                   formControlName="attorney_cellphone" 
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="field-group">
+                    <mdl-icon class="mdl_icon">email</mdl-icon>
+                    <mdl-textfield label="Email" 
+                                   name="attorney_email" 
+                                   type="text" 
+                                   formControlName="attorney_email" 
+                                   pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
+                                   error-msg="Please provide a correct email!"
+                                   ></mdl-textfield>
+                </div>
+            </div>
+        </div>
+
     </form>
 </div>
 
 <div class="modal-footer">
     <div class="modal-footer__actions">
         <button mdl-button 
-        		(click)="onSubmit()" [disabled]="!form.valid" 
-        		mdl-button-type="raised" 
-        		mdl-ripple mdl-colored="primary">Crear Cuenta</button>
-        <button mdl-button 
-        		(click)="activeModal.close('Close click')">Close</button>
+                (click)="onSubmit()" [disabled]="!form.valid" 
+                mdl-button-type="raised" 
+                mdl-ripple mdl-colored="primary"
+                data-dismiss="modal">Crear Cuenta</button>
+        <button mdl-button data-dismiss="modal">Close</button>
     </div>
 
 </div>
