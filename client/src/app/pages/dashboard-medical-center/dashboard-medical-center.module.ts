@@ -20,6 +20,7 @@ import { ChartModule } from 'angular2-highcharts';
 //reused code
 import { TherapistAddComponent } from '../therapist/therapist-add/therapist-add.component';
 import { PatientListComponent } from '../patient/patient-list/patient-list.component';
+import { PatientAddComponent } from '../patient/patient-add/patient-add.component';
 
 import { ResultDrawerComponent } from '../result/result-detail/result-detail.component';
 import { VideoDrawerComponent } from '../result/result-detail/result-detail.component';
@@ -43,6 +44,7 @@ import { VideoDrawerComponent } from '../result/result-detail/result-detail.comp
     DashboardMedicalCenterComponent,
     MedicalCenterComponent, 
     PatientListComponent,
+    PatientAddComponent,
     ResultListComponent,
     ResultDetailComponent,
     ResultsComponent,
@@ -54,6 +56,7 @@ import { VideoDrawerComponent } from '../result/result-detail/result-detail.comp
   entryComponents: [
     TherapistAddComponent,
     PatientListComponent,
+    PatientAddComponent,
     ResultsComponent,
     ResultPreviewComponent
   ],

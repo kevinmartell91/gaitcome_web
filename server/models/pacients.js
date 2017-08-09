@@ -18,6 +18,13 @@ var pacientSchema = new Schema({
   	country: String
   },
 
+  medic_diagostic: [{
+    name: String,
+    level: String,
+    percentage: String,
+    created_at: { type: Date, default: Date.now }
+  }],
+
   attorney: {
   	names: String,
   	lastname: String,
@@ -27,14 +34,7 @@ var pacientSchema = new Schema({
   	cellphone: String
    },
 
-  medic_diagostic: [{
-  	name: String,
-    level: String,
-    percentage: String,
-    created_at: { type: Date, default: Date.now }
-  }],
-
-  // Will be send by email
+  // Will be send by email TO THE ATTORNEY
   username: String,
   password: String,
 
