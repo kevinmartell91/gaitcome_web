@@ -90,37 +90,38 @@ exports.putPacient = function(req, res) {
     pacient.id_Document_type = req.body.id_Document_type;
     pacient.id_Document_num = req.body.id_Document_num;
     pacient.birth =  req.body.birth;
-    
+
     pacient.address = {
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      country: req.body.country
+      street: req.body.address.street,
+      city: req.body.address.city,
+      state: req.body.address.state,
+      zip: req.body.address.zip,
+      country: req.body.address.country
     };
 
     pacient.attorney = {
-      names: req.body.names,
-      lastname: req.body.lastname,
-      relationship : req.body.relationship,
-      email: req.body.email,
-      phone: req.body.phone,
-      cellphone: req.body.cellphone
+      names: req.body.attorney.names,
+      lastname: req.body.attorney.lastname,
+      relationship : req.body.attorney.relationship,
+      email: req.body.attorney.email,
+      phone: req.body.attorney.phone,
+      cellphone: req.body.attorney.cellphone
      };
 
     pacient.medic_diagostic = [{
-      name: req.body.name,
-      level: req.body.level,
-      percentage: req.body.percentage,
+      name: req.body.medic_diagostic[0].name,
+      level: req.body.medic_diagostic[0].level,
+      percentage: req.body.medic_diagostic[0].percentage,
       //created_at: { type: Date, default: Date.now }
     }];
 
-    pacient.username = req.body.username;
-    pacient.password = req.body.password;
+
+    // pacient.username = req.body.username;
+    // pacient.password = req.body.password;
 
     //pacient.created_at= { type: Date, default: Date.now },
-    //pacient.updated_at= Date,
-    pacient.is_active = req.body.is_active;
+    // pacient.updated_at= new Date,
+    // pacient.is_active = req.body.is_active;
 
     pacient.save(function(err) {
       if(err)

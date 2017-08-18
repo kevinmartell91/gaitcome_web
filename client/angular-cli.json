@@ -23,11 +23,12 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js",
         "../node_modules/angular2-mdl/bundle/angular2-mdl.js",
         "../node_modules/highcharts/highcharts-more.src.js",
         "../node_modules/@angular/animations/bundles/animations.umd.js",
         "../node_modules/@angular/animations/bundles/animations-browser.umd.js",
+        "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js",
+        "../node_modules/core-js/client/shim.min.js",
         "../node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js"
       ],
       "environmentSource": "environments/environment.ts",

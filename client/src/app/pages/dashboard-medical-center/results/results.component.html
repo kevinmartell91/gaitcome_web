@@ -8,21 +8,22 @@
         
         <!-- Patient list | child component-->
         <div class="row">
-            <div class="card-block">
+            <!-- <div class="card-block"> -->
                 <app-patient-list [token]="token"
                                   [medical_center_id]="medical_center_id"
+                                  [allFields]="false"
                                   (onSelect)="patientSelected($event)">
                 </app-patient-list>
-            </div>
+            <!-- </div> -->
         </div>
         <!-- Therapist list |  child component -->
         <div class="row">
-          <div class="card-block">
+          <!-- <div class="card-block"> -->
           <app-therapist-list [token]="token"
                               [medical_center_id]="medical_center_id"
                               (onSelect)="therapistSelected($event)">
           </app-therapist-list>
-          </div>
+          <!-- </div> -->
         </div>
 
         <div class="row">

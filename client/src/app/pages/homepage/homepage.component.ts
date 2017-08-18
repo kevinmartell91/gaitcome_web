@@ -4,6 +4,7 @@ const now = new Date();
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
+  // templateUrl: './index6.html',
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {

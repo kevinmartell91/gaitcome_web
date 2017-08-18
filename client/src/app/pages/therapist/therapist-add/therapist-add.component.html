@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h2 class="modal-title">Terapueta</h2>
     <button type="button" class="close" aria-h6="Close" 
-            data-dismiss="modal">
+            (click)="activeModal.close('Close click')">
     	<span aria-hidden="true">&times;</span>
  	</button>
 </div>
@@ -123,12 +123,14 @@
 
 <div class="modal-footer">
     <div class="modal-footer__actions">
-        <button mdl-button 
+        <button class="btn_space"
+                mdl-button 
         		(click)="onSubmit()" [disabled]="!form.valid" 
         		mdl-button-type="raised" 
         		mdl-ripple mdl-colored="primary"
-                data-dismiss="modal">Crear Cuenta</button>
-        <button mdl-button data-dismiss="modal">Close</button>
+                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+        <button class="btn_space"
+                mdl-button 
+                (click)="activeModal.close('Close click')">Close</button>
     </div>
-
 </div>

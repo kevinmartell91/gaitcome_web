@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -33,12 +33,13 @@ export class TherapistAddComponent implements OnInit {
   newTherapist: any;
 
 
-  constructor( private fb: FormBuilder, 
-               public http : Http,
-               //public activeModal: NgbActiveModal
+  constructor( public activeModal: NgbActiveModal,
+               private fb: FormBuilder, 
+               public http : Http
                ) { 
+    console.log("constructor");
     // this.complexForm = fb.group ({
-    // 	 // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
+    //   // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
     //   'firstName' : [null, Validators.required],
     //   // We can use more than one validator per field. If we want to use more than one validator we have to wrap our array of validators with a Validators.compose function. Here we are using a required, minimum length and maximum length validator.
     //   'lastName': [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
@@ -52,6 +53,8 @@ export class TherapistAddComponent implements OnInit {
 
    public ngOnInit() {
 
+    console.log(this.name);
+    console.log("ngOnInit TherapistAddComponent");
      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         // this.token = currentUser && currentUser.token;
         this.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Il9fdiI6ImluaXQiLCJuYW1lIjoiaW5pdCIsInR5cGUiOiJpbml0IiwicXVhbnRpdHkiOiJpbml0IiwidXNlcklkIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwibmFtZSI6dHJ1ZSwidHlwZSI6dHJ1ZSwicXVhbnRpdHkiOnRydWUsInVzZXJJZCI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6dHJ1ZX0sIm1vZGlmeSI6e30sInJlcXVpcmUiOnt9fSwic3RhdGVOYW1lcyI6WyJyZXF1aXJlIiwibW9kaWZ5IiwiaW5pdCIsImRlZmF1bHQiLCJpZ25vcmUiXX0sImVtaXR0ZXIiOnsiZG9tYWluIjpudWxsLCJfZXZlbnRzIjp7fSwiX2V2ZW50c0NvdW50IjowLCJfbWF4TGlzdGVuZXJzIjowfX0sImlzTmV3IjpmYWxzZSwiX2RvYyI6eyJfX3YiOjAsIm5hbWUiOiJhZG1pbiIsInR5cGUiOiJwaGQrKyIsInF1YW50aXR5IjoxNjAsInVzZXJJZCI6IndlbmR5c3BhcnRhIiwicGFzc3dvcmQiOiJhZG1pbiIsIl9pZCI6IjU4NTA4OTljM2U0NGJjMGMzOTc0MjM0MCJ9LCJfcHJlcyI6eyIkX19vcmlnaW5hbF9zYXZlIjpbbnVsbCxudWxsXSwiJF9fb3JpZ2luYWxfdmFsaWRhdGUiOltudWxsXSwiJF9fb3JpZ2luYWxfcmVtb3ZlIjpbbnVsbF19LCJfcG9zdHMiOnsiJF9fb3JpZ2luYWxfc2F2ZSI6W10sIiRfX29yaWdpbmFsX3ZhbGlkYXRlIjpbXSwiJF9fb3JpZ2luYWxfcmVtb3ZlIjpbXX0sImlhdCI6MTQ4MTY3OTkyMX0.ZsSLSYUod916Gmtc6J5HjaCbF4-24cFKQ_qnc4cXDMQ';

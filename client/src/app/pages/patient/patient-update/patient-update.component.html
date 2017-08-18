@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">Patient</h2>
+    <h2 class="modal-title">Patient update</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
         <span aria-hidden="true">&times;</span>
@@ -260,6 +260,9 @@
             </div>
         </div>
 
+
+
+
     </form>
 </div>
 
@@ -267,12 +270,14 @@
     <div class="modal-footer__actions">
         <button class="btn_space"
                 mdl-button 
-                (click)="onSubmit()" [disabled]="!form.valid" 
                 mdl-button-type="raised" 
                 mdl-ripple mdl-colored="primary"
-                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+                (click)="onSubmit()" [disabled]="!form.valid">Update</button>
         <button class="btn_space"
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>
     </div>
 </div>
+
+
+{{ inputPatient | json}}

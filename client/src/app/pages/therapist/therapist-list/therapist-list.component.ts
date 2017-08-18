@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TherapistAddComponent } from "../../therapist/therapist-add/therapist-add.component";
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
@@ -173,8 +173,9 @@ export class TherapistListComponent implements OnInit {
   	this.showAddForm = false;
   }
 
-  showAddTherapistComponent() {
+  showAddTherapistComponent($event) {
     const modalRef = this.modalService.open(TherapistAddComponent);
+    console.log('changes::', $event);
     modalRef.componentInstance.name = 'World';
   }
 

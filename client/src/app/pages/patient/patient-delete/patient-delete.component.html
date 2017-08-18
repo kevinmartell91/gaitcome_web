@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h2 class="modal-title">Eliminar paciente</h2>
+    <button type="button" class="close" aria-h6="Close" 
+            (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body text-xs-center">
+  <p>Desea elimnitar a {{names}} {{lastname}}?</p>
+</div>
+<div class="modal-footer">
+    <div class="modal-footer__actions">
+        <button class="btn_space"
+                mdl-button 
+                mdl-button-type="raised" 
+                mdl-ripple mdl-colored="primary"
+                (click)="deletePatient()">Eliminar</button>
+        <button class="btn_space"
+                mdl-button 
+                (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</div>

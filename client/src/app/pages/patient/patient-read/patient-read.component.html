@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">Patient</h2>
+    <h2 class="modal-title">Patient View</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
         <span aria-hidden="true">&times;</span>
@@ -25,6 +25,7 @@
                                                name="names" 
                                                type="text" 
                                                formControlName="names" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
 
@@ -33,6 +34,7 @@
                                                name="lastname" 
                                                type="text" 
                                                formControlName="lastName" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -51,6 +53,7 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="id_Document_num" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -64,6 +67,7 @@
                                        pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="birth" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -78,6 +82,7 @@
                                        label="Direccion" 
                                        name="address_street" 
                                        formControlName="address_street" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -90,6 +95,7 @@
                                        label="City" 
                                        name="address_city" 
                                        formControlName="address_city" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -100,6 +106,7 @@
                                        label="State" 
                                        name="address_state" 
                                        formControlName="address_state" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -112,6 +119,7 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="address_zip" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -124,6 +132,7 @@
                                        label="Country" 
                                        name="address_country" 
                                        formControlName="address_country" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -147,6 +156,7 @@
                                                name="attorney_names" 
                                                type="text" 
                                                formControlName="attorney_names" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
 
@@ -155,6 +165,7 @@
                                                name="attorney_lastname" 
                                                type="text" 
                                                formControlName="attorney_lastName" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -170,6 +181,7 @@
                                        name="attorney_relationship" 
                                        type="text" 
                                        formControlName="attorney_relationship" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -185,6 +197,7 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="attorney_phone" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -198,6 +211,7 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="attorney_cellphone" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -211,6 +225,7 @@
                                        name="attorney_email" 
                                        type="text" 
                                        formControlName="attorney_email" 
+                                       readonly='true'
                                        pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
                                        error-msg="Please provide a correct email!"
                                        ></mdl-textfield>
@@ -234,6 +249,7 @@
                                        label="Name" 
                                        name="medic_diagostic_name" 
                                        formControlName="medic_diagostic_name" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -244,6 +260,7 @@
                                        label="Level"
                                        name="medic_diagostic_level" 
                                        formControlName="medic_diagostic_level" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -254,6 +271,7 @@
                                        label="Percentage" 
                                        name="medic_diagostic_percentage" 
                                        formControlName="medic_diagostic_percentage" 
+                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -265,12 +283,7 @@
 
 <div class="modal-footer">
     <div class="modal-footer__actions">
-        <button class="btn_space"
-                mdl-button 
-                (click)="onSubmit()" [disabled]="!form.valid" 
-                mdl-button-type="raised" 
-                mdl-ripple mdl-colored="primary"
-                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+        
         <button class="btn_space"
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>

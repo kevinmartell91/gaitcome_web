@@ -4,14 +4,14 @@
   list-style-type: none;
   padding: 0;
   width: 100%;
-  height: 200px;
+  height: 100px;
   overflow-y: auto;
 }
 .therapists li {
   cursor: pointer;
   position: relative;
   left: 0;
-  background-color: #EEE;
+  background-color: transparent;
   color: #808C93; /*light gray*/
   margin: 0em;
   padding: 0em 0;

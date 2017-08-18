@@ -86,7 +86,7 @@ export class ResultListComponent implements OnInit, OnChanges{
           }
         }
         this.changeLog.push(log.join(', '));
-        console.log(this.headersOptions);
+        console.log(this.changeLog);
   }
 
   ngOnInit() {

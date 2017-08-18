@@ -3,7 +3,7 @@
 
 <ul  class="results">  
   <li class="row" *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-  (mouseout)="mouseOvered=null"   (mouseover)="mouseOvered=kinematicsAnalysis"
+  (mouseout)="mouseOvered=kinematicsAnalysis"   (mouseover)="mouseOvered=kinematicsAnalysis"
   >
 <!-- [class.selected]="kinematicsAnalysis === multipleKinematicsAnalysiss"  -->
 
@@ -12,18 +12,12 @@
       </mdl-checkbox>
      
       <div class="col-md-8">{{kinematicsAnalysis.created_at}}</div>
-<!--       <button [class.btn-success]="mouseOvered" 
-              (mouseout)="mouseOvered=false" 
-              (mouseover)="mouseOvered=true">
-        over me
-      </button> -->
-      <!-- <div *ngIf="mouseOvered === kinematicsAnalysis"> -->
-        <!-- <button type="button" class="col-md-1 btn btn-primary btn-sm view" (click)="select(kinematicsAnalysis)">
-          <mdl-icon >content paste</mdl-icon>
-        </button> -->
-      <div class="col-md-1">
-        <mdl-icon  class="icon material-icons" mdl-tooltip-large="ver resumen"
-          (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+
+      <div *ngIf="mouseOvered === kinematicsAnalysis">
+        <div class="col-md-1">
+          <mdl-icon  class="icon material-icons" mdl-tooltip-large="ver resumen"
+            (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+        </div>
       </div>
 
   </li>

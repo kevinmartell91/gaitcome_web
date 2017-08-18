@@ -8,54 +8,83 @@ import 'rxjs/add/operator/map';
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
-
 @Component({
-  selector: 'app-patient-add',
-  templateUrl: './patient-add.component.html',
-  styleUrls: ['./patient-add.component.css']
+  selector: 'app-patient-update',
+  templateUrl: './patient-update.component.html',
+  styleUrls: ['./patient-update.component.css']
 })
-export class PatientAddComponent implements OnInit {
+export class PatientUpdateComponent implements OnInit {
 
-  URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients';
+  URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
+
+  @Input() patient:any;
+  token: string;
+  updatedPatient: any;
+
 
   public disableForm = false;
   public form: FormGroup;
-  public names = new FormControl('', Validators.required);
-  public lastName = new FormControl('', Validators.required);
-  public id_Document_num = new FormControl('', Validators.required);
-  public birth = new FormControl('',Validators.required);
+  public names;
+  public lastName;
+  public id_Document_num;
+  public birth;
 
-  public address_street = new FormControl('');
-  public address_city = new FormControl('');
-  public address_state = new FormControl('');
-  public address_zip = new FormControl('');
-  public address_country = new FormControl('');
+  public address_street;
+  public address_city;
+  public address_state;
+  public address_zip;
+  public address_country;
 
-  public medic_diagostic_name = new FormControl('');
-  public medic_diagostic_level = new FormControl('');
-  public medic_diagostic_percentage = new FormControl('');
+  public medic_diagostic_name;
+  public medic_diagostic_level;
+  public medic_diagostic_percentage;
 
-  public attorney_names = new FormControl('');
-  public attorney_lastName = new FormControl('');
-  public attorney_relationship = new FormControl('');
-  public attorney_email = new FormControl('', emailValidator);
-  public attorney_cellphone = new FormControl('', Validators.required);
-  public attorney_phone = new FormControl('', Validators.required);
+  public attorney_names;
+  public attorney_lastName;
+  public attorney_relationship;
+  public attorney_email;
+  public attorney_cellphone;
+  public attorney_phone;
 
-  @Input() name;
-  token: string;
-  newPatient: any;
+  
 
   constructor( public activeModal: NgbActiveModal,
                private fb: FormBuilder, 
-               public http : Http) { }
+               public http : Http) { 
+  	
+    this.form = this.fb.group({  });
 
+  }
 
   ngOnInit() {
 
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
     
+
+    this.names = new FormControl(this.patient.names, Validators.required);
+    this.lastName = new FormControl(this.patient.lastname, Validators.required);
+    this.id_Document_num = new FormControl(this.patient.id_Document_num, Validators.required);
+    this.birth = new FormControl(this.patient.birth, Validators.required);
+
+    this.address_street = new FormControl(this.patient.address.street);
+    this.address_city = new FormControl(this.patient.address.city);
+    this.address_state = new FormControl(this.patient.address.state);
+    this.address_zip = new FormControl(this.patient.address.zip);
+    this.address_country = new FormControl(this.patient.address.country);
+
+    this.medic_diagostic_name = new FormControl(this.patient.medic_diagostic[0].name, Validators.required);
+    this.medic_diagostic_level = new FormControl(this.patient.medic_diagostic[0].level, Validators.required);
+    this.medic_diagostic_percentage = new FormControl(this.patient.medic_diagostic[0].percentage, Validators.required);
+
+    this.attorney_names = new FormControl(this.patient.attorney.names, Validators.required);
+    this.attorney_lastName = new FormControl(this.patient.attorney.lastname, Validators.required);
+    this.attorney_relationship = new FormControl(this.patient.attorney.relationship, Validators.required);
+    this.attorney_email = new FormControl(this.patient.attorney.email, emailValidator);
+    this.attorney_cellphone = new FormControl(this.patient.attorney.cellphone, Validators.required);
+    this.attorney_phone = new FormControl(this.patient.attorney.phone);
+
+
     this.form = this.fb.group({
       'names':                        this.names,
       'lastName':                     this.lastName,
@@ -80,6 +109,7 @@ export class PatientAddComponent implements OnInit {
       'attorney_phone':               this.attorney_phone
     });
     
+    
     this.form.valueChanges
       .map((formValues) => {
         formValues.names = formValues.names.toUpperCase();
@@ -90,10 +120,14 @@ export class PatientAddComponent implements OnInit {
         console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
         // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
       });
+
+
   }
+
   onSubmit() {
 
-    let jsonNewPatient = {
+    console.log(this.updatedPatient)
+    let jsonUpdatedPatient = {
       names: this.form.value.names,
       lastname: this.form.value.lastName,
       gender: "-",
@@ -132,20 +166,18 @@ export class PatientAddComponent implements OnInit {
       //created_at: { type: Date, default: Date.now },
       updated_at: new Date(),
       is_active: true
-
-
     }
 
-    console.log(JSON.stringify(jsonNewPatient));
+    console.log(JSON.stringify(jsonUpdatedPatient));
 
-    this._postJSON(this.URL_WEB_SERVICE_PATIENTS, JSON.stringify(jsonNewPatient), this.getHeaders())
-      .subscribe(json => this.newPatient = json);
+    this._putJSON(this.URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
+      .subscribe(json => this.updatedPatient = json);
 
     this.activeModal.close();
   }
 
-  _postJSON(url: string, body:any, option: RequestOptions): Observable<any> {
-    return this.http.post(url,body, option)
+  _putJSON(url: string, body:any, option: RequestOptions): Observable<any> {
+    return this.http.put(url,body, option)
       .map((res: Response) => res.json())
   }
 
