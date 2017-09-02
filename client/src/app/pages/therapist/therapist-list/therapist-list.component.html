@@ -1,61 +1,128 @@
-  <h2>Therapist</h2>
-  <ul class="therapists">  
-    <li *ngFor = "let therapist of therapists"
-      
-        (click)="select(therapist)"
-        [class.selected]="therapist === currentTherapist">
-        {{therapist.username}}
-        <!-- <button (click)="doFilter('therapist')">{{therapist.username}}</button> -->
-    </li>
-  </ul>
+<div *ngIf="allFields; then thenBlock else elseBlock"></div>
 
-          
-<div class="row">
-<!-- <div (scroll:{zone:false})="onScroll()"></div> -->
-    <!-- <template ngbModalContainer></template> -->
-    <button class="btn btn-lg btn-outline-primary" (click)="showAddTherapistComponent($event)">Add Therapist</button>
+<ng-template #thenBlock>
+    <div class="margin-container">
+        <div class="container">
 
-      
-</div>   
-<!-- 
-<div class="margin-container">
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Thearpist</h2>
+                </div>
+            </div>
+
+            <table class="table table-responsive">
+              <thead>
+                <tr class="header_table">
+                  <th>#</th>
+                  <th>Nombres</th>
+                  <th>Last names</th>
+                  <th>Email</th>
+                  <th>Cellphone</th>
+                  <th>CTMP</th>
+                  <th>NDTA</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let therapist of therapists"
+                        [class.selected]="therapist === currentTherapist"
+                        (mouseout)="currentTherapist = null"
+                        (mouseover)="select(therapist)">
+                    <!-- <div> -->
+                      <th scope="row">#</th>
+                      <td>{{therapist.names}}</td>
+                      <td>{{therapist.lastname}}</td>
+                      <td>{{therapist.email}}</td>
+                      <td>{{therapist.cellphone}}</td>
+                      <td>{{therapist.num_ctmp}}</td>  
+                      <td>{{therapist.num_ndta}}</td>
+                      <td>
+                        <div *ngIf="currentTherapist === currentTherapist">
+                            <div class="row">
+                                <div class="col">
+                                    <mdl-icon   class="icon material-icons" 
+                                                mdl-tooltip-large="ver"
+                                                (click)="showReadTherapistComponent()"
+                                                >visibility</mdl-icon>
+                                    
+                                </div>
+                                <div class="col">
+                                    <mdl-icon   class="icon material-icons" 
+                                                mdl-tooltip-large="editar"
+                                                (click)="showUpdateTherapistComponent()"
+                                                href="#updateModal">edit</mdl-icon>
+                                    
+                                </div>
+                                <div class="col">
+                                    <mdl-icon   class="icon material-icons" 
+                                                mdl-tooltip-large="eliminar"
+                                                (click)="showDeleteTherapistComponent()"
+                                                href="#deleteModal">delete</mdl-icon>
+                                    
+                                </div>
                             </div>
-                            
-                        </div>
-                    </div>
+                        </div>  
+                      </td>
+                     <!--  <td>
+                        <button mdl-button #btn4="mdlButton" 
+                                [mdl-toggle-menu]="m4"           
+                                mdl-button-type="icon" 
+                                mdl-ripple><mdl-icon>more_vert</mdl-icon>
+                        </button>
+                        <mdl-menu #m4="mdlMenu" mdl-menu-position="top-right">
+                           <mdl-menu-item mdl-ripple (click)="showReadTherapistComponent()">See</mdl-menu-item>
+                           <mdl-menu-item mdl-ripple (click)="showUpdateTherapistComponent()">Edit</mdl-menu-item>
+                           <mdl-menu-item mdl-ripple (click)="showDeleteTherapistComponent()">Delete</mdl-menu-item>
+                        </mdl-menu>
 
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-    </div>
+                      </td> -->
+                           <!-- <mdl-menu-item mdl-ripple mdl-menu-item-full-bleed-divider>Another Action</mdl-menu-item> -->
+                           <!-- <mdl-menu-item mdl-ripple disabled>Disabled Action</mdl-menu-item> -->
+                    <!-- </div> -->
+                </tr>
+               
+              </tbody>
+            </table>
 
-   
-
-    <div class="row">
-        <button type="button" class="btn btn-primary btn-sm" (click)="onShowForm()">show</button>
-
-
-        <button type="button" class="btn btn-primary btn-sm" (click)="onHideForm()">+</button>
-        <div *ngIf="showAddForm">
-
-            <add-therapist>   </add-therapist>
         </div>
+        
     </div>
+    <div class="drawer_add_therapist">
+        <mdl-button mdl-button
+                    mdl-button-type="fab" 
+                    mdl-colored="primary"
+                    mdl-ripple
+                    (click)="showAddTherapistComponent()">
+            <mdl-icon>add</mdl-icon>
+        </mdl-button>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    <!-- <h2>Therapist</h2> -->
+    <!-- Tooltips -->
+    <!-- <div class="col-md-1">
+        <mdl-icon  class="col icon material-icons" mdl-tooltip-large="Print" (click)="switchView('list')">print</mdl-icon>
+    </div>
+    <div class="col-md-1">
+        <mdl-icon  class="col icon material-icons" [mdl-tooltip]="tt1" mdl-tooltip-position="top" (click)="switchView('photo')">add</mdl-icon>
+    </div> -->
     
-  </div>
-</div>
-</div> -->
+    <ul class="therapists">  
+        <li  *ngFor = "let therapist of therapists"
+            (click)="select(therapist)"
+            [class.selected]="therapist === currentTherapist">
+
+            
+            <div *ngIf="listView">  
+                    {{therapist.names}}        
+            </div>
+            <div *ngIf="photoView">
+                    <mdl-chip mdl-label="{{therapist.names}}">
+                      <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">A</span>
+                    </mdl-chip>
+            </div>  
+        </li>
+    </ul>
+</ng-template>
+  

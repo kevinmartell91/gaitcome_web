@@ -56,34 +56,16 @@
 
 .mdl_icon_person {
     flex-shrink: 0;
-    margin-top: 0px;
-    margin-left: -17px;
+    margin-top: 5px;
+    margin-left: -1.5rem;
     opacity: .2;
     text-align: left;
-    /*width: 100%;*/
-    font-size: 131px;
-    font-size: 300%
+    font-size: 6rem;
 }
 
 .field-group{
     padding: 0px 0px 0px 9px;
     display: flex;
-}
-
-.vertical_divider{
-    border-left:1px solid #e0e0e0; 
-     border-right:1px solid #e0e0e0; 
-     height:400px;
-     position:absolute;
-     /*right:249px;*/
-     top:10px; 
-}
-
-.horizontal_divider{
-    border-bottom: 1px solid #e0e0e0;
-    border-top: 0;
-    margin: 0 0 5px;
-    padding: 0 0 3px;
 }
 
 .btn_space {

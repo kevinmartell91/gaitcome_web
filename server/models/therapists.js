@@ -44,5 +44,3 @@ var therapistSchema = new Schema({
 var Therapist = mongoose.model('Therapist', therapistSchema);
 
 module.exports = Therapist;
-
-

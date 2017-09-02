@@ -8,11 +8,9 @@
 				<div class="col-md-8">
 					<h2>Pacientes</h2>
 			    </div>
-	    		
 	    	</div>
 
-
-			<table class="table">
+            <table class="table table-responsive">
 			  <thead>
 			    <tr class="header_table">
 			      <th>#</th>
@@ -67,32 +65,30 @@
 			  </tbody>
 			</table>
 
-			<div class="drawer_add_patient">
-				<mdl-button mdl-button
-							mdl-button-type="fab" 
-							mdl-colored="primary"
-							mdl-ripple
-			    		 	(click)="showAddPatientComponent()">
-				    <mdl-icon>create</mdl-icon>
-				</mdl-button>
-			</div>
-
-
 		</div>
-		
+
+	</div>
+	<div class="drawer_add_patient">
+		<mdl-button mdl-button
+					mdl-button-type="fab" 
+					mdl-colored="primary"
+					mdl-ripple
+	    		 	(click)="showAddPatientComponent()">
+		    <mdl-icon>add</mdl-icon>
+		</mdl-button>
 	</div>
 </ng-template>
 
 <ng-template #elseBlock>
-	<h2>Patietn</h2>
+	<!-- <h2>Patietn</h2> -->
 
 	<!-- Tooltips -->
-    <div class="col-md-1">
+   <!--  <div class="col-md-1">
 		<mdl-icon  class="col icon material-icons" mdl-tooltip-large="Print" (click)="switchView('list')">print</mdl-icon>
     </div>
     <div class="col-md-1">
 		<mdl-icon  class="col icon material-icons" [mdl-tooltip]="tt1" mdl-tooltip-position="top" (click)="switchView('photo')">add</mdl-icon>
-    </div>
+    </div> -->
     
 	<ul class="patients">  
 	    <li  *ngFor = "let patient of patients"
@@ -111,90 +107,3 @@
 	    </li>
 	</ul>
 </ng-template>
-<!-- base -->
-
-		<!-- <ul class="patients">  
-		    <li  *ngFor = "let patient of patients"
-		       
-		        [class.selected]="patient === currentPatient"
-		        (mouseout)="currentPatient = null"
-		        (mouseover)="select(patient)">
-
-			    <div *ngIf="allFields; then thenBlock else elseBlock"></div>
-
-		        <ng-template #thenBlock>
-		        	<div class="row">
-		        		<div class="col-md-1">
-							{{patient.names}}        
-						</div>
-						<div class="col-md-1">
-							{{patient.lastname}}        
-						</div>	
-			<div *ngIf="patient.medic_diagostic[0] ; then thenBlock else elseBlock">
-				<ng-template #thenBlock>
-					<div class="col-md-1">
-						{{patient.medic_diagostic[0].name}}        
-					</div>	
-					<div class="col-md-1">
-						{{patient.medic_diagostic[0].level}}        
-					</div>
-				</ng-template>
-				<ng-template #elseBlock>
-					<div class="col-md-1">
-					</div>	
-					<div class="col-md-1">
-					</div>
-				</ng-template>
-			</div>
-						<div class="col-md-1">
-							{{patient.attorney.names}}        
-						</div>	
-						<div class="col-md-1">
-							{{patient.attorney.lastname}}        
-						</div>	
-						<div class="col-md-3">
-							{{patient.attorney.email}}        
-						</div>
-						<div class="col-md-2">
-							<div *ngIf="currentPatient === currentPatient">
-								<div class="row">
-							        <div class="col">
-							          	<mdl-icon  	class="icon material-icons" 
-							          			 	mdl-tooltip-large="ver"
-							            		 	(click)="showReadPatientComponent()"
-							              			>visibility</mdl-icon>
-							            
-							        </div>
-							        <div class="col">
-							          	<mdl-icon  	class="icon material-icons" 
-							          			 	mdl-tooltip-large="editar"
-							          			 	(click)="showUpdatePatientComponent()"
-							              			href="#updateModal">edit</mdl-icon>
-							            
-							        </div>
-							        <div class="col">
-							          	<mdl-icon  	class="icon material-icons" 
-							          			 	mdl-tooltip-large="eliminar"
-							            		 	(click)="showDeletePatientComponent()"
-							              			href="#deleteModal">delete</mdl-icon>
-							            
-							        </div>
-						        </div>
-	      					</div>        
-						</div>			
-		        	</div> 
-			    </ng-template>   
-		        
-		        <ng-template #elseBlock>
-					<div *ngIf="listView">  
-							{{patient.names}}        
-					</div>
-					<div *ngIf="photoView">
-							<mdl-chip mdl-label="{{patient.names}}">
-							  <span mdl-chip-contact class="mdl-color--blue mdl-color-text--white">A</span>
-							</mdl-chip>
-					</div>  
-			    </ng-template>   
-		    </li>
-		</ul>
-		 -->

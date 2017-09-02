@@ -1,4 +1,3 @@
-
 .modal-header {
     padding: 8px 8px 8px 24px;
     display: -webkit-box;
@@ -52,6 +51,7 @@
     text-align: left;
     width: 40px;
     font-size: 30px;
+    cursor: pointer;
 }
 
 .mdl_icon_person {
@@ -61,6 +61,7 @@
     opacity: .2;
     text-align: left;
     font-size: 6rem;
+    cursor: pointer;
 }
 
 .field-group{
@@ -70,4 +71,8 @@
 
 .btn_space {
     margin: 0px 5px 0px 0px;
+}
+
+.out {
+    margin: -9999px;
 }

@@ -2,8 +2,8 @@
     <h2 class="modal-title">New therapist</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
-    	<span aria-hidden="true">&times;</span>
- 	  </button>
+      <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 
 <div class="modal-body">
@@ -32,6 +32,7 @@
                                                    name="names" 
                                                    type="text" 
                                                    formControlName="names" 
+                                                   readonly='true'
                                                    ></mdl-textfield>
                                 </div>
 
@@ -40,6 +41,7 @@
                                                    name="lastname" 
                                                    type="text" 
                                                    formControlName="lastName" 
+                                                   readonly='true'
                                                    ></mdl-textfield>
                                 </div>
                             </div>
@@ -58,6 +60,7 @@
                                            pattern="-?[0-9]*(\.[0-9]+)?" 
                                            error-msg="Caracteres no numéricos!" 
                                            formControlName="id_Document_num" 
+                                           readonly='true'
                                            ></mdl-textfield>
                         </div>
                     </div>
@@ -65,13 +68,13 @@
                         
                         <div class="field-group">
 
-                           <form class="form-inlinejh">
+                           <!-- <form class="form-inlinejh"> -->
                               <!-- <div class="form-group"> -->
                                 <!-- <div class="input-group"> -->
-                                  <mdl-icon class="mdl_icon" (click)="d.toggle()">credit_card</mdl-icon>
-                                  <input  placeholder="yyyy-mm-dd"
-                                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                            </form>
+                                  <mdl-icon class="mdl_icon">credit_card</mdl-icon>
+                                  <!-- <input  placeholder="yyyy-mm-dd" -->
+                                         <!-- name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"> -->
+                            <!-- </form> -->
 
                             <mdl-textfield type="text"
                                            label="birth" 
@@ -79,7 +82,7 @@
                                            pattern="-?[0-9]*(\.[0-9]+)?" 
                                            error-msg="Caracteres no numéricos!" 
                                            formControlName="birth"
-                                           class="out"
+                                           readonly='true'
                                            ></mdl-textfield>
 
                             <!-- <hr/>
@@ -94,24 +97,26 @@
                         <div class="field-group">
                             <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                             <mdl-textfield type="text" 
-                            			   label="N° de CTMP" 
-                            			   name="num_ctmp" 
-                            			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                            			   error-msg="Caracteres no numéricos!" 
-                            			   formControlName="num_ctmp" 
-                            			   ></mdl-textfield>
+                                     label="N° de CTMP" 
+                                     name="num_ctmp" 
+                                     pattern="-?[0-9]*(\.[0-9]+)?" 
+                                     error-msg="Caracteres no numéricos!" 
+                                     formControlName="num_ctmp" 
+                                     readonly='true'
+                                     ></mdl-textfield>
                         </div>
                     </div>
                     <div class="col">
                         <div class="field-group">
                             <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                             <mdl-textfield type="text" 
-                            			   label="N° de NDTA" 
-                            			   name="num_ndta" 
-                            			   pattern="-?[0-9]*(\.[0-9]+)?" 
-                            			   error-msg="Caracteres no numéricos!" 
-                            			   formControlName="num_ndta" 
-                            			   ></mdl-textfield>
+                                     label="N° de NDTA" 
+                                     name="num_ndta" 
+                                     pattern="-?[0-9]*(\.[0-9]+)?" 
+                                     error-msg="Caracteres no numéricos!" 
+                                     formControlName="num_ndta" 
+                                     readonly='true'
+                                     ></mdl-textfield>
                         </div>
                     </div>
                 </div>
@@ -125,6 +130,7 @@
                                            name="email" 
                                            type="text" 
                                            formControlName="email" 
+                                           readonly='true'
                                            pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
                                            error-msg="Please provide a correct email!"
                                            >gfdgfdsgfd</mdl-textfield>
@@ -144,6 +150,7 @@
                                            pattern="-?[0-9]*(\.[0-9]+)?" 
                                            error-msg="Caracteres no numéricos!" 
                                            formControlName="cellphone" 
+                                           readonly='true'
                                            ></mdl-textfield>
                         </div>
                     </div>
@@ -157,6 +164,7 @@
                                            pattern="-?[0-9]*(\.[0-9]+)?" 
                                            error-msg="Caracteres no numéricos!" 
                                            formControlName="phone" 
+                                           readonly='true'
                                            ></mdl-textfield>
                         </div>
 
@@ -177,6 +185,7 @@
                                                label="Direccion" 
                                                name="street" 
                                                formControlName="street" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -189,6 +198,7 @@
                                                label="City" 
                                                name="city" 
                                                formControlName="city" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -199,6 +209,7 @@
                                                label="State" 
                                                name="state" 
                                                formControlName="state" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -213,6 +224,7 @@
                                                pattern="-?[0-9]*(\.[0-9]+)?" 
                                                error-msg="Caracteres no numéricos!" 
                                                formControlName="zip" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -223,6 +235,7 @@
                                                label="Country" 
                                                name="country" 
                                                formControlName="country" 
+                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -237,9 +250,9 @@
     <div class="modal-footer__actions">
         <button class="btn_space"
                 mdl-button 
-        		(click)="onSubmit()" [disabled]="!form.valid" 
-        		mdl-button-type="raised" 
-        		mdl-ripple mdl-colored="primary"
+            (click)="onSubmit()" [disabled]="!form.valid" 
+            mdl-button-type="raised" 
+            mdl-ripple mdl-colored="primary"
                 (click)="activeModal.close('Close click')">Crear Cuenta</button>
         <button class="btn_space"
                 mdl-button 

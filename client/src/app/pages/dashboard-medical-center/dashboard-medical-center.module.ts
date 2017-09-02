@@ -1,37 +1,38 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
-import { AttorneyListComponent } from './attorney-list/attorney-list.component';
-import { MedicalCenterComponent } from '../medicalCenter/medical-center.component';
-import { TherapistListComponent } from '../therapist/therapist-list/therapist-list.component';
-import { ResultsComponent} from './results/results.component'
-import { ResultListComponent} from '../result/result-list/result-list.component'
-import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
-import { ResultPreviewComponent } from '../result/result-preview/result-preview.component';
-
 import { MdlModule } from 'angular2-mdl';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { routing } from './dashboard-medical-center.routing';
-import { ChartModule } from 'angular2-highcharts';
 
-//reused code
+import { MedicalCenterComponent } from '../medicalCenter/medical-center.component';
+import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
+
+// Therapist components
+import { TherapistListDashboardComponent, NgbdModalContent} from './therapist-list/therapist-list.component'
+import { TherapistListComponent } from '../therapist/therapist-list/therapist-list.component';
 import { TherapistAddComponent } from '../therapist/therapist-add/therapist-add.component';
+import { TherapistDeleteComponent } from '../therapist/therapist-delete/therapist-delete.component';
+import { TherapistUpdateComponent } from '../therapist/therapist-update/therapist-update.component';
+import { TherapistReadComponent } from '../therapist/therapist-read/therapist-read.component';
+
+// Patient components
+import { AttorneyListComponent } from './attorney-list/attorney-list.component';
 import { PatientListComponent } from '../patient/patient-list/patient-list.component';
 import { PatientAddComponent } from '../patient/patient-add/patient-add.component';
 import { PatientUpdateComponent } from '../patient/patient-update/patient-update.component';
 import { PatientReadComponent } from '../patient/patient-read/patient-read.component';
 import { PatientDeleteComponent } from '../patient/patient-delete/patient-delete.component';
 
-
+// Result components
+import { ResultsComponent} from './results/results.component'
+import { ResultListComponent} from '../result/result-list/result-list.component'
+import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
+import { ResultPreviewComponent } from '../result/result-preview/result-preview.component';
 import { ResultDrawerComponent } from '../result/result-detail/result-detail.component';
 import { VideoDrawerComponent } from '../result/result-detail/result-detail.component';
+import { ChartModule } from 'angular2-highcharts';
 
-//
-import { TherapistListDashboardComponent, NgbdModalContent} from './therapist-list/therapist-list.component'
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -44,7 +45,10 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     routing
   ],
   declarations: [
-    TherapistAddComponent, 
+    TherapistAddComponent,
+    TherapistDeleteComponent,
+    TherapistUpdateComponent,
+    TherapistReadComponent,
     TherapistListDashboardComponent, NgbdModalContent,
     AttorneyListComponent, 
     DashboardMedicalCenterComponent,
@@ -63,7 +67,10 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     VideoDrawerComponent
   ],
   entryComponents: [
-    TherapistAddComponent, 
+    TherapistAddComponent,
+    TherapistDeleteComponent,
+    TherapistUpdateComponent,
+    TherapistReadComponent, 
     TherapistListDashboardComponent, NgbdModalContent,
     PatientListComponent,
     PatientAddComponent,
@@ -74,7 +81,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     ResultPreviewComponent
   ],
   providers: [
-  TherapistAddComponent,
+    TherapistAddComponent,
     NgbActiveModal
   ],
   schemas: [

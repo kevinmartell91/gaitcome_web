@@ -1,43 +1,17 @@
 <div class="margin-container">
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            
-                        </div>
-                    </div>
 
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-    </div>
+  <div class="row">
 
-    <div class="row">
-        <!-- <ng-template ngbModalContainer></ng-template> -->
-        <button class="btn btn-lg btn-outline-primary" (click)="showAddTherapistComponent()">Add Therapisttt</button>
-    </div>
+    <div class="col-md-12">
+      <!-- <app-patient-list  [token]="token" -->
+      <app-therapist-list [medical_center_id]="medical_center_id"
+                          [medical_center_name]="medical_center_name"
+                          [allFields]="true">
+                        <!-- not necessary in this list component -->
+                        <!-- (onSelect)="patientSelected($event)"> -->
+      </app-therapist-list>
+      
+    </div> 
 
-    <!-- <div class="row">
-        <button type="button" class="btn btn-primary btn-sm" (click)="onShowForm()">show</button>
-        <button type="button" class="btn btn-primary btn-sm" (click)="onHideForm()">+</button>
-        <div *ngIf="showAddForm">
-
-            <add-therapist-dashboard>   </add-therapist-dashboard>
-        </div>
-    </div> -->
-    
-  </div>
-</div>
-
+   </div> 
 </div>

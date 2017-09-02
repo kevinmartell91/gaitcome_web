@@ -1,7 +1,106 @@
-<!-- <div class="margin-container container-fluid"> -->
 <div class="margin-container">
+
+  
+  <div class="container-fluid">
+        <div *ngIf="currentKinematicsAnalysis">
+          
+          <div class="collapse" id="collapseVideo">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+  </div>
+
   <div class="container">
-    <div class="row">
+    <div class="row result-section">
+      
+
+      <div class="col-md-5 push-md-3 result-table-section">
+        <app-result-list [token]="token"
+                         [medical_center_id]="medical_center_id"
+                         [therapist_id]="currentTherapist" 
+                         [patient_id]="currentPatient" 
+                         [headersOptions]="optionsHeader" 
+                         (onSelect)="kinematicAnalysisSelected($event)"
+                         (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
+        </app-result-list> 
+      </div>
+
+      <div class="col-md-3 pull-md-5">
+      
+        <div class="row">
+          <div class="col">
+              <div class="roww field-group">
+                <h4 data-toggle="collapse" href="#collapsePatientList" aria-expanded="true" aria-controls="collapsePatientList">
+                  Patients
+                </h4>
+                <mdl-icon class="col-xs-2 icon material-icons"  
+                           data-toggle="collapse" href="#collapsePatientList" aria-expanded="true" aria-controls="collapsePatientList">keyboard_arrow_down</mdl-icon>
+              </div>
+              <div class="collapse" id="collapsePatientList">
+                  <app-patient-list [medical_center_id]="medical_center_id"
+                                    [allFields]="false"
+                                    (onSelect)="patientSelected($event)">
+                  </app-patient-list>
+              </div>
+          </div>
+          <div class="col">
+            <div class="roww field-group">
+              <h4 data-toggle="collapse" href="#collapseTherapistList" aria-expanded="true" aria-controls="collapseTherapistList">
+                Therapists
+              </h4>
+              <mdl-icon  class="col-xs-2  icon material-icons" 
+                         data-toggle="collapse" href="#collapseTherapistList" aria-expanded="true" aria-controls="collapseTherapistList">keyboard_arrow_down</mdl-icon>
+            </div>             
+            <div class="collapse" id="collapseTherapistList">
+                <app-therapist-list [medical_center_id]="medical_center_id"
+                                    [allFields]="false"
+                                    (onSelect)="therapistSelected($event)">
+                </app-therapist-list>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div *ngIf="currentKinematicsAnalysis">
+          
+          <div class="collapse" id="collapseVideo">
+              <iframe class="video-section" width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="row result-details-section">
+            <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+            </app-result-preview>   
+            <button type="button" 
+                    class="btn btn-primary btn-sm" 
+                    (click)="gotoDetail()">View Details</button> 
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div *ngIf="currentKinematicsAnalysis" class="drawer_video">
+    <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
+            data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+        <mdl-icon>movie</mdl-icon>
+    </button>
+  </div>   
+</div>
+
+
+
+
+
+
+</div>
+    
+    
+
+
+    <div *ngIf="false==true" class="row">
 
       <!-- Result filter by patient and therapist -->
       <div class="col-md-2">
@@ -9,18 +108,19 @@
         <!-- Patient list | child component-->
         <div class="row">
             <!-- <div class="card-block"> -->
-                <app-patient-list [token]="token"
-                                  [medical_center_id]="medical_center_id"
-                                  [allFields]="false"
-                                  (onSelect)="patientSelected($event)">
-                </app-patient-list>
+          <!-- <app-patient-list [token]="token" -->
+          <app-patient-list [medical_center_id]="medical_center_id"
+                            [allFields]="false"
+                            (onSelect)="patientSelected($event)">
+          </app-patient-list>
             <!-- </div> -->
         </div>
         <!-- Therapist list |  child component -->
         <div class="row">
           <!-- <div class="card-block"> -->
-          <app-therapist-list [token]="token"
-                              [medical_center_id]="medical_center_id"
+          <!-- <app-therapist-list [token]="token" -->
+          <app-therapist-list [medical_center_id]="medical_center_id"
+                              [allFields]="false"
                               (onSelect)="therapistSelected($event)">
           </app-therapist-list>
           <!-- </div> -->
@@ -50,12 +150,12 @@
               <div class="col-md-6">
                 <div class="card-block">
                   <app-result-list [token]="token"
-                                 [medical_center_id]="medical_center_id"
-                                 [therapist_id]="currentTherapist" 
-                                 [patient_id]="currentPatient" 
-                                 [headersOptions]="optionsHeader" 
-                                 (onSelect)="kinematicAnalysisSelected($event)"
-                                 (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
+                                   [medical_center_id]="medical_center_id"
+                                   [therapist_id]="currentTherapist" 
+                                   [patient_id]="currentPatient" 
+                                   [headersOptions]="optionsHeader" 
+                                   (onSelect)="kinematicAnalysisSelected($event)"
+                                   (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
                   </app-result-list>                              
               
                 </div>
@@ -67,7 +167,9 @@
                   <div *ngIf="currentKinematicsAnalysis">
                     <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
                     </app-result-preview>   
-                    <button type="button" class="btn btn-primary btn-sm" (click)="gotoDetail()">View Details</button> 
+                    <button type="button" 
+                            class="btn btn-primary btn-sm" 
+                            (click)="gotoDetail()">View Details</button> 
                   </div>
                 </div>
 
@@ -77,101 +179,3 @@
       </div>
 
     </div>
-
-    <div class="row">
-      <button type="button" class="btn btn-primary btn-sm" (click)="doFilter()">buscar</button> 
-
-      <ul class="nav navbar-nav pull-xs-right">
-          <li class="nav-item">
-            <a class="nav-link page-scroll" data-toggle="modal"
-              title="A free Bootstrap theme"
-              href="#aboutModal">ModalAbout</a>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav pull-xs-left">
-          <li class="nav-item">
-            <a class="nav-link page-scroll" data-toggle="modal"
-              title="A free Bootstrap theme"
-              href="#alertModal">Modal Alert</a>
-          </li>
-        </ul>
-    </div>
-
-  </div>
-
-  <!-- Modals from template -->
-    <div id="aboutModal" class="modal fade margin-container" tabindex="-1"
-    role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body text-xs-center">
-          <h2 class="text-xs-center">Bootstrap 4 Theme</h2>
-          <h6 class="text-xs-center">A free, responsive template</h6>
-          <p class="text-xs-center">
-            This is a customized, single page example
-            template that demonstrates some
-            of the new features to check
-            out in Bootstrap 4. Some of the
-            features include Google Montserrat
-            fonts, animation using Dan Eden's
-            animate.css and the WOW jQuery
-            plugin to watch the scrolling.
-          </p>
-          <p class="text-xs-center"><a href="http://      www.codeply.com/download/kNmg5E60WS">Download</a></p>
-          <br>
-          <button class="btn btn-primary btn-lg" data-dismiss="modal"
-            aria-hidden="true"> OK </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="alertModal" class="modal fade margin-container" tabindex="-1"
-    role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body text-xs-center">
-          <h2 class="text-xs-center">Nice Job!</h2>
-          <p class="text-xs-center">You clicked the link, but it doesn't
-            actually go anywhere because
-            this is only a demo.</p>
-          <p class="text-xs-center"><a href="http://bootstrap4.guide">Learn more</a></p>
-          <br>
-          <button class="btn btn-primary btn-lg" data-dismiss="modal"
-            aria-hidden="true">OK <i class="ion-android-close"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-    <!-- <div class="margin-container">
-    <div mdl-shadow="2">
-       <mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
-     
-          <mdl-layout-drawer class="drawer-results">
-             <mdl-layout-title>result-list works!</mdl-layout-title>
-             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" >Receintes</a>
-                <a class="mdl-navigation__link" >Buscar</a>
-             </nav>
-          </mdl-layout-drawer>
-          <mdl-layout-content>
-             
-
-           <p>
-          <label>Filter by first name: <input (keyup)="filterPeople($event)"/></label>
-        </p>
-       
-
-          <button (click)='onSelect()'> click me </button>
-
-
-          </mdl-layout-content>
-       </mdl-layout>
-    </div>
-    </div> -->
-
-  
-

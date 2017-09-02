@@ -1,9 +1,10 @@
 <h2>Resultados</h2>
 <!-- <span class="bd-booticon outline">B</span> -->
 
-<ul  class="results">  
+<ul  *ngIf="false==true" class="results">  
   <li class="row" *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-  (mouseout)="mouseOvered=kinematicsAnalysis"   (mouseover)="mouseOvered=kinematicsAnalysis"
+      (mouseout)="mouseOvered=kinematicsAnalysis"   
+      (mouseover)="mouseOvered=kinematicsAnalysis"
   >
 <!-- [class.selected]="kinematicsAnalysis === multipleKinematicsAnalysiss"  -->
 
@@ -11,7 +12,7 @@
       <mdl-checkbox  class="col-md-1" (click)="multipleSelect(kinematicsAnalysis._id)">
       </mdl-checkbox>
      
-      <div class="col-md-8">{{kinematicsAnalysis.created_at}}</div>
+      <div class="col-md-8">kinematicsAnalysis.created_at</div>
 
       <div *ngIf="mouseOvered === kinematicsAnalysis">
         <div class="col-md-1">
@@ -26,8 +27,46 @@
 
 <!-- <h4>Change log:</h4>
     <ul>
-      <li *ngFor="let change of changeLog">{{change}}</li>
+      <li *ngFor="let change of changeLog">change</li>
     </ul>
  -->
 
-  {{selecteds | json}}
+ 
+
+  
+  <!--  -->
+  <!--  -->
+  <!--  -->
+
+<table class="table table-responsive">
+  <thead>
+    <tr class="header_table">
+      <th></th>
+      <th>Date</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
+    (mouseout)="mouseOvered=kinematicsAnalysis"   
+    (mouseover)="mouseOvered=kinematicsAnalysis"
+    >
+      <!-- <div> -->
+        <th scope="row">
+          <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
+          </mdl-checkbox>
+        </th>
+        <td>{{kinematicsAnalysis.created_at}}</td>
+        <td>
+          <div *ngIf="mouseOvered === kinematicsAnalysis">
+            <mdl-icon class="icon material-icons" mdl-tooltip-large="ver resumen"
+                      (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+          </div>
+        </td>
+      <!-- </div> -->
+    </tr>
+   
+  </tbody>
+</table>
+
+       {{selected| json}}

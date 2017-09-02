@@ -25,22 +25,22 @@ exports.postAuthenticate = function(req, res) {
   // find the MedicalCenter / patien / therapist  Login
   Entity.findOne({
     username: req.body.username
-  }, function(err, user) {
+  }, function(err, entity) {
 
     if (err) throw err;
 
-    if (!user) {
-      res.json({ success: false, message: 'Authentication failed. User not found.' });
-    } else if (user) {
+    if (!entity) {
+      res.json({ success: false, message: 'Authentication failed. entity not found.' });
+    } else if (entity) {
 
       // check if password matches
-      if (user.password != req.body.password) {
+      if (entity.password != req.body.password) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
       } else {
 
-        // if user is found and password is right
+        // if entity is found and password is right
         // create a token
-        var token = jwt.sign(user, app.get('superSecret'));
+        var token = jwt.sign(entity, app.get('superSecret'));
         // 	, {
         //   expiresInMinutes: 1440 // expires in 24 hours
         // });
@@ -49,7 +49,8 @@ exports.postAuthenticate = function(req, res) {
         res.json({
           success: true,
           message: 'Enjoy your token!',
-          token: token
+          token: token,
+          entity: entity
         });
       }   
 

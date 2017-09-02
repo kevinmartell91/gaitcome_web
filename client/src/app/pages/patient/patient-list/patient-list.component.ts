@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, 
-		 EventEmitter} from '@angular/core';
+		     EventEmitter} from '@angular/core';
 import { HttpModule, Http, Response, Headers, 
-		 RequestOptions, URLSearchParams } from '@angular/http';
+		     RequestOptions, URLSearchParams } from '@angular/http';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
@@ -11,38 +11,34 @@ import { PatientUpdateComponent} from '../patient-update/patient-update.componen
 import { PatientDeleteComponent} from '../patient-delete/patient-delete.component'
 import { PatientAddComponent } from '../patient-add/patient-add.component'
 
+const  URL_WEB_SERVICE_PATIENTS:string = 	'http://localhost:8080/api/pacients/';
 
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
   styleUrls: ['./patient-list.component.css',
-  			  '../../dashboard-medical-center/results/results.component.css']
+          '../../dashboard-medical-center/results/results.component.css']
 })
 
 export class PatientListComponent implements OnInit {
 
   
   @Input()  medical_center_id:string ;
-  @Input() token: string;
   @Input() allFields: boolean;
   @Output() onSelect = new  EventEmitter<any>();
 
+  token: string;
   listView:boolean = true;
   photoView:boolean = false;
   p: any;
   patients: any[] = [];
   currentPatient: any;
 
-
   isActiveUpdateModal: boolean = true;
-
-  URL_WEB_SERVICE_PATIENTS:string = 
-  	'http://localhost:8080/api/pacients/';
   
-  constructor( private modalservice: NgbModal,
+  constructor( private modalService: NgbModal,
                private http: Http 
                ) { 
-    
   }
 
 
@@ -63,13 +59,13 @@ export class PatientListComponent implements OnInit {
   }
 
   // EventEmitter -> expose to parent component
-  select(patietnt: any) {
-  	this.currentPatient  = patietnt;
-    this.onSelect.emit(patietnt);
+  select(patient: any) {
+  	this.currentPatient  = patient;
+    this.onSelect.emit(patient);
   }
   // Service methods
   getTherapist() {
-    this._getJSON(this.URL_WEB_SERVICE_PATIENTS, 
+    this._getJSON(URL_WEB_SERVICE_PATIENTS, 
     			  this.getHeaders())
       .subscribe(json => this.patients = json)
   }
@@ -121,7 +117,7 @@ export class PatientListComponent implements OnInit {
     let options: NgbModalOptions = {
       size: 'lg'
     };
-    const modalRef = this.modalservice.open(PatientReadComponent, options);
+    const modalRef = this.modalService.open(PatientReadComponent, options);
     modalRef.componentInstance.patient = this.currentPatient; 
   }
 
@@ -130,14 +126,14 @@ export class PatientListComponent implements OnInit {
     let options: NgbModalOptions = {
       size: 'lg'
     };
-    const modalRef = this.modalservice.open(PatientUpdateComponent, options);
+    const modalRef = this.modalService.open(PatientUpdateComponent, options);
     modalRef.componentInstance.patient = this.currentPatient; 
     // getTherapist(); // update therapoist list
   }
 
   showDeletePatientComponent() {
 
-    const modalRef = this.modalservice.open(PatientDeleteComponent);
+    const modalRef = this.modalService.open(PatientDeleteComponent);
     modalRef.componentInstance._id = this.currentPatient._id; 
     modalRef.componentInstance.names = this.currentPatient.names; 
     modalRef.componentInstance.lastname = this.currentPatient.lastname; 
@@ -150,7 +146,7 @@ export class PatientListComponent implements OnInit {
     let options: NgbModalOptions = {
       size: 'lg'
     };
-    const modalRef = this.modalservice.open(PatientAddComponent, options);
+    const modalRef = this.modalService.open(PatientAddComponent, options);
     // getTherapist(); // update therapoist list
   }
 

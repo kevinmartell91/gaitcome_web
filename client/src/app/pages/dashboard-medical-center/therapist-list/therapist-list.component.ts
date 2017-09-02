@@ -10,25 +10,16 @@ import { TherapistAddComponent } from "../../therapist/therapist-add/therapist-a
 })
 export class TherapistListDashboardComponent implements OnInit {
 
-  showAddForm : boolean = false;
+  medical_center_id:string;
+  medical_center_name:string;
 
-  constructor( private modalService: NgbModal) { }
+  constructor() { }
 
   ngOnInit() {
-  }
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.medical_center_id = currentUser && currentUser.entity._id;
+    this.medical_center_name = currentUser && currentUser.entity.name;
 
-  onShowForm() {
-  	this.showAddForm = true;
-  }
-
-  onHideForm() {
-  	this.showAddForm = false;
-  }
-
-  showAddTherapistComponent() {
-    const modalRef = this.modalService.open(TherapistAddComponent);
-    // const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.name = 'World';
   }
 
 }

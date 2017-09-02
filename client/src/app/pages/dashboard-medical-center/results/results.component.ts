@@ -47,10 +47,13 @@ export class ResultsComponent implements OnInit {
   URL_WEB_SERVICE_ANALYSIS:string = 'http://localhost:8080/api/kinematics_analysis/';
   URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
   URL_WEB_SERVICE_THERAPISTS:string = 'http://localhost:8080/api/therapists/';
+  
+
   token: string = '';
   medical_center_id:string = '591e7542583a7b2b751d4ec3';
   therapist_id:string = '';
   patient_id:string = '';
+  optionsHeader: RequestOptions;
 
 
   kinematicsAnalysiss: any[] = [];
@@ -63,7 +66,6 @@ export class ResultsComponent implements OnInit {
   therapists:any[] =[];
   currentTherapist:any;
 
-  optionsHeader: RequestOptions;
 
   currentMultipleKinematicsAnalysisSelected: any[] =[];
 
@@ -3905,72 +3907,47 @@ export class ResultsComponent implements OnInit {
   // }
 
 
+  // --------------------------------------------------
+  // METHODS THAT ALLOW COMUNICATION BETWEEN CHILD 
+  // COMPONENTS THROUGH THE PARENT COMPONENT
+  // --------------------------------------------------
+
+  // this method is always listening to the selected  
+  // KinematicAnalisys from child component 
+  // updating the currentKinematicsAnalysis in this 
+  // component 
   kinematicAnalysisSelected (kinematicsAnalysis: any) {
     this.currentKinematicsAnalysis = kinematicsAnalysis;
   }
-
+  
+  // this method is always listening to multiselection  
+  // KinematicAnalisys from child component 
+  // updating the currentMultipleKinematicsAnalysisSelected  
+  // in this component 
   multipleKinematicAnalysisSelected (multipleKinematicsAnalysis: any[]) {
     this.currentMultipleKinematicsAnalysisSelected = multipleKinematicsAnalysis;
       console.log(this.currentMultipleKinematicsAnalysisSelected);
   }
 
+  // this method is always listening to the selected  
+  // therapist from child component 
+  // updating the currentTherapist in this 
+  // component 
   therapistSelected(therapist: any) {
     this.currentTherapist = therapist;
     this.doFilter("therapist");
-
   }
 
+  // this method is always listening to the selected  
+  // patient from child component 
+  // updating the currentPatient in this 
+  // component 
   patientSelected(patient: any) {
     console.log("patientSelected" , patient )  
     this.currentPatient= patient;
     this.doFilter("patient");
-
   }
 
-
 }
-// import { Component, OnInit } from '@angular/core';
-// import {
-//   IMdlTableModelItem,
-//   MdlDefaultTableModel,
-// } from 'angular2-mdl';
-
-
-// export interface ITableItem extends IMdlTableModelItem {
-//   material: string;
-//   quantity: number;
-//   unitPrice: number;
-// }
-
-// @Component({
-//   selector: 'app-result-list',
-//   templateUrl: './result-list.component.html',
-//   styleUrls: ['./result-list.component.css']
-// })
-// export class ResultListComponent implements OnInit {
-
-//     private tablepaciente: [ITableItem] = [
-//     {material: 'Acrylic (Transparent)', quantity: 25, unitPrice: 2.90, selected: true},
-//     {material: 'Plywood (Birch)', quantity: 50, unitPrice: 1.25, selected: false},
-//     {material: 'Laminate (Gold on Blue)', quantity: 10, unitPrice: 2.35, selected: false}
-//   ];
-
-//   protected selected: Array<ITableItem> = new Array<ITableItem>();
-
-//   public tableModel = new MdlDefaultTableModel([
-//     {key: 'material', name: 'Material', sortable: true},
-//     {key: 'quantity', name: 'Quantity', sortable: true, numeric: true},
-//     {key: 'unitPrice', name: 'Unit price', numeric: true}
-//   ]);
-
-
-//   public ngOnInit() {
-//     this.tableModel.addAll(this.tablepaciente);
-//     this.selected = this.tablepaciente.filter( paciente => paciente.selected);
-//   }
-
-//   protected selectionChanged($event) {
-//     this.selected = $event.value;
-//   }
 
 // }

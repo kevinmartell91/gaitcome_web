@@ -1,11 +1,11 @@
 .therapists {
-  font-size: large;
-  margin: 0em 0em 0em 0.5em;
+  font-size: medium;
+  margin: 0.5em 0em 1em 0em;
   list-style-type: none;
-  padding: 0;
-  width: 100%;
-  height: 100px;
-  overflow-y: auto;
+  margin-left: -1rem; 
+  height: 8rem;
+  width: 90%;
+  overflow-y: scroll;
 }
 .therapists li {
   cursor: pointer;
@@ -49,6 +49,69 @@
   height: 1.8em;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+}
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 70%;
+    margin: 20px auto;
+  }
+  .modal-dialog_delete {
+    max-width: 40%;
+    margin: 20px auto;
+  }
+}
+
+/* TABLE */
+.table {
+  font-size: large;
+  margin: 0em 0em 0em 0.5em;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.table tbody tr {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: transparent;
+  color: #808C93; /*light gray*/
+  margin: 0em;
+  padding: 0em 0;
+  height: -1em;
+  border-radius: 2px;
+}
+.table tbody tr:hover {
+  background-color: #f3f3f3;
+  color: #000000; /* black */
+  left: .1em;
+}
+.table tbody tr.active {
+    color: #f05a6d;
+}
+.table tbody tr.selected {
+  color: #f05a6d; /* primary color */
+
+}
+.table tbody tr.selected:hover {
+  color: #ed8593;
+}
+
+.header_table th{
+    color: #98D5EC;
+}
+
+.drawer_add_therapist {
+    /*background-color: #e91e63;*/
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
 }
 
 

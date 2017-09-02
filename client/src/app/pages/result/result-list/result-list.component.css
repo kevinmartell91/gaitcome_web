@@ -3,7 +3,7 @@
   color: white;
 }
 .results {
-  font-size: large;
+  font-size: medium;
   margin: 0em 0em 0em 0.5em;
   list-style-type: none;
   padding: 0;
@@ -105,6 +105,52 @@ button.view {
     color: white;
 }*/
 
+/* TABLE */
+.table {
+  font-size: large;
+  margin: 0em 0em 0em 0em;
+  list-style-type: none;
+  width: 80%;
+  overflow-y: auto;
+}
+.table thead { 
+  display:block; 
+}
+.table tbody { 
+  height: 20rem; 
+  overflow-y: scroll; 
+  display: block; 
+}
+.table tbody tr {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: transparent;
+  color: #808C93; /*light gray*/
+  margin: 0em;
+  padding: 0em 0;
+  height: -1em;
+  border-radius: 2px;
+}
+.table tbody tr:hover {
+  background-color: #f3f3f3;
+  color: #000000; /* black */
+  left: .1em;
+}
+.table tbody tr.active {
+    color: #f05a6d;
+}
+.table tbody tr.selected {
+  color: #f05a6d; /* primary color */
+
+}
+.table tbody tr.selected:hover {
+  color: #ed8593;
+}
+
+.header_table th{
+    color: #98D5EC;
+}
 
 
 

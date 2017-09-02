@@ -7,6 +7,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
+const URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
 
 @Component({
   selector: 'app-patient-update',
@@ -15,7 +16,6 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 })
 export class PatientUpdateComponent implements OnInit {
 
-  URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
 
   @Input() patient:any;
   token: string;
@@ -170,7 +170,7 @@ export class PatientUpdateComponent implements OnInit {
 
     console.log(JSON.stringify(jsonUpdatedPatient));
 
-    this._putJSON(this.URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
+    this._putJSON(URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
       .subscribe(json => this.updatedPatient = json);
 
     this.activeModal.close();

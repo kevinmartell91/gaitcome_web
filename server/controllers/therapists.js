@@ -15,7 +15,6 @@ exports.postTherapists = function(req, res) {
   therapist.id_Document_type = req.body.id_Document_type;
   therapist.id_Document_num = req.body.id_Document_num;
   therapist.birth =  req.body.birth;
-  
 
   therapist.email = req.body.email;
   therapist.phone = req.body.phone;
@@ -27,22 +26,21 @@ exports.postTherapists = function(req, res) {
   therapist.username = req.body.username;
   therapist.password = req.body.password;
 
-
   therapist.address = {
-    street: req.body.street,
-    city: req.body.city,
-    state: req.body.state,
-    zip: req.body.zip,
-    country: req.body.country
+    street: req.body.address.street,
+    city: req.body.address.city,
+    state: req.body.address.state,
+    zip: req.body.address.zip,
+    country: req.body.address.country
   };
 
   // to Improve ->history of all the center where 
   // the psycotherapist worked
   // 
   therapist.medicalCenters  = {
-    _id: req.body._id,
-    name: req.body.name,
-    status_request: req.body.status_request, // pending(0 day to more), accepted 
+    _id: req.body.medicalCenters._id,
+    name: req.body.medicalCenters.name,
+    status_request: req.body.medicalCenters.status_request, // pending(0 day to more), accepted 
     //requested_at: { type: Date, default: Date.now },
     accepted_at: req.body.accepted_at
   };
