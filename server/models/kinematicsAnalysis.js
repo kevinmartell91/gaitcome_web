@@ -43,8 +43,8 @@ var kinematicsAnalysisSchema = new Schema({
       treadmills: String,
       walker: String,
       orthoses: String,
-      parallel_bars: String
-	},
+      parallel_bars: String	
+  },
 
 	patient_descriptions : String,
 
@@ -66,27 +66,36 @@ var kinematicsAnalysisSchema = new Schema({
 
 	// BOOK this data after have the 3d position from matlab
 	// ANGLES LIST work with api and show the data in the view
-	spl_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 	//							 [0% - 100%, ang]					[0% - 100%, lim-inf , lim-sup]				
-	//spl_kne: [ Number ],
-	spl_ank: [ Number ],
-	spl_plv: [ Number ],
-	spl_hip: [ Number ],
+	spl_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	spl_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	spl_plv: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	spl_hip: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 
-	spr_kne: [ Number ],
-	spr_ank: [ Number ],
-	spr_plv: [ Number ],
-	spr_hip: [ Number ],
+	fp_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	fp_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	fp_plv: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	fp_hip: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 
-	fp_kne: [ Number ],
-	fp_ank: [ Number ],
-	fp_plv: [ Number ],
-	fp_hip: [ Number ],
+	tp_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	tp_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	tp_plv: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	tp_hip: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 
-	tp_kne: [ Number ],
-	tp_ank: [ Number ],
-	tp_plv: [ Number ],
-	tp_hip: [ Number ],
+	sp_kne_high_chart_data : Object,
+	sp_ank_high_chart_data : Object,
+	sp_plv_high_chart_data : Object,
+	sp_hip_high_chart_data : Object,
+
+	fp_kne_high_chart_data : Object,
+	fp_ank_high_chart_data : Object,
+	fp_plv_high_chart_data : Object,
+	fp_hip_high_chart_data : Object,
+	
+	tp_kne_high_chart_data : Object,
+	tp_ank_high_chart_data : Object,
+	tp_plv_high_chart_data : Object,
+	tp_hip_high_chart_data : Object,
 
 	created_at: { type: Date, default: Date.now }
 

@@ -20,12 +20,12 @@ chart {
 
 .drawer_details {
     /*background-color: #e91e63;*/
-    position: fixed;
     bottom: 0;
+    position: fixed;
     margin-bottom: 24px;
     margin-right: 24px;
-    position: fixed;
     z-index: 9000;
+    position: fixed;
     right: 0;
 }
 .drawer_video {
@@ -55,11 +55,28 @@ chart {
     position: fixed;
     right: 0;
 }
-.name_position{
+.name_position {
     position: static;
     z-index: 8000;
     text-align: center;
-    background-color: rgba(2, 2, 3, 0.1);
-    margin-top: -7px;
-    z-index: 9000;
+    /* background-color: rgba(2, 2, 3, 0.1); */
+    z-index: 200;
+    padding: 1rem;
 }
+
+.mdl-button--accent.mdl-button--fab {
+    color: rgba(223, 30, 78, 0.61);
+    background-color: rgba(235, 53, 22, 0.22);
+
+}
+
+.video_section {
+    position: fixed;
+    width: 100%;
+    /* height: 200px; */
+    /* left: 50%; */
+    top: 11%;
+    /* margin-left: -300px; */
+    z-index: 200;
+}
+

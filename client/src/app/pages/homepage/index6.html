@@ -1,291 +1,798 @@
-<div class="bte btf hidden" id="sidebar">
-  <ul class="nav bqr nav-stacked zj">
-    <li class="baj">Examples</li>
-    <li class="m">
-      <a class="sb active" href="index.html">Startup</a>
-    </li>
-    <li class="m">
-      <a class="sb" href="minimal/index.html">Minimal</a>
-    </li>
-    <li class="m">
-      <a class="sb" href="bold/index.html">Bold</a>
-    </li>
-    <li class="nav-divider"></li>
-    <li class="baj">Docs</li>
-    <li class="m">
-      <a class="sb" href="docs/index.html">Toolkit</a>
-    </li>
-    <li class="m">
-      <a class="sb" href="http://getbootstrap.com">Bootstrap</a>
-    </li>
-  </ul>
-</div>
-
-<div class="btd" id="stage">
-
-<div class="k am brj bti" style="background-image: url(assets/img/startup-1.jpg);">
-
-  <div class="e ajl afy app-navbar">
-  <nav class="du brz bap sp">
-    <button class="sj sm azl" type="button" data-target="#stage" data-toggle="stage" data-distance="-250">
-      <span class="sk"></span>
-    </button>
-
-    <a class="l ajv" href="">
-      <strong style="background: #fff; padding: 12px; border-radius: 4px; color: #28669F;">go</strong>
-    </a>
-
-    <div class="azk ayt">
-      <ul class="navbar-nav">
-        <li class="m aip ">
-          <a class="sb" href="#">StartUp</a>
-        </li>
-        <li class="m aip ">
-          <a class="sb" href="minimal/index.html">Minimal</a>
-        </li>
-        <li class="m aip ">
-          <a class="sb" href="bold/index.html">Bold</a>
-        </li>
-        <li class="m aip ">
-          <a class="sb" href="docs/index.html">Docs</a>
-        </li>
-      </ul>
+<body class="bg-faded" cz-shortcut-listen="true">
+    <header id="first">
+        <div class="header-content">
+            <div class="inner">
+                <h2>What's New in Bootstrap 4?</h2>
+                <h5 class="wow fadeIn text-normal" style="visibility: visible; animation-name: fadeIn;">A free, one-page theme to highlight the new features</h5>
+                <h6 class="wow fadeIn text-normal" style="visibility: visible; animation-name: fadeIn;">Based on 4.0 Beta</h6>
+                <hr>
+                <a href="#one" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Get Started</a>
+            </div>
+        </div>
+    </header>
+   <nav id="topNav" class="navbar navbar-toggleable-sm fixed-top">
+   <!-- <nav id="topNav" class="navbar navbar-toggleable-sm navbar-fixed-top border-bottom"> -->
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+            ☰
+        </button>
+        <a class="navbar-brand page-scroll mr-3" href="#first">Bootstrap 4</a>
+        <div class="collapse navbar-collapse" id="collapsingNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" href="#one">Cards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" href="#two">Flexbox</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" data-target="#examples" href="/examples.html">Examples</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" data-target="#themes" href="/themes.html">Themes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" href="#three">Breakpoints</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll pr-3" href="#four">More</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap 4 theme" href="#aboutModal">About</a>
+                </li>
+            </ul>
+        </div>
     </div>
   </nav>
-</div>
-
-
-  <img class="z" src="assets/img/startup-0.svg">
-
-  <div class="brp ajp">
-    <div class="e">
-      <div class="c">
-        <div class="fv gr">
-          <h1 class="btj btk">Analytics on demand.</h1>
-          <p class="al ahs an">Stop installing bloated scripts that all track the exact same things. Install one that does everything.</p>
-          <button class="dm qq ap">Try it now</button>
+<section id="one">
+       <div class="container wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+        <h2>Cards</h2>
+        <p class="lead">
+            What you notice first in <a href="http://getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
+            The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
+        </p>
+        <div class="card-group">
+            <!-- card -->
+            <div class="card">
+                <img class="card-img-top img-fluid" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample13.jpg" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Consise</h4>
+                    <p class="card-text">Cards are a good way to display content composed of different types of objects. They’re well-suited for presenting similar objects whose size or supported actions vary, like headings and photos with captions.</p>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="card">
+                <img class="card-img-top img-fluid" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample19.jpg" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Grouped</h4>
+                    <p class="card-text">Use card groups to render equal height cards without gutters between the cards. Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="card">
+                <img class="card-img-top img-fluid" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample14.jpg" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Same Height</h4>
+                    <p class="card-text">A frequent problem occurs when you have multiple items in a row with content of varying height. Thanks to flexbox (and display:table) we now have equal height cards!</p>
+                    
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
-
-<div class="k block-secondary aa">
-  <div class="e">
-    <div class="c aq">
-
-      <div class="fq azk">
-        <img class="btl" src="assets/img/startup-2.jpg" style="width: 100%;">
-      </div>
-
-      <div class="ge lo fx ka">
-        <h6 class="an ayt">Rich Information</h6>
-        <h3>Make informed decisions with historical &amp; real time data.</h3>
-        <p class="al ahs">We combine immediate real time events with rich historical data to help answer the toughest questions about retention, growth, and engagement.</p>
-        <div class="c azm">
-          <div class="fr ahl">
-            <h5>Data frequency</h5>
-            <p>We poll for data on a millisecond basis. You can react to new information in seconds rather than days. <a href="#" class="ayz">Learn more.</a></p>
-          </div>
-          <div class="fr">
-            <h5>Reliability &amp; uptime</h5>
-            <p>We process our data across a massively distributed network of reliable servers to ensure 99.99% uptime, always. <a href="#" class="ayz">Learn more</a>.</p>
-          </div>
+</section>
+<section id="two" class="bg-alt">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="m-t-0 text-primary">Flexbox</h2>
+                <hr class="accent">
+            </div>
         </div>
-      </div>
     </div>
-
-  </div>
+    <div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 text-center">
+                <div class="feature">
+                    <i class="icon-lg ion-ios-grid-view-outline wow fadeIn" data-wow-delay=".1s" style="visibility: hidden; animation-delay: 0.1s; animation-name: none;"></i>
+                    <h6 class="text-uppercase">Easier</h6>
+                    <p class="text-muted m-b-0">Flexbox provides <a href="https://getbootstrap.com/docs/4.0/layout/grid/">simpler, more flexible layout</a> options like vertical centering.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 text-center">
+                <div class="feature">
+                    <i class="icon-lg ion-social-sass wow fadeInUp" style="visibility: hidden; animation-name: none;"></i>
+                    <h6 class="text-uppercase">Sass-y</h6>
+                    <p class="text-muted m-b-0">Flexbox is now the default and Bootstrap 4 supports SASS out of the box.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 text-center">
+                <div class="feature">
+                    <i class="icon-lg ion-social-css3-outline wow fadeIn" data-wow-delay=".1s" style="visibility: hidden; animation-delay: 0.1s; animation-name: none;"></i>
+                    <h6 class="text-uppercase">It's Modern</h6>
+                    <p class="text-muted m-b-0">Introduced in CSS3, flexbox won't work in older browsers like <a href="http://caniuse.com/#feat=flexbox">IE9</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="examples">
+    <div class="container text-center">
+       <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-12 text-center mb-3">
+                <h1 class="mt-0 text-primary">Bootstrap 4 Examples</h1>
+                <p class="lead">Kick start your Bootstrap 4 project with any of these free templates &amp; examples that utilize various parts of the framework. We will continually update these, and add new examples as Bootstrap 4 nears a production-ready release.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="mt-1 text-primary">Layouts &amp; Templates</h4>
+                <div class="nav flex-column text-center">
+                    <a class="nav-link" href="examples.html">Sticky Footer</a>
+                    <a class="nav-link" href="//www.codeply.com/go/KrUO8QpyXP/bootstrap-4-dashboard">Bootstrap 4 Dashboard</a>
+                    <a class="nav-link" href="themes.html#examples">Full-height Jumbotron Vertical Center</a>
+                    <a class="nav-link" href="//www.codeply.com/go/i8xuvOmVw3/bootstrap-4-affix-nav-and-sidebar-layout">Header, Affix Navbar &amp; Sidebar</a>
+                    <a class="nav-link" href="examples.html">Bootstrap 4 Off-canvas</a>
+                    <a class="nav-link" href="//www.codeply.com/go/KbmvdqO8OM/bootstrap-4-holy-grail-layout">Fixed-Fluid-Fixed Width Layout</a>
+                    <a class="nav-link" href="//www.codeply.com/go/IuOp3nvCpy/bootstrap-4-split-layout">Split Screen 50-50 Layout</a>
+                    <a class="nav-link" href="//www.codeply.com/go/7CDRomtM0D/bootstrap-4-scrollspy">Top Navbar with ScrollSpy</a>
+                    <a class="nav-link" href="examples.html">Bootstrap 4 Sidebar Collapsible</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="mt-1 text-primary">Code Snippets</h4>
+                <div class="nav flex-column text-center">
+                    <a class="nav-link" href="examples.html">Navbar Align Center</a>
+                    <a class="nav-link" href="themes.html?bootstrap-4-navbar-align-right">Navbar Align Right</a>
+                    <a class="nav-link" href="themes.html?bootstrap-4-custom-navbar-color">Custom Navbar Color</a>
+                    <a class="nav-link" href="themes.html?bootstrap-4-vertical-sidebar-nav-with-submenu">Multi-level Vertical Side Nav</a>
+                    <a class="nav-link" href="examples.html">Card Examples</a>
+                    <a class="nav-link" href="examples.html">Right Aligned Tabs</a>
+                    <a class="nav-link" href="examples.html">Decrease Grid Gutter Spacing</a>
+                    <a class="nav-link" href="//www.codeply.com/go/Kaby5SlKgM/bootstrap-4-cards-alignment">Cards Aligment Center or Bottom</a>
+                    <a class="nav-link" href="examples.html">Bootstrap 4 Form Examples</a>
+                </div>
+            </div>
+        </div>
+        <hr class="primary">
+    </div>
+</section>
+<section id="themes" class="bg-alt">
+    <div class="container text-center py-4">
+       <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-12 text-center mb-3">
+                <h1 class="mt-0 text-primary">Bootstrap 4 Themes</h1>
+                <p class="lead">We'll soon be introducing a collection of unique, free themes to <span class="font-weight-bold">stylize</span> your Bootstrap 4 projects.</p>
+            </div>
+            <div class="col-md-12 text-center mb-2">
+                <a class="card" href="#galleryModal" title="Bold pastel Bootstrap 4 theme" data-toggle="modal" data-src="https://box.everhelper.me/attachment/807843/d870cc88-72f0-420e-8290-aa7ac6599689/741590-00Ah2MTWns2F3lGd/screen.png">
+                <img src="https://box.everhelper.me/attachment/807854/d870cc88-72f0-420e-8290-aa7ac6599689/741590-F9q3p2ulVRWxXNE8/screen.png" class="img-fluid" alt="Bootstrap 4 Candi theme">
+                </a>
+            </div>
+            <div class="col-md-12 text-center mb-2">
+                <a class="card" href="#galleryModal" title="High-contrast yellow Bootstrap 4 theme" data-toggle="modal" data-src="https://box.everhelper.me/attachment/807842/d870cc88-72f0-420e-8290-aa7ac6599689/741590-F6RUTzLiE5iKmSwM/screen.png">
+                <img src="https://box.everhelper.me/attachment/807862/d870cc88-72f0-420e-8290-aa7ac6599689/741590-df88nVN1h6OnunEL/screen.png" class="img-fluid" alt="Bootstrap 4 Bodeo theme">
+                </a>
+            </div>
+            <div class="col-md-12 text-center mb-2">
+                <a class="card" href="#galleryModal" title="Colorful Bootstrap 4 theme with shadows" data-toggle="modal" data-src="https://box.everhelper.me/attachment/807840/d870cc88-72f0-420e-8290-aa7ac6599689/741590-VCxa2Rk9V7XTsuMw/screen.png">
+                <img src="https://box.everhelper.me/attachment/807855/d870cc88-72f0-420e-8290-aa7ac6599689/741590-mpy4Wz4Bemn8vVPv/screen.png" class="img-fluid" alt="Bootstrap 4 Shado theme">
+                </a>
+            </div>
+            <div class="col-md-12 text-center mb-2">
+                <a class="card" href="#galleryModal" title="Clean grayscale Bootstrap 4 theme" data-toggle="modal" data-src="https://box.everhelper.me/attachment/807841/d870cc88-72f0-420e-8290-aa7ac6599689/741590-mFSTUqMIUbcxzt3d/screen.png">
+                <img src="https://box.everhelper.me/attachment/807861/d870cc88-72f0-420e-8290-aa7ac6599689/741590-9co3w41ryzSdnR8U/screen.png" class="img-fluid" alt="Bootstrap 4 Start theme">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="three" class="bg-inverse text-white">
+    <div class="container-fluid">
+        <h5 class="text-primary text-center text-uppercase">Now there are 5 Breakpoints</h5>
+        <p class="text-center"><small>To accomodate a variety of devices and screen widths</small></p>
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1 col-12 offset-0">
+                <div class="row">
+                      <div class="col-md-2 offset-md-1 offset-sm-0">
+                        <div class="card-block text-center">
+                          <h1 class="card-title">XS</h1>
+                          <h3 class="text-muted">&lt;567 px</h3>
+                          <hr class="accent hidden-sm-up">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-block text-center">
+                          <h1 class="card-title">SM</h1>
+                          <h3 class="text-muted">≥567 px</h3>
+                          <hr class="accent hidden-md-up">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-block text-center">
+                          <h1 class="card-title">MD</h1>
+                          <h3 class="text-muted">≥768 px</h3>
+                          <hr class="accent hidden-lg-up">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-block text-center">
+                          <h1 class="card-title">LG</h1>
+                          <h3 class="text-muted">≥992 px</h3>
+                          <hr class="accent hidden-xl-up">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="card-block text-center">
+                          <h1 class="card-title">XL</h1>
+                          <h3 class="text-muted">≥1200 px</h3>
+                          <hr class="accent">
+                        </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample14.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample20.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card card-inverse">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample22.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample15.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample35.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample35.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample16.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample16.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample13.jpg" class="card-img img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample13.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample11.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample11.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample23.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample9.jpg" class="card-img img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample9.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample5.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample5.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample4.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample4.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg" class="card-img img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample2.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample2.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                        <div class="card">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample7.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample7.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-xl-offset-0 col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-6 text-center">
+                        <div class="card m-x-auto">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample21.jpg" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample21.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</section>
+<aside class="bg-alt">
+    <div class="container text-center">
+        <h2 class="text-primary text-center">The Grid is More Flexible</h2>
+        <hr class="accent">
+        <br>
+        <div class="row wow fadeInUp" style="visibility: hidden; animation-name: none;">
+            <div class="col-md-3 col-sm-6 col-12 text-center">
+                <h3>Start</h3>
+                <i class="icon-lg ion-ios-speedometer-outline wow pulse" style="visibility: hidden; animation-name: none;"></i>
+                <h1 class="text-primary">100</h1>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 text-center">
+                <h3>Migrate</h3>
+                <i class="icon-lg ion-ios-location-outline wow pulse" style="visibility: hidden; animation-name: none;"></i>
+                <h1 class="text-primary">3421</h1>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 text-center">
+                <h3>Build</h3>
+                <i class="icon-lg ion-ios-pulse wow pulse" style="visibility: hidden; animation-name: none;"></i>
+                <h1 class="text-primary">4%</h1>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 text-center">
+                <h3>Play</h3>
+                <i class="icon-lg ion-ios-game-controller-b-outline wow pulse" style="visibility: hidden; animation-name: none;"></i>
+                <h1 class="text-primary">50%</h1>
+            </div>
+        </div>
+        <hr>
+        <br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                6
+            </div>
+            <div class="col-sm-6 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 6 units </div>
+            </div>
+            <div class="col-sm-5">
+                5
+            </div>
+            <div class="col-sm-7 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 7 units </div>
+            </div>
+            <div class="col-sm-4">
+                4
+            </div>
+            <div class="col-sm-8 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 8 units </div>
+            </div>
+            <div class="col-sm-3">
+                3
+            </div>
+            <div class="col-sm-9 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 9 units </div>
+            </div>
+            <div class="col-sm-2">
+                2
+            </div>
+            <div class="col-sm-10 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 10 units </div>
+            </div>
+            <div class="col-sm-1">
+                1
+            </div>
+            <div class="col-sm-11 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 11 units </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 2 </div>
+            </div>
+      <div class="col-lg-10">
+                
+            </div>
+            <div class="col-lg-4 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 4 </div>
+            </div>
+      <div class="col-lg-8">
+                
+            </div>
+            <div class="col-lg-6 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 6 </div>
+            </div>
+      <div class="col-lg-6">
+                
+            </div>
+            <div class="col-lg-8 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 8 </div>
+            </div>
+      <div class="col-lg-4">
+                
+            </div>
+            <div class="col-lg-10 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 10 </div>
+            </div>
+      <div class="col-lg-2">
+                
+            </div>
+            <div class="col-lg-12 text-normal">
+                <div class="card my-1 bg-primary text-faded"> 12 </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<section id="four">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h2 class="text-nowrap">Fonts got larger</h2>
+            </div>
+            <div class="col-12 col-lg-6 text-right">
+                <button class="btn btn-lg text-normal btn-outline-secondary">Outline</button>
+                <button class="btn btn-lg text-normal btn-outline-primary">Buttons</button>
+                <button class="btn btn-lg text-normal btn-outline-danger">Are Here</button>
+            </div>
+            <div class="col-12">
+                <br>
+                <h1 class="display-4">Wow.</h1>
+                <p class="lead text-justify">Text is larger in Bootstrap 4. The default font size is now 16px. There are also new "Display headings" that really stand out. The new `rem` based sizing is an improvement too.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+                <div class="col-md-6 col-12 text-center">
+                    <nav class="navbar navbar-inverse bg-inverse navbar-toggleable text-normal rounded">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">About</a>
+                        </li>
+                      </ul>
+                    </nav>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h2>Navbar</h2>
+                    <p class="text-justify">The new Bootstrap 4 <code>.navbar</code> code is lighter. You can make it responsive using the Collapse component and <code>.navbar-toggleable-*</code> classes that enable you to control the breakpoint.</p>
+                </div>
+                <div class="col-12 clearfix">
+                    <hr>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h2>RIP icons, affix, etc..</h2>
+                    <p class="text-justify">Some components have been removed from Bootstrap 4. The Glyphicons icon fonts are no longer included, but it's easy to 
+                      utilize another font like FontAwesome, <a href="https://octicons.github.com/">Octicons</a> or <a href="http://ionicons.com/">Ionicons</a>.
+                      The Affix jQuery plugin has also been dropped. The new recommendation is to use HTML5 position: sticky or a sticky polyfill instead.
+                    </p>
+                </div>
+                <div class="col-md-6 col-12 text-center">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <a href="#alertModal" data-toggle="modal" data-target="#alertModal"><i class="icon-lg ion-ios-cloud-download-outline wow fadeIn" style="visibility: hidden; animation-name: none;"></i></a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-pie-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-star-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-heart-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-pulse wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-refresh-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                            <i class="icon-lg ion-ios-gear-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-6 text-center">
+                                <i class="icon-lg ion-ios-timer-outline wow fadeIn text-primary" style="visibility: hidden; animation-name: none;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 clearfix">
+                    <hr>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="card text-normal">
+                        <div class="card-block">
+                        <ul class="list-unstyled">
+                            <li class="text-capitalize"><code class="text-lowercase">text-capitalize</code> Capitalize each word</li>
+                            <li class="text-uppercase"><code class="text-lowercase">text-uppercase</code> Uppercase text</li>
+                            <li class="text-lowercase"><code>text-lowercase</code> There is lowercase too</li>
+                            <li><small>But where is text-truncate with text-overflow:ellipsis?</small></li>
+                        </ul>
+                        <h6>Migration tips</h6>
+                        <ul class="list-unstyled">
+                            <li><code>pull-right</code> = <code>float-right</code></li>
+                            <li><code>img-responsive</code> = <code>img-fluid</code></li>
+                            <li><code>list-inline &gt; li</code> = <code>list-inline-item</code></li>
+                            <li><code>carousel-inner &gt; item</code> = <code>carousel-item</code></li>
+                            <li><code>table-condensed</code> = <code>table-sm</code></li>
+                            <li><code>center-block</code> = <code>mx-auto</code></li>
+                        </ul>
+                        <a href="https://medium.com/wdstack/bootstrap-4-whats-new-visual-guide-c84dd81d8387">More on What's New in Bootstrap 4</a><br>
+                        <a href="http://upgrade-bootstrap.bootply.com/">Upgrade to Bootstrap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h2>Handy utilities</h2>
+                    <p class="text-justify">Several simple, but useful <a href="https://getbootstrap.com/docs/4.0/utilities">utility classes</a> have been added like text, margin and padding helpers. There are
+                    also <a href="https://getbootstrap.com/docs/4.0/utilities/colors/">contextual colors</a> and 
+                    <a href="https://getbootstrap.com/docs/4.0/utilities/display/">responsive utility</a> classes to hide content on 
+                    specific breakpoints.</p>
+                    <p>
+                        To get the <span class="font-weight-bold">full rundown</span> on What's New in Bootstrap 4 check out these <a href="https://medium.com/wdstack/bootstrap-4/home">helpful articles and upgrade tips</a>.
+                    </p>
+                </div>
+        </div>
+    </div>
+</section>
+<aside class="bg-alt">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2 class="text-primary">Get Started</h2>
+            <a href="https://www.codeply.com/download/lPga6iGDIE" target="ext" class="btn btn-primary-outline btn-lg wow flipInX text-uppercase" style="visibility: hidden; animation-name: none;">Free Download</a>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h6 class="wide-space text-center text-uppercase">Bootstrap 4 is Built on these Standards</h6>
+                <div class="row">
+                    <div class="col-sm-3 col-6 text-center">
+                        <i class="icon-lg ion-social-html5-outline" title="html 5"></i>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <i class="icon-lg ion-social-sass" title="sass"></i>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <i class="icon-lg ion-social-javascript-outline" title="javascript"></i>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <i class="icon-lg ion-social-css3-outline" title="css 3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<section id="last">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <h2 class="mt-0 wow fadeIn" style="visibility: hidden; animation-name: none;">Get in Touch</h2>
+                <hr class="accent">
+                <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <form class="contact-form row">
+                    <div class="col-md-4">
+                        <label></label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label></label>
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-md-4">
+                        <label></label>
+                        <input type="text" class="form-control" placeholder="Phone">
+                    </div>
+                    <div class="col-md-12">
+                        <label></label>
+                        <textarea class="form-control" rows="9" placeholder="Your message here.."></textarea>
+                    </div>
+                    <div class="col-md-4 offset-md-4">
+                        <label></label>
+                        <button type="button" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-lg">Send <i class="ion-android-arrow-forward"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <h6 class="text-uppercase">More</h6>
+                <ul class="list-unstyled">
+                    <li><a href="//theme.cards" title="Free themes">Theme.cards</a></li>
+                    <li><a href="//www.bootply.com" title="Bootstrap Editor">Bootply</a></li>
+                    <li><a href="//www.codeply.com" title="Frontend Editor Online">Codeply</a></li>
+                    <li><a href="//www.wdstack.com" title="Best Developer Designer Resources">WDStack</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-sm-3 column">
+                <h6 class="text-uppercase">About</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" data-toggle="modal" data-target="#alertModal">Contact Us</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#alertModal">Delivery Information</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#alertModal">Privacy Policy</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#alertModal">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-3 column">
+                <h6 class="text-uppercase">Stay Posted</h6>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-sm-3 text-right">
+                <h6 class="text-uppercase">Follow</h6>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a rel="nofollow" href="//twitter.com/bootstrap4guide" title="Twitter"><i class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
+                    <li class="list-inline-item"><a rel="nofollow" href="//twitter.com/bootstrap4guide" title="Facebook"><i class="icon-lg ion-social-facebook-outline"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <span class="pull-right text-muted small"><a href="http://themes.guide">Made by Themes.guide</a> ©2015-2017</span>
+    </div>
+</footer>
+<div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="//placehold.it/1200x700/222?text=..." id="galleryImage" class="mx-auto img-fluid">
+                <p>
+                    <br>
+                    <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="k am block-secondary ab">
-  <div class="e">
-    <div class="c aq">
+<div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2 class="text-center">Bootstrap 4 Theme</h2>
+                <h6 class="text-center">A free, responsive template</h6>
+                <p class="text-center">
+                    This is a customized, single page example template that demonstrates some of the new features to check out in Bootstrap 4. Some of the features include Google Montserrat fonts, animation using Dan Eden's animate.css and the WOW jQuery plugin to watch the scrolling.
+                </p>
+                <p class="text-center"><a href="https://www.codeply.com/download/lPga6iGDIE">Download</a></p>
+                <br>
+                <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true"> OK </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2 class="text-center">Nice Job!</h2>
+                <p class="text-center">You clicked the link, but it doesn't actually go anywhere because this is only a demo.</p>
+                <p class="text-center"><a href="http://bootstrap4.guide">Learn more</a></p>
+                <br>
+                <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     
-
-      <div class="ge ks">
-        <h6 class="an ayt">Easy development</h6>
-        <h3>Natural language queries make mining data easy for anyone.</h3>
-        <p class="al ahs an">Rather than force everyone at your company to learn incredibly difficult terminal commands, we allow anyone to query the data with natural language to return data.</p>
-        <button class="dm qs ap bac">
-          Read our docs
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="k am ad" style="background-image: url(assets/img/startup-3.jpg);">
-    <div class="e">
-      <div class="c aq aje">
-        <div class="fq ju ajs">
-          <h6 class="an ayt ahe">High Praise</h6>
-          <h3 class="ahs">“Go Analytics is amazing. Decisions that used to take weeks, now only takes minutes and is available to everyone on my team.”</h3>
-          <p class="ahs an">Cindy Smith, founder of Cool Startup</p>
-        </div>
-      </div>
-  </div>
-</div>
-
-<div class="k ae ajs">
-  <div class="e baa">
-    <img src="assets/img/startup-4.svg">
-    <img src="assets/img/startup-5.svg">
-    <img src="assets/img/startup-6.svg">
-    <img src="assets/img/startup-7.svg">
-    <img src="assets/img/startup-8.svg">
-  </div>
-</div>
-
-<div class="k block-secondary af">
-  <div class="e baa">
-
-    <div class="c ahz">
-      <div class="btm btn ft kc gr nd">
-        <h6 class="an ayt ahe">Inside the machine</h6>
-        <h3 class="ahs">It’s not hard to see how we make your life easier every day.</h3>
-      </div>
-    </div>
-
-    <div class="c ag">
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-9.svg">
-        <p><strong>24/7 support.</strong> We’re always here for you no matter what time of day.</p>
-      </div>
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-10.svg">
-        <p><strong>E-commerce.</strong> We automatically handle all sales analytics.</p>
-      </div>
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-11.svg">
-        <p><strong>Turnaround.</strong> Our data analysis is distributed, so it processes in seconds.</p>
-      </div>
-    </div>
-
-    <div class="c ag">
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-12.svg">
-        <p><strong>Rich calculations.</strong> Limitless ways to splice and dice your data.</p>
-      </div>
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-13.svg">
-        <p><strong>Mobile apps.</strong> iOS and Android apps available for monitoring.</p>
-      </div>
-      <div class="gc ajk ahz">
-        <img class="agx" src="assets/img/startup-14.svg">
-        <p><strong>Secure connections.</strong> Every single request is routed through HTTPS.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="k aj">
-  <div class="e ayf">
-
-    <div class="c ahz">
-      <div class="gg lp gr nd">
-        <h6 class="an ayt ahe">Business Talk</h6>
-        <h3>No plans. We just bump your plan whenever you need it.</h3>
-      </div>
-    </div>
-
-    <div class="c">
-      <div class="gc ajk aiu ahz">
-        <div class="aiw ahe">
-          <h6 class="an ayt ahs">Personal</h6>
-          <img class="ahs" src="assets/img/startup-15.svg">
-          <p class="aiu">Plenty of processing power for any personal projects, big or small.</p>
-        </div>
-
-        <ul class="ek azw azy ahv">
-          <li class="ajl"><strong>10k</strong> monthly requests</li>
-          <li class="ajl"><strong>9am-5pm</strong> technical supprt</li>
-          <li class="ajl"><strong>Public</strong> API access</li>
-        </ul>
-
-        <button class="dm ap qq btn-block">
-          Start <span class="azo">a personal account</span>
-        </button>
-      </div>
-
-      <div class="gc ajk aiu ahz">
-        <div class="aiw">
-          <h6 class="an ayt ahs">Business</h6>
-          <img class="ahs" src="assets/img/startup-16.svg">
-          <p class="aiu">The perfect sized plan for small businesses to get started.</p>
-        </div>
-
-        <ul class="ek azw azy ahv">
-          <li class="ajl"><strong>100k</strong> monthly requests</li>
-          <li class="ajl"><strong>24/7</strong> technical supprt</li>
-          <li class="ajl"><strong>Public</strong> API access</li>
-        </ul>
-
-        <button class="dm ap qq btn-block">
-          Start <span class="azo">a business account</span>
-        </button>
-      </div>
-
-      <div class="gc ajk ain ahz">
-        <div class="aiw">
-          <h6 class="an ayt ahs">Corporate</h6>
-          <img class="ahs" src="assets/img/startup-17.svg">
-          <p class="aiu">An unlimited plan that will scale infinitely to any size project.</p>
-        </div>
-
-        <ul class="ek azw azy ahv">
-          <li class="ajl"><strong>Unlimited</strong> monthly requests</li>
-          <li class="ajl"><strong>24/7</strong> technical supprt</li>
-          <li class="ajl"><strong>Public &amp; Private</strong> API access</li>
-        </ul>
-
-        <button class="dm ap qq btn-block">
-          Start <span class="azo">a corporate account</span>
-        </button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="k am ak">
- <div class="e">
-    <div class="c">
-      <div class="gd ahz">
-        <ul class="ek azv">
-          <li class="ahe"><h6 class="ayt">About</h6></li>
-          <li class="an">
-             We’ve been working on Go Analytics for the better part of a decade and are super proud of what we’ve created. If you’d like to learn more, or are interested in a job, contact us anytime at <a href="mailto: themes@getbootstrap.com">themes@getbootstrap.com</a>.
-          </li>
-        </ul>
-      </div>
-      <div class="ga lo ahz">
-        <ul class="ek azv">
-          <li class="ahe"><h6 class="ayt">Product</h6></li>
-          <li class="an">Features</li>
-          <li class="an">Examples</li>
-          <li class="an">Tour</li>
-          <li class="an">Gallery</li>
-        </ul>
-      </div>
-      <div class="ga ahz">
-        <ul class="ek azv">
-          <li class="ahe"><h6 class="ayt">Apis</h6></li>
-          <li class="an">Rich data</li>
-          <li class="an">Simple data</li>
-          <li class="an">Real time</li>
-          <li class="an">Social</li>
-        </ul>
-      </div>
-      <div class="ga ahz">
-        <ul class="ek azv">
-          <li class="ahe"><h6 class="ayt">Legal</h6></li>
-          <li class="an">Terms</li>
-          <li class="an">Legal</li>
-          <li class="an">Privacy</li>
-          <li class="an">License</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+      ga('create', 'UA-40413119-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+  
+</body>

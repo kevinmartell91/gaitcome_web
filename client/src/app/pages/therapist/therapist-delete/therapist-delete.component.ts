@@ -6,8 +6,7 @@ import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
-const URL_WEB_SERVICE_THERAPIST:string = 'http://localhost:8080/api/therapist/';
-
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-therapist-delete',
@@ -26,15 +25,22 @@ export class TherapistDeleteComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal,
   			  public http : Http) { 
 
-  	let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.token = currentUser && currentUser.token;
+  	
   }
 
   ngOnInit() {
+    if (environment.production) { 
+
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.token = currentUser && currentUser.token;
+
+    } else {
+      this.token = environment.token;      
+    }
   }
 
   deleteTherapist(){
-  	this._deleteJSON( URL_WEB_SERVICE_THERAPIST + this._id, 
+  	this._deleteJSON(environment.URL_WEB_SERVICE_THERAPISTS + this._id, 
   					  this.getHeaders() )
       .subscribe(json => this.response = json);
 

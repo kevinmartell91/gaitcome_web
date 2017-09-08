@@ -5,9 +5,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../../environments/environment';
 
-const URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
- 
 @Component({
   selector: 'app-patient-delete',
   templateUrl: './patient-delete.component.html',
@@ -24,17 +23,22 @@ export class PatientDeleteComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal,
   			  public http : Http) { 
-
-  	let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.token = currentUser && currentUser.token;
   }
 
   ngOnInit() {
+  	if (environment.production) { 
+
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.token = currentUser && currentUser.token;
+
+    } else {
+      this.token = environment.token;      
+    }
   }
 
   deletePatient(){
-	console.log(URL_WEB_SERVICE_PATIENTS + this._id);
-  	this._deleteJSON( URL_WEB_SERVICE_PATIENTS + this._id, 
+	console.log(environment.URL_WEB_SERVICE_PATIENTS + this._id);
+  	this._deleteJSON(environment.URL_WEB_SERVICE_PATIENTS + this._id, 
   					  this.getHeaders() )
       .subscribe(json => this.response = json);
 

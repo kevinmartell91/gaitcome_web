@@ -5,9 +5,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../../environments/environment';
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
-const URL_WEB_SERVICE_THERAPIST:string = 'http://localhost:8080/api/therapist/';
 
 @Component({
   selector: 'app-therapist-update',
@@ -30,8 +30,14 @@ export class TherapistUpdateComponent implements OnInit {
 
   ngOnInit() {
 
-  	let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  	this.token = currentUser && currentUser.token;
+  	if (environment.production) { 
+
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.token = currentUser && currentUser.token;
+
+    } else {
+      this.token = environment.token;      
+    }
   	
   	console.log(this.therapist);
 
@@ -64,7 +70,7 @@ export class TherapistUpdateComponent implements OnInit {
   onSubmit() {
 
 
-    this._putJSON(URL_WEB_SERVICE_THERAPIST + this.therapist._id, this.form.value, this.getHeaders())
+    this._putJSON(environment.URL_WEB_SERVICE_THERAPISTS + this.therapist._id, this.form.value, this.getHeaders())
       .subscribe(json => this.updatedTherapist = json);
 
     this.activeModal.close();

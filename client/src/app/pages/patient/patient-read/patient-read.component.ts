@@ -38,7 +38,7 @@ export class PatientReadComponent implements OnInit {
   			  private fb: FormBuilder) { 
 
 
-  		   this.form = this.fb.group({  });
+   	this.form = this.fb.group({  });
 
   }
 

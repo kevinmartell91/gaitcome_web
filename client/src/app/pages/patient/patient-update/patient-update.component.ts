@@ -5,9 +5,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../../environments/environment';
+
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
-const URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients/';
 
 @Component({
   selector: 'app-patient-update',
@@ -58,8 +59,14 @@ export class PatientUpdateComponent implements OnInit {
 
   ngOnInit() {
 
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.token = currentUser && currentUser.token;
+    if (environment.production) { 
+
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.token = currentUser && currentUser.token;
+
+    } else {
+      this.token = environment.token;      
+    }
     
 
     this.names = new FormControl(this.patient.names, Validators.required);
@@ -170,7 +177,7 @@ export class PatientUpdateComponent implements OnInit {
 
     console.log(JSON.stringify(jsonUpdatedPatient));
 
-    this._putJSON(URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
+    this._putJSON(environment.URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
       .subscribe(json => this.updatedPatient = json);
 
     this.activeModal.close();

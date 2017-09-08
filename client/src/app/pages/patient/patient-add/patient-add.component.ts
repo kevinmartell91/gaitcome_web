@@ -5,6 +5,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../../environments/environment';
+
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
@@ -16,7 +18,6 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 })
 export class PatientAddComponent implements OnInit {
 
-  URL_WEB_SERVICE_PATIENTS:string = 'http://localhost:8080/api/pacients';
 
   public disableForm = false;
   public form: FormGroup;
@@ -48,13 +49,20 @@ export class PatientAddComponent implements OnInit {
 
   constructor( public activeModal: NgbActiveModal,
                private fb: FormBuilder, 
-               public http : Http) { }
+               public http : Http) { 
+  }
 
 
   ngOnInit() {
 
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.token = currentUser && currentUser.token;
+    if (environment.production) { 
+
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.token = currentUser && currentUser.token;
+
+    } else {
+      this.token = environment.token;      
+    }
     
     this.form = this.fb.group({
       'names':                        this.names,
@@ -91,6 +99,7 @@ export class PatientAddComponent implements OnInit {
         // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
       });
   }
+  
   onSubmit() {
 
     let jsonNewPatient = {
@@ -132,13 +141,11 @@ export class PatientAddComponent implements OnInit {
       //created_at: { type: Date, default: Date.now },
       updated_at: new Date(),
       is_active: true
-
-
     }
 
     console.log(JSON.stringify(jsonNewPatient));
 
-    this._postJSON(this.URL_WEB_SERVICE_PATIENTS, JSON.stringify(jsonNewPatient), this.getHeaders())
+    this._postJSON(environment.URL_WEB_SERVICE_PATIENTS, JSON.stringify(jsonNewPatient), this.getHeaders())
       .subscribe(json => this.newPatient = json);
 
     this.activeModal.close();

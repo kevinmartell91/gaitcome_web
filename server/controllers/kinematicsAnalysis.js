@@ -20,6 +20,19 @@ exports.postKinematicsAnalysiss = function(req, res) {
   kinematics_analysis.spl_kne.patient_angles = req.body.spl_kne.patient_angles;
   kinematics_analysis.spl_kne.normal_ranges = req.body.spl_kne.normal_ranges;
 
+  kinematics_analysis.sp_kne_high_chart_data = req.body.sp_kne_high_chart_data;
+  kinematics_analysis.sp_ank_high_chart_data = req.body.sp_ank_high_chart_data;
+  kinematics_analysis.sp_plv_high_chart_data = req.body.sp_plv_high_chart_data;
+  kinematics_analysis.sp_hip_high_chart_data = req.body.sp_hip_high_chart_data;
+  kinematics_analysis.fp_kne_high_chart_data = req.body.fp_kne_high_chart_data;
+  kinematics_analysis.fp_ank_high_chart_data = req.body.fp_ank_high_chart_data;
+  kinematics_analysis.fp_plv_high_chart_data = req.body.fp_plv_high_chart_data;
+  kinematics_analysis.fp_hip_high_chart_data = req.body.fp_hip_high_chart_data;
+  kinematics_analysis.tp_kne_high_chart_data = req.body.tp_kne_high_chart_data;
+  kinematics_analysis.tp_ank_high_chart_data = req.body.tp_ank_high_chart_data;
+  kinematics_analysis.tp_plv_high_chart_data = req.body.tp_plv_high_chart_data;
+  kinematics_analysis.tp_hip_high_chart_data = req.body.tp_hip_high_chart_data;
+
   kinematics_analysis.save(function(err) {
     if (err)
       return res.send(err);
