@@ -2244,171 +2244,147 @@ export class ResultDetailComponent implements OnInit {
   selector: 'app-details-drawer',
   styles: [`
       :host {
-        /*
-            color: rgba(223, 30, 78, 0.61);
-            background-color: rgba(235, 53, 22, 0.22);
-            /*
-            color: rgb(255, 255, 255);
-            background-color: rgba(28, 23, 22, 0.94);
-            */
+            
+            background-color: rgba(255, 255, 255, 0.9);
             position: fixed;
-            left: 0rem;
-            bottom: 0rem;
-            top: 0rem;
-            width: 0%;
-            min-width: 250px;
-            z-index: 150;
-            overflow-y: auto;
-            border-radius: 0rem;
-        */      
-            color: rgba(19, 1, 5, 0.31);
-            background-color: rgba(252, 251, 251, 0.91);
-            position: fixed;
-            left: 0.5rem;
+            left: 1.5rem;
             bottom: 1rem;
             top: 50%;
             width: 0%;
             min-width: 250px;
             z-index: 150;
             overflow-y: auto;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
 
       }
-      .division_line_multiple_value{
-            border-bottom: 1px solid #e0e0e0;
-            border-top: 0;
-            margin: 0 0 15px;
-            padding: 0 0 16px;
-        }
 
-        .division_line_single_value {
-            border-bottom: 1px solid #e0e0e0;
-            border-top: 0;
-            margin: 0 0 5px;
-            padding: 0 0 3px;
-        }
+      .division_line{
+          border-bottom: 1px solid #e0e0e0;
+          border-top: 0;
+          margin: 0 0 5px;
+          padding: 0 0 3px;
+      }
 
-        .detail-result-header {
-          background: rgba(0, 0, 0, 0.98);
-          z-index: 110;
-          height: 10%;
-        }
-
-        .detail-result-header h2{
-          padding: 2rem 0rem 0rem 1rem;
-        }
-        .name_position{
-            position: static;
-            text-align: center;
-            padding: 1rem;
-            background-color: rgba(10, 10, 10, 0.69);
-        }
-        .margin_container_details {
-            padding: 0.5rem; 
-        }
+      .detail-result-header h2{
+        padding: 2rem 0rem 0rem 1rem;
+      }
+      .name_position{
+        position: static;
+        text-align: center;
+        background-color: rgb(0, 0, 0);
+      }
+      .margin_container_details {
+          padding: 0.5rem; 
+      }
+      .card-block {
+        padding: 0.25rem;
+      }
+      .card-block p {
+        color: #969093;
+      }
 
     
        
       
   `],
   template: `
-         <div class="name_position">
-            <h3>Details</h3>
-         </div>               
+      <div class="name_position">
+       <h2 class="card-title">Details</h2>
+      </div>               
 
 
-          <div id="accordion" class="margin_container_details" role="tablist" aria-multiselectable="true">
-            <div>
-              <div class="header" role="tab" id="headingOne">
-                <!-- <h4 class="title">  -->
-                  <h6 *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Accesories
-                  </h6>
-                <!-- </h4> -->
-              </div>
+      <div id="accordion" class="margin_container_details" role="tablist" aria-multiselectable="true">
+        <div>
+           <div class="header" role="tab" id="headingOne">
+               <h4 *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+              >
+                 Accesories
+               </h4>
+           </div>
 
-              <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                <div *ngIf="kinematicsAnalysis" class="card-block">
-                  
-                  <div class="row">
-                    <div class="category division_line_single_value">
-                      <div class="col-md-11">
-                        <p>Centro medico: {{kinematicsAnalysis.medical_center_id}}</p>
-                      </div>
+          <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div *ngIf="kinematicsAnalysis" class="card-block">
+               
+             <p>
+                Terapeuta: 
+                <code>{{kinematicsAnalysis.therapist_id}}</code>
+             </p>
+             <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
+                 Caminata asistida:
+                 <code>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</code>
+             </p>
+             <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
+                 Caminadora:
+                 <code>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</code>
+             </p>
+             <p *ngIf="kinematicsAnalysis.accesories.is_walker">
+                 Andador:
+                 <code>{{kinematicsAnalysis.accesories_descriptions.walker}}</code>
+             </p>
+             <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
+                 Órtesis:
+                 <code>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</code>
+             </p>
+             <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
+                 Barras paralelas: <code>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</code>
+             </p>
 
-                      <div class="col-md-1">
-
-                          <p class="rigth">23</p>
-                      </div>   
-                    </div>
-                  </div>
-
-                  <p class="category division_line_single_value">Terapeuta: {{kinematicsAnalysis.therapist_id}}</p>
-                  <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-                      Caminata asistida: {{kinematicsAnalysis.accesories_descriptions.assited_walk}}</p>
-                  <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-                      Caminadora: {{kinematicsAnalysis.accesories_descriptions.treadmills}}</p>
-                  <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_walker">
-
-                      Andador: {{kinematicsAnalysis.accesories_descriptions.walker}}</p>
-                  <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-                      Órtesis: {{kinematicsAnalysis.accesories_descriptions.orthoses}}</p>
-                  <p class="category division_line_single_value" *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-                      Barras paralelas: {{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</p>
-
-
-                </div>
-              </div>
             </div>
-
-            <div>
-              <div class="header" role="tab" id="headingThree">
-                <!-- <h5 class="mb-0"> -->
-                  <h6 class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
-                    Gait Parameters
-                  </h6>
-                <!-- </h5> -->
-              </div>
-              <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="card-block">
-                  <p> pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="header" role="tab" id="headingThree">
-                <!-- <h5 class="mb-0"> -->
-                  <h6 class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Observations
-                  </h6>
-                <!-- </h5> -->
-              </div>
-              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="card-block">
-                  <p> pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div>
-              <div class="header" role="tab" id="headingThree">
-                <!-- <h6 class="mb-0"> -->
-                  <h6 class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Additoinal comments
-                  </h6>
-                <!-- </h5> -->
-              </div>
-              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="card-block">
-                  <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
+        </div>
+
+        <div>
+         <div class="header" role="tab" id="headingThree">
+             <h4 class="collapsed" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseFour" 
+              aria-expanded="false" aria-controls="collapseTwo">
+                Gait Parameters
+             </h4>
+         </div>
+         <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+           <div class="card-block">
+               <p class="card-text">
+                 Use card groups to render equal height cards without gutters between the cards. 
+                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+           </div>
+         </div>
+        </div>
+
+        <div>
+         <div class="header" role="tab" id="headingThree">
+             <h4 class="collapsed" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseTwo" 
+              aria-expanded="false" aria-controls="collapseTwo">
+                Observations
+             </h4>
+         </div>
+         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+           <div class="card-block">
+               <p class="card-text">
+                 Use card groups to render equal height cards without gutters between the cards. 
+                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+           </div>
+         </div>
+        </div>
+
+        <div>
+         <div class="header" role="tab" id="headingThree">
+             <h4 class="collapsed" data-toggle="collapse"
+              data-parent="#accordion" href="#collapseThree" 
+              aria-expanded="false" aria-controls="collapseThree">
+                Additoinal comments
+             </h4>
+         </div>
+         <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+           <div class="card-block">
+               <p class="card-text">
+                 Use card groups to render equal height cards without gutters between the cards. 
+                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+           </div>
+         </div>
+        </div>
+
+      </div>
 
 
           
