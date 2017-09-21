@@ -20,6 +20,8 @@ export class TherapistUpdateComponent implements OnInit {
   public form: FormGroup;
   public updatedTherapist;
   public token;
+  
+  model;
 
   constructor( public 	activeModal : NgbActiveModal,
   			   private 	fb 			: FormBuilder,

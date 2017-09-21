@@ -1,7 +1,7 @@
 <h2>Resultados</h2>
 <!-- <span class="bd-booticon outline">B</span> -->
 
-<ul  *ngIf="false==true" class="results">  
+<ul  *ngIf="false" class="results">  
   <li class="row" *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
       (mouseout)="mouseOvered=kinematicsAnalysis"   
       (mouseover)="mouseOvered=kinematicsAnalysis"
@@ -69,4 +69,3 @@
   </tbody>
 </table>
 
-       {{selected| json}}

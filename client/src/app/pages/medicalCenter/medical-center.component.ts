@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     // '../theme/theme.component.css'
   ]
 })
-export class MedicalCenterComponent implements OnInit {
+export class MedicalCenterComponent_out implements OnInit {
 
   ngOnInit() {
   }

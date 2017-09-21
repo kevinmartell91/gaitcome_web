@@ -59,7 +59,6 @@ export class ResultListComponent implements OnInit, OnChanges{
                 private route: ActivatedRoute,
                 private router: Router )  {
 
-
   }
 
   @Input() medical_center_id: string;

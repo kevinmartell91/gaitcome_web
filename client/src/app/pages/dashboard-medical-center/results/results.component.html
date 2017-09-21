@@ -82,15 +82,18 @@
   </div>
 
 <div class="container">
-  <div *ngIf="currentKinematicsAnalysis" class="drawer_video">
-    <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
-            data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
-        <mdl-icon>movie</mdl-icon>
-    </button>
-  </div>   
+  <div class="drawer_video">
+    <!-- <div *ngIf="currentKinematicsAnalysis"> -->
+    <!-- <div *ngIf="blnCurKneAna"> -->
+      <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
+              data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+          <mdl-icon>movie</mdl-icon>
+      </button>
+    <!-- </div>    -->
+  </div>
 </div>
 
-
+{{ currentKinematicsAnalysis | json }}
 
 
 
@@ -100,7 +103,7 @@
     
 
 
-    <div *ngIf="false==true" class="row">
+    <div *ngIf="false" class="row">
 
       <!-- Result filter by patient and therapist -->
       <div class="col-md-2">

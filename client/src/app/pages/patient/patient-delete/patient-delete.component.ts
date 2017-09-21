@@ -23,6 +23,8 @@ export class PatientDeleteComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal,
   			  public http : Http) { 
+     this.names='';
+     this.lastnames='';      
   }
 
   ngOnInit() {

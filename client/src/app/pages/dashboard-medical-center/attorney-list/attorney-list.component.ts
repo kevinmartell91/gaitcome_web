@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttorneyListComponent implements OnInit {
 
+  medical_center_id: string;
+  
   constructor() { }
 
   ngOnInit() {

@@ -5,7 +5,14 @@ import { MdlModule } from 'angular2-mdl';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { routing } from './dashboard-medical-center.routing';
 
-import { MedicalCenterComponent } from '../medicalCenter/medical-center.component';
+import { MedicalCenterComponent } from './medical-center/medical-center.component';
+import { MedicalCenterComponent_out } from '../medicalCenter/medical-center.component';
+
+
+
+
+
+
 import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
 
 // Therapist components
@@ -53,6 +60,7 @@ import { ChartModule } from 'angular2-highcharts';
     AttorneyListComponent, 
     DashboardMedicalCenterComponent,
     MedicalCenterComponent, 
+    MedicalCenterComponent_out,
     PatientListComponent,
     PatientAddComponent,
     PatientUpdateComponent,

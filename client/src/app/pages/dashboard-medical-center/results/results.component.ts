@@ -59,7 +59,6 @@ export class ResultsComponent implements OnInit {
 
   kinematicsAnalysiss: any[] = [];
   currentKinematicsAnalysis: any;
-  k:any;
 
   patients:any[]=[];
   currentPatient:any;
@@ -74,6 +73,7 @@ export class ResultsComponent implements OnInit {
   constructor(  private http: Http,
                 private route: ActivatedRoute,
                 private router: Router )  {
+    this.currentKinematicsAnalysis = null;
   }
 
   ngOnInit() {
@@ -93,34 +93,34 @@ export class ResultsComponent implements OnInit {
     
   }
 
-  filterPeople(event: any) {
-    const filterText: string = (<HTMLInputElement>event.target).value.toLowerCase();
-    this.displayedPeople = this.people.filter((person: Person) =>
-      !filterText || person.firstName.toLowerCase().indexOf(filterText) > -1
-    );
+  // filterPeople(event: any) {
+  //   const filterText: string = (<HTMLInputElement>event.target).value.toLowerCase();
+  //   this.displayedPeople = this.people.filter((person: Person) =>
+  //     !filterText || person.firstName.toLowerCase().indexOf(filterText) > -1
+  //   );
 
-  }
+  // }
 
-  sortPeople(event: any) {
-    const grid = event.target;
-    const sortOrder = grid.sortOrder[0];
-    const sortProperty = grid.columns[sortOrder.column].name;
-    const sortDirection = sortOrder.direction;
-    this.displayedPeople.sort((a, b) => {
-      let res: number;
-      let valueA: string = grid.get(sortProperty, a),
-          valueB: string = grid.get(sortProperty, b);
-      if (!+(valueA)) {
-        res = parseInt(valueA, 10) - parseInt(valueB, 10);
-      } else {
-        res = valueA.localeCompare(valueB);
-      }
-      if (sortDirection === 'desc') {
-        res *= -1;
-      }
-      return res;
-    });
-  }
+  // sortPeople(event: any) {
+  //   const grid = event.target;
+  //   const sortOrder = grid.sortOrder[0];
+  //   const sortProperty = grid.columns[sortOrder.column].name;
+  //   const sortDirection = sortOrder.direction;
+  //   this.displayedPeople.sort((a, b) => {
+  //     let res: number;
+  //     let valueA: string = grid.get(sortProperty, a),
+  //         valueB: string = grid.get(sortProperty, b);
+  //     if (!+(valueA)) {
+  //       res = parseInt(valueA, 10) - parseInt(valueB, 10);
+  //     } else {
+  //       res = valueA.localeCompare(valueB);
+  //     }
+  //     if (sortDirection === 'desc') {
+  //       res *= -1;
+  //     }
+  //     return res;
+  //   });
+  // }
 
   // getKinematicAnalysiss() {
   //   this._getJSON(this.URL_WEB_SERVICE_ANALYSIS, this.getHeaders())
@@ -161,7 +161,7 @@ export class ResultsComponent implements OnInit {
     //let hard_id: string = '5917e445512fd60c985238fe';
     // Relative navigation back to the crises
     switch (type) {
-      case "therapist":
+      case 'therapist':
 
         if(this.therapist_id === this.currentTherapist._id) {
           this.therapist_id = '';
@@ -170,7 +170,7 @@ export class ResultsComponent implements OnInit {
         }
         break;
 
-      case "patient":
+      case 'patient':
 
         if(this.patient_id === this.currentPatient._id) {
           this.patient_id = '';

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
 import { AttorneyListComponent } from './attorney-list/attorney-list.component';
-import { MedicalCenterComponent } from '../medicalCenter/medical-center.component';
+import { MedicalCenterComponent_out } from '../medicalCenter/medical-center.component';
 import { TherapistListDashboardComponent } from './therapist-list/therapist-list.component';
 import { ResultsComponent} from './results/results.component'
 import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
@@ -24,7 +24,7 @@ export const routes: Routes = [
           { path: 'therapist-list', component: TherapistListDashboardComponent },
           { path: 'result-list', component : ResultsComponent},
           { path: 'result/:id', component : ResultDetailComponent},
-          { path: '', component: MedicalCenterComponent }
+          { path: '', component: MedicalCenterComponent_out }
         ]
       }
     ]

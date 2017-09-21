@@ -10,12 +10,12 @@ import 'rxjs/add/operator/map';
 import { Router }      from '@angular/router';
 import { AuthService } from './auth.service';
 
-let moduleID: string;
 
 
+//let moduleID: string;
 
 @Component({
-  moduleId: moduleID,
+  // moduleId: moduleID,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [

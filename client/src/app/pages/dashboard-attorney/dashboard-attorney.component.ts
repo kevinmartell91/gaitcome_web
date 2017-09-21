@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardAttorneyComponent implements OnInit {
 
+  medical_center_id: string;
+  
   constructor() { }
 
   ngOnInit() {
