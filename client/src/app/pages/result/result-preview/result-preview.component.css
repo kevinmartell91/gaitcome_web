@@ -1,0 +1,46 @@
+.cons-set {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    /*padding: 2rem .5rem;*/
+}
+
+.icons-set__icon {
+    margin: 1rem 1rem 1rem 0rem;
+    color: #9b9b9b;
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.3rem;
+    border: 2px solid rgb(244, 244, 244);
+    border-radius: 10px;
+    transition: all 75ms linear;
+}
+
+.img_icon {
+	background: yellow;
+}
+
+.title-devider {
+    background-color: rgba(240, 90, 109, 0.06);
+}
+
+.card-block p {
+    color: #808c93;
+    
+}
+
+.card-block p samp{
+    color: #f05a6d;
+}
+

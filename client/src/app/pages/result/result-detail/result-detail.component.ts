@@ -82,10 +82,10 @@ export class Person {
   animations: [
     trigger('slideInOutVideo', [
       state('in', style({
-        transform: 'translate3d(0%, -5%, 0)'
+        transform: 'translate3d(0, 0 , 0)'
       })),
       state('out', style({
-        transform: 'translate3d(-130%, 0, 0)'
+        transform: 'translate3d(0, -200%, 0)'
       })),
       transition('in => out', animate('400ms ease-in-out')),
       transition('out => in', animate('400ms ease-in-out'))
@@ -102,19 +102,19 @@ export class Person {
     ]),
     trigger('slideInOutGraphis', [
       state('in', style({
-        transform: 'translate3d(20%, 0, 0)'
+        transform: 'translate3d(0, 35%, 0)'
       })),
       state('out', style({
         transform: 'translate3d(0, 0, 0)'
       })),
-      state('in_graph_video', style({
-        transform: 'translate3d(0, 0, 0)'
-      })),
-      state('out_graph_video', style({
-        transform: 'translate3d(0, 0, 0)'
-      })),
-      transition('in_graph_video => out_graph_video', animate('400ms ease-in-out')),
-      transition('out_graph_video => in_graph_video', animate('400ms ease-in-out')),
+      // state('in_graph_video', style({
+      //   transform: 'translate3d(0, 0, 0)'
+      // })),
+      // state('out_graph_video', style({
+      //   transform: 'translate3d(0, 0, 0)'
+      // })),
+      // transition('in_graph_video => out_graph_video', animate('400ms ease-in-out')),
+      // transition('out_graph_video => in_graph_video', animate('400ms ease-in-out')),
       transition('in => out', animate('400ms ease-in-out')),
       transition('out => in', animate('400ms ease-in-out'))
     ]),
@@ -283,22 +283,22 @@ export class ResultDetailComponent implements OnInit {
 
     menuState:string = 'out';
     videoState:string = 'out';
-    graphState:string = 'out_graph_video';
+    graphState:string = 'out';
     dynamicColDetail:string= '';
-    dynamicColGraph:string= 'col-md-12';
+    dynamicColGraph:string= 'scrollable';
 
  
   toggleDetails() {
     // 1-line if statement that toggles the value:
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
     this.dynamicColDetail= this.dynamicColDetail === '' ? 'col-md-1' : '';
-    this.dynamicColGraph= this.dynamicColGraph === 'col-md-12' ? 'col-md-11' : 'col-md-12';
   }
 
   toggleVideo() {
     // 1-line if statement that toggles the value:
     this.videoState = this.videoState === 'out' ? 'in' : 'out';
-    this.graphState = this.graphState === 'out_graph_video' ? 'in_graph_video' : 'out_graph_video';
+    this.graphState = this.graphState === 'out' ? 'in' : 'out';
+    this.dynamicColGraph= this.dynamicColGraph === 'scrollable' ? 'scrollable_video' : 'scrollable';
     // this.postKinematicAnalysisAsJson_thisShouldBeDoneByThe3DSystem();
   }
 
@@ -2271,20 +2271,31 @@ export class ResultDetailComponent implements OnInit {
       .name_position{
         position: static;
         text-align: center;
-        background-color: rgb(0, 0, 0);
       }
       .margin_container_details {
-          padding: 0.5rem; 
+          padding: 0.05rem; 
       }
       .card-block {
         padding: 0.25rem;
       }
       .card-block p {
-        color: #969093;
+        color: #808c93;   
+      }
+      .card-block p samp{
+        color: #f05a6d;
+      }
+      .title-devider {
+          background-color: rgba(233, 100, 127, 0.78);
+          border-radius: 5px;
+          text-align: center;
+      }
+      h4 {
+        color: #ffffff;
       }
 
-    
-       
+      h2 {
+        color: #aaa;
+      }
       
   `],
   template: `
@@ -2296,7 +2307,7 @@ export class ResultDetailComponent implements OnInit {
       <div id="accordion" class="margin_container_details" role="tablist" aria-multiselectable="true">
         <div>
            <div class="header" role="tab" id="headingOne">
-               <h4 *ngIf="kinematicsAnalysis" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+               <h4 *ngIf="kinematicsAnalysis" class="title-devider" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
               >
                  Accesories
                </h4>
@@ -2307,26 +2318,26 @@ export class ResultDetailComponent implements OnInit {
                
              <p>
                 Terapeuta: 
-                <code>{{kinematicsAnalysis.therapist_id}}</code>
+                <samp>{{kinematicsAnalysis.therapist_id}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
                  Caminata asistida:
-                 <code>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</code>
+                 <samp>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
                  Caminadora:
-                 <code>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</code>
+                 <samp>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_walker">
                  Andador:
-                 <code>{{kinematicsAnalysis.accesories_descriptions.walker}}</code>
+                 <samp>{{kinematicsAnalysis.accesories_descriptions.walker}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
                  Órtesis:
-                 <code>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</code>
+                 <samp>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-                 Barras paralelas: <code>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</code>
+                 Barras paralelas: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
              </p>
 
             </div>
@@ -2335,7 +2346,7 @@ export class ResultDetailComponent implements OnInit {
 
         <div>
          <div class="header" role="tab" id="headingThree">
-             <h4 class="collapsed" data-toggle="collapse"
+             <h4 class="collapsed" class="title-devider" data-toggle="collapse"
               data-parent="#accordion" href="#collapseFour" 
               aria-expanded="false" aria-controls="collapseTwo">
                 Gait Parameters
@@ -2352,7 +2363,7 @@ export class ResultDetailComponent implements OnInit {
 
         <div>
          <div class="header" role="tab" id="headingThree">
-             <h4 class="collapsed" data-toggle="collapse"
+             <h4 class="collapsed" class="title-devider" data-toggle="collapse"
               data-parent="#accordion" href="#collapseTwo" 
               aria-expanded="false" aria-controls="collapseTwo">
                 Observations
@@ -2369,10 +2380,10 @@ export class ResultDetailComponent implements OnInit {
 
         <div>
          <div class="header" role="tab" id="headingThree">
-             <h4 class="collapsed" data-toggle="collapse"
+             <h4 class="collapsed" class="title-devider" data-toggle="collapse"
               data-parent="#accordion" href="#collapseThree" 
               aria-expanded="false" aria-controls="collapseThree">
-                Additoinal comments
+                Additional comments
              </h4>
          </div>
          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
@@ -2403,11 +2414,11 @@ export class ResultDrawerComponent {
   selector: 'app-video-drawer',
   styles: [`
       :host {
-          opacity: 0.6;
+          opacity: 1;
           background: black;
           color: #fff;
           position: fixed;
-          bottom: 0;
+          top: 0;
           width: 100%;
           min-width: 250px;
           z-index: 8000;

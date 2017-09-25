@@ -34,10 +34,12 @@ export class ResultPreviewComponent implements OnInit {
   constructor( ) { }
 
   @Input() kinematicsAnalysis: KinematicsAnalysis;
-  
+  @Input() patient: any;
+  @Input() therapist: any;
+
 
   ngOnInit() {
   }
-
+  
 
 }

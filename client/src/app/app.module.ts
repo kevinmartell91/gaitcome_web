@@ -22,6 +22,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
+// import { PipeModule } from './shared/pipes/pipe.module';
+
+
 declare var require: any;
 export function highchartsFactory() {
   return require('highcharts');
@@ -32,6 +35,7 @@ export function highchartsFactory() {
     AppComponent
   ],
   imports: [
+  // PipeModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,

@@ -9,7 +9,8 @@ import { MedicalCenterComponent } from './medical-center/medical-center.componen
 import { MedicalCenterComponent_out } from '../medicalCenter/medical-center.component';
 
 
-
+// Pipes
+import { PipeModule } from '../../shared/pipes/pipe.module';
 
 
 
@@ -42,15 +43,6 @@ import { ChartModule } from 'angular2-highcharts';
 
 
 @NgModule({
-  imports: [
-    ChartModule,
-    CommonModule,
-    FormsModule,
-    NgbModule,
-    MdlModule,
-    ReactiveFormsModule,
-    routing
-  ],
   declarations: [
     TherapistAddComponent,
     TherapistDeleteComponent,
@@ -73,6 +65,16 @@ import { ChartModule } from 'angular2-highcharts';
     ResultPreviewComponent,
     TherapistListComponent,
     VideoDrawerComponent
+  ],
+  imports: [
+    PipeModule.forRoot(),                 
+    ChartModule,
+    CommonModule,
+    FormsModule,
+    NgbModule,
+    MdlModule,
+    ReactiveFormsModule,
+    routing
   ],
   entryComponents: [
     TherapistAddComponent,
