@@ -67,12 +67,18 @@
           <div class="collapse" id="collapseVideo">
               <iframe class="video-section" width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
           </div>
-          <div class="row result-details-section">
-            <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
-            </app-result-preview>   
-            <button type="button" 
-                    class="btn btn-primary btn-sm" 
-                    (click)="gotoDetail()">View Details</button> 
+          <div class="result-details-section">
+            <div class="row">
+                                  
+              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+              </app-result-preview>   
+            </div>
+
+            <div class="row">
+              <button type="button" 
+                      class="btn btn-primary btn-sm" 
+                      (click)="gotoDetail()">View Details</button> 
+            </div>
           </div>
 
 
@@ -81,21 +87,17 @@
     </div>
   </div>
 
-<div class="container">
-  <div class="drawer_video">
-    <!-- <div *ngIf="currentKinematicsAnalysis"> -->
-    <!-- <div *ngIf="blnCurKneAna"> -->
-      <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
-              data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
-          <mdl-icon>movie</mdl-icon>
-      </button>
-    <!-- </div>    -->
+  <div class="container">
+    <div class="drawer_video">
+      <!-- <div *ngIf="currentKinematicsAnalysis"> -->
+      <!-- <div *ngIf="blnCurKneAna"> -->
+        <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
+                data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+            <mdl-icon>movie</mdl-icon>
+        </button>
+      <!-- </div>    -->
+    </div>
   </div>
-</div>
-
-{{ currentKinematicsAnalysis | json }}
-
-
 
 
 </div>
@@ -168,11 +170,17 @@
               <div class="card-block">
                 <div class="col-md-6">
                   <div *ngIf="currentKinematicsAnalysis">
-                    <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
-                    </app-result-preview>   
-                    <button type="button" 
-                            class="btn btn-primary btn-sm" 
-                            (click)="gotoDetail()">View Details</button> 
+                    <div class="row">
+                      
+                      <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+                      </app-result-preview>   
+                    </div>
+
+                    <div class="row">
+                      <button type="button" 
+                              class="btn btn-primary btn-sm" 
+                              (click)="gotoDetail()">View Details</button> 
+                    </div>
                   </div>
                 </div>
 
