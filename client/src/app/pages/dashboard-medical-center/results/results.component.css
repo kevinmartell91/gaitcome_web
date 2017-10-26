@@ -43,14 +43,30 @@
     background-color: #fae3c4;
     border-radius: .25rem;
 }
-.drawer_video {
+.drawer_graphic {
      bottom: 0;
     position: fixed;
-    margin-bottom: 8px;
+    margin-bottom: 95px;
     margin-right: 24px;
     z-index: 9000;
     position: fixed;
     right: 0;
+}
+
+.drawer_video {
+     bottom: 0;
+    position: fixed;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    z-index: 9000;
+    position: fixed;
+    right: 0;
+}
+
+.mdl-button--accent.mdl-button--fab {
+    color: rgba(223, 30, 78, 0.61);
+    background-color: rgba(235, 53, 22, 0.22);
+
 }
 
 .material-icons {

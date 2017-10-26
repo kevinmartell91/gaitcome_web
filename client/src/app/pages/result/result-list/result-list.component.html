@@ -56,11 +56,12 @@
           <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
           </mdl-checkbox>
         </th>
-        <td>{{kinematicsAnalysis.created_at}}</td>
+        <td>{{kinematicsAnalysis.created_at | dateFormat}}</td>
         <td>
           <div *ngIf="mouseOvered === kinematicsAnalysis">
             <mdl-icon class="icon material-icons" mdl-tooltip-large="ver resumen"
                       (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+
           </div>
         </td>
       <!-- </div> -->

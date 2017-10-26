@@ -68,16 +68,19 @@
               <iframe class="video-section" width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="result-details-section">
+
             <div class="row">
                                   
-              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis"
+                                  [patient]="currentPatient"
+                                  [therapist]="currentTherapist">
               </app-result-preview>   
             </div>
-
+            
             <div class="row">
               <button type="button" 
                       class="btn btn-primary btn-sm" 
-                      (click)="gotoDetail()">View Details</button> 
+                      (click)="gotoDetail()">View graphics</button> 
             </div>
           </div>
 
@@ -88,14 +91,23 @@
   </div>
 
   <div class="container">
+    <div class="drawer_graphic">
+      <div *ngIf="currentKinematicsAnalysis">
+      <!-- <div *ngIf="blnCurKneAna"> -->
+        <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="gotoDetail()">
+            <mdl-icon>timeline</mdl-icon>
+        </button>
+      </div>   
+    </div>
+
     <div class="drawer_video">
-      <!-- <div *ngIf="currentKinematicsAnalysis"> -->
+      <div *ngIf="currentKinematicsAnalysis">
       <!-- <div *ngIf="blnCurKneAna"> -->
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
                 data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
-            <mdl-icon>movie</mdl-icon>
+            <mdl-icon>movies</mdl-icon>
         </button>
-      <!-- </div>    -->
+      </div>   
     </div>
   </div>
 
@@ -179,7 +191,7 @@
                     <div class="row">
                       <button type="button" 
                               class="btn btn-primary btn-sm" 
-                              (click)="gotoDetail()">View Details</button> 
+                              (click)="gotoDetail()">View graphics</button> 
                     </div>
                   </div>
                 </div>
@@ -190,3 +202,4 @@
       </div>
 
     </div>
+

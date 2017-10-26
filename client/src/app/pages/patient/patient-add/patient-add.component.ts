@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDatepickerConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -46,10 +46,12 @@ export class PatientAddComponent implements OnInit {
   @Input() name;
   token: string;
   newPatient: any;
+  model;
 
   constructor( public activeModal: NgbActiveModal,
                private fb: FormBuilder, 
-               public http : Http) { 
+               public http : Http,
+               config: NgbDatepickerConfig) { 
   }
 
 

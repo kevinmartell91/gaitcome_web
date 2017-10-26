@@ -74,6 +74,7 @@ export class TherapistUpdateComponent implements OnInit {
 
     this._putJSON(environment.URL_WEB_SERVICE_THERAPISTS + this.therapist._id, this.form.value, this.getHeaders())
       .subscribe(json => this.updatedTherapist = json);
+      
 
     this.activeModal.close();
   }

@@ -2,11 +2,11 @@
 
 
 <!-- <div class="container-fluid"> -->
-        <div class="video_sectionNNN">
+        <div class="video_section">
           
-          <div class="collapse" id="collapseVideo">
+         <!--  <div class="collapse" id="collapseVideo">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
-          </div>
+          </div> -->
         </div>
 <!-- </div> -->
 
@@ -17,17 +17,28 @@
 <div class="content">
     <div class="container">
 
-        <div class="row">
+        <div  class="col-md-12">
 
           <!--   <div [class]="dynamicColDetail">
             </div> -->
 
             <!-- Graphics of gait analysis -->
-            <!-- <div [class]="dynamicColGraph" [@slideInOutGraphis]="graphState"> -->
+            <div [class]="dynamicColGraph" [@slideInOutGraphis]="graphState">
             <!-- <div [@slideInOutGraphis]="graphState"> -->
-            <div class="col-md-12">                
+            <!-- <div class="col-md-12 scrollable" [@slideInOutVideo]="videoState">                 -->
 
-
+                    <!-- <div class="row">
+                        <div class="col-md-4 name_position">
+                            <h3>Sagital plane</h3>
+                        </div>
+                        <div class="col-md-4 name_position">
+                            <h3>Coronal plane</h3>
+                        </div>
+                        <div class="col-md-4 name_position">
+                            <h3>Transverse plane</h3>
+                        </div>
+                    </div>
+ -->
                     <div class="row">
                         <div class="col-md-4">
                             <chart [options]="sp_plv_high_chart_data" align="center"></chart>
@@ -92,13 +103,22 @@
 </div>
 
 <div class="drawer_video">
-        <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
+        <!-- <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
             data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
         <mdl-icon>movie</mdl-icon>
         </button> 
-        <!-- <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="toggleVideo()">
+ -->
+
+      <!--   <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="toggleVideo()">
             <mdl-icon>movie</mdl-icon>
         </button> -->
+
+         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
+            data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo"
+            (click)="toggleVideo()">
+            <mdl-icon>movie</mdl-icon>
+        </button> 
+
 </div>  
 
 

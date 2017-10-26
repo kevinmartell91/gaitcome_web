@@ -80,3 +80,16 @@ chart {
     z-index: 200;
 }
 
+.scrollable {
+    height: 66rem;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.scrollable_video{
+    height: 45rem;
+    margin: 0;
+    overflow: scroll
+}
+
+
