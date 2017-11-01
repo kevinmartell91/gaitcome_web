@@ -8,59 +8,108 @@
       <a class="navbar-brand page-scroll" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gaitcome</a>
     </div>
 </nav> -->
+
+<!-- 
 <div class="margin-container">
-<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
-  <div class="form-login text-xs-center">
-    <div class="card col-xs-12 col-sm-6 col-md-8">
+  <div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+    <div class="form-login text-xs-center">
+      <div class="card col-xs-12 col-sm-6 col-md-8">
 
-      <div class="card-header" data-background-color="red">
-        <h5 class="title">Ingrese</h5>
-        <p class="category">Gaitcome</p>
+        <div class="card-header" data-background-color="red">
+          <h5 class="title">Ingrese</h5>
+          <p class="category">Gaitcome</p>
+        </div>
+
+        <div class="card-content">
+          <form [formGroup]="form" class="card-group">
+            <p>
+              <mdl-textfield label="Usuario" name="username"
+                type="text" formControlName="username"
+                floating-label></mdl-textfield>
+            </p>
+
+            <p>
+              <mdl-textfield  label="Contraseña" 
+                              name="password"
+                type="password" formControlName="password"
+                floating-label></mdl-textfield>
+            </p>
+
+
+
+            <p >
+
+              <mdl-radio 
+                  *ngFor="let login_type of login_types"  
+                                      name="login_type" value={{login_type.value}}
+                                      formControlName="login_type"
+                                      mdl-ripple>{{login_type.display}}</mdl-radio>
+
+            </p>
+
+              <p class="mdl-color-text--primary">{{statusMessage}}</p>
+              <mdl-spinner single-color [active]="processingLogin"></mdl-spinner>
+
+
+            <p>
+              <button mdl-button (click)="login()" [disabled]="!form.valid"
+                mdl-button-type="raised" mdl-ripple
+                mdl-colored="primary">Ingresar</button>
+            </p>
+          </form>
+
+
+        </div>
       </div>
 
-      <div class="card-content">
-        <form [formGroup]="form" class="card-group">
-          <p>
-            <mdl-textfield label="Usuario" name="username"
-              type="text" formControlName="username"
-              floating-label></mdl-textfield>
-          </p>
-
-          <p>
-            <mdl-textfield  label="Contraseña" 
-                            name="password"
-              type="password" formControlName="password"
-              floating-label></mdl-textfield>
-          </p>
-
-
-
-          <p >
-
-            <mdl-radio 
-                *ngFor="let login_type of login_types"  
-                                    name="login_type" value={{login_type.value}}
-                                    formControlName="login_type"
-                                    mdl-ripple>{{login_type.display}}</mdl-radio>
-
-          </p>
-
-            <p class="mdl-color-text--primary">{{statusMessage}}</p>
-            <mdl-spinner single-color [active]="processingLogin"></mdl-spinner>
-
-
-          <p>
-            <button mdl-button (click)="login()" [disabled]="!form.valid"
-              mdl-button-type="raised" mdl-ripple
-              mdl-colored="primary">Ingresar</button>
-          </p>
-        </form>
-
-
-      </div>
     </div>
-
   </div>
 </div>
+ -->
+<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+  <div class="login_container_style">
+    <form [formGroup]="form" class="form-signin">
+      <div class="mdl-color-text--primary login_title_style">Gaitcome</div>
+
+      <!-- <h4>Sign in</h4> -->
+
+      <div>
+        <mdl-textfield label="Usuario" name="username"
+          type="text" formControlName="username"
+          floating-label></mdl-textfield>
+      </div>
+
+      <div>
+        <mdl-textfield  label="Contraseña" 
+                        name="password"
+          type="password" formControlName="password"
+          floating-label></mdl-textfield>
+      </div>
+
+      <h6 class="login_type_rol_style">Sing in as: </h6>
+
+      <div>
+        <mdl-radio  *ngFor="let login_type of login_types"  
+                    name="login_type" value={{login_type.value}}
+                    formControlName="login_type"
+                    mdl-ripple
+                    class="radio_button_roles_style">{{login_type.display}}</mdl-radio>
+      </div>
+
+      <div class="login_process_style">
+        <mdl-spinner single-color [active]="processingLogin"></mdl-spinner>
+        <h6>{{statusMessage}}</h6>
+      </div>
+
+      <div class="login_submit_style">
+        <button  mdl-button (click)="login()" [disabled]="!form.valid"
+          mdl-button-type="raised" mdl-ripple
+          mdl-colored="primary">Ingresar</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+
+
 

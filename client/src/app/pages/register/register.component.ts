@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: [
-  	'./register.component.css',
-    '../../theme/theme.component.css'
+  	'./register.component.css'
+    // '../../theme/theme.component.css'
     ]
 })
 

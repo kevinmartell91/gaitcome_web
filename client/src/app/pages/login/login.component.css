@@ -47,3 +47,89 @@ h2 {
     background: linear-gradient(60deg, #ab47bc, #8e24aa);
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }*/
+
+
+.styles__main {
+    background: #1488c6;
+}
+
+.styles__container {
+    
+}
+
+.styles__wrapper {
+    width: 360px;
+    margin: 0 auto;
+    padding-top: 120px;
+    height: 100%;
+    position: relative;
+}
+
+.styles__banner {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.styles__form {
+    margin-bottom: 48px;
+}
+
+.loginForm__main {
+    content: " ";
+    display: table;
+}
+
+.styles__more {
+    width: 100%;
+}
+
+
+
+
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.login_container_style {
+    margin-top: 6rem;
+}
+
+.login_title_style{
+    text-align: center;
+    color: #f15b6d;
+    margin-bottom: 2rem;
+}
+.login_submit_style {
+    text-align:right;
+}
+
+.login_process_style {
+    text-align:center;
+    color: #f15b6d;
+}
+
+.radio_button_roles_style {
+    color: #bdbdc7;
+    margin: 10px;
+}
+
+.login_type_rol_style {
+    color: #e91f63;
+    
+}
+
+

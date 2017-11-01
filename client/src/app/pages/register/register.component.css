@@ -8,14 +8,40 @@
     border-radius: 10px;
 }*/
 
-.form-register {
+.signup_container_style {
+    margin-top: 6rem;
+}
+.signup_form {
     max-width: 520px;
     padding: 25px;
     margin: 0 auto;
 }
-.tems-and-conditions {
-  font-size: 9px;
+
+
+.signup_title_style{
+    text-align: center;
+    color: #f15b6d;
+    margin-bottom: 2rem;
 }
-.users-group {
-    margin-top: 12px;
+.signup_users_group {
+    /*margin-top: 12px;*/
+}
+.singup_type_user_button_style {
+    margin: auto;
+    width: 61%;
+    /*border: 3px solid #73AD21;*/
+    padding: 10px;
+}
+.signup_have_account_style {
+    text-align:center;
+}
+
+.signup_process_style {
+    text-align:center;
+    color: #f15b6d;
+}
+.signup_terms_and_conditions_style {
+  font-size: 9px;
+  color: #bdbdbd;
+  text-align: center;
 }

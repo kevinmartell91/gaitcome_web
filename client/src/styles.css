@@ -402,7 +402,8 @@ img::-moz-selection {
 }
 
 .mdl-textfield {
-    padding: 20px 0px 30px;
+    /*padding: 20px 0px 30px;*/
+    padding: 20px 0px 28px;
     width: 100%; 
     max-width: 100%; 
 }

@@ -19,8 +19,8 @@ import { AuthService } from './auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [
-    './login.component.css',
-    '../../theme/theme.component.css'
+    './login.component.css'
+    // '../../theme/theme.component.css'
   ]
 })
 export class LoginComponent implements OnInit{
@@ -114,8 +114,7 @@ tiles = [
   }
 
   setMessage() {
-    // this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-    this.statusMessage = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+    // this.statusMessage = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
   //login(event, username, password) {

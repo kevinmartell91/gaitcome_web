@@ -1,4 +1,4 @@
-<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+<!-- <div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
   <div class="form-register text-xs-center">
     <div class="card col-xs-12 col-sm-6 col-md-8">
 
@@ -43,5 +43,62 @@
 
       </div>
     </div>
+  </div>
+</div>
+
+ -->
+<div class="container wow fadeInUp" style="visibility: hidden; animation-name: none;">
+  <div class="signup_container_style">
+    <form [formGroup]="form" class="signup_form">
+      <div class="mdl-color-text--primary signup_title_style">Gaitcome</div>
+      
+      <h4>Registration</h4>
+      
+      <div class="row signup_users_group">
+        <div class="col">
+        <div class="singup_type_user_button_style">
+          <button mdl-button mdl-button-type="fab"
+                  mdl-ripple routerLink="./" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }">
+            <mdl-icon>location_city</mdl-icon>  
+          </button>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="singup_type_user_button_style">
+          <button mdl-button mdl-button-type="fab"
+                  mdl-ripple routerLink="./attorney"
+                  routerLinkActive="active">
+            <mdl-icon>accessible</mdl-icon>
+          </button>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="singup_type_user_button_style">
+          <button mdl-button mdl-button-type="fab"
+                  mdl-ripple routerLink="./therapist"
+                  routerLinkActive="active">
+            <mdl-icon>group_add</mdl-icon>
+          </button>  
+        </div>
+        </div>
+      </div>
+
+
+      <router-outlet></router-outlet>
+
+
+      <div class="signup_have_account_style">  
+        <button mdl-button mdl-colored mdl-ripple>Ya tiene un cuenta</button>
+      </div>  
+      <p class="signup_terms_and_conditions_style">
+        By pressing Create Account you agree to our
+        Terms of Service, Privacy Policy
+        and Notice of Privacy Practices
+      </p>
+
+    </form>
   </div>
 </div>
