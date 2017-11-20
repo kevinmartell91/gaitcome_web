@@ -142,6 +142,7 @@ export class ResultDetailComponent implements OnInit {
   splKne: SplKne;
 
   postObjReturn: any;
+  putObjReturn: any;
 
   people: Person[] = [];
   displayedPeople: Person[] = [];
@@ -212,6 +213,11 @@ export class ResultDetailComponent implements OnInit {
       .map((res: Response) => res.json())
   }
 
+  _putJSON(url: string, body:any, option: RequestOptions): Observable<any> {
+    return this.http.put(url,body, option)
+      .map((res: Response) => res.json())
+  }
+
   getHeaders() {
     let headers = new Headers();
     headers.append('Accept', 'application/json');
@@ -241,7 +247,7 @@ export class ResultDetailComponent implements OnInit {
       let options = new RequestOptions({ headers: headers });
 
       // this._getJSON(this.URL_WEB_SERVICE_TEMP, options)
-      this._getJSON(environment.URL_WEB_SERVICE + this.hard_id, options)
+      this._getJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS + this.hard_id, options)
         .subscribe(json => {
             this.kinematicsAnalysis = json;
             this.populateHighCharts(json);
@@ -299,11 +305,32 @@ export class ResultDetailComponent implements OnInit {
     this.videoState = this.videoState === 'out' ? 'in' : 'out';
     this.graphState = this.graphState === 'out' ? 'in' : 'out';
     this.dynamicColGraph= this.dynamicColGraph === 'scrollable' ? 'scrollable_video' : 'scrollable';
-    // this.postKinematicAnalysisAsJson_thisShouldBeDoneByThe3DSystem();
   }
 
+  testRetriveHighChartFromEnvionmentFile(){
+    console.log("environment.sp_plv_high_chart_data" ,environment.sp_plv_high_chart_data.series[1].name);
+    console.log("environment.sp_plv_high_chart_data_JSOM.stringfy" ,JSON.stringify(environment.sp_plv_high_chart_data));
+  }
 
-  public showGraphWithCommentedAttributes(kinematicsAnalysis: KinematicsAnalysis){
+  postManual() {
+    this.postKinematicAnalysisAsJson_thisShouldBeDoneByThe3DSystem();
+    console.log("postManual()", JSON.stringify(this.postObjReturn));
+  }
+
+  putMatLab_manual() {
+    this.putMatLabData_manual();
+    console.log("putMatLabData_manual()");    
+
+  }
+
+  putManual() {
+    this.putData_manual();
+    console.log("putManual()");    
+
+  }
+
+  public showGraphWithCommentedAttributes(kinematicsAnalysis: KinematicsAnalysis) {
+    
     this.options = {
       chart: {
           type: 'spline',
@@ -2121,36 +2148,36 @@ export class ResultDetailComponent implements OnInit {
         "orthoses": "No se necesito",
         "parallel_bars": ""
       },
-      "lkne": [{
-          "x": 123.31,
-          "y": 543.4,
-          "z": 54.54
-      }, {
-          "x": 123.31,
-          "y": 543.4,
-          "z": 54.54
-      },{
-          "x": 123.31,
-          "y": 543.4,
-          "z": 54.54
-      },{
-          "x": 123.31,
-          "y": 543.4,
-          "z": 54.54
-      },{
-          "x": 123.31,
-          "y": 543.4,
-          "z": 54.54
-      }],
+      // "lkne": [{
+      //     "x": 123.31,
+      //     "y": 543.4,
+      //     "z": 54.54
+      // }, {
+      //     "x": 123.31,
+      //     "y": 543.4,
+      //     "z": 54.54
+      // },{
+      //     "x": 123.31,
+      //     "y": 543.4,
+      //     "z": 54.54
+      // },{
+      //     "x": 123.31,
+      //     "y": 543.4,
+      //     "z": 54.54
+      // },{
+      //     "x": 123.31,
+      //     "y": 543.4,
+      //     "z": 54.54
+      // }],
 
-        "spl_hip": [
-            12.1234567890,
-            14.1234567890,
-            16.1234567890,
-            12.1234567890,
-            17.1234567890,
-            14.12345678901234567890
-        ],
+      //   "spl_hip": [
+      //       12.1234567890,
+      //       14.1234567890,
+      //       16.1234567890,
+      //       12.1234567890,
+      //       17.1234567890,
+      //       14.12345678901234567890
+      //   ],
         
       "spl_kne": {
         "patient_angles": [
@@ -2232,8 +2259,69 @@ export class ResultDetailComponent implements OnInit {
       
     }
 
-    this._postJSON(environment.URL_WEB_SERVICE, json, this.getHeaders())
+
+
+    this._postJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS, json, this.getHeaders())
       .subscribe(json => this.postObjReturn = json);
+
+  }
+
+  public putData_manual()
+  {
+
+    let json =
+    {
+      "patient_id": "591e7542583a7b2b751d4ec3",
+      "medical_center_id" : "591e7542583a7b2b751d4ec3",
+      "therapist_id" : "591f03510a88ba3158605314",
+      "accesories": {
+        "is_assited_walk": true,
+        "is_treadmills": true,
+        "is_walker": true,
+        "is_orthoses": true,
+        "is_parallel_bars": true
+      },
+      "patient_descriptions" : "field not completed in post call",
+      
+    }
+
+    this._putJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS + "59fd258e3f59a10a24360c11", json, this.getHeaders())
+      .subscribe(json => this.putObjReturn = json);
+
+  }
+
+  public putMatLabData_manual()
+  {
+
+    let json_matlab =
+    {
+      
+      "lbwt_x": [-0.510987043, -0.507847548, -0.501565576, -0.496196598, -0.491059452],
+      "lbwt_y": [0.540674865, 0.537599206, 0.53218329, 0.528224289, 0.525324],
+      "lbwt_z": [1.61474895, 1.59691453, 1.57354069, 1.55434036, 1.53739333],
+      "lfwt_x": [-0.398507059, -0.397183716, -0.394476324, -0.392103, -0.390162498],
+      "lfwt_y": [0.588272154, 0.583447039, 0.578022361, 0.57288146, 0.569532335],
+      "lfwt_z": [1.70413, 1.69285548, 1.67843926, 1.66533923, 1.65606987],
+      "ltrc_x": [-0.456139743, -0.453096241, -0.444883525, -0.438923717, -0.435777724],
+      "ltrc_y": [0.574408114, 0.566290855, 0.554492, 0.546806157, 0.542087793],
+      "ltrc_z": [1.75878453, 1.73355663, 1.69516492, 1.66894531, 1.65336823],
+      "lkne_x": [-0.439642638, -0.450746745, -0.460154414, -0.468907058, -0.471274972],
+      "lkne_y": [0.227837697, 0.22827071, 0.227817863, 0.22600098, 0.222509876],
+      "lkne_z": [1.94660103, 1.95596731, 1.96060288, 1.96053076, 1.93824673],
+      "lank_x": [-0.299996972, -0.307621032, -0.314234704, -0.319124907, -0.326241612],
+      "lank_y": [-0.106538437, -0.106994025, -0.107379854, -0.108190544, -0.109016925],
+      "lank_z": [2.21435237, 2.20030403, 2.18677807, 2.16759419, 2.16266465],
+      "lhee_x": [-0.338616103, -0.345539272, -0.35304141, -0.357975781, -0.367530316],
+      "lhee_y": [-0.220685542, -0.220476776, -0.221423388, -0.221060321, -0.223497763],
+      "lhee_z": [2.1134963, 2.10699821, 2.10421777, 2.08988857, 2.0972507],
+      "ltoe_x": [-0.16483134, -0.173326507, -0.18125011, -0.18900612, -0.196587116],
+      "ltoe_y": [-0.223946437, -0.225081, -0.225982144, -0.226950809, -0.227060854],
+      "ltoe_z": [2.10366583, 2.11058068, 2.11493826, 2.11493444, 2.10920978]
+        
+    }
+
+    this._putJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB + "59fd258e3f59a10a24360c11", json_matlab, this.getHeaders())
+      .subscribe(json => this.putObjReturn = json);
 
   }
  
@@ -2447,8 +2535,7 @@ export class ResultDrawerComponent {
     <div >
       <div class="row justify-content-center">
          <div class="col align-items-center">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c?
-            fs=1&amp;wmode=transparent" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/qxi-cBG71Ho?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
          </div>
       </div>
     </div>  
@@ -2461,6 +2548,9 @@ export class ResultDrawerComponent {
   //     </div>
   //   </div>
   // </div>
+          
+
+  // <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c?
 
 export class VideoDrawerComponent {
 

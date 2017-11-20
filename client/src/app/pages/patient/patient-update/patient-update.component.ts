@@ -133,7 +133,7 @@ export class PatientUpdateComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.updatedPatient)
+    console.log(this.updatedPatient);
     let jsonUpdatedPatient = {
       names: this.form.value.names,
       lastname: this.form.value.lastName,

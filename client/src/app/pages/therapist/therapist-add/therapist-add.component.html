@@ -48,26 +48,25 @@
                 </div>
 
                 <div class="row">
-                <!-- DNI & birth -->
+                <!-- Birth and DNI -->
                     <div class="col">
                         <div class="field-group">
-                            <mdl-icon class="mdl_icon">credit_card</mdl-icon>
+
+                            <mdl-icon class="mdl_icon">date_range</mdl-icon>
                             <mdl-textfield type="text" 
-                                           label="N° de DNI" 
-                                           name="id_Document_num" 
-                                           pattern="-?[0-9]*(\.[0-9]+)?" 
+                                           label="(yyyy-mm-dd)" 
+                                           name="birth" 
+                                           pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
                                            error-msg="Caracteres no numéricos!" 
-                                           formControlName="id_Document_num" 
+                                           formControlName="birth" 
                                            ></mdl-textfield>
                         </div>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         
                         <div class="field-group">
 
                            <form class="form-inlinejh">
-                              <!-- <div class="form-group"> -->
-                                <!-- <div class="input-group"> -->
                                   <mdl-icon class="mdl_icon" (click)="d.toggle()">date_range</mdl-icon>
                                   <input  placeholder="yyyy-mm-dd"
                                          name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
@@ -81,9 +80,18 @@
                                            formControlName="birth"
                                            class="out"
                                            ></mdl-textfield>
-
-                            <!-- <hr/>
-                            <pre>Model: {{ name}}</pre> -->
+                        </div>
+                    </div> -->
+                    <div class="col">
+                        <div class="field-group">
+                            <mdl-icon class="mdl_icon">credit_card</mdl-icon>
+                            <mdl-textfield type="text" 
+                                           label="N° de DNI" 
+                                           name="id_Document_num" 
+                                           pattern="-?[0-9]*(\.[0-9]+)?" 
+                                           error-msg="Caracteres no numéricos!" 
+                                           formControlName="id_Document_num" 
+                                           ></mdl-textfield>
                         </div>
                     </div>
                 </div>

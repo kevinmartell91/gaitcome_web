@@ -48,7 +48,39 @@
             </div>
 
             <div class="row">
-            <!-- DNI & birth -->
+            <!-- Birth and DNI -->
+                <div class="col">
+                    <div class="field-group">
+
+                        <mdl-icon class="mdl_icon">date_range</mdl-icon>
+                        <mdl-textfield type="text" 
+                                       label="(yyyy-mm-dd)" 
+                                       name="birth" 
+                                       pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
+                                       error-msg="Caracteres no numéricos!" 
+                                       formControlName="birth" 
+                                       ></mdl-textfield>
+                    </div>
+                </div>
+                <!-- <div class="col">
+                    
+                    <div class="field-group">
+                        <form class="form-inline">
+                              <mdl-icon class="mdl_icon" (click)="d.toggle()">date_range</mdl-icon>
+                              <input  placeholder="INPUTyyyy-mm-dd"
+                                      class="out"
+                                      name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                        </form>
+                        <mdl-textfield  type="text"
+                                       label="yyyy-mm-dd" 
+                                       name="birth" 
+                                       pattern="-?[0-9]*(\.[0-9]+)?" 
+                                       error-msg="Caracteres no numéricos!" 
+                                       formControlName="birth"
+                                       ></mdl-textfield>
+                      
+                    </div>
+                </div> -->
                 <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">credit_card</mdl-icon>
@@ -59,44 +91,6 @@
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="id_Document_num" 
                                        ></mdl-textfield>
-                    </div>
-                </div>
-                <!-- <div class="col">
-                    <div class="field-group">
-
-                        <mdl-icon class="mdl_icon">date_range</mdl-icon>
-                        <mdl-textfield type="text" 
-                                       label="Nacimiento (yyyy-mm-dd)" 
-                                       name="birth" 
-                                       pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
-                                       error-msg="Caracteres no numéricos!" 
-                                       formControlName="birth" 
-                                       ></mdl-textfield>
-                    </div>
-                </div> -->
-                <div class="col">
-                    
-                    <div class="field-group">
-
-                       <form class="form-inlinejh">
-                          <!-- <div class="form-group"> -->
-                            <!-- <div class="input-group"> -->
-                              <mdl-icon class="mdl_icon" (click)="d.toggle()">date_range</mdl-icon>
-                              <input  placeholder="yyyy-mm-dd"
-                                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                        </form>
-
-                        <mdl-textfield type="text"
-                                       label="birth" 
-                                       name="birth" 
-                                       pattern="-?[0-9]*(\.[0-9]+)?" 
-                                       error-msg="Caracteres no numéricos!" 
-                                       formControlName="birth"
-                                       class="out"
-                                       ></mdl-textfield>
-
-                        <!-- <hr/>
-                        <pre>Model: {{ name}}</pre> -->
                     </div>
                 </div>
             </div>
@@ -308,4 +302,6 @@
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>
     </div>
+<div>{{model}}</div>
+
 </div>

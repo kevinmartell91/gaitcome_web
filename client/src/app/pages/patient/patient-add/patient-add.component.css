@@ -75,7 +75,10 @@
 }
 
 .out {
-    margin: -9999px;
+    color: transparent;
+    margin: 9px;
+    width: 1px;
+    height: 1px;
 }
 
 input {
@@ -88,4 +91,12 @@ input {
     border-style: transparent;
     border-color: transparent;
     border-image: transparent;
+}
+
+.date_style {
+    padding: 1rem;
+}
+
+.form-inline {
+    z-index: 200px;
 }

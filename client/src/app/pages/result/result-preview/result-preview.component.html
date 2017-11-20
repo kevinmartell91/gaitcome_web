@@ -49,10 +49,10 @@
      *ngIf="kinematicsAnalysis.sp_kne_high_chart_data; then thenBlock_is_sagitalplane else elseBlock_is_sagitalPlane"></div>
   <div >
     <ng-template #thenBlock_is_sagitalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Orthoses">
+        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Sagittal view">
     </ng-template>
     <ng-template #elseBlock_is_sagitalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No orthoses">
+         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="Sagittal view not available">
     </ng-template>
   </div>
 
@@ -60,10 +60,10 @@
      *ngIf="kinematicsAnalysis.fp_kne_high_chart_data; then thenBlock_is_frotalplane else elseBlock_is_frotalPlane"></div>
   <div >
     <ng-template #thenBlock_is_frotalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Orthoses">
+        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Frotal">
     </ng-template>
     <ng-template #elseBlock_is_frotalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="No orthoses">
+         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="No frontal view available">
     </ng-template>
   </div>
 
@@ -71,10 +71,10 @@
      *ngIf="kinematicsAnalysis.tp_kne_high_chart_data; then thenBlock_is_tranversalplane else elseBlock_is_tranversalPlane"></div>
   <div >
     <ng-template #thenBlock_is_tranversalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Orthoses">
+        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Tranverse view">
     </ng-template>
     <ng-template #elseBlock_is_tranversalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No orthoses">
+         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No transverse view">
     </ng-template>
   </div>
 
@@ -116,10 +116,10 @@
      *ngIf="kinematicsAnalysis.accesories.is_walker; then thenBlock_is_walker else elseBlock_is_walker"></div>
   <div >
     <ng-template #thenBlock_is_walker>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Crutch-Filled.png" title="Walker">
+        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Crutch-Filled.png" title="Crutches">
     </ng-template>
     <ng-template #elseBlock_is_walker>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Crutch-Filled.png" title="No walker">
+         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Crutch-Filled.png" title="No crutches">
     </ng-template>
   </div>
 
@@ -152,10 +152,10 @@
      *ngIf="!kinematicsAnalysis.accesories.is_orthoses; then thenBlock_is_no_orthoses else elseBlock_is_no_orthoses"></div>
   <div >
     <ng-template #thenBlock_is_no_orthoses>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Walking Filled.png" title="Orthoses">
+        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Walking Filled.png" title="Elastic bands">
     </ng-template>
     <ng-template #elseBlock_is_no_orthoses>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Walking Filled.png" title="No orthoses">
+         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Walking Filled.png" title="No elastic bands">
     </ng-template>
   </div>
 
