@@ -60,6 +60,8 @@ exports.putMedicalCenter = function(req, res) {
     medicalCenter.tax_identification = req.body.tax_identification;
     medicalCenter.email = req.body.email;
     medicalCenter.country = req.body.country;
+    medicalCenter.password = req.body.password;
+    medicalCenter.username = req.body.username;
 
     medicalCenter.save(function(err){
       if(err) 
