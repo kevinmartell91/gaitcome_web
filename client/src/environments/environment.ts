@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false,
+  production: true,
 
   URL_WEB_SERVICE_ANALYSIS: 'http://localhost:8080/api/kinematics_analysis/',
   URL_WEB_SERVICE_THERAPISTS:'http://localhost:8080/api/therapists/',
@@ -14,7 +14,7 @@ export const environment = {
 
   medical_center_id: '591e7542583a7b2b751d4ec3',
   medical_center_name: 'Cerene',
-  
+
   environment: 'dev',
   version: 'Beta_dev',
 

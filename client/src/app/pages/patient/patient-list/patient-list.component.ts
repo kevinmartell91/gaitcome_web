@@ -69,7 +69,7 @@ export class PatientListComponent implements OnInit {
   }
   // Service methods
   getTherapist() {
-    this._getJSON(URL_WEB_SERVICE_PATIENTS, 
+    this._getJSON(environment.URL_WEB_SERVICE_PATIENTS, 
     			  this.getHeaders())
       .subscribe(json => this.patients = json)
   }

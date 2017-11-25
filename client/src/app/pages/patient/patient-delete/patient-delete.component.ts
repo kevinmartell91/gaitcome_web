@@ -39,7 +39,7 @@ export class PatientDeleteComponent implements OnInit {
   }
 
   deletePatient(){
-	console.log(environment.URL_WEB_SERVICE_PATIENTS + this._id);
+
   	this._deleteJSON(environment.URL_WEB_SERVICE_PATIENTS + this._id, 
   					  this.getHeaders() )
       .subscribe(json => this.response = json);
