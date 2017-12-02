@@ -51,6 +51,16 @@
     text-align: left;
     width: 40px;
     font-size: 30px;
+    cursor: default;
+}
+
+.mdl_icon_date {
+    flex-shrink: 0;
+    margin-top: 20px;
+    opacity: .3;
+    text-align: left;
+    width: 40px;
+    font-size: 30px;
     cursor: pointer;
 }
 
@@ -74,5 +84,33 @@
 }
 
 .out {
-    margin: -9999px;
+    color: transparent;
+    margin: 9px;
+    width: 1px;
+    height: 1px;
+}
+
+.calendar_icon_style{
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+
+input {
+    -webkit-appearance: textfield;
+    background-color: transparent;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-style: transparent;
+    border-color: transparent;
+    border-image: transparent;
+}
+
+.date_style {
+    padding: 1rem;
+}
+
+.form-inline {
+    z-index: 200px;
 }

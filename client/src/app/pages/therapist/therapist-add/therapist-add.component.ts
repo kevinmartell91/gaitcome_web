@@ -9,6 +9,9 @@ import 'rxjs/add/operator/map';
 
 import { environment } from '../../../../environments/environment';
 
+import * as moment from 'moment';
+
+
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
@@ -25,7 +28,7 @@ export class TherapistAddComponent implements OnInit {
   public disableForm = false;
   public form: FormGroup;
   public names = new FormControl('', Validators.required);
-  public lastName = new FormControl('', Validators.required);
+  public lastname = new FormControl('', Validators.required);
   public num_ctmp = new FormControl('');
   public num_ndta = new FormControl('');
   public email = new FormControl('', emailValidator);
@@ -70,7 +73,7 @@ export class TherapistAddComponent implements OnInit {
     // test nested formGroup
     this.form = this.fb.group({
       names:              this.names,
-      lastName:           this.lastName,
+      lastname:           this.lastname,
       num_ctmp:           this.num_ctmp,
       num_ndta:           this.num_ndta,
       email:              this.email,
@@ -95,7 +98,7 @@ export class TherapistAddComponent implements OnInit {
     this.form.valueChanges
       .map((formValues) => {
         formValues.names = formValues.names.toUpperCase();
-        formValues.birth = this.getYear();
+        formValues.birth = this.getDateFromMomentJS();
         return formValues;
       })
       // .filter((formValues) => this.form.valid)
@@ -105,11 +108,19 @@ export class TherapistAddComponent implements OnInit {
 
   }
 
-  getYear():string {
-    return (this.model) ? this.model.year + "-" + this.model.month + "-" + this.model.day : "";
+  getDateFromMomentJS():string {
+   
+    return (this.model) ? moment(this.model.year + "-" + this.model.month + "-" + this.model.day).format() : "";
+
   }
 
   onSubmit() {
+    let jsonAdd = this.form.value;
+
+    // jsonAdd.birth =  new Date(this.model.year,this.model.month,this.model.day);
+
+    console.log(jsonAdd);
+
     this._postJSON(environment.URL_WEB_SERVICE_THERAPISTS, this.form.value, this.getHeaders())
       .subscribe(json => this.newTherapist = json);
 

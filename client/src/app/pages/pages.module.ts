@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 import { routing } from './pages-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
 
 @NgModule({
   imports: [
@@ -10,7 +13,8 @@ import { routing } from './pages-routing.module';
     routing
   ],
   declarations: [
-    PagesComponent
+    PagesComponent,
+    PageNotFoundComponent
   ]
 
 })

@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">Patient</h2>
+    <h2 class="modal-title">New Patient</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
         <span aria-hidden="true">&times;</span>
@@ -39,7 +39,7 @@
                                 <mdl-textfield label="Apellidos" 
                                                name="lastname" 
                                                type="text" 
-                                               formControlName="lastName" 
+                                               formControlName="lastname" 
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -49,30 +49,23 @@
 
             <div class="row">
             <!-- Birth and DNI -->
+                <!-- ======================================================= -->
                 <div class="col">
-                    <div class="field-group">
-
-                        <mdl-icon class="mdl_icon">date_range</mdl-icon>
-                        <mdl-textfield type="text" 
-                                       label="(yyyy-mm-dd)" 
-                                       name="birth" 
-                                       pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
-                                       error-msg="Caracteres no numéricos!" 
-                                       formControlName="birth" 
-                                       ></mdl-textfield>
-                    </div>
-                </div>
-                <!-- <div class="col">
                     
                     <div class="field-group">
+                       
                         <form class="form-inline">
-                              <mdl-icon class="mdl_icon" (click)="d.toggle()">date_range</mdl-icon>
-                              <input  placeholder="INPUTyyyy-mm-dd"
-                                      class="out"
-                                      name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <mdl-icon class="mdl_icon_date calendar_icon_style" (click)="d.toggle()">date_range</mdl-icon>
+                              <input class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                            </div>
+                          </div>
                         </form>
-                        <mdl-textfield  type="text"
+                        <mdl-textfield type="text"
                                        label="yyyy-mm-dd" 
+                                       class="out"
                                        name="birth" 
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
@@ -80,7 +73,10 @@
                                        ></mdl-textfield>
                       
                     </div>
-                </div> -->
+                </div>
+                <!-- ======================================================= -->
+
+
                 <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">credit_card</mdl-icon>
@@ -294,14 +290,13 @@
     <div class="modal-footer__actions">
         <button class="btn_space"
                 mdl-button 
-                (click)="onSubmit()" [disabled]="!form.valid" 
                 mdl-button-type="raised" 
                 mdl-ripple mdl-colored="primary"
-                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+                (click)="onSubmit()" [disabled]="!form.valid" >Crear Cuenta</button>
         <button class="btn_space"
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>
     </div>
-<div>{{model}}</div>
+<div>{{model | json}}</div>
 
 </div>

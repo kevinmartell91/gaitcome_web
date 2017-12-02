@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">New therapist</h2>
+    <h2 class="modal-title">View Therapist</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
       <span aria-hidden="true">&times;</span>
@@ -40,7 +40,7 @@
                                     <mdl-textfield label="Apellidos" 
                                                    name="lastname" 
                                                    type="text" 
-                                                   formControlName="lastName" 
+                                                   formControlName="lastname" 
                                                    readonly='true'
                                                    ></mdl-textfield>
                                 </div>
@@ -51,6 +51,32 @@
 
                 <div class="row">
                 <!-- DNI & birth -->
+                    <!-- ======================================================= -->
+                    <div class="col">
+                        
+                        <div class="field-group">
+                           
+                            <form class="form-inline">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <mdl-icon class="mdl_icon calendar_icon_style">date_range</mdl-icon>
+                                  <input class="form-control" placeholder="yyyy-mm-dd"
+                                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                </div>
+                              </div>
+                            </form>
+                            <mdl-textfield type="text"
+                                           label="yyyy-mm-dd" 
+                                           class="out"
+                                           name="birth" 
+                                           pattern="-?[0-9]*(\.[0-9]+)?" 
+                                           error-msg="Caracteres no numéricos!" 
+                                           formControlName="birth"
+                                           ></mdl-textfield>
+                          
+                        </div>
+                    </div>
+                    <!-- ======================================================= -->
                     <div class="col">
                         <div class="field-group">
                             <mdl-icon class="mdl_icon">credit_card</mdl-icon>
@@ -64,31 +90,7 @@
                                            ></mdl-textfield>
                         </div>
                     </div>
-                    <div class="col">
-                        
-                        <div class="field-group">
-
-                           <!-- <form class="form-inlinejh"> -->
-                              <!-- <div class="form-group"> -->
-                                <!-- <div class="input-group"> -->
-                                  <mdl-icon class="mdl_icon">credit_card</mdl-icon>
-                                  <!-- <input  placeholder="yyyy-mm-dd" -->
-                                         <!-- name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"> -->
-                            <!-- </form> -->
-
-                            <mdl-textfield type="text"
-                                           label="birth" 
-                                           name="birth" 
-                                           pattern="-?[0-9]*(\.[0-9]+)?" 
-                                           error-msg="Caracteres no numéricos!" 
-                                           formControlName="birth"
-                                           readonly='true'
-                                           ></mdl-textfield>
-
-                            <!-- <hr/>
-                            <pre>Model: {{ name}}</pre> -->
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="row">

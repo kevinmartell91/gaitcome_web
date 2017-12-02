@@ -7,7 +7,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 
-
+import * as moment from 'moment';
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
 
@@ -22,9 +22,9 @@ export class PatientAddComponent implements OnInit {
   public disableForm = false;
   public form: FormGroup;
   public names = new FormControl('', Validators.required);
-  public lastName = new FormControl('', Validators.required);
+  public lastname = new FormControl('', Validators.required);
   public id_Document_num = new FormControl('', Validators.required);
-  public birth = new FormControl('',Validators.required);
+  public birth = new FormControl('');
 
   public address_street = new FormControl('');
   public address_city = new FormControl('');
@@ -68,7 +68,7 @@ export class PatientAddComponent implements OnInit {
     
     this.form = this.fb.group({
       'names':                        this.names,
-      'lastName':                     this.lastName,
+      'lastname':                     this.lastname,
       'id_Document_num':              this.id_Document_num,
       'birth':                        this.birth,
 
@@ -93,6 +93,7 @@ export class PatientAddComponent implements OnInit {
     this.form.valueChanges
       .map((formValues) => {
         formValues.names = formValues.names.toUpperCase();
+        formValues.birth = this.getDateFromMomentJS();
         return formValues;
       })
       // .filter((formValues) => this.form.valid)
@@ -101,16 +102,22 @@ export class PatientAddComponent implements OnInit {
         // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
       });
   }
+
+  getDateFromMomentJS():string {
+   
+    return (this.model) ? moment(this.model.year + "-" + this.model.month + "-" + this.model.day).format() : "";
+
+  }
   
   onSubmit() {
 
     let jsonNewPatient = {
       names: this.form.value.names,
-      lastname: this.form.value.lastName,
+      lastname: this.form.value.lastname,
       gender: "-",
       id_Document_type: "DNI",
       id_Document_num: +this.form.value.id_Document_num,
-      birth:  new Date(this.form.value.birth),
+      birth:  this.form.value.birth,
 
       address: {
         street: this.form.value.address_street,

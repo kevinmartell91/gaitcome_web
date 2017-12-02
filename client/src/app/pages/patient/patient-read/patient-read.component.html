@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">Patient View</h2>
+    <h2 class="modal-title">View Patient</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
         <span aria-hidden="true">&times;</span>
@@ -10,22 +10,28 @@
     <form [formGroup]="form" class="card-group">
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-lg">
           <!-- Patient -->
             <div class="row">
-            <!-- name , last name -->
-                <div class="col-md-12">
+                <div class="col">
                     <div class="field-group">
                         <div class="col-md-3">
                             <mdl-icon class="mdl_icon_person">account_circle</mdl-icon>
+                            <!-- <div class="add_patient_photo">
+                              <button mdl-button 
+                                      mdl-button-type="icon" 
+                                      mdl-colored="primary"
+                                      (click)="showAddPatientComponent()">
+                                <mdl-icon>add_a_photo</mdl-icon>
+                              </button>
+                            </div> -->
                         </div>
-                        <div class="col-md-9  col-xs-12">
+                        <div class="col-9">
                             <div class="row">
                                 <mdl-textfield label="Nombres" 
                                                name="names" 
                                                type="text" 
                                                formControlName="names" 
-                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
 
@@ -33,8 +39,7 @@
                                 <mdl-textfield label="Apellidos" 
                                                name="lastname" 
                                                type="text" 
-                                               formControlName="lastName" 
-                                               readonly='true'
+                                               formControlName="lastname" 
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -43,8 +48,36 @@
             </div>
 
             <div class="row">
-            <!-- DNI & birth -->
-                <div class="col-md-6">
+            <!-- Birth and DNI -->
+                <!-- ======================================================= -->
+                <div class="col">
+                    
+                    <div class="field-group">
+                       
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <mdl-icon class="mdl_icon_date calendar_icon_style" >date_range</mdl-icon>
+                              <input class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                            </div>
+                          </div>
+                        </form>
+                        <mdl-textfield type="text"
+                                       label="yyyy-mm-dd" 
+                                       class="out"
+                                       name="birth" 
+                                       pattern="-?[0-9]*(\.[0-9]+)?" 
+                                       error-msg="Caracteres no numéricos!" 
+                                       formControlName="birth"
+                                       ></mdl-textfield>
+                      
+                    </div>
+                </div>
+                <!-- ======================================================= -->
+
+
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">credit_card</mdl-icon>
                         <mdl-textfield type="text"
@@ -53,21 +86,6 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="id_Document_num" 
-                                       readonly='true'
-                                       ></mdl-textfield>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="field-group">
-
-                        <mdl-icon class="mdl_icon">date_range</mdl-icon>
-                        <mdl-textfield type="text" 
-                                       label="Nacimiento (yyyy-mm-dd)" 
-                                       name="birth" 
-                                       pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
-                                       error-msg="Caracteres no numéricos!" 
-                                       formControlName="birth" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -82,35 +100,34 @@
                                        label="Direccion" 
                                        name="address_street" 
                                        formControlName="address_street" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
             </div>    
             <div class="row">
-                <div class="col-md-4">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                         <mdl-textfield type="text" 
                                        label="City" 
                                        name="address_city" 
                                        formControlName="address_city" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">card_membership</mdl-icon>
                         <mdl-textfield type="text" 
                                        label="State" 
                                        name="address_state" 
                                        formControlName="address_state" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
-                <div class="col-md-4">
+            </div>
+            <div class="row">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">credit_card</mdl-icon>
                         <mdl-textfield type="text" 
@@ -119,20 +136,16 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="address_zip" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">public</mdl-icon>
                         <mdl-textfield type="text" 
                                        label="Country" 
                                        name="address_country" 
                                        formControlName="address_country" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
@@ -140,23 +153,22 @@
           </div>
 
 
-          <div class="col-md-6">
+          <div class="col-lg">
           <!-- Attorney -->
             <h5>Attorney</h5>
             <div class="row">
             <!-- Names, lastname -->
-                <div class="col-md-12">
+                <div class="col">
                      <div class="field-group">
                         <div class="col-md-3">
                             <mdl-icon class="mdl_icon_person">account_circle</mdl-icon>
                         </div>
-                        <div class="col-md-9  col-xs-12">
+                        <div class="col-9">
                             <div class="row">
                                 <mdl-textfield label="Nombres" 
                                                name="attorney_names" 
                                                type="text" 
                                                formControlName="attorney_names" 
-                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
 
@@ -165,7 +177,6 @@
                                                name="attorney_lastname" 
                                                type="text" 
                                                formControlName="attorney_lastName" 
-                                               readonly='true'
                                                ></mdl-textfield>
                             </div>
                         </div>
@@ -174,21 +185,20 @@
             </div>
             <div class="row">
             <!-- address -->
-                <div class="col-md-12">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">group</mdl-icon>
                         <mdl-textfield label="Parentesco" 
                                        name="attorney_relationship" 
                                        type="text" 
                                        formControlName="attorney_relationship" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
             </div>
             <div class="row">
             <!-- phone, cellphone -->
-                <div class="col-md-6">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">settings_phone</mdl-icon>
                         <mdl-textfield type="text"
@@ -197,11 +207,10 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="attorney_phone" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col">
                     <div class="field-group">
 
                         <mdl-icon class="mdl_icon">settings_cell</mdl-icon>
@@ -211,21 +220,19 @@
                                        pattern="-?[0-9]*(\.[0-9]+)?" 
                                        error-msg="Caracteres no numéricos!" 
                                        formControlName="attorney_cellphone" 
-                                       readonly='true'
                                        ></mdl-textfield>
                     </div>
                 </div>
             </div>
             <div class="row">
             <!-- email -->
-                <div class="col-md-12">
+                <div class="col">
                     <div class="field-group">
                         <mdl-icon class="mdl_icon">email</mdl-icon>
                         <mdl-textfield label="Email" 
                                        name="attorney_email" 
                                        type="text" 
                                        formControlName="attorney_email" 
-                                       readonly='true'
                                        pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
                                        error-msg="Please provide a correct email!"
                                        ></mdl-textfield>
@@ -236,51 +243,47 @@
         </div>
           
 
-        <!-- <div class="horizontal_divider"></div> -->
-
         <div class="row">
           <div class="col-lg">
           <!-- Medical diagnostic -->
-              <h5>Medical diagnostic</h5>
-              <div class="row">
-                  <div class="col-md-4">
-                      <div class="field-group">
-                          <mdl-icon class="mdl_icon">content_paste</mdl-icon>
-                          <mdl-textfield type="text" 
-                                         label="Name" 
-                                         name="medic_diagostic_name" 
-                                         formControlName="medic_diagostic_name" 
-                                         readonly='true'
-                                         ></mdl-textfield>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="field-group">
-                          <mdl-icon class="mdl_icon">poll</mdl-icon>
-                          <mdl-textfield type="text" 
-                                         label="Level"
-                                         name="medic_diagostic_level" 
-                                         formControlName="medic_diagostic_level" 
-                                         readonly='true'
-                                         ></mdl-textfield>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="field-group">
-                          <mdl-icon class="mdl_icon">donut_small</mdl-icon>
-                          <mdl-textfield type="text" 
-                                         label="Percentage" 
-                                         name="medic_diagostic_percentage" 
-                                         formControlName="medic_diagostic_percentage" 
-                                         readonly='true'
-                                         ></mdl-textfield>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                <h5>Medical diagnostic</h5>
+                <div class="row">
+                    <div class="col">
+                        <div class="field-group">
+                            <mdl-icon class="mdl_icon">content_paste</mdl-icon>
+                            <mdl-textfield type="text" 
+                                           label="Name" 
+                                           name="medic_diagostic_name" 
+                                           formControlName="medic_diagostic_name" 
+                                           ></mdl-textfield>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="field-group">
+                            <mdl-icon class="mdl_icon">poll</mdl-icon>
+                            <mdl-textfield type="text" 
+                                           label="Level"
+                                           name="medic_diagostic_level" 
+                                           formControlName="medic_diagostic_level" 
+                                           ></mdl-textfield>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="field-group">
+                            <mdl-icon class="mdl_icon">donut_small</mdl-icon>
+                            <mdl-textfield type="text" 
+                                           label="Percentage" 
+                                           name="medic_diagostic_percentage" 
+                                           formControlName="medic_diagostic_percentage" 
+                                           ></mdl-textfield>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
+    
     </form>
+
 </div>
 
 <div class="modal-footer">

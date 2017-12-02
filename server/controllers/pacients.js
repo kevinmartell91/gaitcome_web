@@ -3,6 +3,8 @@ var Pacient = require('../models/pacients');
 // Create endpoint /api/pacients for POST
 exports.postPacients= function(req, res) {
 
+    console.log('req.body', req.body);
+
   var pacient = new Pacient();
   
   pacient.names = req.body.names;
@@ -20,14 +22,6 @@ exports.postPacients= function(req, res) {
     country: req.body.address.country
   };
 
-  pacient.attorney = {
-    names: req.body.attorney.names,
-    lastname: req.body.attorney.lastname,
-    relationship : req.body.attorney.relationship,
-    email: req.body.attorney.email,
-    phone: req.body.attorney.phone,
-    cellphone: req.body.attorney.cellphone
-   };
 
   pacient.medic_diagostic = [{
     name: req.body.medic_diagostic[0].name,
@@ -36,6 +30,14 @@ exports.postPacients= function(req, res) {
     //created_at: { type: Date, default: Date.now }
   }];
 
+  pacient.attorney = {
+    names: req.body.attorney.names,
+    lastname: req.body.attorney.lastname,
+    relationship : req.body.attorney.relationship,
+    email: req.body.attorney.email,
+    phone: req.body.attorney.phone,
+    cellphone: req.body.attorney.cellphone
+   };
 
   pacient.username = req.body.username;
   pacient.password = req.body.password;
@@ -84,6 +86,7 @@ exports.putPacient = function(req, res) {
     if(err)
       req.send(err);
 
+    console.log('req.body', req.body);
     pacient.names = req.body.names;
     pacient.lastname = req.body.lastname;
     pacient.gender = req.body.gender;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 	
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
@@ -20,10 +21,12 @@ export class AuthService {
   // =====================================================================
 	public token: string;
 
-	constructor(private http: Http) {
+	constructor(private http: Http,
+				private router: Router) {
 	    // set token if saved in local storage
 	    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	    this.token = currentUser && currentUser.token;
+	    // this.redirectUrl = '';
 	}
 
 	login(username: string, password: string, login_type: string): Observable<boolean> {
@@ -39,7 +42,7 @@ export class AuthService {
         							password: password,
         							login_type: login_type });
         
-// console.log(`AuthService_login()_body : ${body}` );
+		// console.log(`AuthService_login()_body : ${body}` );
 
 	    return this.http.post('/api/authenticate', body, options)
 	        .map((response: Response) => {
@@ -51,7 +54,7 @@ export class AuthService {
 	                // set token property
 	                this.token = token;
 
-// console.log(`AuthService_Token : ${token}`);
+		// console.log(`AuthService_Token : ${token}`);
 
        				// store username login_type and jwt token in local storage to keep user logged in between page refreshes
 	                localStorage.setItem('currentUser', 
@@ -74,11 +77,14 @@ export class AuthService {
 	        });
 	}
 
-  logout(): void {
-    this.isLoggedIn = false;
-	// clear token remove user from local storage to log user out
-	this.token = null;
-	localStorage.removeItem('currentUser');
-  }
+	logout(): void {
+		this.isLoggedIn = false;
+		// clear token remove user from local storage to log user out
+		this.token = null;
+		localStorage.removeItem('currentUser');
+
+		// Navigate to the login page with extras
+   	    this.router.navigate(['/login']);
+	}
 }
 

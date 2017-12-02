@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">Update therapist</h2>
+    <h2 class="modal-title">Update Therapist</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
     	<span aria-hidden="true">&times;</span>
@@ -39,7 +39,7 @@
                                     <mdl-textfield label="Apellidos" 
                                                    name="lastname" 
                                                    type="text" 
-                                                   formControlName="lastName" 
+                                                   formControlName="lastname" 
                                                    ></mdl-textfield>
                                 </div>
                             </div>
@@ -49,6 +49,33 @@
 
                 <div class="row">
                 <!-- DNI & birth -->
+                    <!-- ======================================================= -->
+                    <div class="col">
+                        
+                        <div class="field-group">
+                           
+                            <form class="form-inline">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <!-- <mdl-icon class="mdl_icon calendar_icon_style" (click)="d.toggle()">date_range</mdl-icon> -->
+                                  <mdl-icon class="mdl_icon_date calendar_icon_style">date_range</mdl-icon>
+                                  <input class="form-control" placeholder="yyyy-mm-dd"
+                                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                </div>
+                              </div>
+                            </form>
+                            <mdl-textfield type="text"
+                                           label="yyyy-mm-dd" 
+                                           class="out"
+                                           name="birth" 
+                                           pattern="-?[0-9]*(\.[0-9]+)?" 
+                                           error-msg="Caracteres no numéricos!" 
+                                           formControlName="birth"
+                                           ></mdl-textfield>
+                          
+                        </div>
+                    </div>
+                    <!-- ======================================================= -->
                     <div class="col">
                         <div class="field-group">
                             <mdl-icon class="mdl_icon">credit_card</mdl-icon>
@@ -61,31 +88,7 @@
                                            ></mdl-textfield>
                         </div>
                     </div>
-                    <div class="col">
-                        
-                        <div class="field-group">
-
-                           <form class="form-inlinejh">
-                              <!-- <div class="form-group"> -->
-                                <!-- <div class="input-group"> -->
-                                  <mdl-icon class="mdl_icon" (click)="d.toggle()">credit_card</mdl-icon>
-                                  <input  placeholder="yyyy-mm-dd"
-                                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                            </form>
-
-                            <mdl-textfield type="text"
-                                           label="birth" 
-                                           name="birth" 
-                                           pattern="-?[0-9]*(\.[0-9]+)?" 
-                                           error-msg="Caracteres no numéricos!" 
-                                           formControlName="birth"
-                                           class="out"
-                                           ></mdl-textfield>
-
-                            <!-- <hr/>
-                            <pre>Model: {{ name}}</pre> -->
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="row">
@@ -237,14 +240,13 @@
     <div class="modal-footer__actions">
         <button class="btn_space"
                 mdl-button 
-        		(click)="onSubmit()" [disabled]="!form.valid" 
-        		mdl-button-type="raised" 
-        		mdl-ripple mdl-colored="primary"
-                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+            		[disabled]="!form.valid" 
+            		mdl-button-type="raised" 
+            		mdl-ripple mdl-colored="primary"
+                (click)="onSubmit()" >Update</button>
+                <!-- (click)="activeModal.close('Close click')" -->
         <button class="btn_space"
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>
     </div>
 </div>
-
-

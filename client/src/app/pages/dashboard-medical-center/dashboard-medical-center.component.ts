@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-dashboard-medical-center',
@@ -15,7 +16,7 @@ export class DashboardMedicalCenterComponent implements OnInit {
   medical_center_name:string;
   appVersion:string;
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     
@@ -32,6 +33,10 @@ export class DashboardMedicalCenterComponent implements OnInit {
       this.medical_center_name = environment.medical_center_name;
       
     }
+  }
+
+  logOut(){
+    this.authService.logout();
   }
 
 }

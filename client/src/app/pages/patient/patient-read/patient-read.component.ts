@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-patient-read',
@@ -33,6 +34,8 @@ export class PatientReadComponent implements OnInit {
   public attorney_email;
   public attorney_cellphone;
   public attorney_phone;
+
+  model;
   
   constructor(public activeModal: NgbActiveModal,
   			  private fb: FormBuilder) { 
@@ -92,7 +95,26 @@ export class PatientReadComponent implements OnInit {
 	      'attorney_cellphone':           this.attorney_cellphone,
 	      'attorney_phone':               this.attorney_phone
 	    });
+
+	   this.form.valueChanges
+	     .map((formValues) => {
+	       formValues.names = formValues.names.toUpperCase();
+	       this.model = this.getDateforModel(this.model,this.patient.birth);
+	       return formValues;
+	     })
+	     // .filter((formValues) => this.form.valid)
+	     .subscribe((formValues) => {
+	       console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+	     });
+
 	   this.form.disable();
+  }
+
+  getDateforModel(model:any, birth:any){
+
+    birth = moment(birth);
+    return model = { year : +birth.format('YYYY') , month :  +birth.format('M'), day:  +birth.format('DD')};
+
   }
 
 }

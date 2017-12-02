@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 // import { LoginComponent } from './login/login.component';
 // import { RegisterComponent } from './register/register.component';
 // import { HomepageComponent } from './homepage/homepage.component';
@@ -21,7 +22,7 @@ export const routes : Routes = [
 	{ 
 	  path: 'dashboard-attorney',
 	  loadChildren: 'app/pages/dashboard-attorney/dashboard-attorney.module#DashboardAttorneyModule',
-      canLoad: [AuthGuard]
+      // canLoad: [AuthGuard]
 	},
 	{
       path: 'dashboard-medical-center',
@@ -31,17 +32,16 @@ export const routes : Routes = [
 	{
       path: 'dashboard-therapist',
 	  loadChildren: 'app/pages/dashboard-therapist/dashboard-therapist.module#DashboardTherapistModule',
-      canLoad: [AuthGuard]
+      // canLoad: [AuthGuard]
 	},
 	{ 
 	  path: '',
 	  component: PagesComponent,
 	  children: [
 	    { path: '', redirectTo: 'homepage', pathMatch: 'full' },
-	    { path: 'homepage', loadChildren: 'app/pages/homepage/homepage.module#HomepageModule', }
+	    { path: 'homepage', loadChildren: 'app/pages/homepage/homepage.module#HomepageModule'}
 	  ]
 	}
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

@@ -14,19 +14,7 @@
   <div class="container">
     <div class="row result-section">
       
-
-      <div class="col-md-5 push-md-3 result-table-section">
-        <app-result-list [token]="token"
-                         [medical_center_id]="medical_center_id"
-                         [therapist_id]="currentTherapist" 
-                         [patient_id]="currentPatient" 
-                         [headersOptions]="optionsHeader" 
-                         (onSelect)="kinematicAnalysisSelected($event)"
-                         (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
-        </app-result-list> 
-      </div>
-
-      <div class="col-md-3 pull-md-5">
+      <div class="col-md-3 result-filter-section ">
       
         <div class="row">
           <div class="col">
@@ -61,6 +49,18 @@
           </div>
         </div>
       </div>
+      <div class="col-md-5 result-table-section">
+        <app-result-list [token]="token"
+                         [medical_center_id]="medical_center_id"
+                         [therapist_id]="currentTherapist" 
+                         [patient_id]="currentPatient" 
+                         [headersOptions]="optionsHeader" 
+                         (onSelect)="kinematicAnalysisSelected($event)"
+                         (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
+        </app-result-list> 
+      </div>
+
+
 
       <div class="col-md-4">
         <div *ngIf="currentKinematicsAnalysis">

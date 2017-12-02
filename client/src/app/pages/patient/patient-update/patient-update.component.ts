@@ -7,6 +7,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 
+import * as moment from 'moment';
 
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
@@ -26,7 +27,7 @@ export class PatientUpdateComponent implements OnInit {
   public disableForm = false;
   public form: FormGroup;
   public names;
-  public lastName;
+  public lastname;
   public id_Document_num;
   public birth;
 
@@ -47,7 +48,7 @@ export class PatientUpdateComponent implements OnInit {
   public attorney_cellphone;
   public attorney_phone;
 
-  
+  model;
 
   constructor( public activeModal: NgbActiveModal,
                private fb: FormBuilder, 
@@ -68,11 +69,12 @@ export class PatientUpdateComponent implements OnInit {
       this.token = environment.token;      
     }
     
+    this.model = this.getDateforModel(this.model,this.patient.birth);
 
     this.names = new FormControl(this.patient.names, Validators.required);
-    this.lastName = new FormControl(this.patient.lastname, Validators.required);
+    this.lastname = new FormControl(this.patient.lastname, Validators.required);
     this.id_Document_num = new FormControl(this.patient.id_Document_num, Validators.required);
-    this.birth = new FormControl(this.patient.birth, Validators.required);
+    this.birth = new FormControl(this.patient.birth);
 
     this.address_street = new FormControl(this.patient.address.street);
     this.address_city = new FormControl(this.patient.address.city);
@@ -94,7 +96,7 @@ export class PatientUpdateComponent implements OnInit {
 
     this.form = this.fb.group({
       'names':                        this.names,
-      'lastName':                     this.lastName,
+      'lastname':                     this.lastname,
       'id_Document_num':              this.id_Document_num,
       'birth':                        this.birth,
 
@@ -120,6 +122,7 @@ export class PatientUpdateComponent implements OnInit {
     this.form.valueChanges
       .map((formValues) => {
         formValues.names = formValues.names.toUpperCase();
+        formValues.birth = this.getDatefromModel();
         return formValues;
       })
       // .filter((formValues) => this.form.valid)
@@ -131,12 +134,23 @@ export class PatientUpdateComponent implements OnInit {
 
   }
 
+  getDatefromModel():string {
+    return (this.model) ? this.model.year + "-" + this.model.month + "-" + this.model.day : "";
+  }
+
+  getDateforModel(model:any, birth:any){
+
+    birth = moment(birth);
+    return model = { year : +birth.format('YYYY') , month :  +birth.format('M'), day:  +birth.format('DD')};
+
+  }
+
   onSubmit() {
 
     console.log(this.updatedPatient);
     let jsonUpdatedPatient = {
       names: this.form.value.names,
-      lastname: this.form.value.lastName,
+      lastname: this.form.value.lastname,
       gender: "-",
       id_Document_type: "DNI",
       id_Document_num: +this.form.value.id_Document_num,

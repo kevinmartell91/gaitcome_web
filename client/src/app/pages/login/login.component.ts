@@ -93,8 +93,8 @@ tiles = [
   }
 
   ngOnInit() {
-      // reset login status
-      this.authService.logout();
+    // reset login status
+    this.authService.logout();
 
     this.form = this.fb.group({
       'username':              this.username,
@@ -128,6 +128,7 @@ tiles = [
     console.log(this.form.value.password);
     console.log(this.form.value.login_type);
 
+          console.log('this.authService.redirectUrl',this.authService.redirectUrl);
     this.authService.login(this.form.value.username, this.form.value.password, this.form.value.login_type)
       .subscribe(() => {
 
@@ -135,22 +136,27 @@ tiles = [
 
         if (this.authService.isLoggedIn) {
          
-          var defaultUrl = '';
+          var loginTypeUrl = '';
           switch (this.form.value.login_type){
-            case 'user':           defaultUrl = '/dashboard-medical-center'; break;
-            case 'pacient':        defaultUrl = '/dashboard-attorney'; break;
-            case 'therapist':      defaultUrl = '/dashboard-therapist'; break;
-            case 'medical_center': defaultUrl = '/dashboard-medical-center';
+            case 'user':           loginTypeUrl = '/dashboard-medical-center'; break;
+            case 'pacient':        loginTypeUrl = '/dashboard-attorney'; break;
+            case 'therapist':      loginTypeUrl = '/dashboard-therapist'; break;
+            case 'medical_center': loginTypeUrl = '/dashboard-medical-center';
           }
          
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
+
           let redirect = 
-            (this.authService.redirectUrl && (this.authService.redirectUrl === defaultUrl) ) ? 
-             this.authService.redirectUrl : defaultUrl;
+            this.authService.redirectUrl ?  this.authService.redirectUrl : loginTypeUrl ;
 
           // Redirect the user
           this.router.navigate([redirect]);
+        }
+        else {
+
+          this.statusMessage = 'Incorrect username and/or password.';
+          this.processingLogin = false;
         }
       });
   }
@@ -282,19 +288,19 @@ export interface Theme {
 
 //         if (this.authService.isLoggedIn) {
          
-//           var defaultUrl = '';
+//           var loginTypeUrl = '';
 //           switch (f.login_type){
-//             case 'user':           defaultUrl = '/dashboard-medical-center'; break;
-//             case 'pacient':        defaultUrl = '/dashboard-attorney'; break;
-//             case 'therapist':      defaultUrl = '/dashboard-therapist'; break;
-//             case 'medical_center': defaultUrl = '/dashboard-medical-center';
+//             case 'user':           loginTypeUrl = '/dashboard-medical-center'; break;
+//             case 'pacient':        loginTypeUrl = '/dashboard-attorney'; break;
+//             case 'therapist':      loginTypeUrl = '/dashboard-therapist'; break;
+//             case 'medical_center': loginTypeUrl = '/dashboard-medical-center';
 //           }
          
 //           // Get the redirect URL from our auth service
 //           // If no redirect has been set, use the default
 //           let redirect = 
-//             (this.authService.redirectUrl && (this.authService.redirectUrl === defaultUrl) ) ? 
-//              this.authService.redirectUrl : defaultUrl;
+//             (this.authService.redirectUrl && (this.authService.redirectUrl === loginTypeUrl) ) ? 
+//              this.authService.redirectUrl : loginTypeUrl;
 
 //           // Redirect the user
 //           this.router.navigate([redirect]);

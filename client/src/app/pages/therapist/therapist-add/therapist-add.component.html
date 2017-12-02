@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h2 class="modal-title">New therapist</h2>
+    <h2 class="modal-title">New Therapist</h2>
     <button type="button" class="close" aria-h6="Close" 
             (click)="activeModal.close('Close click')">
     	<span aria-hidden="true">&times;</span>
@@ -39,7 +39,7 @@
                                     <mdl-textfield label="Apellidos" 
                                                    name="lastname" 
                                                    type="text" 
-                                                   formControlName="lastName" 
+                                                   formControlName="lastname" 
                                                    ></mdl-textfield>
                                 </div>
                             </div>
@@ -48,40 +48,33 @@
                 </div>
 
                 <div class="row">
-                <!-- Birth and DNI -->
+                  <!-- Birth and DNI -->
+                    <!-- ======================================================= -->
                     <div class="col">
-                        <div class="field-group">
-
-                            <mdl-icon class="mdl_icon">date_range</mdl-icon>
-                            <mdl-textfield type="text" 
-                                           label="(yyyy-mm-dd)" 
-                                           name="birth" 
-                                           pattern="-?[0-9.-]*(\.[0-9.-]+)?" 
-                                           error-msg="Caracteres no numéricos!" 
-                                           formControlName="birth" 
-                                           ></mdl-textfield>
-                        </div>
-                    </div>
-                    <!-- <div class="col">
                         
                         <div class="field-group">
-
-                           <form class="form-inlinejh">
-                                  <mdl-icon class="mdl_icon" (click)="d.toggle()">date_range</mdl-icon>
-                                  <input  placeholder="yyyy-mm-dd"
+                           
+                            <form class="form-inline">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <mdl-icon class="mdl_icon_date calendar_icon_style" (click)="d.toggle()">date_range</mdl-icon>
+                                  <input class="form-control" placeholder="yyyy-mm-dd"
                                          name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                </div>
+                              </div>
                             </form>
-
                             <mdl-textfield type="text"
-                                           label="birth" 
+                                           label="yyyy-mm-dd" 
+                                           class="out"
                                            name="birth" 
                                            pattern="-?[0-9]*(\.[0-9]+)?" 
                                            error-msg="Caracteres no numéricos!" 
                                            formControlName="birth"
-                                           class="out"
                                            ></mdl-textfield>
+                          
                         </div>
-                    </div> -->
+                    </div>
+                    <!-- ======================================================= -->
                     <div class="col">
                         <div class="field-group">
                             <mdl-icon class="mdl_icon">credit_card</mdl-icon>
@@ -245,10 +238,9 @@
     <div class="modal-footer__actions">
         <button class="btn_space"
                 mdl-button 
-        		(click)="onSubmit()" [disabled]="!form.valid" 
-        		mdl-button-type="raised" 
-        		mdl-ripple mdl-colored="primary"
-                (click)="activeModal.close('Close click')">Crear Cuenta</button>
+            		mdl-button-type="raised" 
+            		mdl-ripple mdl-colored="primary"
+                (click)="onSubmit()" [disabled]="!form.valid">Crear Cuenta</button>
         <button class="btn_space"
                 mdl-button 
                 (click)="activeModal.close('Close click')">Close</button>

@@ -86,6 +86,7 @@ exports.putTherapist = function(req, res) {
     if (err)
       return res.send(err);
 
+    console.log(req.body);
     
     therapist.names = req.body.names;
     therapist.lastname = req.body.lastname;
@@ -105,29 +106,33 @@ exports.putTherapist = function(req, res) {
 
 
     therapist.address = {
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      country: req.body.country
+      street: req.body.address.street,
+      city: req.body.address.city,
+      state: req.body.address.state,
+      zip: req.body.address.zip,
+      country: req.body.address.country
     };
 
     // to Improve ->history of all the center where 
     // the psycotherapist worked
     // 
-    therapist.medicalCenters  = {
-      _id: req.body._id,
-      name: req.body.name,
-      status_request: req.body.status_request, // pending(0 day to more), accepted 
-      //requested_at: { type: Date, default: Date.now },
-      accepted_at: req.body.accepted_at
-    };
+    // therapist.medicalCenters = req.body.medicalCenters;
+   
+
+
+    // therapist.medicalCenters  = {
+    //   _id: req.body._id,
+    //   name: req.body.name,
+    //   status_request: req.body.status_request, // pending(0 day to more), accepted 
+    //   //requested_at: { type: Date, default: Date.now },
+    //   accepted_at: req.body.accepted_at
+    // };
 
     therapist.save(function(err){
       if(err) 
         return res.send(err);
 
-      res.json({ message: 'Therapist updated' });
+      res.json({ message: 'Therapist updated', data: therapist });
 
     });
   });

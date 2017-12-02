@@ -8,7 +8,7 @@ var therapistSchema = new Schema({
   gender: String,
   id_Document_type: String,
   id_Document_num: Number,
-  birth:  Date,
+  birth:  String,
   email: String,
   phone: String,
   cellphone: String,

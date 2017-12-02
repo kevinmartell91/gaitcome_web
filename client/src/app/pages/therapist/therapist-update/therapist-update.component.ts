@@ -7,6 +7,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 
+import * as moment from 'moment';
+
 const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
 @Component({
@@ -23,9 +25,9 @@ export class TherapistUpdateComponent implements OnInit {
   
   model;
 
-  constructor( public 	activeModal : NgbActiveModal,
-  			   private 	fb 			: FormBuilder,
-  			   public 	http 		: Http ) {
+  constructor( public activeModal : NgbActiveModal,
+      			   private fb : FormBuilder,
+      			   public http : Http ) {
 
   	this.form = this.fb.group({});
   }
@@ -42,17 +44,18 @@ export class TherapistUpdateComponent implements OnInit {
     }
   	
   	console.log(this.therapist);
+    this.model = this.getDateforModel(this.model,this.therapist.birth);
 
   	this.form = this.fb.group({
       names:              this.therapist.names,
-      lastName:           this.therapist.lastName,
+      lastname:           this.therapist.lastname,
       num_ctmp:           this.therapist.num_ctmp,
       num_ndta:           this.therapist.num_ndta,
       email:              this.therapist.email,
       id_Document_num:    this.therapist.id_Document_num,
       cellphone:          this.therapist.cellphone,
       phone:              this.therapist.phone,
-      birth:              this.therapist.birth,
+      birth:              '',
       address:            this.fb.group({
         street:             this.therapist.address.street,
         city:               this.therapist.address.city,
@@ -66,6 +69,29 @@ export class TherapistUpdateComponent implements OnInit {
         status_request:     this.therapist.medicalCenters.status_request 
       })
     });	
+
+
+    this.form.valueChanges
+      .map((formValues) => {
+        formValues.names = formValues.names.toUpperCase();
+        formValues.birth = this.getDatefromModel();
+        return formValues;
+      })
+      // .filter((formValues) => this.form.valid)
+      .subscribe((formValues) => {
+        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+      });
+
+  }
+
+  getDatefromModel():string {
+    return (this.model) ? this.model.year + "-" + this.model.month + "-" + this.model.day : "";
+  }
+
+  getDateforModel(model:any, birth:any){
+
+    birth = moment(birth);
+    return model = { year : +birth.format('YYYY') , month :  +birth.format('M'), day:  +birth.format('DD')};
 
   }
 

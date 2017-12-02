@@ -14,7 +14,7 @@ export const routes: Routes = [
   { 
   	path: '', 
   	component: DashboardMedicalCenterComponent ,
-  	// canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

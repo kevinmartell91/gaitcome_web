@@ -231,8 +231,8 @@ footer h4, footer h6 {
         color: #f05a6d;
         /*color: #fff;*/
         float: left;
-        padding: 9px;
-        padding-left: 1px;
+        /*padding: 9px;*/
+        padding-left: 17px;
     }
 
     .navbar-default .navbar-brand:hover,

@@ -5,3 +5,8 @@
     text-align: center;
     font-size: 0px;
 }
+
+.badge {
+    background-color: #f1596c;
+    cursor: pointer;
+}

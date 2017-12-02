@@ -1,4 +1,3 @@
-
 .modal-header {
     padding: 8px 8px 8px 24px;
     display: -webkit-box;
@@ -52,6 +51,17 @@
     text-align: left;
     width: 40px;
     font-size: 30px;
+    cursor: default;
+}
+
+.mdl_icon_date {
+    flex-shrink: 0;
+    margin-top: 20px;
+    opacity: .3;
+    text-align: left;
+    width: 40px;
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .mdl_icon_person {
@@ -61,6 +71,7 @@
     opacity: .2;
     text-align: left;
     font-size: 6rem;
+    cursor: pointer;
 }
 
 .field-group{
@@ -70,4 +81,36 @@
 
 .btn_space {
     margin: 0px 5px 0px 0px;
+}
+
+.out {
+    color: transparent;
+    margin: 9px;
+    width: 1px;
+    height: 1px;
+}
+
+.calendar_icon_style{
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+
+input {
+    -webkit-appearance: textfield;
+    background-color: transparent;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-style: transparent;
+    border-color: transparent;
+    border-image: transparent;
+}
+
+.date_style {
+    padding: 1rem;
+}
+
+.form-inline {
+    z-index: 200px;
 }

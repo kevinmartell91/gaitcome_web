@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output,
 		     EventEmitter} from '@angular/core';
 import { HttpModule, Http, Response, Headers, 
 		     RequestOptions, URLSearchParams } from '@angular/http';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
@@ -36,6 +36,8 @@ export class PatientListComponent implements OnInit {
   currentPatient: any;
 
   isActiveUpdateModal: boolean = true;
+
+  closeResult: string;
   
   constructor( private modalService: NgbModal,
                private http: Http 
@@ -47,7 +49,7 @@ export class PatientListComponent implements OnInit {
     if (environment.production){
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));
       this.token = currentUser && currentUser.token;
-      this.getTherapist(); 
+      this.getPatients(); 
 
     } else {
       
@@ -68,7 +70,7 @@ export class PatientListComponent implements OnInit {
     this.onSelect.emit(patient);
   }
   // Service methods
-  getTherapist() {
+  getPatients() {
     this._getJSON(environment.URL_WEB_SERVICE_PATIENTS, 
     			  this.getHeaders())
       .subscribe(json => this.patients = json)
@@ -132,7 +134,12 @@ export class PatientListComponent implements OnInit {
     };
     const modalRef = this.modalService.open(PatientUpdateComponent, options);
     modalRef.componentInstance.patient = this.currentPatient; 
-    // getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+      this.getPatients();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   showDeletePatientComponent() {
@@ -141,7 +148,12 @@ export class PatientListComponent implements OnInit {
     modalRef.componentInstance._id = this.currentPatient._id; 
     modalRef.componentInstance.names = this.currentPatient.names; 
     modalRef.componentInstance.lastname = this.currentPatient.lastname; 
-    //getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+      this.getPatients();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   showAddPatientComponent() {
@@ -151,7 +163,22 @@ export class PatientListComponent implements OnInit {
       size: 'lg'
     };
     const modalRef = this.modalService.open(PatientAddComponent, options);
-    // getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+      this.getPatients();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output,
          EventEmitter} from '@angular/core';
 import { HttpModule, Http, Response, Headers, 
          RequestOptions, URLSearchParams} from '@angular/http';
-import { NgbModal ,NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal ,NgbModalOptions, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
@@ -32,6 +32,8 @@ export class TherapistListComponent implements OnInit {
   therapists: any[] = [];
   currentTherapist:any;
   showAddForm : boolean = false;
+
+  closeResult: string;
 
 
   constructor( private modalService: NgbModal,
@@ -124,7 +126,13 @@ export class TherapistListComponent implements OnInit {
     };
     const modalRef = this.modalService.open(TherapistUpdateComponent, options);
     modalRef.componentInstance.therapist = this.currentTherapist; 
-    // getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+     
+      this.closeResult = `Closed with: ${result}`;
+      this.getTherapist();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   showDeleteTherapistComponent() {
@@ -133,7 +141,12 @@ export class TherapistListComponent implements OnInit {
     modalRef.componentInstance._id = this.currentTherapist._id; 
     modalRef.componentInstance.names = this.currentTherapist.names; 
     modalRef.componentInstance.lastname = this.currentTherapist.lastname; 
-    //getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      this.getTherapist();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   showAddTherapistComponent() {
@@ -145,8 +158,24 @@ export class TherapistListComponent implements OnInit {
     const modalRef = this.modalService.open(TherapistAddComponent, options);
     modalRef.componentInstance.medical_center_id = this.medical_center_id;
     modalRef.componentInstance.medical_center_name = this.medical_center_name;
-    // getTherapist(); // update therapoist list
+    modalRef.result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+      this.getTherapist();
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
 
 }
 

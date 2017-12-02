@@ -1,6 +1,7 @@
-
 <nav id="topNav" class="navbar navbar-toggleable-sm navbar-fixed-top border-bottom">
 <!-- <nav id="topNav" class="navbar-default navbar-toggleable-sm fixed-top"> -->
+
+<!-- <h1 (click)="logOut()"> <span class="badge badge-pill badge-danger">{{appVersion}}</span></h1> -->
 <div class="style_version"><a class="navbar-brand page-scroll mr-3 ">{{appVersion}}</a></div>
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
@@ -36,16 +37,29 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+
               <li class="nav-item">
                 <a class="nav-link page-scroll" data-toggle="modal"
-                  title="A free Bootstrap theme"
-                  href="#aboutModal">Log out</a>
+                  title="Settings"
+                  href="#alertModall">{{medical_center_name}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" data-toggle="modal"
-                  title="A free Bootstrap theme"
-                  href="#alertModal">{{medical_center_name}}</a>
+                  title="Close session"
+                  (click)="logOut()"><h5 (click)="logOut()"> <span class="badge">Log out</span></h5></a>
+                  
               </li>
+
+             <!--  <li class="nav-item">
+                <button mdl-button #btn1="mdlButton" (click)="m1.toggle($event, btn1)" mdl-button-type="icon" mdl-ripple><mdl-icon>more_vert</mdl-icon></button>
+                <mdl-menu #m1="mdlMenu" mdl-menu-position="bottom-right">
+                   <mdl-menu-item mdl-ripple (click)="logOut()">Log out</mdl-menu-item>
+                   <mdl-menu-item mdl-ripple mdl-menu-item-full-bleed-divider>Another Action</mdl-menu-item>
+                   <mdl-menu-item mdl-ripple disabled>Disabled Action</mdl-menu-item>
+                   <mdl-menu-item>Yet Another Action</mdl-menu-item>
+                </mdl-menu>
+              </li> -->
+
             </ul>
         </div>
       </div>
@@ -141,8 +155,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body text-xs-center">
-          <!-- <add-therapist></add-therapist> -->
-          <app-patient-add></app-patient-add>
+          <add-therapist></add-therapist>
+          <!-- <app-patient-add></app-patient-add> -->
         </div>
       </div>
     </div>
