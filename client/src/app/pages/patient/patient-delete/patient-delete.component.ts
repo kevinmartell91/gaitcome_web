@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,8 @@ export class PatientDeleteComponent implements OnInit {
   @Input() _id: string;
   @Input() names: string;
   @Input() lastnames: string;
+  @Output() onFinishedDelete = new EventEmitter<any>();
+
   token: string;
   response: any;
 
@@ -42,7 +44,11 @@ export class PatientDeleteComponent implements OnInit {
 
   	this._deleteJSON(environment.URL_WEB_SERVICE_PATIENTS + this._id, 
   					  this.getHeaders() )
-      .subscribe(json => this.response = json);
+      .subscribe(
+        json => this.response = json,
+        error => console.log('Error', error),
+        () => this.onFinishedDelete.emit('send a msg or obj')
+      );
 
 	this.activeModal.close();
 

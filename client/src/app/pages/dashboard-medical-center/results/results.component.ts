@@ -157,26 +157,35 @@ export class ResultsComponent implements OnInit {
 
   }
 
-  doFilter(type:string) {
+  doFilter(type:string, entityObject: any) {
     //let hard_id: string = '5917e445512fd60c985238fe';
     // Relative navigation back to the crises
     switch (type) {
+      
       case 'therapist':
-
-        if(this.therapist_id === this.currentTherapist._id) {
-          this.therapist_id = '';
+        if(entityObject !== null) {
+          if(this.therapist_id !== this.currentTherapist._id) {
+            this.therapist_id = this.currentTherapist._id;
+          } else {
+            this.therapist_id = '';
+          }
         } else {
-          this.therapist_id = this.currentTherapist._id;
+          this.therapist_id = '';
         }
         break;
 
       case 'patient':
 
-        if(this.patient_id === this.currentPatient._id) {
-          this.patient_id = '';
+        if(entityObject !== null) {
+          if(this.patient_id !== this.currentPatient._id) {
+            this.patient_id = this.currentPatient._id;
+          } else {
+            this.patient_id = '';
+          }
         } else {
-          this.patient_id = this.currentPatient._id;
+          this.patient_id = '';
         }
+
         break;  
       
       default:
@@ -236,7 +245,7 @@ export class ResultsComponent implements OnInit {
   // in this component 
   multipleKinematicAnalysisSelected (multipleKinematicsAnalysis: any[]) {
     this.currentMultipleKinematicsAnalysisSelected = multipleKinematicsAnalysis;
-      console.log(this.currentMultipleKinematicsAnalysisSelected);
+      console.log("currentMultipleKinematicsAnalysisSelected",this.currentMultipleKinematicsAnalysisSelected);
   }
 
   // this method is always listening to the selected  
@@ -245,7 +254,7 @@ export class ResultsComponent implements OnInit {
   // component 
   therapistSelected(therapist: any) {
     this.currentTherapist = therapist;
-    this.doFilter("therapist");
+    this.doFilter("therapist", therapist);
     console.log("therapistSelected() from doFilter");
   }
 
@@ -254,9 +263,9 @@ export class ResultsComponent implements OnInit {
   // updating the currentPatient in this 
   // component 
   patientSelected(patient: any) {
-    console.log("patientSelected" , patient )  
+    console.log("patientSelected notified" , patient )  
     this.currentPatient= patient;
-    this.doFilter("patient");
+    this.doFilter("patient",patient);
     console.log("patientSelected() from doFilter");
   }
 

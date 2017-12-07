@@ -14,7 +14,7 @@ export class PatientReadComponent implements OnInit {
 
   public form: FormGroup;
   public names;
-  public lastName;
+  public lastname;
   public id_Document_num;
   public birth;
 
@@ -50,7 +50,7 @@ export class PatientReadComponent implements OnInit {
   		console.log(" yeeeee ",this.patient);
 
 	   this.names = new FormControl(this.patient.names);
-	   this.lastName = new FormControl(this.patient.lastname);
+	   this.lastname = new FormControl(this.patient.lastname);
 	   this.id_Document_num = new FormControl(this.patient.id_Document_num);
 	   this.birth = new FormControl(this.patient.birth);
 
@@ -74,7 +74,7 @@ export class PatientReadComponent implements OnInit {
 
 	   this.form = this.fb.group({
 	      'names':                        this.names,
-	      'lastName':                     this.lastName,
+	      'lastname':                     this.lastname,
 	      'id_Document_num':              this.id_Document_num,
 	      'birth':                        this.birth,
 

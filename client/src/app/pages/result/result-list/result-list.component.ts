@@ -169,7 +169,7 @@ export class ResultListComponent implements OnInit, OnChanges{
   multipleSelect(idSelected: string) {
       // look for remove is selected already
       this.updateMultipleSelection(idSelected);
-      // console.log(this.multipleKinematicsAnalysiss);
+      // console.log("multipleKinematicsAnalysiss",this.multipleKinematicsAnalysiss);
       this.onMultipleSelect.emit(this.multipleKinematicsAnalysiss);
   }
 

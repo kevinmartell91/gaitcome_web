@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { NgbActiveModal, NgbDatepickerConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,12 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 })
 export class PatientAddComponent implements OnInit {
 
+  @Input() name;
+  @Output() onFinishedAdd = new  EventEmitter<any>();
+
+  token: string;
+  newPatient: any;
+  model;
 
   public disableForm = false;
   public form: FormGroup;
@@ -43,10 +49,6 @@ export class PatientAddComponent implements OnInit {
   public attorney_cellphone = new FormControl('', Validators.required);
   public attorney_phone = new FormControl('', Validators.required);
 
-  @Input() name;
-  token: string;
-  newPatient: any;
-  model;
 
   constructor( public activeModal: NgbActiveModal,
                private fb: FormBuilder, 
@@ -155,7 +157,11 @@ export class PatientAddComponent implements OnInit {
     console.log(JSON.stringify(jsonNewPatient));
 
     this._postJSON(environment.URL_WEB_SERVICE_PATIENTS, JSON.stringify(jsonNewPatient), this.getHeaders())
-      .subscribe(json => this.newPatient = json);
+      .subscribe(
+        json => this.newPatient = json,
+        error => console.log('Error',error),  
+        () => this.onFinishedAdd.emit("send a msg or obj")
+      );
 
     this.activeModal.close();
   }

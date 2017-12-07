@@ -26,7 +26,8 @@ export class PatientListComponent implements OnInit {
   
   @Input()  medical_center_id:string ;
   @Input() allFields: boolean;
-  @Output() onSelect = new  EventEmitter<any>();
+  @Output() onSelectFromAllFields = new  EventEmitter<any>();
+  @Output() onSelectFromNotAllFields = new  EventEmitter<any>();
 
   token: string;
   listView:boolean = true;
@@ -34,6 +35,8 @@ export class PatientListComponent implements OnInit {
   p: any;
   patients: any[] = [];
   currentPatient: any;
+  previousPatient: any;
+  emptyPatient: any;
 
   isActiveUpdateModal: boolean = true;
 
@@ -41,7 +44,8 @@ export class PatientListComponent implements OnInit {
   
   constructor( private modalService: NgbModal,
                private http: Http 
-               ) { 
+               ) {
+               this.emptyPatient = null; 
   }
 
   ngOnInit() {
@@ -65,10 +69,23 @@ export class PatientListComponent implements OnInit {
   }
 
   // EventEmitter -> expose to parent component
-  select(patient: any) {
-  	this.currentPatient  = patient;
-    this.onSelect.emit(patient);
+  selectFromNotAllFields(patient: any) {
+    if (this.previousPatient == patient) {
+      this.currentPatient = this.emptyPatient;
+      console.log("set empty",this.currentPatient );
+    } else {
+      this.previousPatient =  patient;
+      this.currentPatient  = patient;
+      console.log("set patient",this.currentPatient);
+    }
+    this.onSelectFromNotAllFields.emit(this.currentPatient);
   }
+
+  selectFromAllFields(patient: any) {
+    this.currentPatient =  patient;
+    this.onSelectFromAllFields.emit(this.currentPatient);
+  }
+
   // Service methods
   getPatients() {
     this._getJSON(environment.URL_WEB_SERVICE_PATIENTS, 
@@ -134,12 +151,17 @@ export class PatientListComponent implements OnInit {
     };
     const modalRef = this.modalService.open(PatientUpdateComponent, options);
     modalRef.componentInstance.patient = this.currentPatient; 
-    modalRef.result.then((result) => {
-      // this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedUpdate.subscribe(($e) => {
       this.getPatients();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+
+    // modalRef.result.then((result) => {
+    //   this.closeResult = `Closed with: ${result}`;
+    //   // this.getPatients();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   showDeletePatientComponent() {
@@ -148,12 +170,16 @@ export class PatientListComponent implements OnInit {
     modalRef.componentInstance._id = this.currentPatient._id; 
     modalRef.componentInstance.names = this.currentPatient.names; 
     modalRef.componentInstance.lastname = this.currentPatient.lastname; 
-    modalRef.result.then((result) => {
-      // this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedDelete.subscribe(($e) => {
       this.getPatients();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+    // modalRef.result.then((result) => {
+    //   // this.closeResult = `Closed with: ${result}`;
+    //   this.getPatients();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   showAddPatientComponent() {
@@ -163,12 +189,16 @@ export class PatientListComponent implements OnInit {
       size: 'lg'
     };
     const modalRef = this.modalService.open(PatientAddComponent, options);
-    modalRef.result.then((result) => {
-      // this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedAdd.subscribe(($e) => {
       this.getPatients();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+    // modalRef.result.then((result) => {
+    //   // this.closeResult = `Closed with: ${result}`;
+    //   this.getPatients();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   private getDismissReason(reason: any): string {

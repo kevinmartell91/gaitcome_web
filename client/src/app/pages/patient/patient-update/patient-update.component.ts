@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,8 @@ export class PatientUpdateComponent implements OnInit {
 
 
   @Input() patient:any;
+  @Output() onFinishedUpdate = new EventEmitter<any>();
+
   token: string;
   updatedPatient: any;
 
@@ -192,7 +194,14 @@ export class PatientUpdateComponent implements OnInit {
     console.log(JSON.stringify(jsonUpdatedPatient));
 
     this._putJSON(environment.URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
-      .subscribe(json => this.updatedPatient = json);
+      .subscribe(
+        json => this.updatedPatient = json,
+        error => console.log('Error: ', error),
+        () => this.onFinishedUpdate.emit("You can send the update list retrieved from db , to avoid hittig the db for second time.")
+        // console.log("call emitter") 
+      );
+      
+        
 
     this.activeModal.close();
   }

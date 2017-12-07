@@ -2293,6 +2293,7 @@ export class ResultDetailComponent implements OnInit {
   public putMatLabData_manual()
   {
 
+// http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/3d-scatter-draggable/
     let json_matlab =
     {
       
@@ -2323,6 +2324,36 @@ export class ResultDetailComponent implements OnInit {
     this._putJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB + "59fd258e3f59a10a24360c11", json_matlab, this.getHeaders())
       .subscribe(json => this.putObjReturn = json);
 
+  }
+
+  // print multiple graphics 
+  //  http://jsfiddle.net/highcharts/Ldsmk030/
+  print(): void {
+      let printContents, popupWin;
+      printContents = document.getElementById('print-section').innerHTML;
+      popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+      popupWin.document.open();
+      popupWin.document.write(`
+        <html>
+          <head>
+            <title>Print tab</title>
+            <style>
+            //........Customized style.......
+            </style>
+          </head>
+      <body onload="window.print();window.close()">${printContents}</body>
+        </html>`
+      );
+      popupWin.document.close();
+  }
+
+  printToCart(printSectionId: string){
+        let popupWinindow
+        let innerContents = document.getElementById(printSectionId).innerHTML;
+        popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + innerContents + '</html>');
+        popupWinindow.document.close();
   }
  
 }

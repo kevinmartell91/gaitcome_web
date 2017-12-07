@@ -86,15 +86,15 @@ exports.putTherapist = function(req, res) {
     if (err)
       return res.send(err);
 
-    console.log(req.body);
+    // console.log("req.body",req.body);
     
+    // console.log("therapist DB:", therapist);
     therapist.names = req.body.names;
     therapist.lastname = req.body.lastname;
     therapist.gender = req.body.gender;
     therapist.id_Document_type = req.body.id_Document_type;
     therapist.id_Document_num = req.body.id_Document_num;
     therapist.birth =  req.body.birth;
-    console.log("postPacients() - end params ");
     
 
     therapist.email = req.body.email;

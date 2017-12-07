@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { NgbActiveModal, NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,7 @@ export class TherapistAddComponent implements OnInit {
 
   @Input() medical_center_id: string;
   @Input() medical_center_name: string;
+  @Output() onFinishedAdd = new EventEmitter<any>();
 
   public disableForm = false;
   public form: FormGroup;
@@ -122,7 +123,11 @@ export class TherapistAddComponent implements OnInit {
     console.log(jsonAdd);
 
     this._postJSON(environment.URL_WEB_SERVICE_THERAPISTS, this.form.value, this.getHeaders())
-      .subscribe(json => this.newTherapist = json);
+      .subscribe(
+        json => this.newTherapist = json,
+        error => console.log('Error', error),
+        () => this.onFinishedAdd.emit('Send a msg or obj')
+      );
 
   }
 

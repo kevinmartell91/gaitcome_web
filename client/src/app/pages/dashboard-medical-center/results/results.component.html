@@ -2,8 +2,7 @@
 
   
   <div class="container-fluid">
-        <div *ngIf="currentKinematicsAnalysis">
-          
+        <div *ngIf="currentKinematicsAnalysis ">
           <div class="collapse" id="collapseVideo">
               <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe> -->
               <iframe width="560" height="315" src="https://www.youtube.com/embed/qxi-cBG71Ho?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -15,7 +14,6 @@
     <div class="row result-section">
       
       <div class="col-md-3 result-filter-section ">
-      
         <div class="row">
           <div class="col">
               <div class="roww field-group">
@@ -28,7 +26,9 @@
               <div class="collapse" id="collapsePatientList">
                   <app-patient-list [medical_center_id]="medical_center_id"
                                     [allFields]="false"
-                                    (onSelect)="patientSelected($event)">
+                                    (onSelectFromAllFields)="patientSelected($event)"
+                                    (onSelectFromNotAllFields)="patientSelected($event)">
+                                    
                   </app-patient-list>
               </div>
           </div>
@@ -43,13 +43,15 @@
             <div class="collapse" id="collapseTherapistList">
                 <app-therapist-list [medical_center_id]="medical_center_id"
                                     [allFields]="false"
-                                    (onSelect)="therapistSelected($event)">
+                                    (onSelectFromAllFields)="therapistSelected($event)" 
+                                    (onSelectFromNotAllFields)="therapistSelected($event)">
                 </app-therapist-list>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-5 result-table-section">
+      
+      <div class="col-md-4 result-table-section">
         <app-result-list [token]="token"
                          [medical_center_id]="medical_center_id"
                          [therapist_id]="currentTherapist" 
@@ -60,10 +62,8 @@
         </app-result-list> 
       </div>
 
-
-
-      <div class="col-md-4">
-        <div *ngIf="currentKinematicsAnalysis">
+      <div class="col-md-5">
+        <div *ngIf="currentKinematicsAnalysis ">
           
           <div class="collapse" id="collapseVideo">
               <iframe class="video-section" width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
@@ -72,9 +72,12 @@
 
             <div class="row">
                                   
-              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis"
+             <!--  <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis "
                                   [patient]="currentPatient"
                                   [therapist]="currentTherapist">
+              </app-result-preview>   -->
+
+              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis ">
               </app-result-preview>   
             </div>
             
@@ -93,7 +96,7 @@
 
   <div class="container">
     <div class="drawer_graphic">
-      <div *ngIf="currentKinematicsAnalysis">
+      <div *ngIf="currentKinematicsAnalysis ">
       <!-- <div *ngIf="blnCurKneAna"> -->
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="gotoDetail()">
             <mdl-icon>timeline</mdl-icon>
@@ -102,7 +105,7 @@
     </div>
 
     <div class="drawer_video">
-      <div *ngIf="currentKinematicsAnalysis">
+      <div *ngIf="currentKinematicsAnalysis ">
       <!-- <div *ngIf="blnCurKneAna"> -->
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
                 data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
@@ -182,10 +185,10 @@
               <!-- Result Preview | child component -->
               <div class="card-block">
                 <div class="col-md-6">
-                  <div *ngIf="currentKinematicsAnalysis">
+                  <div *ngIf="currentKinematicsAnalysis ">
                     <div class="row">
                       
-                      <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis">
+                      <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis ">
                       </app-result-preview>   
                     </div>
 

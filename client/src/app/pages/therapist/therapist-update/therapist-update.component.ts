@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +19,8 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 export class TherapistUpdateComponent implements OnInit {
 
   @Input() therapist;
+  @Output() onFinishedUpdate = new EventEmitter<any>();
+
   public form: FormGroup;
   public updatedTherapist;
   public token;
@@ -99,8 +101,14 @@ export class TherapistUpdateComponent implements OnInit {
 
 
     this._putJSON(environment.URL_WEB_SERVICE_THERAPISTS + this.therapist._id, this.form.value, this.getHeaders())
-      .subscribe(json => this.updatedTherapist = json);
+      .subscribe(
+        json => this.updatedTherapist = json,
+        error => console.log('Error: ', error),
+        () => this.onFinishedUpdate.emit("You can send the update list retrieved from db to avoid hittig the db for second time.")
+        // console.log("call emitter") 
+      );
       
+   
 
     this.activeModal.close();
   }

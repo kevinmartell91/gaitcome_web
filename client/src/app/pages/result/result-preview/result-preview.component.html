@@ -171,12 +171,12 @@
                
  <p>
     Patient: 
-    <samp>{{patient.names}} {{patient.lastname}}</samp>
+    <samp *ngIf="patient">{{patient.names}} {{patient.lastname}}</samp>
  </p>
 
  <p>
     Therapist: 
-    <samp>{{therapist.names}} {{therapist.lastname}}</samp>
+    <samp *ngIf="therapist">{{therapist.names}} {{therapist.lastname}}</samp>
  </p>
 
  <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">

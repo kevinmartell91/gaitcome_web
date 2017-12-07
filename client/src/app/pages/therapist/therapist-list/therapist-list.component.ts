@@ -23,7 +23,9 @@ export class TherapistListComponent implements OnInit {
   @Input()  medical_center_id:string ;
   @Input()  medical_center_name:string ;
   @Input()  allFields: boolean;
-  @Output() onSelect = new  EventEmitter<any>();
+    // this.onSelect.emit(therapist);
+  @Output() onSelectFromNotAllFields = new  EventEmitter<any>();
+  @Output() onSelectFromAllFields = new  EventEmitter<any>();
 
   token: string;
   listView:boolean = true;
@@ -31,6 +33,8 @@ export class TherapistListComponent implements OnInit {
   t: any;
   therapists: any[] = [];
   currentTherapist:any;
+  previousTherapist: any
+  emptyTherapist: any
   showAddForm : boolean = false;
 
   closeResult: string;
@@ -39,6 +43,7 @@ export class TherapistListComponent implements OnInit {
   constructor( private modalService: NgbModal,
                private http: Http 
                ) { 
+    this.emptyTherapist = null;
   }
 
   ngOnInit() {
@@ -66,9 +71,24 @@ export class TherapistListComponent implements OnInit {
   }
 
   // EventEmitter -> expose to parent component
-  select(therapist: any) {
+  selectFromNotAllFields(therapist: any) {
+    if (this.previousTherapist == therapist) {
+      this.currentTherapist = this.emptyTherapist;
+      console.log("set empty",this.currentTherapist );
+    } else {
+      this.previousTherapist =  therapist;
+      this.currentTherapist  = therapist;
+      console.log("set therapist",this.currentTherapist);
+    }
+    this.onSelectFromNotAllFields.emit(this.currentTherapist);
+
+  }
+
+  // EventEmitter -> expose to parent component
+  selectFromAllFields(therapist: any) {
+    console.log("selectFromAllFields");
     this.currentTherapist = therapist;
-    this.onSelect.emit(therapist);
+    this.onSelectFromAllFields.emit(therapist);
   }
   // Service methods
   getTherapist() {
@@ -88,7 +108,7 @@ export class TherapistListComponent implements OnInit {
     // params.set("therapist_id", this.therapist_id);
 
     let options = new RequestOptions();
-    options.headers = headers
+    options.headers = headers;
     // options.search = params;
 
     return options;
@@ -124,15 +144,22 @@ export class TherapistListComponent implements OnInit {
     let options: NgbModalOptions = {
       size: 'lg'
     };
+
     const modalRef = this.modalService.open(TherapistUpdateComponent, options);
     modalRef.componentInstance.therapist = this.currentTherapist; 
-    modalRef.result.then((result) => {
-     
-      this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedUpdate.subscribe(($e) => {
       this.getTherapist();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    
+
+
+    // modalRef.result.then((result) => {
+     
+    //   this.closeResult = `Closed with: ${result}`;
+    //   this.getTherapist();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   showDeleteTherapistComponent() {
@@ -141,12 +168,15 @@ export class TherapistListComponent implements OnInit {
     modalRef.componentInstance._id = this.currentTherapist._id; 
     modalRef.componentInstance.names = this.currentTherapist.names; 
     modalRef.componentInstance.lastname = this.currentTherapist.lastname; 
-    modalRef.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedDelete.subscribe($e => {
       this.getTherapist();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    // modalRef.result.then((result) => {
+    //   this.closeResult = `Closed with: ${result}`;
+    //   this.getTherapist();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   showAddTherapistComponent() {
@@ -158,12 +188,16 @@ export class TherapistListComponent implements OnInit {
     const modalRef = this.modalService.open(TherapistAddComponent, options);
     modalRef.componentInstance.medical_center_id = this.medical_center_id;
     modalRef.componentInstance.medical_center_name = this.medical_center_name;
-    modalRef.result.then((result) => {
-      // this.closeResult = `Closed with: ${result}`;
+    modalRef.componentInstance.onFinishedAdd.subscribe($e => {
       this.getTherapist();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+    // modalRef.result.then((result) => {
+    //   // this.closeResult = `Closed with: ${result}`;
+    //   this.getTherapist();
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
   }
 
   private getDismissReason(reason: any): string {
@@ -174,6 +208,10 @@ export class TherapistListComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  UpdateThreapistList() {
+    this.getTherapist();
   }
 
 

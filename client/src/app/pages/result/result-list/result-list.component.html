@@ -1,42 +1,4 @@
-<h2>Resultados</h2>
-<!-- <span class="bd-booticon outline">B</span> -->
-
-<ul  *ngIf="false" class="results">  
-  <li class="row" *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-      (mouseout)="mouseOvered=kinematicsAnalysis"   
-      (mouseover)="mouseOvered=kinematicsAnalysis"
-  >
-<!-- [class.selected]="kinematicsAnalysis === multipleKinematicsAnalysiss"  -->
-
-
-      <mdl-checkbox  class="col-md-1" (click)="multipleSelect(kinematicsAnalysis._id)">
-      </mdl-checkbox>
-     
-      <div class="col-md-8">kinematicsAnalysis.created_at</div>
-
-      <div *ngIf="mouseOvered === kinematicsAnalysis">
-        <div class="col-md-1">
-          <mdl-icon  class="icon material-icons" mdl-tooltip-large="ver resumen"
-            (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
-        </div>
-      </div>
-
-  </li>
-
-</ul>
-
-<!-- <h4>Change log:</h4>
-    <ul>
-      <li *ngFor="let change of changeLog">change</li>
-    </ul>
- -->
-
- 
-
-  
-  <!--  -->
-  <!--  -->
-  <!--  -->
+<h2>Results</h2>
 
 <table class="table table-responsive">
   <thead>
@@ -69,4 +31,34 @@
    
   </tbody>
 </table>
+  
+<div *ngIf="multipleKinematicsAnalysiss.length > 1">    
 
+  <h2>Mulitple options </h2>
+
+  <!-- Crossover analysis -->
+  <h6 class="title-devider">
+    Crossover analysis  
+  </h6>
+  <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
+
+    <p>This section will show a grid of 4 by 4 mini squares. Each mini square 
+    will represent one kinematic graphic. If one mini square is disable, 
+    it will not be possible to make that graphic to cross to the other
+    graphic of the same type. Furthermore, right or left side will be 
+    selectable by the final user</p>
+    
+
+  </div>
+
+
+  <!-- Compare graphics -->
+  <h6 class="title-devider">
+    Observe progress
+  </h6>
+  <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
+
+    <p>Accesories works!!</p>
+   
+  </div>
+</div>

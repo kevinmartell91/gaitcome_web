@@ -27,7 +27,7 @@
                 <tr *ngFor = "let therapist of therapists"
                         [class.selected]="therapist === currentTherapist"
                         (mouseout)="currentTherapist = null"
-                        (mouseover)="select(therapist)">
+                        (mouseover)="selectFromAllFields(therapist)">
                     <!-- <div> -->
                       <th scope="row">#</th>
                       <td>{{therapist.names}}</td>
@@ -110,7 +110,7 @@
     
     <ul class="therapists">  
         <li  *ngFor = "let therapist of therapists"
-            (click)="select(therapist)"
+            (click)="selectFromNotAllFields(therapist)"
             [class.selected]="therapist === currentTherapist">
 
             
