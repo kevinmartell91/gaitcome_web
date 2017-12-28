@@ -77,7 +77,9 @@
                                   [therapist]="currentTherapist">
               </app-result-preview>   -->
 
-              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis ">
+              <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis"
+                                  [therapist]="currentTherapist"
+                                  [patient]="currentPatient">
               </app-result-preview>   
             </div>
             
@@ -96,8 +98,7 @@
 
   <div class="container">
     <div class="drawer_graphic">
-      <div *ngIf="currentKinematicsAnalysis ">
-      <!-- <div *ngIf="blnCurKneAna"> -->
+      <div *ngIf="currentKinematicsAnalysis">
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="gotoDetail()">
             <mdl-icon>timeline</mdl-icon>
         </button>
@@ -106,7 +107,6 @@
 
     <div class="drawer_video">
       <div *ngIf="currentKinematicsAnalysis ">
-      <!-- <div *ngIf="blnCurKneAna"> -->
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
                 data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
             <mdl-icon>movies</mdl-icon>

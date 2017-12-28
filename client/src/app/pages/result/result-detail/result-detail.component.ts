@@ -2293,7 +2293,7 @@ export class ResultDetailComponent implements OnInit {
   public putMatLabData_manual()
   {
 
-// http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/3d-scatter-draggable/
+  // http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/3d-scatter-draggable/
     let json_matlab =
     {
       
@@ -2317,7 +2317,9 @@ export class ResultDetailComponent implements OnInit {
       "lhee_z": [2.1134963, 2.10699821, 2.10421777, 2.08988857, 2.0972507],
       "ltoe_x": [-0.16483134, -0.173326507, -0.18125011, -0.18900612, -0.196587116],
       "ltoe_y": [-0.223946437, -0.225081, -0.225982144, -0.226950809, -0.227060854],
-      "ltoe_z": [2.10366583, 2.11058068, 2.11493826, 2.11493444, 2.10920978]
+      "ltoe_z": [2.10366583, 2.11058068, 2.11493826, 2.11493444, 2.10920978],
+
+      "is_done" : true
         
     }
 

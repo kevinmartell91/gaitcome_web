@@ -38,7 +38,7 @@ export class AttorneyComponent implements OnInit {
     
     this.form.valueChanges
       .map((formValues) => {
-        formValues.names = formValues.names.toUpperCase();
+//        formValues.names = formValues.names.toUpperCase();
         return formValues;
       })
       // .filter((formValues) => this.form.valid)

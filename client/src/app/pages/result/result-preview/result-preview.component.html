@@ -35,273 +35,162 @@
 
 <!-- <div *ngIf="kinematicsAnalysis" class="row cons-set "> -->
 
-<h2>Preview</h2>
+<div *ngIf="!kinematicsAnalysis.is_done; 
+  then thenBlock_kinematicAnalisisNotConcluded 
+  else elseBlock_kinematicAnalisisConcluded">
+</div>
 
-<!-- Views of analysis -->
-<h6 class="title-devider">
-  Graphic views :  
-</h6>
-
-
-
-<div *ngIf="kinematicsAnalysis" class="row cons-set">
+<div>
   
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.sp_kne_high_chart_data; then thenBlock_is_sagitalplane else elseBlock_is_sagitalPlane"></div>
-  <div >
-    <ng-template #thenBlock_is_sagitalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Sagittal view">
-    </ng-template>
-    <ng-template #elseBlock_is_sagitalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="Sagittal view not available">
-    </ng-template>
-  </div>
+  <ng-template #thenBlock_kinematicAnalisisNotConcluded>
+    
+    <h2>Preview</h2>
 
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.fp_kne_high_chart_data; then thenBlock_is_frotalplane else elseBlock_is_frotalPlane"></div>
-  <div >
-    <ng-template #thenBlock_is_frotalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Frotal">
-    </ng-template>
-    <ng-template #elseBlock_is_frotalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="No frontal view available">
-    </ng-template>
-  </div>
+    <!-- Views of analysis -->
+    <h6 class="title-devider">
+      Graphic views :  
+    </h6>
+    En proceso ...
+  </ng-template>
 
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.tp_kne_high_chart_data; then thenBlock_is_tranversalplane else elseBlock_is_tranversalPlane"></div>
-  <div >
-    <ng-template #thenBlock_is_tranversalplane>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Tranverse view">
-    </ng-template>
-    <ng-template #elseBlock_is_tranversalPlane>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No transverse view">
-    </ng-template>
-  </div>
+  <ng-template #elseBlock_kinematicAnalisisConcluded>
+    
+    
+    <h2>Preview</h2>
+
+    <!-- Views of analysis -->
+    <h6 class="title-devider">
+      Graphic views :  
+    </h6>
+
+
+
+    <div *ngIf="kinematicsAnalysis" class="row cons-set">
+      
+      <div class="col-xs-4" 
+         *ngIf="kinematicsAnalysis.sp_kne_high_chart_data; then thenBlock_is_sagitalplane else elseBlock_is_sagitalPlane"></div>
+      <div >
+        <ng-template #thenBlock_is_sagitalplane>
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Sagittal view">
+        </ng-template>
+        <ng-template #elseBlock_is_sagitalPlane>
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="Sagittal view not available">
+        </ng-template>
+      </div>
+
+      <div class="col-xs-4" 
+         *ngIf="kinematicsAnalysis.fp_kne_high_chart_data; then thenBlock_is_frotalplane else elseBlock_is_frotalPlane"></div>
+      <div >
+        <ng-template #thenBlock_is_frotalplane>
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Frotal">
+        </ng-template>
+        <ng-template #elseBlock_is_frotalPlane>
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="No frontal view available">
+        </ng-template>
+      </div>
+
+      <div class="col-xs-4" 
+         *ngIf="kinematicsAnalysis.tp_kne_high_chart_data; then thenBlock_is_tranversalplane else elseBlock_is_tranversalPlane"></div>
+      <div >
+        <ng-template #thenBlock_is_tranversalplane>
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Tranverse view">
+        </ng-template>
+        <ng-template #elseBlock_is_tranversalPlane>
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No transverse view">
+        </ng-template>
+      </div>
+
+    </div>
+
+    <!-- Accesories of the analysis -->
+    <h6 class="title-devider">
+      Accesories:  
+    </h6>
+
+    <div *ngIf="kinematicsAnalysis" class="row cons-set">
+
+      <div >
+         <img class="icons-set__icon" [src]="assited_walk_icon_path" 
+         [title]="assited_walk_icon_title">
+      </div>
+
+
+      <div >
+         <img class="icons-set__icon" [src]="treadmills_icon_path" 
+         [title]="treadmills_icon_title">
+      </div>
+
+
+      <div >
+         <img class="icons-set__icon" [src]="walker_icon_path" 
+         [title]="walker_icon_title">
+      </div>
+
+      <div >
+         <img class="icons-set__icon" [src]="orthoses_icon_path" 
+         [title]="orthoses_icon_title">
+      </div>
+
+      <div >
+         <img class="icons-set__icon" [src]="parallel_bars_icon_path" 
+         [title]="parallel_bars_icon_title">
+      </div>
+
+
+     <div class="col-xs-4" 
+         *ngIf="!kinematicsAnalysis.accesories.is_orthoses; then thenBlock_is_no_orthoses else elseBlock_is_no_orthoses"></div>
+      <div >
+        <ng-template #thenBlock_is_no_orthoses>
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Walking Filled.png" title="Elastic bands">
+        </ng-template>
+        <ng-template #elseBlock_is_no_orthoses>
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Walking Filled.png" title="No elastic bands">
+        </ng-template>
+      </div>
+
+    </div>
+
+
+    <!-- More detail of the analysis -->
+    <h6 class="title-devider">
+      More details
+    </h6>
+    <div *ngIf="kinematicsAnalysis" class="card-block">
+                   
+     <p>
+        Patient: 
+        <samp *ngIf="patient">{{patient.names}} {{patient.lastname}}</samp>
+     </p>
+
+     <p>
+        Therapist: 
+        <samp *ngIf="therapist">{{therapist.names}} {{therapist.lastname}}</samp>
+     </p>
+
+     <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
+         Caminata asistida:
+         <samp>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</samp>
+     </p>
+     <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
+         Caminadora:
+         <samp>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</samp>
+     </p>
+     <p *ngIf="kinematicsAnalysis.accesories.is_walker">
+         Andador:
+         <samp>{{kinematicsAnalysis.accesories_descriptions.walker}}</samp>
+     </p>
+     <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
+         Órtesis:
+         <samp>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</samp>
+     </p>
+     <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
+         Barras paralelas: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
+     </p>
+
+    </div>
+
+  </ng-template>
+
 
 </div>
 
-<!-- Accesories of the analysis -->
-<h6 class="title-devider">
-  Accesories:  
-</h6>
-
-<div *ngIf="kinematicsAnalysis" class="row cons-set">
-
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.accesories.assited_walk; then thenBlock_assited_walk else elseBlock_assited_walk"></div>
-  <div >
-    <ng-template #thenBlock_assited_walk>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Walker-Filled.png" title="Assited walk">
-    </ng-template>
-    <ng-template #elseBlock_assited_walk>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Walker-Filled.png" title="No assited walk">
-    </ng-template>
-  </div>
-
-
-
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.accesories.is_treadmills; then thenBlock_is_treadmills else elseBlock_is_treadmills"></div>
-  <div >
-    <ng-template #thenBlock_is_treadmills>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Treadmill-Filled.png" title="Treadmills">
-    </ng-template>
-    <ng-template #elseBlock_is_treadmills>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Treadmill-Filled.png" title="No Treadmills">
-    </ng-template>
-  </div>
-
-
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.accesories.is_walker; then thenBlock_is_walker else elseBlock_is_walker"></div>
-  <div >
-    <ng-template #thenBlock_is_walker>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Crutch-Filled.png" title="Crutches">
-    </ng-template>
-    <ng-template #elseBlock_is_walker>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Crutch-Filled.png" title="No crutches">
-    </ng-template>
-  </div>
-
-
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.accesories.is_parallel_bars; then thenBlock_is_parallel_bars else elseBlock_is_parallel_bars"></div>
-  <div >
-    <ng-template #thenBlock_is_parallel_bars>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Equivalent.png" title="Parallel bars">
-    </ng-template>
-    <ng-template #elseBlock_is_parallel_bars>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Equivalent.png" title="No parallel bars">
-    </ng-template>
-  </div>
-
-
-  <div class="col-xs-4" 
-     *ngIf="kinematicsAnalysis.accesories.is_orthoses; then thenBlock_is_orthoses else elseBlock_is_orthoses"></div>
-  <div >
-    <ng-template #thenBlock_is_orthoses>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Armored-Boot.png" title="Orthoses">
-    </ng-template>
-    <ng-template #elseBlock_is_orthoses>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Armored-Boot.png" title="No orthoses">
-    </ng-template>
-  </div>
-
-
- <div class="col-xs-4" 
-     *ngIf="!kinematicsAnalysis.accesories.is_orthoses; then thenBlock_is_no_orthoses else elseBlock_is_no_orthoses"></div>
-  <div >
-    <ng-template #thenBlock_is_no_orthoses>
-        <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Walking Filled.png" title="Elastic bands">
-    </ng-template>
-    <ng-template #elseBlock_is_no_orthoses>
-         <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Walking Filled.png" title="No elastic bands">
-    </ng-template>
-  </div>
-
-</div>
-
-
-<!-- More detail of the analysis -->
-<h6 class="title-devider">
-  More details
-</h6>
-<div *ngIf="kinematicsAnalysis" class="card-block">
-               
- <p>
-    Patient: 
-    <samp *ngIf="patient">{{patient.names}} {{patient.lastname}}</samp>
- </p>
-
- <p>
-    Therapist: 
-    <samp *ngIf="therapist">{{therapist.names}} {{therapist.lastname}}</samp>
- </p>
-
- <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-     Caminata asistida:
-     <samp>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</samp>
- </p>
- <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-     Caminadora:
-     <samp>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</samp>
- </p>
- <p *ngIf="kinematicsAnalysis.accesories.is_walker">
-     Andador:
-     <samp>{{kinematicsAnalysis.accesories_descriptions.walker}}</samp>
- </p>
- <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-     Órtesis:
-     <samp>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</samp>
- </p>
- <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-     Barras paralelas: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
- </p>
-
-</div>
-
- <!-- 
-<mdl-list>
-
- <mdl-list-item lines="3" mdl-ripple>
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar><img class="icons-set__icon src="../../../../assets/img/deactivated_icons/icons8-Armored-Boot.png" title="No orthoses" width="30" height="30"></mdl-icon>
-      <span>Terapeutas</span>
-      <mdl-list-item-text-body>
-        <a >
-          <span mdl-badge="10">Confirmación ingreso</span>
-        </a>
-      </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item> -->
-  
- <!--   <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar>accessible</mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item> -->
-
- <!--  <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar>theaters</mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>
- 
- <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar>directions_walk
-
-  </mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>
-
-  <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar><i class="material-icons">transfer_within_a_station</i></mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>
-
-  <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar>wc</mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>
-
-  <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar>child_care</mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>-->
-
- <!--  <mdl-list-item lines="3">
-    <mdl-list-item-primary-content>
-      <mdl-icon mdl-list-item-avatar><img class="img_icon" src="https://www.flaticon.com/premium-icon/icons/svg/384/384104.svg" title="Plot" width="24" height="24"></mdl-icon>
-      <span>Pacientes</span>
-        <mdl-list-item-text-body>
-          <a >
-            <span mdl-badge="4">Visisbilidad de resultados</span>
-          </a>
-        </mdl-list-item-text-body>
-    </mdl-list-item-primary-content>
-  </mdl-list-item>  
-  
-</mdl-list>
-
--->

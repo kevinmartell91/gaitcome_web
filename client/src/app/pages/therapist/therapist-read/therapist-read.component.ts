@@ -62,7 +62,7 @@ export class TherapistReadComponent implements OnInit {
 
     this.form.valueChanges
       .map((formValues) => {
-        formValues.names = formValues.names.toUpperCase();
+//        formValues.names = formValues.names.toUpperCase();
         this.model = this.getDateforModel(this.model,this.therapist.birth);
         return formValues;
       })

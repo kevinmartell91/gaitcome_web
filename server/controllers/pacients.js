@@ -3,7 +3,7 @@ var Pacient = require('../models/pacients');
 // Create endpoint /api/pacients for POST
 exports.postPacients= function(req, res) {
 
-    console.log('req.body', req.body);
+  console.log('req.body', req.body);
 
   var pacient = new Pacient();
   
@@ -38,12 +38,18 @@ exports.postPacients= function(req, res) {
     phone: req.body.attorney.phone,
     cellphone: req.body.attorney.cellphone
    };
+  
+  pacient.medicalCenters = {
+    _id: req.body.medicalCenters._id,
+    name: req.body.medicalCenters.name ,
+    status_request: req.body.medicalCenters.status_request  // pending(0 day to more), accepted 
+  }    
 
   pacient.username = req.body.username;
   pacient.password = req.body.password;
 
   //pacient.created_at= { type: Date, default: Date.now },
-  //pacient.updated_at= Date,
+  pacient.updated_at = req.body.updated_at;
   pacient.is_active = req.body.is_active;
       
 

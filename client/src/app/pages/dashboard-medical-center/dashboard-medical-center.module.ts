@@ -17,7 +17,7 @@ import { PipeModule } from '../../shared/pipes/pipe.module';
 import { DashboardMedicalCenterComponent } from './dashboard-medical-center.component';
 
 // Therapist components
-import { TherapistListDashboardComponent, NgbdModalContent} from './therapist-list/therapist-list.component'
+import { TherapistListDashboardComponent, NgbdModalContent} from './therapist-list/therapist-list.component';
 import { TherapistListComponent } from '../therapist/therapist-list/therapist-list.component';
 import { TherapistAddComponent } from '../therapist/therapist-add/therapist-add.component';
 import { TherapistDeleteComponent } from '../therapist/therapist-delete/therapist-delete.component';
@@ -33,13 +33,17 @@ import { PatientReadComponent } from '../patient/patient-read/patient-read.compo
 import { PatientDeleteComponent } from '../patient/patient-delete/patient-delete.component';
 
 // Result components
-import { ResultsComponent} from './results/results.component'
-import { ResultListComponent} from '../result/result-list/result-list.component'
+import { ResultsComponent} from './results/results.component';
+import { ResultListComponent} from '../result/result-list/result-list.component';
+import { ResultAddComponent } from '../result/result-add/result-add.component';
 import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
 import { ResultPreviewComponent } from '../result/result-preview/result-preview.component';
 import { ResultDrawerComponent } from '../result/result-detail/result-detail.component';
 import { VideoDrawerComponent } from '../result/result-detail/result-detail.component';
 import { ChartModule } from 'angular2-highcharts';
+
+// Resul Add -> Appointments
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 
 
 @NgModule({
@@ -59,12 +63,14 @@ import { ChartModule } from 'angular2-highcharts';
     PatientReadComponent,
     PatientDeleteComponent,
     ResultListComponent,
+    ResultAddComponent,
     ResultDetailComponent,
     ResultsComponent,
     ResultDrawerComponent,
     ResultPreviewComponent,
     TherapistListComponent,
-    VideoDrawerComponent
+    VideoDrawerComponent,
+    NewAppointmentComponent
   ],
   imports: [
     PipeModule.forRoot(),                 
@@ -87,6 +93,7 @@ import { ChartModule } from 'angular2-highcharts';
     PatientUpdateComponent,
     PatientReadComponent,
     PatientDeleteComponent,
+    ResultAddComponent,
     ResultsComponent,
     ResultPreviewComponent
   ],

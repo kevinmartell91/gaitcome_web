@@ -24,7 +24,10 @@ const  URL_WEB_SERVICE_PATIENTS:string = 	'http://localhost:8080/api/pacients/';
 export class PatientListComponent implements OnInit {
 
   
+  @Input()  currentPatient ;
+  
   @Input()  medical_center_id:string ;
+  @Input()  medical_center_name:string ;
   @Input() allFields: boolean;
   @Output() onSelectFromAllFields = new  EventEmitter<any>();
   @Output() onSelectFromNotAllFields = new  EventEmitter<any>();
@@ -34,7 +37,7 @@ export class PatientListComponent implements OnInit {
   photoView:boolean = false;
   p: any;
   patients: any[] = [];
-  currentPatient: any;
+  // currentPatient: any;
   previousPatient: any;
   emptyPatient: any;
 
@@ -189,6 +192,8 @@ export class PatientListComponent implements OnInit {
       size: 'lg'
     };
     const modalRef = this.modalService.open(PatientAddComponent, options);
+    modalRef.componentInstance.medical_center_id = this.medical_center_id;
+    modalRef.componentInstance.medical_center_name = this.medical_center_name;
     modalRef.componentInstance.onFinishedAdd.subscribe(($e) => {
       this.getPatients();
     });

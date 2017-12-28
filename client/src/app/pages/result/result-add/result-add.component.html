@@ -1,0 +1,292 @@
+ <div class="content">
+    <div class="container">
+    	<h2>New Appointment</h2>
+    	<!--  <div *ngIf="is_walker">
+			<mdl-textfield  type="text" 
+			               label="Orthoses" 
+			               name="orthoses" 
+			               pattern="-?[0-9]*(\.[0-9]+)?" 
+			               error-msg="Caracteres no numéricos!" 
+			               rows="3" maxrows="3"
+			               floating-label
+			               ></mdl-textfield>
+         </div> -->
+        <div class="row style_names_selected">
+        <!-- Names selected  -->
+            <div *ngIf="form.value.patient_full_name" class="col">
+                <h3> <span class="badge style_badge_patient">{{form.value.patient_full_name}}</span></h3>
+                <!-- <button  class="btn btn-outline-primary">{{form.value.patient_full_name}}</button> -->
+            </div>
+            <div *ngIf="form.value.therapist_full_name" class="col">
+                <h3><span class="badge style_badge_threapist">{{form.value.therapist_full_name}}</span></h3>
+                <!-- <button class="btn btn-outline-secondary">{{form.value.therapist_full_name}}</button> -->
+            </div>
+
+            <div *ngIf="form.value.date_requested" class="col">
+                <h3><span class="badge style_badge_meeting_date">{{form.value.date_requested}}</span></h3>
+                <!-- <button type="button" class="btn btn-outline-success">{{form.value.date_requested}}</button> -->
+            </div>
+
+            <!-- <div  *ngIf="is_assited_walk || is_treadmills || is_walker || is_orthoses || is_parallel_bars"> -->
+                
+            <!-- Accesories selected  -->
+                <div class="col">
+                    <img class="icons_accesory_summary_style"
+                      [src]="assited_walk_icon_path"
+                      [title]="assited_walk_icon_title">
+                </div>
+                <div class="col">
+                    <img class="icons_accesory_summary_style"
+                      [src]="treadmills_icon_path"
+                      [title]="treadmills_icon_title">
+                </div>
+                <div class="col">
+                    <img class="icons_accesory_summary_style"
+                      [src]="walker_icon_path"
+                      [title]="walker_icon_title">
+                </div>
+                <div class="col">
+                    <img class="icons_accesory_summary_style"
+                      [src]="orthoses_icon_path"
+                      [title]="orthoses_icon_title">
+                </div>
+                <div class="col">
+                    <img class="icons_accesory_summary_style"
+                      [src]="parallel_bars_icon_path"
+                      [title]="parallel_bars_icon_title">
+                </div>
+            <!-- </div> -->
+
+            <div class="col">
+                <!-- <button type="button" class="btn btn-outline-info"><img class="icons_accesory_summary_style" [src]="assited_walk_icon_path"></button> -->
+            </div>
+            <div class="col">
+                <!-- <button type="button" class="btn btn-outline-warning">Warning</button> -->
+            </div>
+            <div class="col">
+                <!-- <button type="button" class="btn btn-outline-danger">Danger</button> -->
+            </div>
+        </div>
+                                        
+      <!--   <div class="row style_accesories_selected"> 
+
+        </div>
+ -->
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="row">
+                <!-- Patient && therapist list  -->
+                    
+                    <div class="col">
+                    <!-- list patient  -->
+                        <div class="field-group">
+                          <h4 data-toggle="collapse" href="#collapsePatientList" aria-expanded="true" aria-controls="collapsePatientList">
+                            Patients
+                          </h4>
+                          <mdl-icon class="col-xs-2 icon material-icons"  
+                                     data-toggle="collapse" href="#collapsePatientList" aria-expanded="true" aria-controls="collapsePatientList">keyboard_arrow_down</mdl-icon>
+                        </div>
+                        <div class="collapse" id="collapsePatientList">
+                            <app-patient-list [medical_center_id]="medical_center_id"
+                                              [medical_center_name]="medical_center_name"
+                                              [allFields]="false"
+                                              (onSelectFromAllFields)="patientSelected($event)"
+                                              (onSelectFromNotAllFields)="patientSelected($event)"
+                                              [currentPatient]= "currentPatient" >
+                                              
+                            </app-patient-list>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                    <!-- list therapist -->
+                      <div class="field-group">
+                        <h4 data-toggle="collapse" href="#collapseTherapistList" aria-expanded="true" aria-controls="collapseTherapistList">
+                          Therapists
+                        </h4>
+                        <mdl-icon  class="col-xs-2  icon material-icons" 
+                                   data-toggle="collapse" href="#collapseTherapistList" aria-expanded="true" aria-controls="collapseTherapistList">keyboard_arrow_down</mdl-icon>
+                      </div>             
+                      <div class="collapse" id="collapseTherapistList">
+                          <app-therapist-list [medical_center_id]="medical_center_id"
+                                              [medical_center_name]="medical_center_name"
+                                              [allFields]="false"
+                                              (onSelectFromAllFields)="therapistSelected($event)" 
+                                              (onSelectFromNotAllFields)="therapistSelected($event)"
+                                              [currentTherapist]="currentTherapist">
+                          </app-therapist-list>
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                <!-- Calendar section -->
+                   
+                    <div class="col-md">
+                        <h4>Fecha de Análisis</h4>
+
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <mdl-icon class="mdl_icon_date calendar_icon_style" (click)="d.toggle()">date_range</mdl-icon>
+                              <input readonly class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="onChange($event)">
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            
+            <div class="col-md-9">
+            <!-- Accesories Secction -->     
+                <form *ngIf="currentPatient && currentTherapist" [formGroup]="form" class="card-group">
+
+                    <!-- <div class="row"> -->
+                       
+                        <div class="col-md-5">
+                        <!-- Accesories flags -->
+
+                            <div formGroupName="accesories">
+                                
+                                <h4>Accesorios</h4>
+                                <mdl-list>
+
+                                    <mdl-list-item>
+                                        <mdl-list-item-primary-content>
+                                            <img class="icons-set__icon" [src]="assited_walk_icon_path">
+                                            Assited Walk
+                                        </mdl-list-item-primary-content>
+                                        <mdl-list-item-secondary-action>
+                                            <mdl-switch formControlName="is_assited_walk" mdl-ripple></mdl-switch>
+                                        </mdl-list-item-secondary-action>
+                                    </mdl-list-item>
+                                    <mdl-list-item>
+                                        <mdl-list-item-primary-content>
+                                            <img class="icons-set__icon" [src]="treadmills_icon_path">
+                                            Treadmills
+                                        </mdl-list-item-primary-content>
+                                        <mdl-list-item-secondary-action>
+                                            <mdl-switch formControlName="is_treadmills" mdl-ripple></mdl-switch>
+                                        </mdl-list-item-secondary-action>
+                                    </mdl-list-item>
+                                    <mdl-list-item>
+                                        <mdl-list-item-primary-content>
+                                            <img class="icons-set__icon" [src]="walker_icon_path">
+                                            Walker
+                                        </mdl-list-item-primary-content>
+                                        <mdl-list-item-secondary-action>
+                                            <mdl-switch formControlName="is_walker" mdl-ripple></mdl-switch>
+                                        </mdl-list-item-secondary-action>
+                                    </mdl-list-item>
+                                    <mdl-list-item>
+                                        <mdl-list-item-primary-content>
+                                            <img class="icons-set__icon" [src]="orthoses_icon_path">
+                                            Orthoses
+                                        </mdl-list-item-primary-content>
+                                        <mdl-list-item-secondary-action>
+                                            <mdl-switch formControlName="is_orthoses" mdl-ripple></mdl-switch>
+                                        </mdl-list-item-secondary-action>
+                                    </mdl-list-item>
+                                    <mdl-list-item>
+                                        <mdl-list-item-primary-content>
+                                            <img class="icons-set__icon" [src]="parallel_bars_icon_path">
+                                            Parallel Bars
+                                        </mdl-list-item-primary-content>
+                                        <mdl-list-item-secondary-action>
+                                            <mdl-switch formControlName="is_parallel_bars" mdl-ripple></mdl-switch>
+                                        </mdl-list-item-secondary-action>
+                                    </mdl-list-item>
+                                </mdl-list>
+
+                            </div>
+                        </div>
+
+                    <!-- </div> -->
+                    
+                    <!-- <div class="row"> -->
+
+                        <div class="col-md-7">
+                        <!-- Accesories description -->
+                            <div formGroupName="accesories_descriptions">
+
+                                <div *ngIf="is_assited_walk || is_treadmills || is_walker || is_orthoses || is_parallel_bars">
+                                    <h4>Description</h4>
+                                </div>
+
+                                
+                                <div *ngIf="is_assited_walk">
+                                    
+                                    <mdl-textfield type="text" 
+                                                   label="Assited Walk" 
+                                                   name="assited_walk" 
+                                                   rows="3" maxrows="3"
+                                                   floating-label
+                                                   formControlName="assited_walk"></mdl-textfield>
+                                </div>    
+                                <div *ngIf="is_treadmills">
+                                    
+                                    <mdl-textfield type="text" 
+                                                   label="Treadmills" 
+                                                   name="treadmills"
+                                                   rows="3" maxrows="3"
+                                                   floating-label
+                                                   formControlName="treadmills"></mdl-textfield>
+                                </div>
+                                <div *ngIf="is_walker">
+                                    
+                                    <mdl-textfield type="text" 
+                                                   label="Walker" 
+                                                   name="walker" 
+                                                   rows="3" maxrows="3"
+                                                   floating-label
+                                                   formControlName="walker"></mdl-textfield>
+                                </div>
+                                <div *ngIf="is_orthoses">
+                                    
+                                    <mdl-textfield type="text" 
+                                                   label="Orthoses" 
+                                                   name="orthoses" 
+                                                   rows="3" maxrows="3"
+                                                   floating-label
+                                                   formControlName="orthoses"></mdl-textfield>
+                                </div>
+                                <div *ngIf="is_parallel_bars">
+                                    
+                                    <mdl-textfield type="text" 
+                                                   label="Parallel bars" 
+                                                   name="parallel_bars" 
+                                                   rows="3" maxrows="3"
+                                                   floating-label
+                                                   formControlName="parallel_bars"></mdl-textfield>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- </div>  -->
+                </form>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <div class="modal-footer__actions">
+                <button class="btn_space"
+                        mdl-button 
+                            mdl-button-type="raised" 
+                            mdl-ripple mdl-colored="primary"
+                        (click)="onSubmit()" [disabled]="!form.valid">Agendar cita</button>
+                <button class="btn_space"
+                        mdl-button 
+                        (click)="clearFields()">Clear</button>
+            </div>
+        </div>
+
+
+    </div>
+ </div>

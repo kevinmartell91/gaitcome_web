@@ -98,7 +98,7 @@ export class TherapistAddComponent implements OnInit {
     
     this.form.valueChanges
       .map((formValues) => {
-        formValues.names = formValues.names.toUpperCase();
+        // formValues.names = formValues.names.toUpperCase();
         formValues.birth = this.getDateFromMomentJS();
         return formValues;
       })
@@ -128,6 +128,8 @@ export class TherapistAddComponent implements OnInit {
         error => console.log('Error', error),
         () => this.onFinishedAdd.emit('Send a msg or obj')
       );
+
+    this.activeModal.close();
 
   }
 

@@ -123,7 +123,7 @@ export class PatientUpdateComponent implements OnInit {
     
     this.form.valueChanges
       .map((formValues) => {
-        formValues.names = formValues.names.toUpperCase();
+//        formValues.names = formValues.names.toUpperCase();
         formValues.birth = this.getDatefromModel();
         return formValues;
       })

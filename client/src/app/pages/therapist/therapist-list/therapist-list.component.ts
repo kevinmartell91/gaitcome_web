@@ -20,6 +20,7 @@ import { TherapistAddComponent } from '../therapist-add/therapist-add.component'
 })
 export class TherapistListComponent implements OnInit {
  
+  @Input()  currentTherapist ;
   @Input()  medical_center_id:string ;
   @Input()  medical_center_name:string ;
   @Input()  allFields: boolean;
@@ -32,7 +33,7 @@ export class TherapistListComponent implements OnInit {
   photoView:boolean = false;
   t: any;
   therapists: any[] = [];
-  currentTherapist:any;
+  // currentTherapist:any;
   previousTherapist: any
   emptyTherapist: any
   showAddForm : boolean = false;

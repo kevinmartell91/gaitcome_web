@@ -39,8 +39,17 @@ var pacientSchema = new Schema({
   password: String,
 
   created_at: { type: Date, default: Date.now },
-  updated_at: Date,
-  is_active: Boolean
+  updated_at: String,
+  is_active: Boolean,
+
+  medicalCenters : {
+    _id: String,
+    name: String,
+    status_request: String, // pending(0 day to more), accepted 
+    requested_at: { type: Date, default: Date.now },
+    accepted_at: Date
+  }
+
 
 });
 

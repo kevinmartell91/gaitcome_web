@@ -19,6 +19,8 @@ const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5
 export class PatientAddComponent implements OnInit {
 
   @Input() name;
+  @Input() medical_center_id;
+  @Input() medical_center_name;
   @Output() onFinishedAdd = new  EventEmitter<any>();
 
   token: string;
@@ -65,7 +67,7 @@ export class PatientAddComponent implements OnInit {
       this.token = currentUser && currentUser.token;
 
     } else {
-      this.token = environment.token;      
+      this.token = environment.token;  
     }
     
     this.form = this.fb.group({
@@ -94,7 +96,7 @@ export class PatientAddComponent implements OnInit {
     
     this.form.valueChanges
       .map((formValues) => {
-        formValues.names = formValues.names.toUpperCase();
+        // formValues.names = formValues.names.toUpperCase();
         formValues.birth = this.getDateFromMomentJS();
         return formValues;
       })
@@ -145,18 +147,26 @@ export class PatientAddComponent implements OnInit {
         cellphone: this.form.value.attorney_cellphone
        },
 
+      medicalCenters : {
+       _id: this.medical_center_id,
+       name: this.medical_center_name,
+       status_request: 'pending' // pending(0 day to more), accepted 
+      },
+
       // Will be send by email TO THE ATTORNEY
-      username: this.form.value.attorney_names.concat(this.form.value.attorney_lastName) ,
+      username: this.form.value.attorney_names.concat(this.form.value.attorney_lastName),
       password: "patient",
 
       //created_at: { type: Date, default: Date.now },
-      updated_at: new Date(),
+      updated_at: moment().format(),
       is_active: true
     }
 
-    console.log(JSON.stringify(jsonNewPatient));
+    // console.log(JSON.stringify(jsonNewPatient));
+    console.log((jsonNewPatient));
 
-    this._postJSON(environment.URL_WEB_SERVICE_PATIENTS, JSON.stringify(jsonNewPatient), this.getHeaders())
+
+    this._postJSON(environment.URL_WEB_SERVICE_PATIENTS, jsonNewPatient, this.getHeaders())
       .subscribe(
         json => this.newPatient = json,
         error => console.log('Error',error),  

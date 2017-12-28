@@ -37,7 +37,7 @@ export class MedicalCenterComponent implements OnInit {
     });
     this.form.valueChanges
       .map((formValues) => {
-        formValues.name = formValues.name.toUpperCase();
+//        formValues.name = formValues.name.toUpperCase();
         return formValues;
       })
       // .filter((formValues) => this.form.valid)

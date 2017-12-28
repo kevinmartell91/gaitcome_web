@@ -27,8 +27,13 @@ var kinematicsAnalysisSchema = new Schema({
 	// save as flat atributtes of the other collection
 	// or just save their ids.?
 	patient_id: String,
+	patient_full_name: String,
 	medical_center_id : String,
+	medical_center_name : String,
 	therapist_id : String,
+	therapist_full_name: String,
+	date_requested: String,
+	is_done: Boolean,
 
 	accesories: {
       is_assited_walk: Boolean,

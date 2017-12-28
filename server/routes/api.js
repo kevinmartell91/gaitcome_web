@@ -124,16 +124,16 @@ router.route('/kinematics_analysis/:kinematics_analysis_id')
   .put(kinematicsAnalysisController.putKinematicsAnalysis)
   .delete(kinematicsAnalysisController.deleteKinematicsAnalysis);
 
-// Create endpoint handlers for /kinematics_analysis_matlab/:kinematics_analysis_id
-router.route('/kinematics_analysis_matlab/:kinematics_analysis_id')
-  .put(kinematicsAnalysisController.putKinematicsAnalysisMatlabRawPositions)
-  .post(kinematicsAnalysisController.postKinematicsAnalysisMatlabGaitAngles);
-
 // Create endpoint handlers for /kinematics_analysis/
 router.route('/kinematics_analysis')
   .post(kinematicsAnalysisController.postKinematicsAnalysiss)
   .get(kinematicsAnalysisController.getKinematicsAnalysiss);
 
+
+// Create endpoint handlers for /kinematics_analysis_matlab/:kinematics_analysis_id
+router.route('/kinematics_analysis_matlab/:kinematics_analysis_id')
+  .put(kinematicsAnalysisController.putKinematicsAnalysisMatlabRawPositions)
+  .post(kinematicsAnalysisController.postKinematicsAnalysisMatlabGaitAngles);
 
 
 module.exports = router;

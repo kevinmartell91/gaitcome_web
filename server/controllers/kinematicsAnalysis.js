@@ -22,12 +22,17 @@ exports.postKinematicsAnalysiss = function(req, res) {
 
   //Set the kinematic_analysis properties that came from the POST data
   kinematic_analysis.patient_id = req.body.patient_id;
-  kinematic_analysis.medical_center_id = req.body.medical_center_id;
+  kinematic_analysis.patient_full_name = req.body.patient_full_name;
+  kinematic_analysis.medical_center_id = req.body.medical_center_id; // missing teo receive this data
   kinematic_analysis.therapist_id = req.body.therapist_id;
+  kinematic_analysis.therapist_full_name = req.body.therapist_full_name;
+  kinematic_analysis.patient_descriptions = req.body.patient_descriptions; // there is no UI field to recieve
+  kinematic_analysis.date_requested = req.body.date_requested;
+  kinematic_analysis.is_done = req.body.is_done;
   kinematic_analysis.accesories = req.body.accesories;
   kinematic_analysis.accesories_descriptions = req.body.accesories_descriptions;
-  kinematic_analysis.hip = req.body.spl_hip;
-  kinematic_analysis.lkne = req.body.lkne;
+  // kinematic_analysis.hip = req.body.spl_hip;
+  // kinematic_analysis.lkne = req.body.lkne;
   // Add the missing ones
   // kinematic_analysis.spl_kne.patient_angles = req.body.spl_kne.patient_angles;
   // kinematic_analysis.spl_kne.normal_ranges = req.body.spl_kne.normal_ranges;
@@ -242,6 +247,8 @@ exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
     kinematic_analysis.ltoe_x = req.body.ltoe_x;
     kinematic_analysis.ltoe_y = req.body.ltoe_y;
     kinematic_analysis.ltoe_z = req.body.ltoe_z;
+
+    kinematic_analysis.is_done = req.body.is_done;
 
 
 

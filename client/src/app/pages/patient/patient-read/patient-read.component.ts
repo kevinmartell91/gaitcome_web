@@ -98,7 +98,7 @@ export class PatientReadComponent implements OnInit {
 
 	   this.form.valueChanges
 	     .map((formValues) => {
-	       formValues.names = formValues.names.toUpperCase();
+//	       formValues.names = formValues.names.toUpperCase();
 	       this.model = this.getDateforModel(this.model,this.patient.birth);
 	       return formValues;
 	     })

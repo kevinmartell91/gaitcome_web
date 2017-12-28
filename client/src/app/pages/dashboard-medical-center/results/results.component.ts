@@ -73,7 +73,7 @@ export class ResultsComponent implements OnInit {
   constructor(  private http: Http,
                 private route: ActivatedRoute,
                 private router: Router )  {
-    this.currentKinematicsAnalysis = null;
+    // this.currentKinematicsAnalysis = null;
   }
 
   ngOnInit() {

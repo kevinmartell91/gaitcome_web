@@ -1,4 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
+import { environment } from '../../../../environments/environment';
+
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { TherapistAddComponent } from "../../therapist/therapist-add/therapist-add.component";
@@ -16,11 +18,25 @@ export class TherapistListDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.medical_center_id = currentUser && currentUser.entity._id;
-    this.medical_center_name = currentUser && currentUser.entity.name;
 
+    if (environment.production) { 
+
+          let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+          
+          this.medical_center_id = currentUser && currentUser.entity._id;    
+          this.medical_center_name = currentUser && currentUser.entity.name;    
+
+        } else {
+          this.medical_center_id = environment.medical_center_id;    
+          this.medical_center_name = environment.medical_center_name;    
+        }
+
+     console.log("this.medical_center_id",this.medical_center_id);
+     console.log("this.medical_center_name",this.medical_center_name);
+   
   }
+
+
 
 }
 
