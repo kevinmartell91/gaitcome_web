@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: true
+  production: false
   ,
 
   URL_WEB_SERVICE_ANALYSIS: 'http://localhost:8080/api/kinematics_analysis/',
