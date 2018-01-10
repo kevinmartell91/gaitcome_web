@@ -7,19 +7,17 @@ var Schema = mongoose.Schema;
 
 		l : left 
 		r : rigth
+
 		kne : knee
 		ank : ankle
 		toe : toe
-		hee : heels / calcaneus
+		hee : heel / calcaneus
 		fwt : fontal waist
 		bwt : back waist
 		trc : trocanter
 
 		spl : sagittal slane left 
 		spr : sagittal plane right
-
-		plv : pelvis
-		hip : hip
 		
 	*/
 
@@ -116,10 +114,10 @@ var kinematicsAnalysisSchema = new Schema({
 	// BOOK this data after have the 3d position from matlab
 	// ANGLES LIST work with api and show the data in the view
 	//							 [0% - 100%, ang]					[0% - 100%, lim-inf , lim-sup]				
-	spl_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
-	spl_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
-	spl_plv: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
-	spl_hip: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	sp_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	sp_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	sp_plv: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
+	sp_hip: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 
 	fp_kne: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
 	fp_ank: {patient_angles : [[ Number , Number]], normal_ranges : [[Number , Number, Number]]},
@@ -156,9 +154,7 @@ var kinematicsAnalysisSchema = new Schema({
 });
 
 var KinematicsAnalysis = mongoose.model('KinematicsAnalysis',kinematicsAnalysisSchema);
-
 module.exports = KinematicsAnalysis;
-
 
 // var sp_plv_high_chart_data = {
         
@@ -257,7 +253,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = sp_plv_high_chart_data;
+
 // var sp_hip_high_chart_data = {
         
 //         chart: {
@@ -356,7 +352,6 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = sp_hip_high_chart_data;
 // var sp_kne_high_chart_data = {
         
 //         chart: {
@@ -455,7 +450,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = sp_kne_high_chart_data;
+
 // var sp_ank_high_chart_data = {
         
 //         chart: {
@@ -554,7 +549,8 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = sp_ank_high_chart_data;
+
+
 
 // var fp_plv_high_chart_data = {
         
@@ -654,7 +650,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = fp_plv_high_chart_data;
+
 // var fp_hip_high_chart_data = {
         
 //         chart: {
@@ -753,7 +749,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = fp_hip_high_chart_data;
+
 // var fp_kne_high_chart_data = {
         
 //         chart: {
@@ -852,7 +848,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = fp_kne_high_chart_data;
+
 // var fp_ank_high_chart_data = {
         
 //         chart: {
@@ -952,7 +948,8 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = fp_ank_high_chart_data;
+
+
 
 // var tp_plv_high_chart_data = {
         
@@ -1052,7 +1049,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = tp_plv_high_chart_data;
+
 // var tp_hip_high_chart_data = {
         
 //         chart: {
@@ -1151,7 +1148,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = tp_hip_high_chart_data;
+
 // var tp_kne_high_chart_data = {
         
 //         chart: {
@@ -1250,7 +1247,7 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
-// module.exports = tp_kne_high_chart_data;
+
 // var tp_ank_high_chart_data = {
         
 //         chart: {
@@ -1349,4 +1346,19 @@ module.exports = KinematicsAnalysis;
 //           }
 //         ]
 // };
+
+
+
+// module.exports = sp_plv_high_chart_data;
+// module.exports = sp_hip_high_chart_data;
+// module.exports = sp_kne_high_chart_data;
 // module.exports = tp_ank_high_chart_data;
+// module.exports = tp_kne_high_chart_data;
+// module.exports = tp_hip_high_chart_data;
+// module.exports = tp_plv_high_chart_data;
+// module.exports = fp_ank_high_chart_data;
+// module.exports = fp_kne_high_chart_data;
+// module.exports = fp_hip_high_chart_data;
+// module.exports = sp_ank_high_chart_data;
+// module.exports = fp_plv_high_chart_data;
+

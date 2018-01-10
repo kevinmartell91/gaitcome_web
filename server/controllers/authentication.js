@@ -12,6 +12,7 @@ var MedicalCenter = require('../models/medicalCenters');
 
 
 exports.postAuthenticate = function(req, res) {
+  console.log('postAuthenticate');
 
 	var Entity;
 	switch (req.body.login_type){
@@ -26,6 +27,7 @@ exports.postAuthenticate = function(req, res) {
   Entity.findOne({
     username: req.body.username
   }, function(err, entity) {
+    console.log('entity');
 
     if (err) throw err;
 

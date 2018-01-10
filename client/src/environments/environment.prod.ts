@@ -1,11 +1,13 @@
 export const environment = {
   production: true,
 
-  URL_WEB_SERVICE_ANALYSIS: 'http://ec2-54-213-229-95.us-west-2.compute.amazonaws.com:8080/api/kinematics_analysis/',
-  URL_WEB_SERVICE_THERAPISTS:'http://ec2-54-213-229-95.us-west-2.compute.amazonaws.com:8080/api/therapists/',
-  URL_WEB_SERVICE_PATIENTS: 'http://ec2-54-213-229-95.us-west-2.compute.amazonaws.com:8080/api/pacients/',
-  URL_WEB_SERVICE_KINEMATIC_ANALYSIS: 'http://ec2-54-213-229-95.us-west-2.compute.amazonaws.com:8080/api/kinematics_analysis/',
-  URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB: 'http://ec2-54-213-229-95.us-west-2.compute.amazonaws.com:8080/api/kinematics_analysis_matlab/',
+  URL_WEB_SERVICE_ANALYSIS: 'http://52.89.123.49:8080/api/kinematics_analysis/',
+  URL_WEB_SERVICE_THERAPISTS:'http://52.89.123.49:8080/api/therapists/',
+  URL_WEB_SERVICE_PATIENTS: 'http://52.89.123.49:8080/api/pacients/',
+  URL_WEB_SERVICE_KINEMATIC_ANALYSIS: 'http://52.89.123.49:8080/api/kinematics_analysis/',
+  URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB: 'http://52.89.123.49:8080/api/kinematics_analysis_matlab/',
+
+  URL_WEB_SERVICE : 'http://52.89.123.49:8080/api',
 
   medical_center_id: '591e7542583a7b2b751d4ec3',
   medical_center_name: 'Cerene',
