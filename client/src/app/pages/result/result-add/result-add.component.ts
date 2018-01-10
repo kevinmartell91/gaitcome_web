@@ -84,7 +84,7 @@ export class ResultAddComponent implements OnInit {
       therapist_full_name:      new FormControl('', Validators.required),
       patient_descriptions:     '',
       date_requested:           new FormControl('', Validators.required),
-      is_done :                 true,
+      is_done :                 false,
 
       accesories: this.fb.group({
         is_assited_walk:        '',

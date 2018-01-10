@@ -6,6 +6,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +14,7 @@ export class AuthService {
   isLoggedIn = false;
 
   // store the URL so we can redirect after logging in
+  loginUrl: string;
   redirectUrl: string;
 
   // login(): Observable<boolean> {
@@ -24,9 +26,15 @@ export class AuthService {
 	constructor(private http: Http,
 				private router: Router) {
 	    // set token if saved in local storage
-	    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	    this.token = currentUser && currentUser.token;
-	    // this.redirectUrl = '';
+
+	    if (environment.production) { 
+	    	this.loginUrl = environment.URL_WEB_SERVICE + '/authenticate';
+	    } else {
+	    	this.loginUrl = environment.URL_WEB_SERVICE + '/authenticate';
+	    }
+
 	}
 
 	login(username: string, password: string, login_type: string): Observable<boolean> {
@@ -42,19 +50,14 @@ export class AuthService {
         							password: password,
         							login_type: login_type });
         
-		// console.log(`AuthService_login()_body : ${body}` );
-
-	    return this.http.post('/api/authenticate', body, options)
+	    return this.http.post(this.loginUrl, body, options)
 	        .map((response: Response) => {
 
 	            // login successful if there's a jwt token in the response
 	            let token = response.json() && response.json().token;
-
 	            if (token) {
 	                // set token property
 	                this.token = token;
-
-		// console.log(`AuthService_Token : ${token}`);
 
        				// store username login_type and jwt token in local storage to keep user logged in between page refreshes
 	                localStorage.setItem('currentUser', 

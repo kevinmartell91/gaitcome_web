@@ -127,8 +127,8 @@ tiles = [
     console.log(this.form.value.username);
     console.log(this.form.value.password);
     console.log(this.form.value.login_type);
+    console.log('this.authService.redirectUrl',this.authService.redirectUrl);
 
-          console.log('this.authService.redirectUrl',this.authService.redirectUrl);
     this.authService.login(this.form.value.username, this.form.value.password, this.form.value.login_type)
       .subscribe(() => {
 
