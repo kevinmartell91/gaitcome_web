@@ -6,34 +6,6 @@ import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 
 
-export class Person {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-export class SplKne {
-        // normal_ranges: number[][];
-         normal_ranges: Array<Array<number>>;
-        // patient_angles: number[][];
-         patient_angles: Array<Array<number>>;
-}
-export class KinematicsAnalysis {
-    _id: string;
-    therapist_id: string;
-    medical_center_id: string;
-    created_at: string;
-    patient_id: string;
-    accesories_descriptions: {  
-      assited_walk: string,
-      treadmills: string,
-      walker: string,
-      orthoses: string,
-      parallel_bars: string
-    }
-    spl_kne: SplKne;
-    // spl_kne: SeriesAngles;
-}
-
 @Component({
   selector: 'app-results-component',
   templateUrl: './results.component.html',
@@ -43,9 +15,6 @@ export class KinematicsAnalysis {
   ]
 })
 export class ResultsComponent implements OnInit {
-  people: Person[] = [];
-  displayedPeople: Person[] = [];
-  
 
   token: string = '';
 
@@ -73,7 +42,6 @@ export class ResultsComponent implements OnInit {
   constructor(  private http: Http,
                 private route: ActivatedRoute,
                 private router: Router )  {
-    // this.currentKinematicsAnalysis = null;
   }
 
   ngOnInit() {
@@ -93,68 +61,8 @@ export class ResultsComponent implements OnInit {
     
   }
 
-  // filterPeople(event: any) {
-  //   const filterText: string = (<HTMLInputElement>event.target).value.toLowerCase();
-  //   this.displayedPeople = this.people.filter((person: Person) =>
-  //     !filterText || person.firstName.toLowerCase().indexOf(filterText) > -1
-  //   );
-
-  // }
-
-  // sortPeople(event: any) {
-  //   const grid = event.target;
-  //   const sortOrder = grid.sortOrder[0];
-  //   const sortProperty = grid.columns[sortOrder.column].name;
-  //   const sortDirection = sortOrder.direction;
-  //   this.displayedPeople.sort((a, b) => {
-  //     let res: number;
-  //     let valueA: string = grid.get(sortProperty, a),
-  //         valueB: string = grid.get(sortProperty, b);
-  //     if (!+(valueA)) {
-  //       res = parseInt(valueA, 10) - parseInt(valueB, 10);
-  //     } else {
-  //       res = valueA.localeCompare(valueB);
-  //     }
-  //     if (sortDirection === 'desc') {
-  //       res *= -1;
-  //     }
-  //     return res;
-  //   });
-  // }
-
-  // getKinematicAnalysiss() {
-  //   this._getJSON(this.URL_WEB_SERVICE_ANALYSIS, this.getHeaders())
-  //     .subscribe(json => this.kinematicsAnalysiss = json)
-  //     // .subscribe(json => this.displayedPeople = this.people = json.result)
-  // }
-
-  // getPatientes() {
-  //   this._getJSON(this.URL_WEB_SERVICE_PATIENTS, this.getHeaders())
-  //     .subscribe(json => this.patients = json)
-  // }
-
-  // getTherapist() {
-  //   this._getJSON(this.URL_WEB_SERVICE_THERAPISTS, this.getHeaders())
-  //     .subscribe(json => this.therapists = json)
-  // }
- 
-  
-
-  // onSelectPaciente(patient:any) {
-  //   console.log("selected patient");
-  //   this.currentPatient = patient;
-  //   this.doFilter('patient');
-  // }
-
-  // onSelectTherapist(therapist: any) {
-  //   console.log("selected therapist");
-  //   this.currentTherapist = therapist;
-  //   this.doFilter('therapist');
-  // }
-
   gotoDetail() {
       this.router.navigate(['../result', this.currentKinematicsAnalysis._id ], { relativeTo: this.route });
-
   }
 
   doFilter(type:string, entityObject: any) {
@@ -193,11 +101,7 @@ export class ResultsComponent implements OnInit {
         break;
     }
 
-    // clear the array for new data
-    // this.kinematicsAnalysiss = [];
-    // this.getKinematicAnalysiss();
     this.optionsHeader = this.getHeaders();
-
   }  
 
   getHeaders() {
@@ -219,12 +123,6 @@ export class ResultsComponent implements OnInit {
 
     return options;
   }
-
-  // _getJSON(url: string, option: RequestOptions): Observable<any> {
-  //   return this.http.get(url,option)
-  //     .map((res: Response) => res.json())
-  // }
-
 
   // --------------------------------------------------
   // METHODS THAT ALLOW COMUNICATION BETWEEN CHILD 
@@ -255,6 +153,9 @@ export class ResultsComponent implements OnInit {
   therapistSelected(therapist: any) {
     this.currentTherapist = therapist;
     this.doFilter("therapist", therapist);
+    // set the currentKinematicsAnalysis null when
+    // a new thearpist is selected
+    this.currentKinematicsAnalysis = null;
     console.log("therapistSelected() from doFilter");
   }
 
@@ -266,6 +167,9 @@ export class ResultsComponent implements OnInit {
     console.log("patientSelected notified" , patient )  
     this.currentPatient= patient;
     this.doFilter("patient",patient);
+    // set the currentKinematicsAnalysis null when
+    // a new patient is selected
+    this.currentKinematicsAnalysis = null;
     console.log("patientSelected() from doFilter");
   }
 

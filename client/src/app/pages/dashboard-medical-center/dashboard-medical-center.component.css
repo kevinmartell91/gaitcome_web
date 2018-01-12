@@ -10,3 +10,8 @@
     background-color: #f1596c;
     cursor: pointer;
 }
+
+
+.navbar-nav {
+    margin-bottom: -7px;
+}

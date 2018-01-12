@@ -83,7 +83,7 @@
               </app-result-preview>   
             </div>
             
-            <div class="row">
+            <div *ngIf="currentKinematicsAnalysis.is_done" class="row">
               <button type="button" 
                       class="btn btn-primary btn-sm" 
                       (click)="gotoDetail()">View graphics</button> 
@@ -98,7 +98,7 @@
 
   <div class="container">
     <div class="drawer_graphic">
-      <div *ngIf="currentKinematicsAnalysis">
+      <div *ngIf="currentKinematicsAnalysis && currentKinematicsAnalysis.is_done">
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple (click)="gotoDetail()">
             <mdl-icon>timeline</mdl-icon>
         </button>
@@ -106,7 +106,7 @@
     </div>
 
     <div class="drawer_video">
-      <div *ngIf="currentKinematicsAnalysis ">
+      <div *ngIf="currentKinematicsAnalysis && currentKinematicsAnalysis.is_done">
         <button mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple 
                 data-toggle="collapse" data-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
             <mdl-icon>movies</mdl-icon>
@@ -117,93 +117,3 @@
 
 
 </div>
-    
-    
-
-
-    <div *ngIf="false" class="row">
-
-      <!-- Result filter by patient and therapist -->
-      <div class="col-md-2">
-        
-        <!-- Patient list | child component-->
-        <div class="row">
-            <!-- <div class="card-block"> -->
-          <!-- <app-patient-list [token]="token" -->
-          <app-patient-list [medical_center_id]="medical_center_id"
-                            [allFields]="false"
-                            (onSelect)="patientSelected($event)">
-          </app-patient-list>
-            <!-- </div> -->
-        </div>
-        <!-- Therapist list |  child component -->
-        <div class="row">
-          <!-- <div class="card-block"> -->
-          <!-- <app-therapist-list [token]="token" -->
-          <app-therapist-list [medical_center_id]="medical_center_id"
-                              [allFields]="false"
-                              (onSelect)="therapistSelected($event)">
-          </app-therapist-list>
-          <!-- </div> -->
-        </div>
-
-        <div class="row">
-          <h6>Opciones de multi seleccion</h6>
-        </div>  
-      </div>  
-
-      <div class="col-md-10">
-          
-
-          <!-- Show video from selected result -->
-          <div class="row"> 
-            <div class="col-md-12">
-              <div class="card-block">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/0qLblUty41c" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-
-          <!-- Result list and result details  -->
-          <div class="row">
-
-              <!-- Result list | child component -->
-              <div class="col-md-6">
-                <div class="card-block">
-                  <app-result-list [token]="token"
-                                   [medical_center_id]="medical_center_id"
-                                   [therapist_id]="currentTherapist" 
-                                   [patient_id]="currentPatient" 
-                                   [headersOptions]="optionsHeader" 
-                                   (onSelect)="kinematicAnalysisSelected($event)"
-                                   (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
-                  </app-result-list>                              
-              
-                </div>
-              </div>
-
-              <!-- Result Preview | child component -->
-              <div class="card-block">
-                <div class="col-md-6">
-                  <div *ngIf="currentKinematicsAnalysis ">
-                    <div class="row">
-                      
-                      <app-result-preview [kinematicsAnalysis]="currentKinematicsAnalysis ">
-                      </app-result-preview>   
-                    </div>
-
-                    <div class="row">
-                      <button type="button" 
-                              class="btn btn-primary btn-sm" 
-                              (click)="gotoDetail()">View graphics</button> 
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-          </div>
-          
-      </div>
-
-    </div>
-

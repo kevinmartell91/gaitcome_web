@@ -77,6 +77,7 @@
 
 .field-group{
     /*padding: 0px 0px 0px 9px;*/
+    /*margin-bottom: 1rem;*/
     display: flex;
 }
 
@@ -112,7 +113,7 @@ mdl-radio, mdl-checkbox, mdl-switch {
 
  .style_names_selected {
     /*margin: 2rem 6rem 3rem 0rem;*/
-    margin: 2rem 4rem 2rem 0rem;
+    margin: 2rem 4rem 4rem 0rem;
  }
 
  .style_accesories_selected {
@@ -162,7 +163,7 @@ mdl-radio, mdl-checkbox, mdl-switch {
     color: #9b9b9b;
     width: 2.5rem;
     height: 2.5rem;
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     display: inline-block;
     text-decoration: none;
@@ -196,3 +197,6 @@ mdl-radio, mdl-checkbox, mdl-switch {
     margin: 0rem -3rem;
 }
 
+.style_entity_area{
+    margin-bottom: 0.5rem;
+}
