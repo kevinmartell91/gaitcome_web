@@ -1397,6 +1397,17 @@ exports.postKinematicsAnalysisMatlabGaitAngles = function(req, res) {
 // Create endpoint /api/kinematics_analysis_matlab/:kinematics_analysis_id for PUT
 exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
 
+  let json;
+  if(typeof req.headers.data === 'undefined') {
+    // request from  POSTMAN
+    json = req.body;
+  } else {
+    // request from ONLINE MATALAB
+    json = JSON.parse(req.headers.data);
+  }
+  console.log('======================');
+  console.log('json',json);
+
   KinematicsAnalysis.findById(req.params.kinematics_analysis_id,
                               function(err, kinematic_analysis) {
     if (err) {
@@ -1404,68 +1415,66 @@ exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
     }
 
     // kinematic_analysis.is_done = req.body.is_done;
-    kinematic_analysis.is_done = false;
+    kinematic_analysis.is_done = true;
 
     // Raw data: all angles extrated which perharps is
     // 01 gait cycle
-    kinematic_analysis.lbwt_y = req.body.lbwt_y;
-    kinematic_analysis.lbwt_z = req.body.lbwt_z;
-    kinematic_analysis.lfwt_x = req.body.lfwt_x;
-    kinematic_analysis.lfwt_y = req.body.lfwt_y;
-    kinematic_analysis.lfwt_z = req.body.lfwt_z;
-    kinematic_analysis.ltrc_x = req.body.ltrc_x;
-    kinematic_analysis.ltrc_y = req.body.ltrc_y;
-    kinematic_analysis.ltrc_z = req.body.ltrc_z;
-    kinematic_analysis.lkne_x = req.body.lkne_x;
-    kinematic_analysis.lkne_y = req.body.lkne_y;
-    kinematic_analysis.lkne_z = req.body.lkne_z;
-    kinematic_analysis.lank_x = req.body.lank_x;
-    kinematic_analysis.lank_y = req.body.lank_y;
-    kinematic_analysis.lank_z = req.body.lank_z;
-    kinematic_analysis.lhee_x = req.body.lhee_x;
-    kinematic_analysis.lhee_y = req.body.lhee_y;
-    kinematic_analysis.lhee_z = req.body.lhee_z;
-    kinematic_analysis.ltoe_x = req.body.ltoe_x;
-    kinematic_analysis.ltoe_y = req.body.ltoe_y;
-    kinematic_analysis.ltoe_z = req.body.ltoe_z;
+    kinematic_analysis.lbwt_y = json.lbwt_y;
+    kinematic_analysis.lbwt_z = json.lbwt_z;
+    kinematic_analysis.lfwt_x = json.lfwt_x;
+    kinematic_analysis.lfwt_y = json.lfwt_y;
+    kinematic_analysis.lfwt_z = json.lfwt_z;
+    kinematic_analysis.ltrc_x = json.ltrc_x;
+    kinematic_analysis.ltrc_y = json.ltrc_y;
+    kinematic_analysis.ltrc_z = json.ltrc_z;
+    kinematic_analysis.lkne_x = json.lkne_x;
+    kinematic_analysis.lkne_y = json.lkne_y;
+    kinematic_analysis.lkne_z = json.lkne_z;
+    kinematic_analysis.lank_x = json.lank_x;
+    kinematic_analysis.lank_y = json.lank_y;
+    kinematic_analysis.lank_z = json.lank_z;
+    kinematic_analysis.lhee_x = json.lhee_x;
+    kinematic_analysis.lhee_y = json.lhee_y;
+    kinematic_analysis.lhee_z = json.lhee_z;
+    kinematic_analysis.ltoe_x = json.ltoe_x;
+    kinematic_analysis.ltoe_y = json.ltoe_y;
+    kinematic_analysis.ltoe_z = json.ltoe_z;
     // it only save until this part
 
     // series[1].data = [] // 1 Left 
     // series[2].data = [] // 2 Right
     
     //In this case is just the angles from the left side
-    sp_plv_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
-    sp_hip_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
-    sp_kne_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.sp_kne_high_chart_data = sp_kne_high_chart_data;
-    sp_ank_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.sp_ank_high_chart_data = sp_ank_high_chart_data;
-    fp_plv_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
-    fp_hip_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
-    fp_kne_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.fp_kne_high_chart_data = fp_kne_high_chart_data;
-    fp_ank_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.fp_ank_high_chart_data = fp_ank_high_chart_data;
-    tp_plv_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
-    tp_hip_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
-    tp_kne_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.tp_kne_high_chart_data = tp_kne_high_chart_data;
-    tp_ank_high_chart_data.series[1].data = req.body.sagittal_kne_ang; kinematic_analysis.tp_ank_high_chart_data = tp_ank_high_chart_data;
+    sp_plv_high_chart_data.series[1].data = json.sagittal_hip_ang; kinematic_analysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
+    sp_hip_high_chart_data.series[1].data = json.sagittal_pel_ang; kinematic_analysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
+    sp_kne_high_chart_data.series[1].data = json.sagittal_kne_ang; kinematic_analysis.sp_kne_high_chart_data = sp_kne_high_chart_data;
+    sp_ank_high_chart_data.series[1].data = json.sagittal_ank_ang; kinematic_analysis.sp_ank_high_chart_data = sp_ank_high_chart_data;
+    fp_plv_high_chart_data.series[1].data = json.frontal_hip_ang; kinematic_analysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
+    fp_hip_high_chart_data.series[1].data = json.frontal_pel_ang; kinematic_analysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
+    fp_kne_high_chart_data.series[1].data = json.frontal_kne_ang; kinematic_analysis.fp_kne_high_chart_data = fp_kne_high_chart_data;
+    fp_ank_high_chart_data.series[1].data = json.frontal_ank_ang; kinematic_analysis.fp_ank_high_chart_data = fp_ank_high_chart_data;
+    tp_plv_high_chart_data.series[1].data = json.transversal_hip_ang; kinematic_analysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
+    tp_hip_high_chart_data.series[1].data = json.transversal_pel_ang; kinematic_analysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
+    tp_kne_high_chart_data.series[1].data = json.transversal_kne_ang; kinematic_analysis.tp_kne_high_chart_data = tp_kne_high_chart_data;
+    tp_ank_high_chart_data.series[1].data = json.transversal_ank_ang; kinematic_analysis.tp_ank_high_chart_data = tp_ank_high_chart_data;
 
 
     // this was added because of a parse problem in MONOGO : 
     // Mongoose update 'cannot use the part (..) to traverse the element
     // all of this works as a by pass to perform PUT method
     // TO DELETE from Mongo MODEL , It is useless
-    kinematic_analysis.sp_kne = req.body.sp_kne;
-    kinematic_analysis.sp_ank = req.body.sp_ank;
-    kinematic_analysis.sp_plv = req.body.sp_plv;
-    kinematic_analysis.sp_hip = req.body.sp_hip;
-    kinematic_analysis.fp_kne = req.body.fp_kne;
-    kinematic_analysis.fp_ank = req.body.fp_ank;
-    kinematic_analysis.fp_plv = req.body.fp_plv;
-    kinematic_analysis.fp_hip = req.body.fp_hip;
-    kinematic_analysis.tp_kne = req.body.tp_kne;
-    kinematic_analysis.tp_ank = req.body.tp_ank;
-    kinematic_analysis.tp_plv = req.body.tp_plv;
-    kinematic_analysis.tp_hip = req.body.tp_hip;
-
-
+    kinematic_analysis.sp_kne = json.sp_kne;
+    kinematic_analysis.sp_ank = json.sp_ank;
+    kinematic_analysis.sp_plv = json.sp_plv;
+    kinematic_analysis.sp_hip = json.sp_hip;
+    kinematic_analysis.fp_kne = json.fp_kne;
+    kinematic_analysis.fp_ank = json.fp_ank;
+    kinematic_analysis.fp_plv = json.fp_plv;
+    kinematic_analysis.fp_hip = json.fp_hip;
+    kinematic_analysis.tp_kne = json.tp_kne;
+    kinematic_analysis.tp_ank = json.tp_ank;
+    kinematic_analysis.tp_plv = json.tp_plv;
+    kinematic_analysis.tp_hip = json.tp_hip;
 
 
     kinematic_analysis.save(function(err,data){
