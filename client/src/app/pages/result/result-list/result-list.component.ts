@@ -1,11 +1,16 @@
 import { Component, OnInit, Input, Output, OnChanges, SimpleChange, EventEmitter,ViewChild,ViewEncapsulation} from '@angular/core';
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { NgbModal ,NgbModalOptions, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/observable';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 
-
+import { ResultReadComponent} from '../result-read/result-read.component'
+import { ResultUpdateComponent} from '../result-update/result-update.component'
+import { ResultDeleteComponent} from '../result-delete/result-delete.component'
+import { ResultAddComponent } from '../result-add/result-add.component'
 
 
 export class Person {
@@ -19,7 +24,7 @@ export class SplKne {
         // patient_angles: number[][];
          patient_angles: Array<Array<number>>;
 }
-export class KinematicsAnalysis {
+export class kinematicsAnalysis {
     _id: string;
     therapist_id: string;
     medical_center_id: string;
@@ -55,10 +60,11 @@ export class ResultListComponent implements OnInit, OnChanges{
 
   kinematicsAnalysiss: any[] = [];
   selectedKinematicsAnalysis: any;
-  d:KinematicsAnalysis;
+  d:any;
   multipleKinematicsAnalysiss: any[] = [];
 
-  constructor ( private http: Http,
+  constructor ( private modalService: NgbModal,
+                private http: Http,
                 private route: ActivatedRoute,
                 private router: Router )  {
 
@@ -69,8 +75,11 @@ export class ResultListComponent implements OnInit, OnChanges{
   @Input() patient_id: string ;
   @Input() token: string;
   @Input() headersOptions: RequestOptions;
+  @Input() resultList: boolean;
+  
+  @Input() currentkinematicsAnalysis;
 
-  @Output() onSelect = new  EventEmitter<KinematicsAnalysis>();
+  @Output() onSelect = new  EventEmitter<any>();
   @Output() onMultipleSelect = new  EventEmitter<any>();
 
   changeLog: string[] = [];
@@ -107,14 +116,21 @@ export class ResultListComponent implements OnInit, OnChanges{
 
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         this.token = currentUser && currentUser.token;
-        this.getKinematicAnalysiss();   
+        if(this.resultList) {
+          console.log("getKinematicAnalysiss");
+          this.getKinematicAnalysiss();   
+
+        } else {
+          console.log("getAppointments");
+          this.getAppointments();
+        }
 
     } else {
         this.token = environment.token;      
         var json = environment.resultList;
 
         for (var i = 0; i < json.length; i++) {
-            this.d = json[i] as KinematicsAnalysis;
+            this.d = json[i] as any;
             this.kinematicsAnalysiss.push(this.d);
         }
     }    
@@ -155,13 +171,14 @@ export class ResultListComponent implements OnInit, OnChanges{
 
   getKinematicAnalysiss() {
         console.log("getKinematicAnalysiss- header",this.headersOptions);
-        this._getJSON(environment.URL_WEB_SERVICE_ANALYSIS, this.headersOptions)
+        this._getJSON(environment.URL_WEB_SERVICE+ '/kinematics_analysis' , this.headersOptions)
           .subscribe(json => this.kinematicsAnalysiss = json)
           // .subscribe(json => this.displayedPeople = this.people = json.result)
   }
 
-  select(kinematicsAnalysis: KinematicsAnalysis): void {
+  select(kinematicsAnalysis: any): void {
      
+        this.currentkinematicsAnalysis = kinematicsAnalysis;
         this.onSelect.emit(kinematicsAnalysis);
 
   }
@@ -197,55 +214,69 @@ export class ResultListComponent implements OnInit, OnChanges{
 
   }
 
-  // doFilter(type:string) {
-  //   //let hard_id: string = '5917e445512fd60c985238fe';
-  //   // Relative navigation back to the crises
-  //   switch (type) {
-  //     case "therapist":
 
-  //       if(this.therapist_id === this.selectedTherapist._id) {
-  //         this.therapist_id = '';
-  //       } else {
-  //         this.therapist_id = this.selectedTherapist._id;
-  //       }
-  //       break;
+  // Service methods
+  getAppointments() {
+    console.log('getAppointments');
+      this._getJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis' , this.headersOptions)
+      .subscribe(json => this.kinematicsAnalysiss = json)
+  }
 
-  //     case "patient":
+  // CHANGE THIS
 
-  //       if(this.patient_id === this.selectedPatient._id) {
-  //         this.patient_id = '';
-  //       } else {
-  //         this.patient_id = this.selectedPatient._id;
-  //       }
-  //       break;  
-      
-  //     default:
-  //       // more filters ..
-  //       break;
-  //   }
+  showReadAppointmentModal() {
 
-  //   // clear the array for new data
-  //   this.kinematicsAnalysiss = [];
-  //   this.getKinematicAnalysiss();
-  // }  
+    let options: NgbModalOptions = {
+      size: 'lg'
+    };
+    const modalRef = this.modalService.open(ResultReadComponent, options);
+    // modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis; 
+  }
 
-  // getHeaders() {
-  //   let headers = new Headers();
-  //   headers.append('Accept', 'application/json');
-  //   headers.append('Content-Type', 'application/json');
-  //   headers.append('x-access-token', this.token);
 
-  //   let params = new URLSearchParams();
-  //   params.set("patient_id", this.patient_id);
-  //   params.set("medical_center_id", this.medical_center_id);
-  //   params.set("therapist_id", this.therapist_id);
 
-  //   let options = new RequestOptions();
-  //   options.headers = headers
-  //   options.search = params;
 
-  //   return options;
-  // }
+  showUpdateAppointmentModal() {
+
+    let options: NgbModalOptions = {
+      size: 'lg'
+    };
+    const modalRef = this.modalService.open(ResultUpdateComponent, options);
+    modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis;
+    modalRef.componentInstance.onFinishedUpdate.subscribe(($e) => {
+      this.getAppointments();
+    });
+
+  }
+
+  showDeleteAppointmentModal() {
+
+    console.log("this.currentkinematicsAnalysis",this.currentkinematicsAnalysis._id);    const modalRef = this.modalService.open(ResultDeleteComponent);
+    modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis; 
+    modalRef.componentInstance.onFinishedDelete.subscribe(($e) => {
+      this.getAppointments();
+      console.log('update list appointment');
+    });
+
+  }
+
+  showAddAppointmentModal() {
+
+    console.log("showAddPatientComponent");
+    let options: NgbModalOptions = {
+      size: 'lg'
+    };
+    const modalRef = this.modalService.open(ResultAddComponent, options);
+    // modalRef.componentInstance.medical_center_name = this.medical_center_name;
+    modalRef.componentInstance.onFinishedAdd.subscribe(($e) => {
+      this.getAppointments();
+    });
+  
+  }
+
+
+
+
 
   _getJSON(url: string, option: RequestOptions): Observable<any> {
 

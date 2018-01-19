@@ -13,7 +13,7 @@
             <table class="table table-responsive">
 			  <thead>
 			    <tr class="header_table">
-			      <th>#</th>
+			      <th></th>
 			      <th>Nombres</th>
 			      <th>Last names</th>
 			      <th>Att. name</th>
@@ -27,7 +27,7 @@
 				        (mouseout)="currentPatient = null"
 				        (mouseover)="selectFromAllFields(patient)">
 				  	<!-- <div> -->
-				      <th scope="row">#</th>
+				      <th scope="row" class="sytle_name_abbreviation">{{patient.names | captialLetterNames:2:patient.lastname}}</th>
 				      <td>{{patient.names}}</td>
 				      <td>{{patient.lastname}}</td>
 				      <td>{{patient.attorney.names}}</td>
@@ -95,7 +95,7 @@
 	<ul class="patients">  
 	    <li  *ngFor = "let patient of patients"
 	        (click)="selectFromNotAllFields(patient)"
-	        [class.selected]="patient === currentPatient">
+	        [class.selected]="patient._id === currentPatient._id">
 
 	        
 			<div *ngIf="listView">  

@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 // import {CommonModule} from "@angular/common";
 
 import {DateFormatPipe} from "./date-format.pipe";
+import { CaptialLetterNamesPipe } from './captial-letter-names.pipe';
 
 @NgModule({
-  declarations:[DateFormatPipe],
+  declarations:[
+  	DateFormatPipe, 
+	CaptialLetterNamesPipe
+  ],
   // imports:[CommonModule],
-  exports:[DateFormatPipe]
+  exports:[
+  	DateFormatPipe,
+  	CaptialLetterNamesPipe
+  ]
 })
 
 export class PipeModule{

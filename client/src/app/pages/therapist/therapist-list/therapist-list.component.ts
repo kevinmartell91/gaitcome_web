@@ -44,7 +44,9 @@ export class TherapistListComponent implements OnInit {
   constructor( private modalService: NgbModal,
                private http: Http 
                ) { 
-    this.emptyTherapist = null;
+    this.emptyTherapist = {_id:''}; 
+    this.previousTherapist = {_id:''};
+    this.currentTherapist = {_id:''};
   }
 
   ngOnInit() {
@@ -73,7 +75,7 @@ export class TherapistListComponent implements OnInit {
 
   // EventEmitter -> expose to parent component
   selectFromNotAllFields(therapist: any) {
-    if (this.previousTherapist == therapist) {
+    if (this.previousTherapist._id == therapist._id) {
       this.currentTherapist = this.emptyTherapist;
       console.log("set empty",this.currentTherapist );
     } else {
@@ -103,14 +105,14 @@ export class TherapistListComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
-    // let params = new URLSearchParams();
+    let params = new URLSearchParams();
     // params.set("patient_id", this.patient_id);
-    // params.set("medical_center_id", this.medical_center_id);
+    params.set("medical_center_id", this.medical_center_id);
     // params.set("therapist_id", this.therapist_id);
 
     let options = new RequestOptions();
     options.headers = headers;
-    // options.search = params;
+    options.search = params;
 
     return options;
   }
@@ -149,7 +151,7 @@ export class TherapistListComponent implements OnInit {
     const modalRef = this.modalService.open(TherapistUpdateComponent, options);
     modalRef.componentInstance.therapist = this.currentTherapist; 
     modalRef.componentInstance.onFinishedUpdate.subscribe(($e) => {
-      this.getTherapist();
+      this.UpdateThreapistList();
     });
     
 
@@ -170,7 +172,7 @@ export class TherapistListComponent implements OnInit {
     modalRef.componentInstance.names = this.currentTherapist.names; 
     modalRef.componentInstance.lastname = this.currentTherapist.lastname; 
     modalRef.componentInstance.onFinishedDelete.subscribe($e => {
-      this.getTherapist();
+      this.UpdateThreapistList();
     });
     // modalRef.result.then((result) => {
     //   this.closeResult = `Closed with: ${result}`;
@@ -190,7 +192,7 @@ export class TherapistListComponent implements OnInit {
     modalRef.componentInstance.medical_center_id = this.medical_center_id;
     modalRef.componentInstance.medical_center_name = this.medical_center_name;
     modalRef.componentInstance.onFinishedAdd.subscribe($e => {
-      this.getTherapist();
+      this.UpdateThreapistList();
     });
 
     // modalRef.result.then((result) => {

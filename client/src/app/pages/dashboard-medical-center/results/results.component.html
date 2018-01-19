@@ -58,7 +58,8 @@
                          [patient_id]="currentPatient" 
                          [headersOptions]="optionsHeader" 
                          (onSelect)="kinematicAnalysisSelected($event)"
-                         (onMultipleSelect)="multipleKinematicAnalysisSelected($event)">
+                         (onMultipleSelect)="multipleKinematicAnalysisSelected($event)"
+                         [resultList]="true">
         </app-result-list> 
       </div>
 

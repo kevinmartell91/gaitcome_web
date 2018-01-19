@@ -36,6 +36,9 @@ import { PatientDeleteComponent } from '../patient/patient-delete/patient-delete
 import { ResultsComponent} from './results/results.component';
 import { ResultListComponent} from '../result/result-list/result-list.component';
 import { ResultAddComponent } from '../result/result-add/result-add.component';
+import { ResultUpdateComponent } from '../result/result-update/result-update.component';
+import { ResultDeleteComponent } from '../result/result-delete/result-delete.component';
+import { ResultReadComponent } from '../result/result-read/result-read.component';
 import { ResultDetailComponent } from '../result/result-detail/result-detail.component';
 import { ResultPreviewComponent } from '../result/result-preview/result-preview.component';
 import { ResultDrawerComponent } from '../result/result-detail/result-detail.component';
@@ -64,6 +67,10 @@ import { NewAppointmentComponent } from './new-appointment/new-appointment.compo
     PatientDeleteComponent,
     ResultListComponent,
     ResultAddComponent,
+    ResultUpdateComponent,
+    ResultReadComponent,
+    ResultDeleteComponent,
+    ResultDetailComponent,
     ResultDetailComponent,
     ResultsComponent,
     ResultDrawerComponent,
@@ -94,6 +101,10 @@ import { NewAppointmentComponent } from './new-appointment/new-appointment.compo
     PatientReadComponent,
     PatientDeleteComponent,
     ResultAddComponent,
+    ResultUpdateComponent,
+    ResultReadComponent,
+    ResultDeleteComponent,
+    ResultDetailComponent,
     ResultsComponent,
     ResultPreviewComponent
   ],

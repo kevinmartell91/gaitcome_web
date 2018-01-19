@@ -58,7 +58,12 @@ exports.postTherapists = function(req, res) {
 // Create endpoint /api/therapists for GET
 exports.getTherapists = function(req, res) {
 
-  Therapist.find(function(err, therapists) {
+  var query = {};
+
+  if( query.medical_center_id !== "")
+    query.medical_center_id = req.query.medical_center_id;
+
+  Therapist.find(query, function(err, therapists) {
     if (err)
       return res.send(err);
 

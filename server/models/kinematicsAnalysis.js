@@ -33,6 +33,12 @@ var kinematicsAnalysisSchema = new Schema({
 	date_requested: String,
 	is_done: Boolean,
 
+	status: [{
+		name: String,
+		created_at: String
+	}],
+
+
 	accesories: {
       is_assited_walk: Boolean,
       is_treadmills: Boolean,

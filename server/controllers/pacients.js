@@ -66,7 +66,12 @@ exports.postPacients= function(req, res) {
 // Create endpoint /api/pacients for GET
 exports.getPacients = function(req, res) {
 
-  Pacient.find(function(err, pacients) {
+  var query = {};
+
+  if( query.medical_center_id !== "")
+    query.medical_center_id = req.query.medical_center_id;
+
+  Pacient.find(query, function(err, pacients) {
     if(err)
       return res.send(err);
 

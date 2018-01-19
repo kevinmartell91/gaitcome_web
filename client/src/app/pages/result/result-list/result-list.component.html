@@ -1,64 +1,147 @@
-<h2>Results</h2>
+<div *ngIf="resultList; then thenBlock else elseBlock"></div>
 
-<table class="table table-responsive">
-  <thead>
-    <tr class="header_table">
-      <th></th>
-      <th>Date</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-    (mouseout)="mouseOvered=kinematicsAnalysis"   
-    (mouseover)="mouseOvered=kinematicsAnalysis"
-    >
-      <!-- <div> -->
-        <th scope="row">
-          <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
-          </mdl-checkbox>
-        </th>
-        <td>{{kinematicsAnalysis.created_at | dateFormat}}</td>
-        <td>
-          <div *ngIf="mouseOvered === kinematicsAnalysis">
-            <mdl-icon class="icon material-icons" mdl-tooltip-large="ver resumen"
-                      (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
+<ng-template #thenBlock>
+  <h2>Results</h2>
 
-          </div>
-        </td>
-      <!-- </div> -->
-    </tr>
-   
-  </tbody>
-</table>
-  
-<div *ngIf="multipleKinematicsAnalysiss.length > 1">    
+    <table class="table table-responsive">
+      <thead>
+        <tr class="header_table">
+          <th></th>
+          <th>Date</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody  class="style_heigh_results">
+        <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
+        (mouseout)="mouseOvered=kinematicsAnalysis"   
+        (mouseover)="mouseOvered=kinematicsAnalysis"
+        >
+          <!-- <div> -->
+            <th scope="row">
+              <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
+              </mdl-checkbox>
+            </th>
+            <td>{{kinematicsAnalysis.created_at | dateFormat}}</td>
+            <td>
+              <div *ngIf="mouseOvered === kinematicsAnalysis">
+                <mdl-icon class="icon material-icons" mdl-tooltip-large="ver resumen"
+                          (click)="select(kinematicsAnalysis)">content_paste</mdl-icon>
 
-  <h2>Mulitple options </h2>
+              </div>
+            </td>
+          <!-- </div> -->
+        </tr>
+       
+      </tbody>
+    </table>
+      
+    <div *ngIf="multipleKinematicsAnalysiss.length > 1">    
 
-  <!-- Crossover analysis -->
-  <h6 class="title-devider">
-    Crossover analysis  
-  </h6>
-  <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
+      <h2>Mulitple options </h2>
 
-    <p>This section will show a grid of 4 by 4 mini squares. Each mini square 
-    will represent one kinematic graphic. If one mini square is disable, 
-    it will not be possible to make that graphic to cross to the other
-    graphic of the same type. Furthermore, right or left side will be 
-    selectable by the final user</p>
-    
+      <!-- Crossover analysis -->
+      <h6 class="title-devider">
+        Crossover analysis  
+      </h6>
+      <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
 
+        <p>This section will show a grid of 4 by 4 mini squares. Each mini square 
+        will represent one kinematic graphic. If one mini square is disable, 
+        it will not be possible to make that graphic to cross to the other
+        graphic of the same type. Furthermore, right or left side will be 
+        selectable by the final user</p>
+        
+
+      </div>
+
+
+      <!-- Compare graphics -->
+      <h6 class="title-devider">
+        Observe progress
+      </h6>
+      <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
+
+        <p>Accesories works!!</p>
+       
+      </div>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+   <div class="margin-container">
+      <div class="container">
+
+        <h2>Appointments</h2>
+
+        <table class="table table-responsive">
+          <thead>
+            <tr class="header_table">
+              <th></th>
+              <th>Date requested</th>
+              <th>Patient</th>
+              <th>Therapist</th>
+              <th>Analysis date</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody class="style_heigh_appointment">
+            <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
+            [class.selected]="kinematicsAnalysis === currentkinematicsAnalysis"
+            (mouseout)="currentkinematicsAnalysis = null"
+            (mouseover)="select(kinematicsAnalysis)">
+                <th scope="row" class="sytle_name_abbreviation">
+                 {{kinematicsAnalysis.patient_full_name | captialLetterNames }}
+                  <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
+                  </mdl-checkbox>
+                </th>
+                <td>{{kinematicsAnalysis.created_at | dateFormat}}</td>
+                <td>{{kinematicsAnalysis.patient_full_name }}</td>
+                <td>{{kinematicsAnalysis.therapist_full_name }}</td>
+                <td>{{kinematicsAnalysis.date_requested }}</td>
+                <td>
+                  <div *ngIf="currentAppointment === currentAppointment">
+                      <div class="row">
+                          <!-- <div class="col">
+                              <mdl-icon   class="icon material-icons" 
+                                          mdl-tooltip-large="ver"
+                                          (click)="showReadAppointmentModal()"
+                                          >visibility</mdl-icon>
+                              
+                          </div> -->
+                          <div class="col">
+                              <mdl-icon   class="icon material-icons" 
+                                          mdl-tooltip-large="editar"
+                                          (click)="showUpdateAppointmentModal()"
+                                          href="#updateModal">edit</mdl-icon>
+                              
+                          </div>
+                          <div class="col">
+                              <mdl-icon   class="icon material-icons" 
+                                          mdl-tooltip-large="eliminar"
+                                          (click)="showDeleteAppointmentModal()"
+                                          href="#deleteModal">delete</mdl-icon>
+                              
+                          </div>
+                      </div>
+                  </div>  
+                </td>
+              <!-- </div> -->
+            </tr>
+           
+          </tbody>
+        </table>
+
+        <div class="drawer_add_therapist">
+            <mdl-button mdl-button
+                        mdl-button-type="fab" 
+                        mdl-colored="primary"
+                        mdl-ripple
+                        (click)="showAddAppointmentModal()">
+                <mdl-icon>add</mdl-icon>
+            </mdl-button>
+        </div>
+
+      </div>
   </div>
-
-
-  <!-- Compare graphics -->
-  <h6 class="title-devider">
-    Observe progress
-  </h6>
-  <div *ngIf="multipleKinematicsAnalysiss.length > 1" class="card-block">
-
-    <p>Accesories works!!</p>
-   
-  </div>
-</div>
+ 
+</ng-template>

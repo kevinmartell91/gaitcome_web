@@ -298,7 +298,7 @@ var sp_kne_high_chart_data = {
 };
 
 var sp_ank_high_chart_data = {
-        
+    
         chart: {
             type: "spline",
             height: 350
@@ -1197,150 +1197,104 @@ var tp_ank_high_chart_data = {
 exports.postKinematicsAnalysiss = function(req, res) {
   // Create a new instance of the KinematicsAnalysis model
 
-  var kinematic_analysis = new KinematicsAnalysis();
+  var kinematicAnalysis = new KinematicsAnalysis();
 
-  //Set the kinematic_analysis properties that came from the POST data
-  kinematic_analysis.patient_id = req.body.patient_id;
-  kinematic_analysis.patient_full_name = req.body.patient_full_name;
-  kinematic_analysis.medical_center_id = req.body.medical_center_id; // missing teo receive this data
-  kinematic_analysis.therapist_id = req.body.therapist_id;
-  kinematic_analysis.therapist_full_name = req.body.therapist_full_name;
-  kinematic_analysis.patient_descriptions = req.body.patient_descriptions; // there is no UI field to recieve
-  kinematic_analysis.date_requested = req.body.date_requested;
-  kinematic_analysis.is_done = req.body.is_done;
-  kinematic_analysis.accesories = req.body.accesories;
-  kinematic_analysis.accesories_descriptions = req.body.accesories_descriptions;
-  // kinematic_analysis.hip = req.body.sp_hip;
-  // kinematic_analysis.lkne = req.body.lkne;
-  // Add the missing ones
-  // kinematic_analysis.sp_kne.patient_angles = req.body.sp_kne.patient_angles;
-  // kinematic_analysis.sp_kne.normal_ranges = req.body.sp_kne.normal_ranges;
+  kinematicAnalysis.patient_id = req.body.patient_id;
+  kinematicAnalysis.patient_full_name = req.body.patient_full_name;
+  kinematicAnalysis.medical_center_id = req.body.medical_center_id; 
+  kinematicAnalysis.therapist_id = req.body.therapist_id;
+  kinematicAnalysis.therapist_full_name = req.body.therapist_full_name;
+  kinematicAnalysis.patient_descriptions = req.body.patient_descriptions; 
+  kinematicAnalysis.is_done = req.body.is_done;
+  kinematicAnalysis.date_requested = req.body.date_requested;
+  kinematicAnalysis.accesories = req.body.accesories;
+  kinematicAnalysis.accesories_descriptions = req.body.accesories_descriptions;
 
- 
+  // console. log('req.body.status',req.body.status);
+  kinematicAnalysis.status = req.body.status;
+    
 
-  kinematic_analysis.save(function(err) {
+  kinematicAnalysis.save(function(err) {
     if (err)
       return res.send(err);
 
-    res.json({ message: 'kinematic analysis added', data: kinematic_analysis });
+    res.json({ message: 'kinematic analysis added', data: kinematicAnalysis });
   });
 };
  
 // Create endpoint /api/kinematic_analysis for GET
 exports.getKinematicsAnalysiss = function(req, res) {
 
-  console.log ("IN getKinematicsAnalysiss ");
   var query = {};
 
+  if(req.query.type_request === "results") {
+      if(req.query.patient_id !== ""){
+        query.patient_id = req.query.patient_id;
+      }
+      if(req.query.therapist_id !== "" ){
+        query.therapist_id = req.query.therapist_id;
+      }
+
+      query.status = {$elemMatch : { name : "appointment_performed"}};
+    
+  } else { // appointments
+      query.status = { $not: {$elemMatch : { name : "appointment_performed"}}};
+  }
+  
   if(req.query.medical_center_id !== ""){
     query.medical_center_id = req.query.medical_center_id;
   }
-  if(req.query.patient_id !== ""){
-    query.patient_id = req.query.patient_id;
-  }
-  if(req.query.therapist_id !== ""){
-    query.therapist_id = req.query.therapist_id;
-  }
+
   console.log("query to exec", query);
 
-
-  // var query = KinematicsAnalysis.findOne({ 'medical_center_id': medical_center_id });
-  // var searchQuery = {name: {$in: names}};
-  KinematicsAnalysis.find(query,function(err, kinematic_analysiss) {
-  // KinematicsAnalysis.find(function(err, kinematic_analysis) {
+  KinematicsAnalysis.find(query,function(err, kinematicAnalysiss) {
     if (err)
       return res.send(err);
-     // console.log("data from server", kinematic_analysiss);
-     // console.log("data from server JSON.parse", JSON.parse(kinematic_analysis));
-    res.json(kinematic_analysiss);
+    res.json(kinematicAnalysiss);
   });
 };
 
 // Create endpoint /api/kinematic_analysis/:kinematics_analysis_id for GET
 exports.getKinematicsAnalysis = function(req, res) {
 
-  KinematicsAnalysis.findById(req.params.kinematics_analysis_id, function(err, kinematic_analysis) {
+  KinematicsAnalysis.findById(req.params.kinematics_analysis_id, function(err, kinematicAnalysis) {
   
     if (err)
       return res.send(err);
 
-    // let result = JSON.stringify({ result: kinematic_analysis });
+    // let result = JSON.stringify({ result: kinematicAnalysis });
 
-    res.json(kinematic_analysis);
+    res.json(kinematicAnalysis);
   });
 };
 
 // Create endpoint /api/kinematic_analysis/:kinematics_analysis_id for PUT
 exports.putKinematicsAnalysis = function(req, res) {
 
-  KinematicsAnalysis.findById(req.params.kinematics_analysis_id, function(err, kinematic_analysis) {
+  KinematicsAnalysis.findById(req.params.kinematics_analysis_id, function(err, kinematicAnalysis) {
     if (err) {
       return res.send(err);
     }
-    
 
-  kinematic_analysis.patient_descriptions = req.body.patient_descriptions;
+    kinematicAnalysis.patient_id = req.body.patient_id;
+    kinematicAnalysis.patient_full_name = req.body.patient_full_name;
+    kinematicAnalysis.medical_center_id = req.body.medical_center_id; 
+    kinematicAnalysis.therapist_id = req.body.therapist_id;
+    kinematicAnalysis.therapist_full_name = req.body.therapist_full_name;
+    kinematicAnalysis.patient_descriptions = req.body.patient_descriptions; 
+    // kinematicAnalysis.is_done = req.body.is_done;
+    kinematicAnalysis.date_requested = req.body.date_requested;
+    kinematicAnalysis.accesories = req.body.accesories;
+    kinematicAnalysis.accesories_descriptions = req.body.accesories_descriptions;
 
-  // kinematic_analysis.accesories = {
-  //     is_assited_walk: req.body.accesories.is_assited_walk,
-  //     is_treadmills: req.body.accesories.is_treadmills,
-  //     is_walker: req.body.accesories.is_walker,
-  //     is_orthoses: req.body.accesories.is_orthoses,
-  //     is_parallel_bars: req.body.accesories.is_parallel_bars
-  // };
+    kinematicAnalysis.status.push(req.body.status);
   
-  // kinematic_analysis.accesories_descriptions = {  
-  //     assited_walk: req.body.accesories_descriptions.assited_walk,
-  //     treadmills: req.body.accesories_descriptions.treadmills,
-  //     walker: req.body.accesories_descriptions.walker,
-  //     orthoses: req.body.accesories_descriptions.orthoses,
-  //     parallel_bars: req.body.accesories_descriptions.parallel_bars
-  // };
-  //Not send from database
-  //   "accesories_descriptions": {  
-  //   "assited_walk": "String",
-  //   "treadmills": "String",
-  //   "walker": "String",
-  //   "orthoses": "String",
-  //   "parallel_bars": "String"
-  // }
-  console.log('putKinematicsAnalysis');
-
-  // kinematic_analysis.patient_id = req.body.patient_id;
-  // kinematic_analysis.medical_center_id = req.body.medical_center_id;
-  // kinematic_analysis.therapist_id = req.body.therapist_id;
-  kinematic_analysis.accesories = req.body.accesories;
-  // kinematic_analysis.accesories_descriptions = req.body.accesories_descriptions;
-  // Add the missing ones
-  // if(kinematic_analysis.hasOwnProperty("sp_kne.patient_angles")) {
-  //   kinematic_analysis.sp_kne.patient_angles = req.body.sp_kne.patient_angles;
-  //   kinematic_analysis.sp_kne.normal_ranges = req.body.sp_kne.normal_ranges;
-  // }
-
-
-  // KinematicsAnalysis.update( 
-  //     { _id: eq.params.kinematics_analysis_id }, "sp_kne.patient_angles": "photo2" } }, 
-  //     { $set: { "photos.$.data": "yourdata" } }
-  // )
-
-  // console.log('fasfdsa');
-
-  // KinematicsAnalysis.update({_id: req.params.kinematics_analysis_id},{'sp_kne.patient_angles' : req.body.sp_kne.patient_angles},function(err, kinematic_analysis) {
-  //     if (err)
-  // return res.send(err);
-  //   console.log(kinematic_analysis);
-
-
-  // console.log(kinematic_analysis.hasOwnProperty("sp_kne.patient_angles"));
-  //   // console.log(kinematic_analysis.lkne.normal_ranges);
-
-    kinematic_analysis.save(function(err,data){
+    kinematicAnalysis.save(function(err,updatedKinematicAnalysis){
       if(err) 
         return res.send(err);
 
       res.json({ message: 'kinematic analysis updated',
-                 data: data });
-
+                 data: updatedKinematicAnalysis });
     });
   });
 };
@@ -1362,32 +1316,32 @@ exports.deleteKinematicsAnalysis = function(req, res) {
 exports.postKinematicsAnalysisMatlabGaitAngles = function(req, res) {
   KinematicsAnalysis.findById(
     req.params.kinematics_analysis_id,
-    function(err, kinematic_analysis) {
+    function(err, kinematicAnalysis) {
 
       if(err) {
         return res.send(err);
       }
 
       // Procesed data: angles of 01 gait cycle
-      kinematic_analysis.sp_kne_high_chart_data = req.body.sp_kne_high_chart_data;
-      kinematic_analysis.sp_ank_high_chart_data = req.body.sp_ank_high_chart_data;
-      kinematic_analysis.sp_plv_high_chart_data = req.body.sp_plv_high_chart_data;
-      kinematic_analysis.sp_hip_high_chart_data = req.body.sp_hip_high_chart_data;
-      kinematic_analysis.fp_kne_high_chart_data = req.body.fp_kne_high_chart_data;
-      kinematic_analysis.fp_ank_high_chart_data = req.body.fp_ank_high_chart_data;
-      kinematic_analysis.fp_plv_high_chart_data = req.body.fp_plv_high_chart_data;
-      kinematic_analysis.fp_hip_high_chart_data = req.body.fp_hip_high_chart_data;
-      kinematic_analysis.tp_kne_high_chart_data = req.body.tp_kne_high_chart_data;
-      kinematic_analysis.tp_ank_high_chart_data = req.body.tp_ank_high_chart_data;
-      kinematic_analysis.tp_plv_high_chart_data = req.body.tp_plv_high_chart_data;
-      kinematic_analysis.tp_hip_high_chart_data = req.body.tp_hip_high_chart_data;
+      kinematicAnalysis.sp_kne_high_chart_data = req.body.sp_kne_high_chart_data;
+      kinematicAnalysis.sp_ank_high_chart_data = req.body.sp_ank_high_chart_data;
+      kinematicAnalysis.sp_plv_high_chart_data = req.body.sp_plv_high_chart_data;
+      kinematicAnalysis.sp_hip_high_chart_data = req.body.sp_hip_high_chart_data;
+      kinematicAnalysis.fp_kne_high_chart_data = req.body.fp_kne_high_chart_data;
+      kinematicAnalysis.fp_ank_high_chart_data = req.body.fp_ank_high_chart_data;
+      kinematicAnalysis.fp_plv_high_chart_data = req.body.fp_plv_high_chart_data;
+      kinematicAnalysis.fp_hip_high_chart_data = req.body.fp_hip_high_chart_data;
+      kinematicAnalysis.tp_kne_high_chart_data = req.body.tp_kne_high_chart_data;
+      kinematicAnalysis.tp_ank_high_chart_data = req.body.tp_ank_high_chart_data;
+      kinematicAnalysis.tp_plv_high_chart_data = req.body.tp_plv_high_chart_data;
+      kinematicAnalysis.tp_hip_high_chart_data = req.body.tp_hip_high_chart_data;
 
-      kinematic_analysis.save(function(res, data) {
+      kinematicAnalysis.save(function(res, updatedKinematicAnalysis) {
         if(err)
           return res.send(err);
 
         res.json({ message : "kinematic analysis updated with gait angles",
-                   data: data  });
+                   data: updatedKinematicAnalysis  });
 
       });
 
@@ -1399,92 +1353,115 @@ exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
 
   let json;
   if(typeof req.headers.data === 'undefined') {
-    // request from  POSTMAN
+    console.log('request from  POSTMAN');
     json = req.body;
   } else {
-    // request from ONLINE MATALAB
+    console.log('request from ONLINE MATALAB');
     json = JSON.parse(req.headers.data);
   }
   console.log('======================');
   console.log('json',json);
 
   KinematicsAnalysis.findById(req.params.kinematics_analysis_id,
-                              function(err, kinematic_analysis) {
+                              function(err, kinematicAnalysis) {
     if (err) {
       return res.send(err);
     }
 
-    // kinematic_analysis.is_done = req.body.is_done;
-    kinematic_analysis.is_done = true;
+    // kinematicAnalysis.is_done = req.body.is_done;
+    kinematicAnalysis.is_done = true;
 
     // Raw data: all angles extrated which perharps is
     // 01 gait cycle
-    kinematic_analysis.lbwt_y = json.lbwt_y;
-    kinematic_analysis.lbwt_z = json.lbwt_z;
-    kinematic_analysis.lfwt_x = json.lfwt_x;
-    kinematic_analysis.lfwt_y = json.lfwt_y;
-    kinematic_analysis.lfwt_z = json.lfwt_z;
-    kinematic_analysis.ltrc_x = json.ltrc_x;
-    kinematic_analysis.ltrc_y = json.ltrc_y;
-    kinematic_analysis.ltrc_z = json.ltrc_z;
-    kinematic_analysis.lkne_x = json.lkne_x;
-    kinematic_analysis.lkne_y = json.lkne_y;
-    kinematic_analysis.lkne_z = json.lkne_z;
-    kinematic_analysis.lank_x = json.lank_x;
-    kinematic_analysis.lank_y = json.lank_y;
-    kinematic_analysis.lank_z = json.lank_z;
-    kinematic_analysis.lhee_x = json.lhee_x;
-    kinematic_analysis.lhee_y = json.lhee_y;
-    kinematic_analysis.lhee_z = json.lhee_z;
-    kinematic_analysis.ltoe_x = json.ltoe_x;
-    kinematic_analysis.ltoe_y = json.ltoe_y;
-    kinematic_analysis.ltoe_z = json.ltoe_z;
+    kinematicAnalysis.lbwt_y = json.lbwt_y;
+    kinematicAnalysis.lbwt_z = json.lbwt_z;
+    kinematicAnalysis.lfwt_x = json.lfwt_x;
+    kinematicAnalysis.lfwt_y = json.lfwt_y;
+    kinematicAnalysis.lfwt_z = json.lfwt_z;
+    kinematicAnalysis.ltrc_x = json.ltrc_x;
+    kinematicAnalysis.ltrc_y = json.ltrc_y;
+    kinematicAnalysis.ltrc_z = json.ltrc_z;
+    kinematicAnalysis.lkne_x = json.lkne_x;
+    kinematicAnalysis.lkne_y = json.lkne_y;
+    kinematicAnalysis.lkne_z = json.lkne_z;
+    kinematicAnalysis.lank_x = json.lank_x;
+    kinematicAnalysis.lank_y = json.lank_y;
+    kinematicAnalysis.lank_z = json.lank_z;
+    kinematicAnalysis.lhee_x = json.lhee_x;
+    kinematicAnalysis.lhee_y = json.lhee_y;
+    kinematicAnalysis.lhee_z = json.lhee_z;
+    kinematicAnalysis.ltoe_x = json.ltoe_x;
+    kinematicAnalysis.ltoe_y = json.ltoe_y;
+    kinematicAnalysis.ltoe_z = json.ltoe_z;
     // it only save until this part
 
     // series[1].data = [] // 1 Left 
     // series[2].data = [] // 2 Right
     
     //In this case is just the angles from the left side
-    sp_plv_high_chart_data.series[1].data = json.sagittal_hip_ang; kinematic_analysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
-    sp_hip_high_chart_data.series[1].data = json.sagittal_pel_ang; kinematic_analysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
-    sp_kne_high_chart_data.series[1].data = json.sagittal_kne_ang; kinematic_analysis.sp_kne_high_chart_data = sp_kne_high_chart_data;
-    sp_ank_high_chart_data.series[1].data = json.sagittal_ank_ang; kinematic_analysis.sp_ank_high_chart_data = sp_ank_high_chart_data;
-    fp_plv_high_chart_data.series[1].data = json.frontal_hip_ang; kinematic_analysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
-    fp_hip_high_chart_data.series[1].data = json.frontal_pel_ang; kinematic_analysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
-    fp_kne_high_chart_data.series[1].data = json.frontal_kne_ang; kinematic_analysis.fp_kne_high_chart_data = fp_kne_high_chart_data;
-    fp_ank_high_chart_data.series[1].data = json.frontal_ank_ang; kinematic_analysis.fp_ank_high_chart_data = fp_ank_high_chart_data;
-    tp_plv_high_chart_data.series[1].data = json.transversal_hip_ang; kinematic_analysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
-    tp_hip_high_chart_data.series[1].data = json.transversal_pel_ang; kinematic_analysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
-    tp_kne_high_chart_data.series[1].data = json.transversal_kne_ang; kinematic_analysis.tp_kne_high_chart_data = tp_kne_high_chart_data;
-    tp_ank_high_chart_data.series[1].data = json.transversal_ank_ang; kinematic_analysis.tp_ank_high_chart_data = tp_ank_high_chart_data;
+    sp_plv_high_chart_data.series[1].data = json.sagittal_hip_ang; kinematicAnalysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
+    sp_hip_high_chart_data.series[1].data = json.sagittal_pel_ang; kinematicAnalysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
+    sp_kne_high_chart_data.series[1].data = json.sagittal_kne_ang; kinematicAnalysis.sp_kne_high_chart_data = sp_kne_high_chart_data;
+    sp_ank_high_chart_data.series[1].data = json.sagittal_ank_ang; kinematicAnalysis.sp_ank_high_chart_data = sp_ank_high_chart_data;
+    fp_plv_high_chart_data.series[1].data = json.frontal_hip_ang; kinematicAnalysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
+    fp_hip_high_chart_data.series[1].data = json.frontal_pel_ang; kinematicAnalysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
+    fp_kne_high_chart_data.series[1].data = json.frontal_kne_ang; kinematicAnalysis.fp_kne_high_chart_data = fp_kne_high_chart_data;
+    fp_ank_high_chart_data.series[1].data = json.frontal_ank_ang; kinematicAnalysis.fp_ank_high_chart_data = fp_ank_high_chart_data;
+    tp_plv_high_chart_data.series[1].data = json.transversal_hip_ang; kinematicAnalysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
+    tp_hip_high_chart_data.series[1].data = json.transversal_pel_ang; kinematicAnalysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
+    tp_kne_high_chart_data.series[1].data = json.transversal_kne_ang; kinematicAnalysis.tp_kne_high_chart_data = tp_kne_high_chart_data;
+    tp_ank_high_chart_data.series[1].data = json.transversal_ank_ang; kinematicAnalysis.tp_ank_high_chart_data = tp_ank_high_chart_data;
 
 
     // this was added because of a parse problem in MONOGO : 
     // Mongoose update 'cannot use the part (..) to traverse the element
     // all of this works as a by pass to perform PUT method
     // TO DELETE from Mongo MODEL , It is useless
-    kinematic_analysis.sp_kne = json.sp_kne;
-    kinematic_analysis.sp_ank = json.sp_ank;
-    kinematic_analysis.sp_plv = json.sp_plv;
-    kinematic_analysis.sp_hip = json.sp_hip;
-    kinematic_analysis.fp_kne = json.fp_kne;
-    kinematic_analysis.fp_ank = json.fp_ank;
-    kinematic_analysis.fp_plv = json.fp_plv;
-    kinematic_analysis.fp_hip = json.fp_hip;
-    kinematic_analysis.tp_kne = json.tp_kne;
-    kinematic_analysis.tp_ank = json.tp_ank;
-    kinematic_analysis.tp_plv = json.tp_plv;
-    kinematic_analysis.tp_hip = json.tp_hip;
+    kinematicAnalysis.sp_kne = json.sp_kne;
+    kinematicAnalysis.sp_ank = json.sp_ank;
+    kinematicAnalysis.sp_plv = json.sp_plv;
+    kinematicAnalysis.sp_hip = json.sp_hip;
+    kinematicAnalysis.fp_kne = json.fp_kne;
+    kinematicAnalysis.fp_ank = json.fp_ank;
+    kinematicAnalysis.fp_plv = json.fp_plv;
+    kinematicAnalysis.fp_hip = json.fp_hip;
+    kinematicAnalysis.tp_kne = json.tp_kne;
+    kinematicAnalysis.tp_ank = json.tp_ank;
+    kinematicAnalysis.tp_plv = json.tp_plv;
+    kinematicAnalysis.tp_hip = json.tp_hip;
 
+    // TODO 
+    // kinematicAnalysis.status.push({
+    //       name: 'kinematicAnalysis_performed',
+    //       created_at: moment().format()
+    //   });
 
-    kinematic_analysis.save(function(err,data){
+    // Add which views are available in Front End 
+    // with sp_plv_high_chart_data
+    // with fp_plv_high_chart_data
+    // with tp_plv_high_chart_data
+
+    kinematicAnalysis.save(function(err,updatedKinematicAnalysis){
       if(err) 
         return res.send(err);
 
       res.json({ message: 'kinematic analysis feeed with matlab data',
-                 data: data });
+                 data: updatedKinematicAnalysis });
 
     });
   });
 };
+
+// get any admin that was created in the past month
+
+// get the date 1 month ago
+// var monthAgo = new Date();
+// monthAgo.setMonth(monthAgo.getMonth() - 1);
+
+// User.find({ admin: true }).where('created_at').gt(monthAgo).exec(function(err, users) {
+//   if (err) throw err;
+
+//   // show the admins in the past month
+//   console.log(users);
+// });
 

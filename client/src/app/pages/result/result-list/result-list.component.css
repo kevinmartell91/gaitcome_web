@@ -1,7 +1,3 @@
-.selected {
-  background-color: #CFD8DC !important;
-  color: white;
-}
 .results {
   font-size: medium;
   margin: 0em 0em 0em 0.5em;
@@ -22,13 +18,16 @@
   border-radius: 2px;
 }
 .results li:hover {
-  color: #607D8B;
+  /*color: #607D8B;
   background-color: #DDD;
+  left: .1em;*/
+   color: #000000; /* black */
   left: .1em;
 }
 .results li.selected:hover {
-  background-color: #BBD8DC !important;
-  color: white;
+  /*background-color: #BBD8DC !important;
+  color: white;*/
+  color: #ed8593;
 }
 .results .text {
   position: relative;
@@ -106,6 +105,8 @@ button.view {
 }*/
 
 /* TABLE */
+
+
 .table {
   font-size: large;
   margin: 0em 0em 0em 0em;
@@ -113,13 +114,23 @@ button.view {
   width: 80%;
   overflow-y: auto;
 }
-.table thead { 
+/*.table thead { 
   display:block; 
 }
 .table tbody { 
   height: 20rem; 
   overflow-y: scroll; 
   display: block; 
+}*/
+.style_heigh_results {
+   height: 20rem; 
+  overflow-y: scroll; 
+  display: block; 
+}
+.style_heigh_appointment {
+   
+  /*overflow-y: scroll; */
+  /*display: block; */
 }
 .table tbody tr {
   cursor: pointer;
@@ -151,6 +162,7 @@ button.view {
 .header_table th{
     color: #98D5EC;
 }
+
 
 
 .cons-set {
@@ -186,6 +198,24 @@ button.view {
 .title-devider {
     background-color: rgba(240, 90, 109, 0.06);
 }
+
+
+.drawer_add_therapist {
+    /*background-color: #e91e63;*/
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+}
+
+.sytle_name_abbreviation {
+    color: #f1596c;
+    font-size: 1.35rem;
+}
+
 
 
 /*

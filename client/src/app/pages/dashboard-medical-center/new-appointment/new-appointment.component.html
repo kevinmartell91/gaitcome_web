@@ -1,12 +1,17 @@
-<div class="margin-container">
-
+<div class="container-container">
+	
   <div class="row">
 
     <div class="col-md-12">
-      <app-result-add>
-      	
-      </app-result-add>
+	
+		<app-result-list [token]="token"
+		                 [medical_center_id]="medical_center_id"
+		                 [headersOptions]="optionsHeader" 
+		                 [resultList]="false">
+		</app-result-list> 
+
+
     </div> 
 
-   </div> 
+  </div> 
 </div>

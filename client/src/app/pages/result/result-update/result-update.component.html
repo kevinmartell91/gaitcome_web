@@ -1,6 +1,6 @@
 <div class="modal-content">
   <div class="modal-header">
-      <h2 class="modal-title">New Appointment</h2>
+      <h2 class="modal-title">Update Appointment</h2>
       <button type="button" class="close" aria-h6="Close" 
               (click)="activeModal.close('Close click')">
         <span aria-hidden="true">&times;</span>
@@ -80,10 +80,16 @@
               </div>
           </div>
                                           
-        <!--   <div class="row style_accesories_selected"> 
+        <form *ngIf="currentPatient && currentTherapist" [formGroup]="form" >
+          <div class="row style_accesories_selected"> 
+              <div>
 
+                <mdl-switch formControlName="is_done" mdl-ripple><span class="mdl-switch__label">Ready to kinematic Analysis</span></mdl-switch>
+
+              </div>
           </div>
-   -->
+  
+
           <div class="row">
 
               <div class="col-md-3">
@@ -131,8 +137,8 @@
                                                 [medical_center_name]="medical_center_name"
                                                 [allFields]="false"
                                                 (onSelectFromAllFields)="patientSelected($event)"
-                                                (onSelectFromNotAllFields)="patientSelected($event)">
-                                                <!-- [currentPatient]= "currentPatient" > -->
+                                                (onSelectFromNotAllFields)="patientSelected($event)"
+                                                [currentPatient]= "currentPatient" >
                                                 
                               </app-patient-list>
                           </div>
@@ -152,8 +158,8 @@
                                                 [medical_center_name]="medical_center_name"
                                                 [allFields]="false"
                                                 (onSelectFromAllFields)="therapistSelected($event)" 
-                                                (onSelectFromNotAllFields)="therapistSelected($event)">
-                                                <!-- [currentTherapist]="currentTherapist"> -->
+                                                (onSelectFromNotAllFields)="therapistSelected($event)"
+                                                [currentTherapist]="currentTherapist">
                             </app-therapist-list>
                         </div>
                       </div>
@@ -167,9 +173,10 @@
               
               <div class="col-md-9">
               <!-- Accesories Secction -->     
-                  <form *ngIf="currentPatient && currentTherapist" [formGroup]="form" class="card-group">
+                  <!-- <form *ngIf="currentPatient && currentTherapist" [formGroup]="form" class="card-group"> -->
 
-                      <!-- <div class="row"> -->
+                      <div class="card-group">
+                        
                          
                           <div class="col-md-7">
                           <!-- Accesories flags -->
@@ -290,14 +297,14 @@
                               </div>
                           </div>
 
-                      <!-- </div>  -->
-                  </form>
+                      </div> 
+                  <!-- </form> -->
               </div>
-
           </div>
 
           
 
+       </form>
 
       </div>
    </div>
@@ -309,7 +316,10 @@
                   mdl-button 
                       mdl-button-type="raised" 
                       mdl-ripple mdl-colored="primary"
-                  (click)="onSubmit()" [disabled]="!form.valid">Agendar cita</button>
+                  (click)="onSubmit()" [disabled]="!form.valid">Update</button>
+          <button class="btn_space"
+                            mdl-button 
+                            (click)="clearFields()">Clear Fields</button>        
           <button class="btn_space"
                   mdl-button 
                   (click)="activeModal.close('Close click')">Close</button>

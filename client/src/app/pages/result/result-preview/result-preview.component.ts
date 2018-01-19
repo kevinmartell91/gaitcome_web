@@ -77,7 +77,7 @@ export class ResultPreviewComponent implements OnInit {
       tempPathTitle = 'Si muleatas';
     }
     this.walker_icon_path = tempImgPath + 'icons8-Crutch-Filled.png';
-    this.treadmills_icon_title = tempPathTitle;
+    this.walker_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_orthoses) {
       tempImgPath = this.imgPathDeactivated;
@@ -87,7 +87,7 @@ export class ResultPreviewComponent implements OnInit {
       tempPathTitle = 'Si órtesis';
     }
     this.orthoses_icon_path = tempImgPath + 'icons8-Armored-Boot.png';
-    this.treadmills_icon_title = tempPathTitle;
+    this.orthoses_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_parallel_bars) {
       tempImgPath = this.imgPathDeactivated;
@@ -97,7 +97,7 @@ export class ResultPreviewComponent implements OnInit {
       tempPathTitle = 'Si barras paralelas';
     }
     this.parallel_bars_icon_path = tempImgPath + 'icons8-Equivalent.png';
-    this.treadmills_icon_title = tempPathTitle;
+    this.parallel_bars_icon_title = tempPathTitle;
 
     console.log("parallel_bars_icon_path",this.parallel_bars_icon_path);
     console.log("this.treadmills_icon_title",this.treadmills_icon_title);

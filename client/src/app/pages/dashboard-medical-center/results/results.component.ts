@@ -22,6 +22,7 @@ export class ResultsComponent implements OnInit {
   medical_center_name:string='';
   therapist_id:string='';
   patient_id:string='';
+  type_request = 'results';
 
   optionsHeader: RequestOptions;
 
@@ -115,6 +116,7 @@ export class ResultsComponent implements OnInit {
     params.set("patient_id", this.patient_id);
     params.set("medical_center_id", this.medical_center_id);
     params.set("therapist_id", this.therapist_id);
+    params.set("type_request", this.type_request);
 
     let options = new RequestOptions();
     options.headers = headers

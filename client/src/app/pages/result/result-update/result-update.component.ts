@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { HttpModule, Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import { NgbActiveModal, NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
@@ -10,17 +11,19 @@ import { environment } from '../../../../environments/environment';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-result-add',
-  templateUrl: './result-add.component.html',
-  styleUrls: ['./result-add.component.css']
+  selector: 'app-result-update',
+  templateUrl: './result-update.component.html',
+  styleUrls: ['./result-update.component.css']
 })
-export class ResultAddComponent implements OnInit {
+export class ResultUpdateComponent implements OnInit {
 
+  @Input() kinematicsAnalysis;
+  
   public form: FormGroup;
   public formComboBox: FormGroup;
   public token;
-  currentTherapist: any;
-  currentPatient: any;
+  @Output() currentTherapist: any;
+  @Output() currentPatient: any;
   model;
 
   medical_center_id: string;
@@ -47,8 +50,7 @@ export class ResultAddComponent implements OnInit {
   orthoses_icon_title: String;         
   parallel_bars_icon_title: String;   
 
-  @Output() onFinishedAdd = new EventEmitter<any>();
-
+  @Output() onFinishedUpdate = new EventEmitter<any>();
 
 
   constructor( public activeModal: NgbActiveModal,
@@ -60,67 +62,56 @@ export class ResultAddComponent implements OnInit {
     this.imgPathActivated = "../../../../assets/img/activated_icons/";
     this.imgPathDeactivated = "../../../../assets/img/deactivated_icons/";
     this.initIconsSummary();
-    this.currentTherapist = null;
-    this.currentPatient= null;
 
   }
 
   ngOnInit() {
 
-
     if (environment.production) { 
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));
       this.token = currentUser && currentUser.token;
       this.medical_center_id = currentUser && currentUser.entity._id;    
-      this.medical_center_name = currentUser && currentUser.username; 
+      this.medical_center_name = currentUser && currentUser.username;  
 
 
     } else {  
       this.token = environment.token;   
       this.medical_center_id = environment.medical_center_id;    
-      this.medical_center_name = environment.medical_center_name;  
+      this.medical_center_name = environment.medical_center_name;   
     }
 
-
-  	this.form = this.fb.group({
-      patient_id:               new FormControl('', Validators.required),
-      patient_full_name:        new FormControl('Seleccione un paciente, un terapueta y la fecha del análisis.', Validators.required),
-      medical_center_id:        new FormControl('', Validators.required),
+    this.form = this.fb.group({
+      patient_id:               new FormControl(this.kinematicsAnalysis.patient_id, Validators.required),
+      patient_full_name:        new FormControl(this.kinematicsAnalysis.patient_full_name, Validators.required),
+      medical_center_id:        new FormControl(this.kinematicsAnalysis.medical_center_id, Validators.required),
       medical_center_name:      new FormControl(this.medical_center_name, Validators.required),
-      therapist_id:             new FormControl('', Validators.required),
-      therapist_full_name:      new FormControl('', Validators.required),
-      patient_descriptions:     '',
-      date_requested:           new FormControl('', Validators.required),
-      is_done :                 false,
-      status : [{
-        name: 'appointment_created',
-        created_at: moment().format()
-      }],
+      therapist_id:             new FormControl(this.kinematicsAnalysis.therapist_id, Validators.required),
+      therapist_full_name:      new FormControl(this.kinematicsAnalysis.therapist_full_name, Validators.required),
+      patient_descriptions:     this.kinematicsAnalysis.patient_descriptions,
+      date_requested:           new FormControl(this.kinematicsAnalysis.date_requested, Validators.required),
+      is_done :                 this.kinematicsAnalysis.is_done,
 
-      accesories: this.fb.group({
-        is_assited_walk:        '',
-        is_treadmills:          '',
-        is_walker:              '',
-        is_orthoses:            '',
-        is_parallel_bars:       ''
+      status : this.fb.group({
+          name: 'appointment_updated',
+          created_at: moment().format()
+      }),
+      accesories:              this.fb.group({
+        is_assited_walk:        this.kinematicsAnalysis.accesories.is_assited_walk,
+        is_treadmills:          this.kinematicsAnalysis.accesories.is_treadmills,
+        is_walker:              this.kinematicsAnalysis.accesories.is_walker,
+        is_orthoses:            this.kinematicsAnalysis.accesories.is_orthoses,
+        is_parallel_bars:       this.kinematicsAnalysis.accesories.is_parallel_bars
       }),
       accesories_descriptions: this.fb.group({
-        assited_walk:           '',
-        treadmills:             '',
-        walker:                 '',
-        orthoses:               '',
-        parallel_bars:          ''
+        assited_walk:           this.kinematicsAnalysis.accesories_descriptions.assited_walk,
+        treadmills:             this.kinematicsAnalysis.accesories_descriptions.treadmills,
+        walker:                 this.kinematicsAnalysis.accesories_descriptions.walker,
+        orthoses:               this.kinematicsAnalysis.accesories_descriptions.orthoses,
+        parallel_bars:          this.kinematicsAnalysis.accesories_descriptions.parallel_bars
       })
-    });	
 
+    }); 
 
-    this.form.controls['medical_center_id'].setValue(this.medical_center_id);
-    this.form.controls['medical_center_name'].setValue(this.medical_center_name);
-
-
-  	// console.log(this.therapist);
-    // this.model = this.getDatefromModel();
-    // console.log("this.form.value.patient_full_name",this.form.value.patient_full_name);
     this.form.valueChanges
       .map((formValues) => {
         // formValues.names = formValues.names.toUpperCase();
@@ -134,6 +125,14 @@ export class ResultAddComponent implements OnInit {
         
         this.updateGaitAnalysisIcons();
 
+        if(formValues.is_done){
+          formValues.status.name ='appointment_performed';
+          formValues.status.created_at =moment().format();
+        } else {
+          formValues.status.name ='appointment_updated';
+          formValues.status.created_at =moment().format();
+        }
+
         return formValues;
       })
       // .filter((formValues) => this.form.valid)
@@ -141,8 +140,17 @@ export class ResultAddComponent implements OnInit {
         console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
-    
+    this.currentTherapist= {_id: this.kinematicsAnalysis.therapist_id};
+    this.currentPatient= {_id: this.kinematicsAnalysis.patient_id};
+    this.is_assited_walk = this.kinematicsAnalysis.accesories.is_assited_walk;
+    this.is_treadmills = this.kinematicsAnalysis.accesories.is_treadmills;
+    this.is_walker = this.kinematicsAnalysis.accesories.is_walker;
+    this.is_orthoses = this.kinematicsAnalysis.accesories.is_orthoses;
+    this.is_parallel_bars = this.kinematicsAnalysis.accesories.is_parallel_bars;
+    this.updateGaitAnalysisIcons();
 
+    this.model = this.getDateforModel(this.model,this.kinematicsAnalysis.date_requested);
+    console.log('medical_center_name',this.form.value.medical_center_name);
   }
 
    getDatefromModel():string {
@@ -158,24 +166,20 @@ export class ResultAddComponent implements OnInit {
 
   onSubmit() {
 
-
-
-    this._postJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis/' , this.form.value, this.getHeaders())
+    this._putJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis/' + this.kinematicsAnalysis._id , this.form.value, this.getHeaders())
       .subscribe(
         json => console.log(json),
         error => console.log('Error: ', error),
         // () => console.log('Finished')
-        () => this.onFinishedAdd.emit("appointment_created")
+        () => this.onFinishedUpdate.emit("You can send the update list retrieved from db to avoid hittig the db for second time.")
         // console.log("call emitter") 
       );
       
-   
-
     this.activeModal.close();
   }
 
-  _postJSON(url: string, body:any, option: RequestOptions): Observable<any> {
-    return this.http.post(url,body, option)
+  _putJSON(url: string, body:any, option: RequestOptions): Observable<any> {
+    return this.http.put(url,body, option)
       .map((res: Response) => res.json())
   }
 
@@ -298,17 +302,15 @@ export class ResultAddComponent implements OnInit {
 
   }
 
-  // clearFields() {
-  //   this.form.reset();
-  //   this.currentPatient = null;
-  //   this.currentTherapist = null;
-  //   this.form.controls['patient_full_name'].setValue('Seleccione un paciente, un terapueta y la fecha del análisis.');
-  //   this.form.controls['date_requested'].setValue('');
-  //   this.model = 'yyyy-mm-dd';
+  clearFields() {
+    this.form.reset();
+    this.currentPatient = {_id: ''};
+    this.currentTherapist = {_id: ''};
+    this.form.controls['patient_full_name'].setValue('Seleccione un paciente, un terapueta y la fecha del análisis.');
+    this.form.controls['date_requested'].setValue('');
+    this.model = 'yyyy-mm-dd';
 
-  //   console.log(this.form.value);
-  // }
-
-
+    console.log(this.form.value);
+  }
 
 }

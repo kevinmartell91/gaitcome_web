@@ -48,7 +48,9 @@ export class PatientListComponent implements OnInit {
   constructor( private modalService: NgbModal,
                private http: Http 
                ) {
-               this.emptyPatient = null; 
+               this.emptyPatient = {_id:''}; 
+               this.previousPatient = {_id:''};
+               this.currentPatient = {_id:''};
   }
 
   ngOnInit() {
@@ -73,7 +75,7 @@ export class PatientListComponent implements OnInit {
 
   // EventEmitter -> expose to parent component
   selectFromNotAllFields(patient: any) {
-    if (this.previousPatient == patient) {
+    if (this.previousPatient._id === patient._id) {
       this.currentPatient = this.emptyPatient;
       console.log("set empty",this.currentPatient );
     } else {
@@ -102,14 +104,14 @@ export class PatientListComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
-    // let params = new URLSearchParams();
+    let params = new URLSearchParams();
     // params.set("patient_id", this.patient_id);
-    // params.set("medical_center_id", this.medical_center_id);
+    params.set("medical_center_id", this.medical_center_id);
     // params.set("therapist_id", this.therapist_id);
 
     let options = new RequestOptions();
     options.headers = headers
-    // options.search = params;
+    options.search = params;
 
     return options;
   }
