@@ -13,9 +13,9 @@
       </thead>
       <tbody  class="style_heigh_results">
         <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-        (mouseout)="mouseOvered=kinematicsAnalysis"   
-        (mouseover)="mouseOvered=kinematicsAnalysis"
-        >
+          [class.selected]="kinematicsAnalysis === currentkinematicsAnalysis"
+          (mouseout)="mouseOvered=kinematicsAnalysis"   
+          (mouseover)="mouseOvered=kinematicsAnalysis">
           <!-- <div> -->
             <th scope="row">
               <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">
@@ -86,9 +86,9 @@
           </thead>
           <tbody class="style_heigh_appointment">
             <tr *ngFor = 'let kinematicsAnalysis of kinematicsAnalysiss' 
-            [class.selected]="kinematicsAnalysis === currentkinematicsAnalysis"
-            (mouseout)="currentkinematicsAnalysis = null"
-            (mouseover)="select(kinematicsAnalysis)">
+              [class.selected]="kinematicsAnalysis === currentkinematicsAnalysis"
+              (mouseout)="currentkinematicsAnalysis = null"
+              (mouseover)="select(kinematicsAnalysis)">
                 <th scope="row" class="sytle_name_abbreviation">
                  {{kinematicsAnalysis.patient_full_name | captialLetterNames }}
                   <mdl-checkbox (click)="multipleSelect(kinematicsAnalysis._id)">

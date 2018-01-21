@@ -68,9 +68,13 @@ exports.getPacients = function(req, res) {
 
   var query = {};
 
-  if( query.medical_center_id !== "")
-    query.medical_center_id = req.query.medical_center_id;
+  if ( typeof req.query.medical_center_id !== "undefined" &&
+      req.query.medical_center_id !== ""){
+      // query.medicalCenters =  { $elemMatch : { _id : req.query.medical_center_id }};
+      query = {"medicalCenters._id" : req.query.medical_center_id };
+  }
 
+  console.log('query',query);
   Pacient.find(query, function(err, pacients) {
     if(err)
       return res.send(err);

@@ -85,7 +85,7 @@ export class ResultAddComponent implements OnInit {
   	this.form = this.fb.group({
       patient_id:               new FormControl('', Validators.required),
       patient_full_name:        new FormControl('Seleccione un paciente, un terapueta y la fecha del análisis.', Validators.required),
-      medical_center_id:        new FormControl('', Validators.required),
+      medical_center_id:        new FormControl(this.medical_center_id, Validators.required),
       medical_center_name:      new FormControl(this.medical_center_name, Validators.required),
       therapist_id:             new FormControl('', Validators.required),
       therapist_full_name:      new FormControl('', Validators.required),
@@ -114,8 +114,8 @@ export class ResultAddComponent implements OnInit {
     });	
 
 
-    this.form.controls['medical_center_id'].setValue(this.medical_center_id);
-    this.form.controls['medical_center_name'].setValue(this.medical_center_name);
+    // this.form.controls['medical_center_id'].setValue(this.medical_center_id);
+    // this.form.controls['medical_center_name'].setValue(this.medical_center_name);
 
 
   	// console.log(this.therapist);
@@ -186,9 +186,12 @@ export class ResultAddComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
+    // let params = new URLSearchParams();
+    // params.set("medical_center_id", this.medical_center_id);
 
     let options = new RequestOptions();
-    options.headers = headers
+    options.headers = headers;
+    // options.search = params;
 
     return options;
   }

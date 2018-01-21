@@ -185,8 +185,9 @@ export class ResultListComponent implements OnInit, OnChanges{
 
   multipleSelect(idSelected: string) {
       // look for remove is selected already
+      console.log('idSelected',idSelected);
       this.updateMultipleSelection(idSelected);
-      // console.log("multipleKinematicsAnalysiss",this.multipleKinematicsAnalysiss);
+      console.log("multipleKinematicsAnalysiss",this.multipleKinematicsAnalysiss);
       this.onMultipleSelect.emit(this.multipleKinematicsAnalysiss);
   }
 
@@ -252,7 +253,7 @@ export class ResultListComponent implements OnInit, OnChanges{
   showDeleteAppointmentModal() {
 
     console.log("this.currentkinematicsAnalysis",this.currentkinematicsAnalysis._id);    const modalRef = this.modalService.open(ResultDeleteComponent);
-    modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis; 
+    modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis;
     modalRef.componentInstance.onFinishedDelete.subscribe(($e) => {
       this.getAppointments();
       console.log('update list appointment');
@@ -267,7 +268,6 @@ export class ResultListComponent implements OnInit, OnChanges{
       size: 'lg'
     };
     const modalRef = this.modalService.open(ResultAddComponent, options);
-    // modalRef.componentInstance.medical_center_name = this.medical_center_name;
     modalRef.componentInstance.onFinishedAdd.subscribe(($e) => {
       this.getAppointments();
     });

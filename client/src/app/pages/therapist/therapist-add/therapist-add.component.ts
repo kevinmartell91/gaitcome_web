@@ -46,8 +46,8 @@ export class TherapistAddComponent implements OnInit {
                public http : Http,
                config: NgbDatepickerConfig) {
     // customize default values of datepickers used by this component tree
-    config.minDate = {year: 1970, month: 1, day: 1};
-    config.maxDate = {year: 2000, month: 12, day: 31};
+    config.minDate = {year: 2000, month: 1, day: 1};
+    config.maxDate = {year: 2017, month: 12, day: 31};
 
     // days that don't belong to current month are not visible
     config.outsideDays = 'hidden';

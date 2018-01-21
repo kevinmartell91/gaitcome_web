@@ -163,6 +163,7 @@ export class ResultDetailComponent implements OnInit {
   tp_kne_high_chart_data : Object;
   tp_ank_high_chart_data : Object;
 
+  medical_center_id: string;
 
   constructor( private sanitizer: DomSanitizer,
                private http: Http,
@@ -180,7 +181,9 @@ export class ResultDetailComponent implements OnInit {
 
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));
       this.token = currentUser && currentUser.token;
+      this.medical_center_id = currentUser && currentUser.entity._id;    
 
+      // retriving the _id from URL
       this.route.params
         .subscribe( params =>
           this.hard_id = params['id']
@@ -224,9 +227,12 @@ export class ResultDetailComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
+    // let params = new URLSearchParams();
+    // params.set("medical_center_id", this.medical_center_id);
 
     let options = new RequestOptions();
-    options.headers = headers
+    options.headers = headers;
+    // options.search = params;
 
     return options;
   }
@@ -240,14 +246,7 @@ export class ResultDetailComponent implements OnInit {
 
   getGaitAnalysis(){
 
-     let headers = new Headers();
-      headers.append('Accept', 'application/json');
-      headers.append('Content-Type', 'application/json');
-      headers.append('x-access-token', this.token);
-      let options = new RequestOptions({ headers: headers });
-
-      // this._getJSON(this.URL_WEB_SERVICE_TEMP, options)
-      this._getJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS + this.hard_id, options)
+      this._getJSON(environment.URL_WEB_SERVICE_KINEMATIC_ANALYSIS + this.hard_id, this.getHeaders())
         .subscribe(json => {
             this.kinematicsAnalysis = json;
             this.populateHighCharts(json);

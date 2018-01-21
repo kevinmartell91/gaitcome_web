@@ -65,9 +65,12 @@ export class ResultDeleteComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
+    // let params = new URLSearchParams();
+    // params.set("medical_center_id", this.kinematicsAnalysis.medical_center_id);
 
     let options = new RequestOptions();
-    options.headers = headers
+    options.headers = headers;
+    // options.search = params;
 
     return options;
   }
