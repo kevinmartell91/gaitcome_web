@@ -1351,7 +1351,7 @@ exports.postKinematicsAnalysisMatlabGaitAngles = function(req, res) {
 // Create endpoint /api/kinematics_analysis_matlab/:kinematics_analysis_id for PUT
 exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
 
-  let json;
+  var json;
   if(typeof req.headers.data === 'undefined') {
     console.log('request from  POSTMAN');
     json = req.body;
