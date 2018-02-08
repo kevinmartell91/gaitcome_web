@@ -22,17 +22,17 @@ export const routes : Routes = [
 	{ 
 	  path: 'dashboard-attorney',
 	  loadChildren: 'app/pages/dashboard-attorney/dashboard-attorney.module#DashboardAttorneyModule',
-      // canLoad: [AuthGuard]
+      canLoad: [AuthGuard]
 	},
 	{
       path: 'dashboard-medical-center',
 	  loadChildren: 'app/pages/dashboard-medical-center/dashboard-medical-center.module#DashboardMedicalCenterModule',
-      // canLoad: [AuthGuard]
+      canLoad: [AuthGuard]
 	},
 	{
       path: 'dashboard-therapist',
 	  loadChildren: 'app/pages/dashboard-therapist/dashboard-therapist.module#DashboardTherapistModule',
-      // canLoad: [AuthGuard]
+      canLoad: [AuthGuard]
 	},
 	{ 
 	  path: '',

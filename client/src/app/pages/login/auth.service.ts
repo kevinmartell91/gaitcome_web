@@ -49,7 +49,7 @@ export class AuthService {
         let body = JSON.stringify({ username: username,
         							password: password,
         							login_type: login_type });
-        
+
 	    return this.http.post(this.loginUrl, body, options)
 	        .map((response: Response) => {
 

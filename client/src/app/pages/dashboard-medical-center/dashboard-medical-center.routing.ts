@@ -18,11 +18,11 @@ export const routes: Routes = [
   { 
   	path: '', 
   	component: DashboardMedicalCenterComponent ,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        // canActivateChild: [AuthGuard],
+        canActivateChild: [AuthGuard],
         children: [
           { path: 'patient-list', component: AttorneyListComponent },
           { path: 'therapist-list', component: TherapistListDashboardComponent },

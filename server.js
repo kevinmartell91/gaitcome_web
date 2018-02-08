@@ -4,9 +4,10 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 var mongoose = require('mongoose');
 
-// Connect to Mongo database 
+// Connect to Mongo database
 var connection = require('./server/config/database')(mongoose);
 //var models = require('./models/users')(connection);
 
@@ -25,6 +26,10 @@ app.use(morgan('dev'));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'client/dist')));
+
+//set the cors;
+// http://restlet.com/company/blog/2015/12/15/understanding-and-using-cors/
+app.use(cors());
 
 // Set our api routes
 app.use('/api', api);
