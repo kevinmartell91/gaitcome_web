@@ -69,16 +69,22 @@ a:focus {
     outline: 0;
 }
 
+.card {
+    border: 0px solid rgba(0,0,0,.125);
+    text-align: center;
+}
+
+
 .card-group p {
     color: #808C93;
-    font-size: 17px;
+    /*font-size: 17px;*/
     line-height: 1.7;
     margin-bottom: 20px;
-    font-family:'Helvetica Neue',Arial,sans-serif;
+    /*font-family:'Helvetica Neue',Arial,sans-serif;*/
 }
 
 .text-normal {
-    font-family:'Helvetica Neue',Arial,sans-serif;
+    /*font-family:'Helvetica Neue',Arial,sans-serif;*/
 }
 
 .wide-space {
@@ -265,10 +271,10 @@ header {
     position: relative;
     min-height: auto;
     text-align: center;
-    color: #001A33;
+    color: white;
     width: 100%;
 
-    /*background-color: #a3c7ec;*/
+    background-color: white;
 }
 
 header .header-content {
@@ -277,7 +283,17 @@ header .header-content {
     padding: 100px 15px;
     text-align: center;
     z-index: 2;
+
+    /*background-image: url("./assets/img/homepage/portada_transparent.png");*/
+    background-image: url("./assets/img/homepage/walking_shadow_ silhouette _sample.png");
+
+    background-position: 50%;
+    background-size: cover;
+    /*background-clip: content-box;*/
+    background-repeat: no-repeat;
+    height: 100%;
 }
+
 
 header .header-content .inner h1 {
     margin-top: 0;
@@ -303,16 +319,28 @@ header .header-content .inner p {
     header .header-content {
         position: inherit;
         top: 50%;
-        padding: 100 50px;
+        padding: 100px 50px;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(0%);
+        background: black;
+
+
+
+        background-image: url("./assets/img/homepage/walking_shadow_ silhouette _sample.png");
+        background-position: 50%;
+        background-size: cover;
+        /*background-clip: content-box;*/
+        background-repeat: no-repeat;
+        height: 100%;
+
     }
 
     header .header-content .inner {
         margin-right: auto;
         margin-left: auto;
         max-width: 1000px;
+        margin-top: 37rem;
     }
 
     header .header-content .inner h1 {
@@ -328,8 +356,14 @@ header .header-content .inner p {
     
     section {
         min-height: 600px;
-        padding: 100px 0;
+        padding: 40px 0;
     }
+
+    h1 {
+        color: #f05a6d;
+        font-size: 4rem;
+    }
+
 
 }
 
@@ -364,11 +398,13 @@ textarea {
 }
 .btn-primary-outline:hover {
     background-color:#f05a6d;
+    color:#ffffff;
 }
 
 .btn-xl {
     padding: 15px 30px;
     font-size: 20px;
+    margin: 1rem;
 }
 
 ::-moz-selection {

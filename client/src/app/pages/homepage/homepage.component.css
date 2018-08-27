@@ -1,0 +1,29 @@
+
+header img {
+    width: 70%;
+}
+
+.text-wraper {
+    width: 100%;
+    position: relative;
+    margin-bottom: -6rem;
+    /*background: #f05a6d;*/
+    border-radius: .9rem;
+	/*opacity: 0.5;*/
+}
+
+h1 {
+    color: #f05a6d;
+    /*font-size: 4rem;*/
+}
+
+
+.feature {
+	margin-bottom: 3rem;
+}
+
+.feature img {
+	width: 100%;
+	height: 100%;
+}
+
