@@ -1399,16 +1399,16 @@ exports.putKinematicsAnalysisMatlabRawPositions = function(req, res) {
     // series[2].data = [] // 2 Right
     
     //In this case is just the angles from the left side
-    sp_plv_high_chart_data.series[1].data = json.sagittal_hip_ang; kinematicAnalysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
-    sp_hip_high_chart_data.series[1].data = json.sagittal_pel_ang; kinematicAnalysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
+    sp_plv_high_chart_data.series[1].data = json.sagittal_plv_ang; kinematicAnalysis.sp_plv_high_chart_data = sp_plv_high_chart_data;
+    sp_hip_high_chart_data.series[1].data = json.sagittal_hip_ang; kinematicAnalysis.sp_hip_high_chart_data = sp_hip_high_chart_data;
     sp_kne_high_chart_data.series[1].data = json.sagittal_kne_ang; kinematicAnalysis.sp_kne_high_chart_data = sp_kne_high_chart_data;
     sp_ank_high_chart_data.series[1].data = json.sagittal_ank_ang; kinematicAnalysis.sp_ank_high_chart_data = sp_ank_high_chart_data;
-    fp_plv_high_chart_data.series[1].data = json.frontal_hip_ang; kinematicAnalysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
-    fp_hip_high_chart_data.series[1].data = json.frontal_pel_ang; kinematicAnalysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
+    fp_plv_high_chart_data.series[1].data = json.frontal_plv_ang; kinematicAnalysis.fp_plv_high_chart_data = fp_plv_high_chart_data;
+    fp_hip_high_chart_data.series[1].data = json.frontal_hip_ang; kinematicAnalysis.fp_hip_high_chart_data = fp_hip_high_chart_data;
     fp_kne_high_chart_data.series[1].data = json.frontal_kne_ang; kinematicAnalysis.fp_kne_high_chart_data = fp_kne_high_chart_data;
     fp_ank_high_chart_data.series[1].data = json.frontal_ank_ang; kinematicAnalysis.fp_ank_high_chart_data = fp_ank_high_chart_data;
-    tp_plv_high_chart_data.series[1].data = json.transversal_hip_ang; kinematicAnalysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
-    tp_hip_high_chart_data.series[1].data = json.transversal_pel_ang; kinematicAnalysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
+    tp_plv_high_chart_data.series[1].data = json.transversal_plv_ang; kinematicAnalysis.tp_plv_high_chart_data = tp_plv_high_chart_data;
+    tp_hip_high_chart_data.series[1].data = json.transversal_hip_ang; kinematicAnalysis.tp_hip_high_chart_data = tp_hip_high_chart_data;
     tp_kne_high_chart_data.series[1].data = json.transversal_kne_ang; kinematicAnalysis.tp_kne_high_chart_data = tp_kne_high_chart_data;
     tp_ank_high_chart_data.series[1].data = json.transversal_ank_ang; kinematicAnalysis.tp_ank_high_chart_data = tp_ank_high_chart_data;
 
