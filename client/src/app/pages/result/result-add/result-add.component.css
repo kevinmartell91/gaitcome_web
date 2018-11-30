@@ -112,8 +112,12 @@ mdl-radio, mdl-checkbox, mdl-switch {
   }
 
  .style_names_selected {
-    /*margin: 2rem 6rem 3rem 0rem;*/
-    margin: 2rem 4rem 4rem 0rem;
+    margin: 2rem 4rem 2rem 0rem;
+ }
+
+.accesories_selected {
+    margin-bottom: 4rem;
+    padding: inherit;
  }
 
  .style_accesories_selected {
@@ -129,16 +133,16 @@ mdl-radio, mdl-checkbox, mdl-switch {
 */
 .style_badge_patient {
     background-color: #f1596c;
-    cursor: none;
+    cursor: auto;
 }
 
 .style_badge_threapist {
     background-color: #448aff;
-    cursor: none;
+    cursor: auto;
 }
 .style_badge_meeting_date {
     background-color: #98d5ec;
-    cursor: none;
+    cursor: auto;
 }
 
 .icons-set__icon {
@@ -161,9 +165,8 @@ mdl-radio, mdl-checkbox, mdl-switch {
 .icons_accesory_summary_style {
     /*margin: 1rem 1rem 1rem 0rem;*/
     color: #9b9b9b;
-    width: 2.5rem;
-    height: 2.5rem;
-    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
     overflow: hidden;
     display: inline-block;
     text-decoration: none;
@@ -199,6 +202,10 @@ mdl-radio, mdl-checkbox, mdl-switch {
 
 .style_entity_area{
     margin-bottom: 0.5rem;
+}
+
+.style_instructions {
+    color: #808c93;
 }
 
 

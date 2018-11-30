@@ -25,6 +25,8 @@ export class ResultAddComponent implements OnInit {
 
   medical_center_id: string;
   medical_center_name: string;
+  instructions: String;
+
 
   is_assited_walk: boolean;      
   is_treadmills: boolean;        
@@ -62,6 +64,7 @@ export class ResultAddComponent implements OnInit {
     this.initIconsSummary();
     this.currentTherapist = null;
     this.currentPatient= null;
+    this.instructions = "Pick the analysis date and the name of the pacient and therapist.";
 
   }
 
@@ -84,7 +87,7 @@ export class ResultAddComponent implements OnInit {
 
   	this.form = this.fb.group({
       patient_id:               new FormControl('', Validators.required),
-      patient_full_name:        new FormControl('Seleccione un paciente, un terapueta y la fecha del análisis.', Validators.required),
+      patient_full_name:        new FormControl('', Validators.required),
       medical_center_id:        new FormControl(this.medical_center_id, Validators.required),
       medical_center_name:      new FormControl(this.medical_center_name, Validators.required),
       therapist_id:             new FormControl('', Validators.required),

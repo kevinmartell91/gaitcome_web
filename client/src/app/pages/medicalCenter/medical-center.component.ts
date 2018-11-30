@@ -6,7 +6,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './medical-center.component.html',
   styleUrls: [
     './medical-center.component.css'
-    // '../theme/theme.component.css'
   ]
 })
 export class MedicalCenterComponent_out implements OnInit {

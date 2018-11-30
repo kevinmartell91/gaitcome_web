@@ -17,8 +17,8 @@ const  URL_WEB_SERVICE_PATIENTS:string = 	'http://localhost:8080/api/pacients/';
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.css',
-          '../../dashboard-medical-center/results/results.component.css']
+  styleUrls: ['./patient-list.component.css']
+          //'../../dashboard-medical-center/results/results.component.css']
 })
 
 export class PatientListComponent implements OnInit {

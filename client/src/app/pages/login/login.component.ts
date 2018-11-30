@@ -49,9 +49,9 @@ tiles = [
   public user: User;
   /* standing data goes here*/
   public login_types = [
-      { value: 'user', display: 'Usuario' },
+      // { value: 'user', display: 'Usuario' },
       { value: 'pacient', display: 'Patient' },
-      { value: 'therapist', display: 'Terapeuta' },
+      // { value: 'therapist', display: 'Terapeuta' },
       { value: 'medical_center', display: 'Centro Medico'}
   ];
   public genders = [
@@ -84,12 +84,11 @@ tiles = [
   public form: FormGroup;
   public username = new FormControl('', Validators.required);
   public password = new FormControl('', Validators.required);
-  public login_type = new FormControl('login type');
+  public login_type = new FormControl('',Validators.required);
 
   constructor(public authService: AuthService, public router: Router, private fb: FormBuilder) {
     this.setMessage();
     this.processingLogin = false;
-
   }
 
   ngOnInit() {
@@ -155,7 +154,7 @@ tiles = [
         }
         else {
 
-          this.statusMessage = 'Incorrect username and/or password.';
+          this.statusMessage = 'Incorrect credentials.';
           this.processingLogin = false;
         }
       });

@@ -2411,11 +2411,13 @@ export class ResultDetailComponent implements OnInit {
       }
       h4 {
         color: #ffffff;
+        cursor: pointer;
       }
 
       h2 {
         color: #aaa;
       }
+
       
   `],
   template: `
