@@ -6,7 +6,7 @@ export const environment = {
   URL_WEB_SERVICE_PATIENTS: 'http://gaitcome.com:8080/api/pacients/',
   URL_WEB_SERVICE_KINEMATIC_ANALYSIS: 'http://gaitcome.com:8080/api/kinematics_analysis/',
   URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB: 'http://gaitcome.com:8080/api/kinematics_analysis_matlab/',
-
+  URL_WEB_SERVICE_CONTACTS : "http://gaitcome.com:8080/api/contacts/",
   URL_WEB_SERVICE : 'http://gaitcome.com:8080/api',
 
   medical_center_id: '591e7542583a7b2b751d4ec3',

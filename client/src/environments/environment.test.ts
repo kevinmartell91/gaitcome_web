@@ -12,6 +12,7 @@ export const environment = {
   URL_WEB_SERVICE_PATIENTS: 'http://localhost:8080/api/pacients/',
   URL_WEB_SERVICE_KINEMATIC_ANALYSIS: 'http://localhost:8080/api/kinematics_analysis/',
   URL_WEB_SERVICE_KINEMATIC_ANALYSIS_MATLAB: 'http://localhost:8080/api/kinematics_analysis_matlab/',
+  URL_WEB_SERVICE_CONTACTS : "http://localhost:8080/api/contacts/",
 
   URL_WEB_SERVICE : 'http://localhost:8080/api',
 

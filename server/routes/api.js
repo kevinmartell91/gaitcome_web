@@ -10,8 +10,8 @@ var therapistController = require('../controllers/therapists');
 var medicalCenterController = require('../controllers/medicalCenters');
 var kinematicsAnalysisController = require('../controllers/kinematicsAnalysis');
 var authenticationController = require('../controllers/authentication');
-
-
+var contactController = require('../controllers/contact.js');
+var validateToken = require('../utils.js').validateToken;
 // used to create, sign, and verify tokens
 // sample =>https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
 var jwt    = require('jsonwebtoken'); 
@@ -29,12 +29,20 @@ router.get('/', (req, res) => {
 router.route('/authenticate')
   .post(authenticationController.postAuthenticate);
 
+// Create endpoint handlers for /contacts/:contact_id
+router.route('/contacts/:contact_id')
+  .get(contactController.getContact)
+
+router.route('/contacts')
+  .post(contactController.postContact)
+  .get(contactController.getContacts);
+
 
 // route middleware to verify a token
 router.use(function(req, res, next) {
 
-  //console.log(`route middleware to verify a token : ${req.headers['x-access-token']}`);
-  // console.log(`route middleware to verify a token from ws : ${req.headers['x-access-token']}`);
+  console.log(`route middleware to verify a token : ${req.headers['x-access-token']}`);
+  console.log(`route middleware to verify a token from ws : ${req.headers['x-access-token']}`);
   // check header or url parameters or post parameters for token
   
   // from server 8080

@@ -679,29 +679,51 @@
                 <h2 class="mt-0 wow fadeIn" style="visibility: hidden; animation-name: none;">Contáctenos</h2>
                 <hr class="accent">
                 <p class="lead">Suscríbase para recibir nuestras novedades en relación al uso de la tecnología de Captura de Moviento al area médica.</p>
+                <hr class="accent">
             </div>
             <div class="col-lg-10 offset-lg-1 text-center">
-                <form class="contact-form row">
+                <form [formGroup]="form" class="contact-form row">
+                       
                     <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Nombre">
+                         <mdl-textfield label="Full Name" 
+                                       name="contact_name" 
+                                       type="text" 
+                                       formControlName="name" 
+                                       ></mdl-textfield>
+                    </div>
+                    <div div class="col-md-4">
+                        <mdl-textfield label="Email" 
+                                       name="contact_email" 
+                                       type="text" 
+                                       formControlName="email" 
+                                       pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" 
+                                       error-msg="Please provide a correct email!"
+                                       ></mdl-textfield>
                     </div>
                     <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Celular">
+                        <mdl-textfield type="text" 
+                                       label="N° de celular" 
+                                       name="contact_cellphone" 
+                                       pattern="-?[0-9]*(\.[0-9]+)?" 
+                                       error-msg="Caracteres no numéricos!" 
+                                       formControlName="number" 
+                                       ></mdl-textfield>
                     </div>
                     <div class="col-md-12">
-                        <label></label>
-                        <textarea class="form-control" rows="9" placeholder="Tu mensaje ..."></textarea>
+                        <mdl-textfield label="Message" 
+                                       name="contact_message" 
+                                       type="text" 
+                                       formControlName="message"
+                                       maxrows="7" 
+                                       rows="5" 
+                                       ></mdl-textfield>
                     </div>
                     <div class="col-md-4 offset-md-4">
-                        <label></label>
-                        <a href="http://gaitcome.com/login" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"> Enviar</a>
-                        <!-- <button type="button" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-lg">Enviar <i class="ion-android-arrow-forward"></i></button> -->
+                       
+                         <label>{{send_form_message}}</label>
+
+                        <button class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"
+                        (click)="onSubmit()" [disabled]="!form.valid">Vea nuestra demo</button>
                     </div>
                 </form>
             </div>
