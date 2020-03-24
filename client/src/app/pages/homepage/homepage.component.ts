@@ -13,7 +13,7 @@ const now = new Date();
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  //templateUrl: './index6.html',
+  // templateUrl: './index6.html',
   styleUrls: ['./homepage.component.css']
 })
 
@@ -22,6 +22,10 @@ export class HomepageComponent implements OnInit {
   send_form_message: String;
 
   newConctact: any;
+
+  loginUrl : String;
+  loginUrlnoParams : String;
+
 
   public disableForm = false;
   public form: FormGroup;
@@ -35,6 +39,15 @@ export class HomepageComponent implements OnInit {
                public http : Http) { 
 
     this.send_form_message = '';
+    this.loginUrlnoParams = environment.URL_WEB_SERVICE_LOGIN;
+
+    if (environment.production) { 
+      this.loginUrl = environment.URL_WEB_SERVICE_LOGIN + 
+                    '?isDemo=true&username=demo&password=demo&login_type=medical_center';
+    } else {
+      this.loginUrl = environment.URL_WEB_SERVICE_LOGIN + 
+                    '?isDemo=true&username=demo&password=demo&login_type=medical_center';
+    }
   
   }
 

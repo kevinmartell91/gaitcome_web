@@ -7,9 +7,8 @@ import {
 } from '@angular/forms';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import { Router }      from '@angular/router';
+import { Router, ActivatedRoute, Params }      from '@angular/router';
 import { AuthService } from './auth.service';
-
 
 
 //let moduleID: string;
@@ -25,8 +24,10 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit{
 
-  statusMessage: string;
-  processingLogin : boolean;
+  statusMessage: String;
+  processingLogin : Boolean;
+  demoMessage : String;
+  isDemo : Boolean;
   // model: any = {};
   // loading = false;
   // error = '';
@@ -86,14 +87,32 @@ tiles = [
   public password = new FormControl('', Validators.required);
   public login_type = new FormControl('',Validators.required);
 
-  constructor(public authService: AuthService, public router: Router, private fb: FormBuilder) {
+  constructor(public authService: AuthService, 
+              public router: Router, 
+              private fb: FormBuilder, 
+              private activatedRoute: ActivatedRoute) {
+
+   
+
     this.setMessage();
     this.processingLogin = false;
+    this.isDemo = false;
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe( params => {
+      this.isDemo = params['isDemo'];
+      this.username = params['username'];
+      this.password = params['password'];
+      this.login_type = params['login_type'];
+    });
+
+    if (this.isDemo) {
+      this.demoMessage = 'Seleccione Ingresar para entrar al modo demo.';
+    }
     // reset login status
     this.authService.logout();
+
 
     this.form = this.fb.group({
       'username':              this.username,
@@ -101,15 +120,15 @@ tiles = [
       'login_type':              this.login_type,
     });
     
-    // this.form.valueChanges
-    //   .map((formValues) => {
-    //     formValues.username = formValues.username.toUpperCase();
-    //     return formValues;
-    //   })
-    //   // .filter((formValues) => this.form.valid)
-    //   .subscribe((formValues) => {
-    //     console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
-    //   });
+    this.form.valueChanges
+      .map((formValues) => {
+        formValues.username = formValues.username.toUpperCase();
+        return formValues;
+      })
+      // .filter((formValues) => this.form.valid)
+      .subscribe((formValues) => {
+        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+      });
   }
 
   setMessage() {

@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 // import { PipeModule } from './shared/pipes/pipe.module';
 
 
@@ -32,7 +33,8 @@ export function highchartsFactory() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    PageNotFoundComponent,
   ],
   imports: [
   // PipeModule.forRoot(),

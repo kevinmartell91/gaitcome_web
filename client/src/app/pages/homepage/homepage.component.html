@@ -30,7 +30,10 @@
             </ul> -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://gaitcome.com/login">Login</a>
+                    <a class="nav-link" href="{{loginUrlnoParams}}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{loginUrl}}" class="btn btn-primary-outline btn-md page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Vea nuestra demo</a>
                 </li>
             </ul>
         </div>
@@ -46,17 +49,17 @@
          <hr>
          <div class="text-wraper">
              <div class="inner">
-                 <a href="http://gaitcome.com/login" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Vea nuestra demo</a>
+                 <a href="{{loginUrl}}" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Vea nuestra demo</a>
              </div>
          </div>
      </div>
  </header> 
 <section id="one">
        <div class="container wow fadeInUp text-center" style="visibility: visible; animation-name: fadeInUp;">
-        <h2>Integramos a:</h2>
+        <h1>Conócenos</h1>
         <hr class="accent">
         <p class="lead">
-            Gaitcome es una plataforma web que integra pacientes, terapeutas y centros de rehabilitación. Este su vez facilita la administración y visibilidad de resultados cinemáticos de la marcha humana para las tres partes mencionadas.
+            Gaitcome es una plataforma web que integra pacientes, terapeutas y centros de rehabilitación de la marcha. Este a su vez facilita el análisis cinemático de la marcha humana por medio de gráficas del ciclo de la marcha.
         </p>
         <div class="card-group">
             <!-- card -->
@@ -73,8 +76,8 @@
                 <!-- <img class="card-img-top img-fluid" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample19.jpg" alt="Card image cap"> -->
                 <img class="card-img-top img-fluid" src="../../../../assets/img/homepage/illustrations-increase-primary-care-access.png" alt="Card image cap">
                 <div class="card-block">
-                    <h4 class="card-title">Terapueta</h4>
-                    <p class="card-text">Como terapeuta podrá ser asignado para realizar análisis cinemáticos 3D por medio del centro médico al que pertenezca y estará presente durante el análisis cinemático del paciente asistiéndole durante dicho proceso.</p>
+                    <h4 class="card-title">Terapeuta</h4>
+                    <p class="card-text">Como terapeuta podrá ser asignado para realizar análisis cinemáticos 3D por medio del centro médico al que pertenezca y estará presente durante el dicho análisis asistiéndo al paciente durante el proceso de filmación.</p>
                 </div>
             </div>
             <!-- card -->
@@ -83,7 +86,7 @@
                 <img class="card-img-top img-fluid" src="../../../../assets/img/homepage/illustrations-centro-medico.png" alt="Card image cap">
                 <div class="card-block">
                     <h4 class="card-title">Centro de Rehabilitación</h4>
-                    <p class="card-text">Como Centro de Rehabilitación podrá ofrecer análisis cinemáticos 3D objetivos, permitiéndole optar por mejores estrategias de rehabilitación para sus pacientes. </p>
+                    <p class="card-text">Como Centro de Rehabilitación podrá ofrecer análisis cinemáticos 3D objetivos, permitiéndole brindar información cuantitativa y optar por mejores estrategias de rehabilitación para sus pacientes.</p>
                     
                 </div>
             </div>
@@ -94,10 +97,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="m-t-0">Cómo funciona</h2>
+                <h1 class="m-t-0">Cómo funciona</h1>
                 <hr class="accent">
                 <p class="lead">
-                    Para realizar un análisis cinemático siga los siguientes tres pasos:
+                    Para realizar un análisis cinemático siga los siguientes pasos:
                 </p>
                 <hr class="accent">
             </div>
@@ -109,7 +112,7 @@
                 <div class="feature">
                     <i class="icon-lg ion-ios-grid-view-outline wow fadeIn" data-wow-delay=".1s" style="visibility: hidden; animation-delay: 0.1s; animation-name: none;"></i>
                     <h4 class="card-title">Agenda un cita</h4>
-                    <p class="text-muted m-b-0">Gaitcome le permite <a href="#first">agendar citas online</a> como paciente o centro médico.</p>
+                    <p class="text-muted m-b-0">Gaitcome le permite <a href="{{loginUrl}}">agendar citas online</a> como paciente o centro médico.</p>
                     <img class="card-img-top img-fluid" src="../../../../assets/img/homepage/appointment_sample.svg" alt="Card image cap">
                 </div>
             </div>
@@ -125,7 +128,7 @@
                 <div class="feature">
                     <i class="icon-lg ion-social-css3-outline wow fadeIn" data-wow-delay=".1s" style="visibility: hidden; animation-delay: 0.1s; animation-name: none;"></i>
                     <h4 class="card-title">Entrega de resultados online</h4>
-                    <p class="text-muted m-b-0">Obtenga las gráficas cinemáticas y grabaciones del paciente de lado sagital y frontal: <a href="http://gaitcome.com/login">Vea la demo</a>.</p>
+                    <p class="text-muted m-b-0">Obtenga gráficas cinemáticas y grabaciones del paciente en la plataforma web. <a href="{{loginUrl}}">Vea nuestra demo</a>.</p>
                     <img class="card-img-top img-fluid" src="../../../../assets/img/homepage/graphic_sample copy.png" alt="Card image cap">
                 </div>
             </div>
@@ -676,7 +679,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
-                <h2 class="mt-0 wow fadeIn" style="visibility: hidden; animation-name: none;">Contáctenos</h2>
+                <h1 class="mt-0 wow fadeIn" style="visibility: hidden; animation-name: none;">Contáctenos</h1>
                 <hr class="accent">
                 <p class="lead">Suscríbase para recibir nuestras novedades en relación al uso de la tecnología de Captura de Moviento al area médica.</p>
                 <hr class="accent">
@@ -722,17 +725,17 @@
                        
                          <label>{{send_form_message}}</label>
 
-                        <button class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"
-                        (click)="onSubmit()" [disabled]="!form.valid">Vea nuestra demo</button>
+                        <button class="btn btn-primary-outline btn-lg page-scroll wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"
+                        (click)="onSubmit()" [disabled]="!form.valid">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
-<!-- <footer id="footer">
+<footer id="footer">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6 col-sm-3">
                 <h6 class="text-uppercase">More</h6>
                 <ul class="list-unstyled">
@@ -770,10 +773,10 @@
                 </ul>
             </div>
         </div>
-        <br>
-        <span class="pull-right text-muted small"><a href="http://themes.guide">Made by Kevin Martell Luya</a> ©2015-2016</span>
+        <br> -->
+        <span class="pull-right text-muted small"><a href="http://themes.guide">Created by Kevin Martell Luya</a> ©2016-2019</span>
     </div>
-</footer> -->
+</footer>
 <!-- <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

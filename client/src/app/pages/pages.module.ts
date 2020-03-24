@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 import { routing } from './pages-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -14,7 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   declarations: [
     PagesComponent,
-    PageNotFoundComponent
+    // PageNotFoundComponent
   ]
 
 })

@@ -71,7 +71,7 @@
     <form [formGroup]="form" class="form-signin">
       <div class="mdl-color-text--primary login_title_style">Gaitcome</div>
 
-      <!-- <h4>Sign in</h4> -->
+      
 
       <div>
         <mdl-textfield label="Usuario" name="username"
@@ -86,7 +86,7 @@
           floating-label></mdl-textfield>
       </div>
 
-      <h6 class="login_type_rol_style">Sign in as: </h6>
+      <h6 class="login_type_rol_style">Ingrese como: </h6>
 
       <div>
         <mdl-radio  *ngFor="let login_type of login_types"  
@@ -99,6 +99,10 @@
       <div class="login_process_style">
         <mdl-spinner single-color [active]="processingLogin"></mdl-spinner>
         <h6>{{statusMessage}}</h6>
+      </div>
+
+      <div>
+        <h5>{{demoMessage}}</h5>
       </div>
 
       <div class="login_submit_style">
