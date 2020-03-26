@@ -29,7 +29,8 @@ export class PatientListComponent implements OnInit {
   @Input()  medical_center_id:string ;
   @Input()  medical_center_name:string ;
   @Input() allFields: boolean;
-  @Output() onSelectFromAllFields = new  EventEmitter<any>();
+  // @Output() onSelectFromAllFields = new  EventEmitter<any>();
+  @Output() onSelect = new  EventEmitter<any>();
   @Output() onSelectFromNotAllFields = new  EventEmitter<any>();
 
   token: string;
@@ -86,9 +87,9 @@ export class PatientListComponent implements OnInit {
     this.onSelectFromNotAllFields.emit(this.currentPatient);
   }
 
-  selectFromAllFields(patient: any) {
+  select(patient: any) {
     this.currentPatient =  patient;
-    this.onSelectFromAllFields.emit(this.currentPatient);
+    this.onSelect.emit(this.currentPatient);
   }
 
   // Service methods

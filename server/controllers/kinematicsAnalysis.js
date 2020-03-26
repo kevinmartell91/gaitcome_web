@@ -1226,8 +1226,9 @@ exports.postKinematicsAnalysiss = function(req, res) {
 exports.getKinematicsAnalysiss = function(req, res) {
 
   var query = {};
+  var type_request = req.query.type_request;
 
-  if(req.query.type_request === "results") {
+  if (type_request === "results") {
       if(req.query.patient_id !== ""){
         query.patient_id = req.query.patient_id;
       }
@@ -1237,10 +1238,16 @@ exports.getKinematicsAnalysiss = function(req, res) {
 
       query.status = {$elemMatch : { name : "appointment_performed"}};
     
-  } else { // appointments
+  } else if (type_request == "appointments") { 
+      
       query.status = { $not: {$elemMatch : { name : "appointment_performed"}}};
-  }
   
+  } else {
+      
+      query.status = {$elemMatch : { name : "appointment_created"}};
+  
+  }
+
   if(req.query.medical_center_id !== ""){
     query.medical_center_id = req.query.medical_center_id;
   }
@@ -1275,6 +1282,9 @@ exports.putKinematicsAnalysis = function(req, res) {
     if (err) {
       return res.send(err);
     }
+
+    console.log('req.body');
+    console.log(req.body);
 
     kinematicAnalysis.patient_id = req.body.patient_id;
     kinematicAnalysis.patient_full_name = req.body.patient_full_name;

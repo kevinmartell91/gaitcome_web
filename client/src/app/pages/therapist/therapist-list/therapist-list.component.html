@@ -14,7 +14,7 @@
               <thead>
                 <tr class="header_table">
                   <th></th>
-                  <th>Nombres</th>
+                  <th>Names</th>
                   <th>Last names</th>
                   <th>Email</th>
                   <th>Cellphone</th>
@@ -26,8 +26,8 @@
               <tbody>
                 <tr *ngFor = "let therapist of therapists"
                         [class.selected]="therapist === currentTherapist"
-                        (mouseout)="currentTherapist = null"
-                        (mouseover)="selectFromAllFields(therapist)">
+                        (mouseover)="mouseOvered = therapist"
+                        (mousemove)="select(therapist)">
                     <!-- <div> -->
                       <th scope="row" class="sytle_name_abbreviation">{{therapist.names | captialLetterNames:2:therapist.lastname}}</th>
                       <td>{{therapist.names}}</td>
@@ -37,7 +37,7 @@
                       <td>{{therapist.num_ctmp}}</td>  
                       <td>{{therapist.num_ndta}}</td>
                       <td>
-                        <div *ngIf="currentTherapist === currentTherapist">
+                        <div *ngIf="mouseOvered === therapist">
                             <div class="row">
                                 <div class="col">
                                     <mdl-icon   class="icon material-icons" 
@@ -89,6 +89,7 @@
     </div>
     <div class="drawer_add_therapist">
         <mdl-button mdl-button
+                    mdl-tooltip-large="New"
                     mdl-button-type="fab" 
                     mdl-colored="primary"
                     mdl-ripple

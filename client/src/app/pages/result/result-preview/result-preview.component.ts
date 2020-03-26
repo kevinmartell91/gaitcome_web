@@ -51,50 +51,50 @@ export class ResultPreviewComponent implements OnInit {
 
     if(!this.kinematicsAnalysis.accesories.is_assited_walk) {
       tempImgPath = this.imgPathDeactivated; 
-      tempPathTitle = 'No andador';
+      tempPathTitle = 'Assited walk: No';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si andador';
+      tempPathTitle = 'Assited walk: Yes';
     }
     this.assited_walk_icon_path = tempImgPath + 'icons8-Walker-Filled.png';
     this.assited_walk_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_treadmills) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No caminadora';
+      tempPathTitle = 'Treadmill: No ';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si caminadora';
+      tempPathTitle = 'Treadmill: Yes ';
     }
     this.treadmills_icon_path = tempImgPath + 'icons8-Treadmill-Filled.png';
     this.treadmills_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_walker) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No muletas';
+      tempPathTitle = 'Walker: No';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si muleatas';
+      tempPathTitle = 'Walker: Yes';
     }
     this.walker_icon_path = tempImgPath + 'icons8-Crutch-Filled.png';
     this.walker_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_orthoses) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No órtesis';
+      tempPathTitle = 'Orthoses: No';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si órtesis';
+      tempPathTitle = 'Orthoses: Yes';
     }
     this.orthoses_icon_path = tempImgPath + 'icons8-Armored-Boot.png';
     this.orthoses_icon_title = tempPathTitle;
 
     if(!this.kinematicsAnalysis.accesories.is_parallel_bars) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No barras paralelas';
+      tempPathTitle = 'Parallel bars: No';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si barras paralelas';
+      tempPathTitle = 'Parallel bars: Yes';
     }
     this.parallel_bars_icon_path = tempImgPath + 'icons8-Equivalent.png';
     this.parallel_bars_icon_title = tempPathTitle;

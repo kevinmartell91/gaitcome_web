@@ -52,7 +52,7 @@ export class AuthService {
 
 	    return this.http.post(this.loginUrl, body, options)
 	        .map((response: Response) => {
-
+	        	
 	            // login successful if there's a jwt token in the response
 	            let token = response.json() && response.json().token;
 	            if (token) {
@@ -76,6 +76,7 @@ export class AuthService {
 	                // return false to indicate failed login
 	                return false;
 
+
 	            }
 	        });
 	}
@@ -89,5 +90,6 @@ export class AuthService {
 		// Navigate to the login page with extras
    	    this.router.navigate(['/login']);
 	}
+
 }
 

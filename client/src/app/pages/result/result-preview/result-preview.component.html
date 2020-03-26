@@ -45,12 +45,8 @@
   <ng-template #thenBlock_kinematicAnalisisNotConcluded>
     
     <h2>Preview</h2>
-
-    <!-- Views of analysis -->
-    <h6 class="title-devider">
-      Graphic views :  
-    </h6>
-    En proceso ...
+    <br>
+    This analysis is still in progress. We will let you know when it's ready.
   </ng-template>
 
   <ng-template #elseBlock_kinematicAnalisisConcluded>
@@ -71,7 +67,7 @@
          *ngIf="kinematicsAnalysis.sp_kne_high_chart_data; then thenBlock_is_sagitalplane else elseBlock_is_sagitalPlane"></div>
       <div >
         <ng-template #thenBlock_is_sagitalplane>
-            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Sagittal view">
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Sagittal view available">
         </ng-template>
         <ng-template #elseBlock_is_sagitalPlane>
              <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="Sagittal view not available">
@@ -82,10 +78,10 @@
          *ngIf="kinematicsAnalysis.fp_kne_high_chart_data; then thenBlock_is_frotalplane else elseBlock_is_frotalPlane"></div>
       <div >
         <ng-template #thenBlock_is_frotalplane>
-            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Frotal">
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Pronation of Foot Filled.png" title="Frotal view available">
         </ng-template>
         <ng-template #elseBlock_is_frotalPlane>
-             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="No frontal view available">
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Pronation of Foot Filled.png" title="Frontal view not available">
         </ng-template>
       </div>
 
@@ -93,10 +89,10 @@
          *ngIf="kinematicsAnalysis.tp_kne_high_chart_data; then thenBlock_is_tranversalplane else elseBlock_is_tranversalPlane"></div>
       <div >
         <ng-template #thenBlock_is_tranversalplane>
-            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Tranverse view">
+            <img class="icons-set__icon" src="../../../../assets/img/activated_icons/icons8-Foot Angle.png" title="Tranverse view available">
         </ng-template>
         <ng-template #elseBlock_is_tranversalPlane>
-             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="No transverse view">
+             <img class="icons-set__icon" src="../../../../assets/img/deactivated_icons/icons8-Foot Angle.png" title="Transverse view not available">
         </ng-template>
       </div>
 
@@ -169,23 +165,23 @@
      </p>
 
      <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-         Caminata asistida:
+         Asisted walk:
          <samp>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</samp>
      </p>
      <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-         Caminadora:
+         Treadmill:
          <samp>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</samp>
      </p>
      <p *ngIf="kinematicsAnalysis.accesories.is_walker">
-         Andador:
+         Walker:
          <samp>{{kinematicsAnalysis.accesories_descriptions.walker}}</samp>
      </p>
      <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-         Órtesis:
+         Orthosis:
          <samp>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</samp>
      </p>
      <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-         Barras paralelas: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
+         Parallel bars: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
      </p>
 
     </div>

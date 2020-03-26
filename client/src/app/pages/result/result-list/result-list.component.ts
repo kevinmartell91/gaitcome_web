@@ -179,7 +179,7 @@ export class ResultListComponent implements OnInit, OnChanges{
   select(kinematicsAnalysis: any): void {
      
         this.currentkinematicsAnalysis = kinematicsAnalysis;
-        this.onSelect.emit(kinematicsAnalysis);
+        this.onSelect.emit(this.currentkinematicsAnalysis);
 
   }
 

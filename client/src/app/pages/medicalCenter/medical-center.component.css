@@ -21,7 +21,6 @@
     position: absolute;
     top: -3px;
     right: -24px;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-weight: 600;
     font-size: 12px;
     width: 22px;
@@ -40,7 +39,10 @@ p {
     letter-spacing: 0;
     margin: 0 0 16px;
 }
-
+.card {
+    border: 0px solid rgba(0,0,0,.125);
+    text-align: left; 
+}
 /*.margin-container {
     margin-top: 80px;
 }*/

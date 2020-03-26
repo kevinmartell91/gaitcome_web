@@ -23,7 +23,7 @@
                 <mdl-icon class="col-xs-2 icon material-icons"  
                            data-toggle="collapse" href="#collapsePatientList" aria-expanded="true" aria-controls="collapsePatientList">keyboard_arrow_down</mdl-icon>
               </div>
-              <div class="collapse" id="collapsePatientList">
+              <div class="collapse show" id="collapsePatientList">
                   <app-patient-list [medical_center_id]="medical_center_id"
                                     [allFields]="false"
                                     (onSelectFromAllFields)="patientSelected($event)"
@@ -40,7 +40,7 @@
               <mdl-icon  class="col-xs-2  icon material-icons" 
                          data-toggle="collapse" href="#collapseTherapistList" aria-expanded="true" aria-controls="collapseTherapistList">keyboard_arrow_down</mdl-icon>
             </div>             
-            <div class="collapse" id="collapseTherapistList">
+            <div class="collapse show" id="collapseTherapistList">
                 <app-therapist-list [medical_center_id]="medical_center_id"
                                     [allFields]="false"
                                     (onSelectFromAllFields)="therapistSelected($event)" 

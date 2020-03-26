@@ -26,7 +26,7 @@ export class TherapistListComponent implements OnInit {
   @Input()  allFields: boolean;
     // this.onSelect.emit(therapist);
   @Output() onSelectFromNotAllFields = new  EventEmitter<any>();
-  @Output() onSelectFromAllFields = new  EventEmitter<any>();
+  @Output() onSelect = new  EventEmitter<any>();
 
   token: string;
   listView:boolean = true;
@@ -88,10 +88,10 @@ export class TherapistListComponent implements OnInit {
   }
 
   // EventEmitter -> expose to parent component
-  selectFromAllFields(therapist: any) {
-    console.log("selectFromAllFields");
+  select(therapist: any) {
+    console.log("select");
     this.currentTherapist = therapist;
-    this.onSelectFromAllFields.emit(therapist);
+    this.onSelect.emit(this.currentTherapist);
   }
   // Service methods
   getTherapist() {

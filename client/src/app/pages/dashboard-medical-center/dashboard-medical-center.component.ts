@@ -4,8 +4,8 @@ import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-dashboard-medical-center',
-  templateUrl: './dashboard-medical-center.componentBOOSTRAP.html',
-  // templateUrl: './dashboard-medical-center.component.html',
+  // templateUrl: './dashboard-medical-center.componentBOOSTRAP.html',
+  templateUrl: './dashboard-medical-center.component.html',
   styleUrls: [
   	'./dashboard-medical-center.component.css'
   ]  

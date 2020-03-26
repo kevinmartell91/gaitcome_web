@@ -14,9 +14,8 @@ export class NewAppointmentComponent implements OnInit {
   token: string;
   optionsHeader: RequestOptions;
   medical_center_id: string;
-  type_request = 'appointments';
-
-
+  // type_request = 'appointments';
+  type_request = 'all_the_appointments_created';
 
   constructor() { }
 

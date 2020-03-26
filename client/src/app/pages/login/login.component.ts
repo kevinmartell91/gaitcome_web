@@ -120,15 +120,15 @@ tiles = [
       'login_type':              this.login_type,
     });
     
-    this.form.valueChanges
-      .map((formValues) => {
-        formValues.username = formValues.username.toUpperCase();
-        return formValues;
-      })
-      // .filter((formValues) => this.form.valid)
-      .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
-      });
+    // this.form.valueChanges
+    //   .map((formValues) => {
+    //     formValues.username = formValues.username.toUpperCase();
+    //     return formValues;
+    //   })
+    //   // .filter((formValues) => this.form.valid)
+    //   .subscribe((formValues) => {
+    //     console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+    //   });
   }
 
   setMessage() {

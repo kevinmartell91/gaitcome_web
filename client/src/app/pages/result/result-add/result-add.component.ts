@@ -234,11 +234,11 @@ export class ResultAddComponent implements OnInit {
     this.orthoses_icon_path = this.imgPathDeactivated + 'icons8-Armored-Boot.png';
     this.parallel_bars_icon_path = this.imgPathDeactivated + 'icons8-Equivalent.png';
 
-    this.assited_walk_icon_title = 'No andador'; 
-    this.treadmills_icon_title = 'No caminadora'; 
-    this.walker_icon_title = 'No muletas'; 
-    this.orthoses_icon_title = 'No órtesis'; 
-    this.parallel_bars_icon_title = 'No barras paralelas'; 
+    this.assited_walk_icon_title = 'Asisted walk: not used'; 
+    this.treadmills_icon_title = 'Treadmills: not used'; 
+    this.walker_icon_title = 'Walker: not used'; 
+    this.orthoses_icon_title = 'Orthoses: not used'; 
+    this.parallel_bars_icon_title = 'Parallel bars: not used'; 
   }
   updateGaitAnalysisIcons() {
     
@@ -247,10 +247,10 @@ export class ResultAddComponent implements OnInit {
 
     if(!this.is_assited_walk) {
       tempImgPath = this.imgPathDeactivated; 
-      tempPathTitle = 'No andador';
+      tempPathTitle = 'Asisted walk: not used';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si andador';
+      tempPathTitle = 'Asisted walk: used';
     }
     this.assited_walk_icon_path = tempImgPath + 'icons8-Walker-Filled.png';
     this.assited_walk_icon_title = tempPathTitle;
@@ -258,10 +258,10 @@ export class ResultAddComponent implements OnInit {
 
     if(!this.is_treadmills) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No caminadora';
+      tempPathTitle = 'Treadmills: not used';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si caminadora';
+      tempPathTitle = 'Treadmills: used';
     }
     this.treadmills_icon_path = tempImgPath + 'icons8-Treadmill-Filled.png';
     this.treadmills_icon_title = tempPathTitle;
@@ -269,10 +269,10 @@ export class ResultAddComponent implements OnInit {
 
     if(!this.is_walker) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No muletas';
+      tempPathTitle = 'Walker: not used';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si muleatas';
+      tempPathTitle = 'Walker: used';
     }
     this.walker_icon_path = tempImgPath + 'icons8-Crutch-Filled.png';
     this.walker_icon_title = tempPathTitle;
@@ -280,10 +280,10 @@ export class ResultAddComponent implements OnInit {
 
     if(!this.is_orthoses) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No órtesis';
+      tempPathTitle = 'Orthoses: not used';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si órtesis';
+      tempPathTitle = 'Orthoses: used';
     }
     this.orthoses_icon_path = tempImgPath + 'icons8-Armored-Boot.png';
     this.orthoses_icon_title = tempPathTitle;
@@ -291,10 +291,10 @@ export class ResultAddComponent implements OnInit {
 
     if(!this.is_parallel_bars) {
       tempImgPath = this.imgPathDeactivated;
-      tempPathTitle = 'No barras paralelas';
+      tempPathTitle = 'Parallel bars: not used';
     } else {
       tempImgPath = this.imgPathActivated;
-      tempPathTitle = 'Si barras paralelas';
+      tempPathTitle = 'Parallel: bars used';
     }
     this.parallel_bars_icon_path = tempImgPath + 'icons8-Equivalent.png';
     this.parallel_bars_icon_title = tempPathTitle;

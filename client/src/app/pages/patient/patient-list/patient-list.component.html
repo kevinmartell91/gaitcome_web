@@ -6,7 +6,7 @@
 
 	    	<div class="row">
 				<div class="col-md-8">
-					<h2>Pacientes</h2>
+					<h2>Patitents</h2>
 			    </div>
 	    	</div>
 
@@ -14,44 +14,46 @@
 			  <thead>
 			    <tr class="header_table">
 			      <th></th>
-			      <th>Nombres</th>
+			      <th>Names</th>
 			      <th>Last names</th>
-			      <th>Att. name</th>
-			      <th>Att. last name</th>
+			      <th>Attorny names</th>
 			      <th></th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr *ngFor = "let patient of patients"
+			  <!--   <tr *ngFor = "let patient of patients"
 				        [class.selected]="patient === currentPatient"
 				        (mouseout)="currentPatient = null"
-				        (mouseover)="selectFromAllFields(patient)">
+				        (mouseover)="selectFromAllFields(patient)"> -->
+			    <tr *ngFor = "let patient of patients"
+				        [class.selected]="patient === currentPatient"
+				        (mousemove)="select(patient)"
+				        (mouseover)="mouseOvered = patient"> 
 				  	<!-- <div> -->
 				      <th scope="row" class="sytle_name_abbreviation">{{patient.names | captialLetterNames:2:patient.lastname}}</th>
 				      <td>{{patient.names}}</td>
 				      <td>{{patient.lastname}}</td>
-				      <td>{{patient.attorney.names}}</td>
-				      <td>{{patient.attorney.lastname}}</td>
+				      <td>{{patient.attorney.names}} {{patient.attorney.lastname}}</td>
 				      <td>
-				      	<div *ngIf="currentPatient === currentPatient">
+				      	<div *ngIf="mouseOvered === patient">
 							<div class="row">
 						        <div class="col">
 						          	<mdl-icon  	class="icon material-icons" 
-						          			 	mdl-tooltip-large="ver"
+						          			 	mdl-tooltip-large="show"
 						            		 	(click)="showReadPatientComponent()"
 						              			>visibility</mdl-icon>
 						            
 						        </div>
 						        <div class="col">
 						          	<mdl-icon  	class="icon material-icons" 
-						          			 	mdl-tooltip-large="editar"
+						          			 	mdl-tooltip-large="edit"
 						          			 	(click)="showUpdatePatientComponent()"
 						              			href="#updateModal">edit</mdl-icon>
 						            
 						        </div>
 						        <div class="col">
 						          	<mdl-icon  	class="icon material-icons" 
-						          			 	mdl-tooltip-large="eliminar"
+						          			 	mdl-tooltip-large="delete"
 						            		 	(click)="showDeletePatientComponent()"
 						              			href="#deleteModal">delete</mdl-icon>
 						            
@@ -70,6 +72,7 @@
 	</div>
 	<div class="drawer_add_patient">
 		<mdl-button mdl-button
+                    mdl-tooltip-large="New"
 					mdl-button-type="fab" 
 					mdl-colored="primary"
 					mdl-ripple

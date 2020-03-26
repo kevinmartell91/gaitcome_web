@@ -2439,27 +2439,27 @@ export class ResultDetailComponent implements OnInit {
             <div *ngIf="kinematicsAnalysis" class="card-block">
                
              <p>
-                Terapeuta: 
-                <samp>{{kinematicsAnalysis.therapist_id}}</samp>
+                Therapist: 
+                <samp>{{kinematicsAnalysis.therapist_full_name}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_assited_walk">
-                 Caminata asistida:
+                 Asisted Walk:
                  <samp>{{kinematicsAnalysis.accesories_descriptions.assited_walk}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_treadmills">
-                 Caminadora:
+                 Treadmill:
                  <samp>{{kinematicsAnalysis.accesories_descriptions.treadmills}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_walker">
-                 Andador:
+                 Walker:
                  <samp>{{kinematicsAnalysis.accesories_descriptions.walker}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_orthoses">
-                 Órtesis:
+                 Orthoses:
                  <samp>{{kinematicsAnalysis.accesories_descriptions.orthoses}}</samp>
              </p>
              <p *ngIf="kinematicsAnalysis.accesories.is_parallel_bars">
-                 Barras paralelas: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
+                 Parallel bars: <samp>{{kinematicsAnalysis.accesories_descriptions.parallel_bars}}</samp>
              </p>
 
             </div>
@@ -2477,8 +2477,7 @@ export class ResultDetailComponent implements OnInit {
          <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingThree">
            <div class="card-block">
                <p class="card-text">
-                 Use card groups to render equal height cards without gutters between the cards. 
-                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+                 No se registraron parámetros de la marcha por el momento.</p>
            </div>
          </div>
         </div>
@@ -2494,8 +2493,7 @@ export class ResultDetailComponent implements OnInit {
          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingThree">
            <div class="card-block">
                <p class="card-text">
-                 Use card groups to render equal height cards without gutters between the cards. 
-                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+                 No se registraron observaciones de la marcha por el momento.</p>
            </div>
          </div>
         </div>
@@ -2511,8 +2509,7 @@ export class ResultDetailComponent implements OnInit {
          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
            <div class="card-block">
                <p class="card-text">
-                 Use card groups to render equal height cards without gutters between the cards. 
-                 Use <code>.card-deck</code> for cards that aren’t attached to each another.</p>
+                 No se registraron comentarios adicionales de la marcha por el momento.</p>
            </div>
          </div>
         </div>
