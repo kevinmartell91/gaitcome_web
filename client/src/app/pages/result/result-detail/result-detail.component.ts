@@ -268,7 +268,7 @@ export class ResultDetailComponent implements OnInit {
       this.tp_ank_high_chart_data = kinematicsAnalysis.tp_ank_high_chart_data;
       this.tp_plv_high_chart_data = kinematicsAnalysis.tp_plv_high_chart_data;
       this.tp_hip_high_chart_data = kinematicsAnalysis.tp_hip_high_chart_data;
-            console.log("tp_hip_high_chart_data",kinematicsAnalysis.sp_hip_high_chart_data);
+            // console.log("tp_hip_high_chart_data",kinematicsAnalysis.sp_hip_high_chart_data);
     
   }
 
@@ -307,24 +307,24 @@ export class ResultDetailComponent implements OnInit {
   }
 
   testRetriveHighChartFromEnvionmentFile(){
-    console.log("environment.sp_plv_high_chart_data" ,environment.sp_plv_high_chart_data.series[1].name);
+    // console.log("environment.sp_plv_high_chart_data" ,environment.sp_plv_high_chart_data.series[1].name);
     // console.log("environment.sp_plv_high_chart_data_JSOM.stringfy" ,JSON.stringify(environment.sp_plv_high_chart_data));
   }
 
   postManual() {
     this.postKinematicAnalysisAsJson_thisShouldBeDoneByThe3DSystem();
-    console.log("postManual()", JSON.stringify(this.postObjReturn));
+    // console.log("postManual()", JSON.stringify(this.postObjReturn));
   }
 
   putMatLab_manual() {
     this.putMatLabData_manual();
-    console.log("putMatLabData_manual()");    
+    // console.log("putMatLabData_manual()");    
 
   }
 
   putManual() {
     this.putData_manual();
-    console.log("putManual()");    
+    // console.log("putManual()");    
 
   }
 

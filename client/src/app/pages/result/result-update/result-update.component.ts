@@ -137,7 +137,7 @@ export class ResultUpdateComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
     this.currentTherapist= {_id: this.kinematicsAnalysis.therapist_id};
@@ -150,7 +150,6 @@ export class ResultUpdateComponent implements OnInit {
     this.updateGaitAnalysisIcons();
 
     this.model = this.getDateforModel(this.model,this.kinematicsAnalysis.date_requested);
-    console.log('medical_center_name',this.form.value.medical_center_name);
   }
 
    getDatefromModel():string {
@@ -168,7 +167,7 @@ export class ResultUpdateComponent implements OnInit {
 
     this._putJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis/' + this.kinematicsAnalysis._id , this.form.value, this.getHeaders())
       .subscribe(
-        json => console.log(json),
+        // json => console.log(json),
         error => console.log('Error: ', error),
         // () => console.log('Finished')
         () => this.onFinishedUpdate.emit("You can send the update list retrieved from db to avoid hittig the db for second time.")
@@ -215,16 +214,12 @@ export class ResultUpdateComponent implements OnInit {
   // updating the currentPatient in this 
   // component 
   patientSelected(patient: any) {
-    // console.log("patientSelected notified" , patient )  
     this.currentPatient= patient;
-    
     this.form.controls['patient_id'].setValue(patient._id);
     this.form.controls['patient_full_name'].setValue(patient.names + " " + patient.lastname);
-    // console.log("this.form.patient_full_name",this.form.controls['patient_full_name']);
   }
 
   onChange(change:any){
-    console.log("Change dtectedd");
     this.form.controls['date_requested'].setValue(this.getDatefromModel());
   }
 
@@ -300,9 +295,6 @@ export class ResultUpdateComponent implements OnInit {
     this.parallel_bars_icon_path = tempImgPath + 'icons8-Equivalent.png';
     this.parallel_bars_icon_title = tempPathTitle;
 
-    console.log("parallel_bars_icon_path",this.parallel_bars_icon_path);
-    console.log("this.treadmills_icon_title",this.treadmills_icon_title);
-
   }
 
   clearFields() {
@@ -313,7 +305,6 @@ export class ResultUpdateComponent implements OnInit {
     this.form.controls['date_requested'].setValue('');
     this.model = 'yyyy-mm-dd';
 
-    console.log(this.form.value);
   }
 
 }

@@ -47,8 +47,6 @@ export class PatientReadComponent implements OnInit {
 
   ngOnInit() {
 
-  		console.log(" yeeeee ",this.patient);
-
 	   this.names = new FormControl(this.patient.names);
 	   this.lastname = new FormControl(this.patient.lastname);
 	   this.id_Document_num = new FormControl(this.patient.id_Document_num);
@@ -98,13 +96,13 @@ export class PatientReadComponent implements OnInit {
 
 	   this.form.valueChanges
 	     .map((formValues) => {
-//	       formValues.names = formValues.names.toUpperCase();
+	       // formValues.names = formValues.names.toUpperCase();
 	       this.model = this.getDateforModel(this.model,this.patient.birth);
 	       return formValues;
 	     })
 	     // .filter((formValues) => this.form.valid)
 	     .subscribe((formValues) => {
-	       console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+	       // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
 	     });
 
 	   this.form.disable();

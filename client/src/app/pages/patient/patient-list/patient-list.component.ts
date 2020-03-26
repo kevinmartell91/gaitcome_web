@@ -78,11 +78,9 @@ export class PatientListComponent implements OnInit {
   selectFromNotAllFields(patient: any) {
     if (this.previousPatient._id === patient._id) {
       this.currentPatient = this.emptyPatient;
-      console.log("set empty",this.currentPatient );
     } else {
       this.previousPatient =  patient;
       this.currentPatient  = patient;
-      console.log("set patient",this.currentPatient);
     }
     this.onSelectFromNotAllFields.emit(this.currentPatient);
   }
@@ -190,7 +188,6 @@ export class PatientListComponent implements OnInit {
 
   showAddPatientComponent() {
 
-    console.log("showAddPatientComponent");
     let options: NgbModalOptions = {
       size: 'lg'
     };

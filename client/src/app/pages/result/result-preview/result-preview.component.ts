@@ -35,11 +35,9 @@ export class ResultPreviewComponent implements OnInit {
 
     this.imgPathActivated = "../../../../assets/img/activated_icons/";
     this.imgPathDeactivated = "../../../../assets/img/deactivated_icons/";
-    console.log("constructor");
   }
 
   ngOnInit() {
-    console.log("ngOnInit");
     this.updateGaitAnalysisIcons();
 
   }
@@ -99,14 +97,7 @@ export class ResultPreviewComponent implements OnInit {
     this.parallel_bars_icon_path = tempImgPath + 'icons8-Equivalent.png';
     this.parallel_bars_icon_title = tempPathTitle;
 
-    console.log("parallel_bars_icon_path",this.parallel_bars_icon_path);
-    console.log("this.treadmills_icon_title",this.treadmills_icon_title);
-
-
-
   }
-
-
   
 
 }

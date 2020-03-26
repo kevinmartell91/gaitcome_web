@@ -23,18 +23,11 @@ export class TherapistReadComponent implements OnInit {
 
   ngOnInit() {
 
-    // console.log('this.therapist', this.therapist);
-    console.log ('moment().format();', moment().format());    
+    // console.log ('moment().format();', moment().format());    
     let a = moment('2016-01-01'); 
-    console.log ('created from model', a.format());    
+    let jun = momentz("2016-01-01T00:00:00-05:00");
+    // var dec = moment("2014-12-01T12:00:00Z");
 
-   
-
-        let jun = momentz("2016-01-01T00:00:00-05:00");
-        // var dec = moment("2014-12-01T12:00:00Z");
-
-        console.log(jun.tz('America/Los_Angeles').format('ha z'));  
-       
 
     this.form = this.fb.group({
       names:              this.therapist.names,
@@ -68,7 +61,7 @@ export class TherapistReadComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
    this.form.disable();

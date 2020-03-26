@@ -59,16 +59,16 @@ export class HomepageComponent implements OnInit {
       'number' : this.number
     });
 
-    this.form.valueChanges
-      .map((formValues) => {
-        // formValues.names = formValues.names.toUpperCase();
-        return formValues;
-      })
-      // .filter((formValues) => this.form.valid)
-      .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
-        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
-      });
+    // this.form.valueChanges
+    //   .map((formValues) => {
+    //     // formValues.names = formValues.names.toUpperCase();
+    //     return formValues;
+    //   })
+    //   // .filter((formValues) => this.form.valid)
+    //   .subscribe((formValues) => {
+    //     // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+    //     // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
+    //   });
     
   }
   model: NgbDateStruct;
@@ -80,16 +80,12 @@ export class HomepageComponent implements OnInit {
 
   onSubmit(){
 
-    console.log('send_contact_form()');
-    console.log(environment.URL_WEB_SERVICE_CONTACTS);
-    console.log(this.form.value)
-
     this._postJSON(environment.URL_WEB_SERVICE_CONTACTS,
                    this.form.value,
                    this.getHeaders())
       .subscribe(
         json => this.newConctact = json,
-        error => console.log('Error message',error),
+        // error => console.log('Error message',error),
         () => {this.form.reset() , this.send_form_message = 'Mensaje enviado' },
       );
   }

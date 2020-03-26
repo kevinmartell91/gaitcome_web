@@ -67,21 +67,15 @@ export class TherapistListComponent implements OnInit {
       }          
     }
 
-   
-
-   console.log(this.therapists);
-
   }
 
   // EventEmitter -> expose to parent component
   selectFromNotAllFields(therapist: any) {
     if (this.previousTherapist._id == therapist._id) {
       this.currentTherapist = this.emptyTherapist;
-      console.log("set empty",this.currentTherapist );
     } else {
       this.previousTherapist =  therapist;
       this.currentTherapist  = therapist;
-      console.log("set therapist",this.currentTherapist);
     }
     this.onSelectFromNotAllFields.emit(this.currentTherapist);
 
@@ -89,7 +83,6 @@ export class TherapistListComponent implements OnInit {
 
   // EventEmitter -> expose to parent component
   select(therapist: any) {
-    console.log("select");
     this.currentTherapist = therapist;
     this.onSelect.emit(this.currentTherapist);
   }
@@ -184,7 +177,6 @@ export class TherapistListComponent implements OnInit {
 
   showAddTherapistComponent() {
 
-    console.log("showAddTherapistComponent");
     let options: NgbModalOptions = {
       size: 'lg'
     };

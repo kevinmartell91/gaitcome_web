@@ -45,7 +45,6 @@ export class TherapistUpdateComponent implements OnInit {
       this.token = environment.token;      
     }
   	
-  	console.log(this.therapist);
     this.model = this.getDateforModel(this.model,this.therapist.birth);
 
   	this.form = this.fb.group({
@@ -81,7 +80,7 @@ export class TherapistUpdateComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
   }
@@ -105,7 +104,6 @@ export class TherapistUpdateComponent implements OnInit {
         json => this.updatedTherapist = json,
         error => console.log('Error: ', error),
         () => this.onFinishedUpdate.emit("You can send the update list retrieved from db to avoid hittig the db for second time.")
-        // console.log("call emitter") 
       );
       
    

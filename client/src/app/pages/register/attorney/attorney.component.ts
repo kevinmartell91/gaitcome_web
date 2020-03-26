@@ -36,15 +36,15 @@ export class AttorneyComponent implements OnInit {
       'id_Document_num':    this.id_Document_num,
     });
     
-    this.form.valueChanges
-      .map((formValues) => {
-//        formValues.names = formValues.names.toUpperCase();
-        return formValues;
-      })
-      // .filter((formValues) => this.form.valid)
-      .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
-      });
+//     this.form.valueChanges
+//       .map((formValues) => {
+// //        formValues.names = formValues.names.toUpperCase();
+//         return formValues;
+//       })
+//       // .filter((formValues) => this.form.valid)
+//       .subscribe((formValues) => {
+//         console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+//       });
   }
 
   public onSubmit() {

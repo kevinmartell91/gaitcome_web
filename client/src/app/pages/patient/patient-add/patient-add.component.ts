@@ -106,17 +106,17 @@ export class PatientAddComponent implements OnInit {
       'attorney_phone':               this.attorney_phone
     });
     
-    this.form.valueChanges
-      .map((formValues) => {
-        // formValues.names = formValues.names.toUpperCase();
-        formValues.birth = this.getDateFromMomentJS();
-        return formValues;
-      })
-      // .filter((formValues) => this.form.valid)
-      .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
-        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
-      });
+    // this.form.valueChanges
+    //   .map((formValues) => {
+    //     // formValues.names = formValues.names.toUpperCase();
+    //     formValues.birth = this.getDateFromMomentJS();
+    //     return formValues;
+    //   })
+    //   // .filter((formValues) => this.form.valid)
+    //   .subscribe((formValues) => {
+    //     console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+    //     // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
+    //   });
   }
 
   getDateFromMomentJS():string {
@@ -174,10 +174,6 @@ export class PatientAddComponent implements OnInit {
       is_active: true
     }
 
-    // console.log(JSON.stringify(jsonNewPatient));
-    console.log((jsonNewPatient));
-
-
     this._postJSON(environment.URL_WEB_SERVICE_PATIENTS, jsonNewPatient, this.getHeaders())
       .subscribe(
         json => this.newPatient = json,
@@ -189,10 +185,11 @@ export class PatientAddComponent implements OnInit {
   }
 
   _postJSON(url: string, body:any, option: RequestOptions): Observable<any> {
+    
     return this.http.post(url,body, option)
       .map((res: Response) => res.json())
+  
   }
-
 
   getHeaders() {
     let headers = new Headers();
@@ -200,16 +197,10 @@ export class PatientAddComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
 
-
     let options = new RequestOptions();
     options.headers = headers
 
     return options;
-  }
-
-  testPrintCapturedValue() {
-
-    console.log(this.form.value);
   }
   
 }

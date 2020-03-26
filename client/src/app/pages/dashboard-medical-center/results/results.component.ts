@@ -121,7 +121,6 @@ export class ResultsComponent implements OnInit {
     let options = new RequestOptions();
     options.headers = headers
     options.search = params;
-    console.log("Parent - getHeaders()", options);
 
     return options;
   }
@@ -145,7 +144,6 @@ export class ResultsComponent implements OnInit {
   // in this component 
   multipleKinematicAnalysisSelected (multipleKinematicsAnalysis: any[]) {
     this.currentMultipleKinematicsAnalysisSelected = multipleKinematicsAnalysis;
-      console.log("currentMultipleKinematicsAnalysisSelected",this.currentMultipleKinematicsAnalysisSelected);
   }
 
   // this method is always listening to the selected  
@@ -158,7 +156,6 @@ export class ResultsComponent implements OnInit {
     // set the currentKinematicsAnalysis null when
     // a new thearpist is selected
     this.currentKinematicsAnalysis = null;
-    console.log("therapistSelected() from doFilter");
   }
 
   // this method is always listening to the selected  
@@ -166,13 +163,11 @@ export class ResultsComponent implements OnInit {
   // updating the currentPatient in this 
   // component 
   patientSelected(patient: any) {
-    console.log("patientSelected notified" , patient )  
     this.currentPatient= patient;
     this.doFilter("patient",patient);
     // set the currentKinematicsAnalysis null when
     // a new patient is selected
     this.currentKinematicsAnalysis = null;
-    console.log("patientSelected() from doFilter");
   }
 
 }

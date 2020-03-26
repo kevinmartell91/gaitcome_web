@@ -96,7 +96,7 @@ export class ResultListComponent implements OnInit, OnChanges{
           }
         }
         this.changeLog.push(log.join(', '));
-        console.log(this.changeLog);
+        // console.log(this.changeLog);
 
 
 
@@ -170,7 +170,6 @@ export class ResultListComponent implements OnInit, OnChanges{
   }
 
   getKinematicAnalysiss() {
-        console.log("getKinematicAnalysiss- header",this.headersOptions);
         this._getJSON(environment.URL_WEB_SERVICE+ '/kinematics_analysis' , this.headersOptions)
           .subscribe(json => this.kinematicsAnalysiss = json)
           // .subscribe(json => this.displayedPeople = this.people = json.result)
@@ -184,10 +183,7 @@ export class ResultListComponent implements OnInit, OnChanges{
   }
 
   multipleSelect(idSelected: string) {
-      // look for remove is selected already
-      console.log('idSelected',idSelected);
       this.updateMultipleSelection(idSelected);
-      console.log("multipleKinematicsAnalysiss",this.multipleKinematicsAnalysiss);
       this.onMultipleSelect.emit(this.multipleKinematicsAnalysiss);
   }
 
@@ -256,14 +252,12 @@ export class ResultListComponent implements OnInit, OnChanges{
     modalRef.componentInstance.kinematicsAnalysis = this.currentkinematicsAnalysis;
     modalRef.componentInstance.onFinishedDelete.subscribe(($e) => {
       this.getAppointments();
-      console.log('update list appointment');
     });
 
   }
 
   showAddAppointmentModal() {
 
-    console.log("showAddPatientComponent");
     let options: NgbModalOptions = {
       size: 'lg'
     };
@@ -273,9 +267,6 @@ export class ResultListComponent implements OnInit, OnChanges{
     });
   
   }
-
-
-
 
 
   _getJSON(url: string, option: RequestOptions): Observable<any> {

@@ -39,7 +39,6 @@ export class ResultDeleteComponent implements OnInit {
   }
 
   deleteTherapist(){
-    console.log('deleteTherapist');
 
   	this._deleteJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis/' + 
   					 this.kinematicsAnalysis._id, 

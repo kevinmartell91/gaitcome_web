@@ -129,7 +129,7 @@ export class PatientUpdateComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
         // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(this.form.value.medic_diagostic_name));
       });
 
@@ -149,7 +149,6 @@ export class PatientUpdateComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.updatedPatient);
     let jsonUpdatedPatient = {
       names: this.form.value.names,
       lastname: this.form.value.lastname,
@@ -191,18 +190,13 @@ export class PatientUpdateComponent implements OnInit {
       is_active: true
     }
 
-    console.log(JSON.stringify(jsonUpdatedPatient));
-
     this._putJSON(environment.URL_WEB_SERVICE_PATIENTS + this.patient._id, JSON.stringify(jsonUpdatedPatient), this.getHeaders())
       .subscribe(
         json => this.updatedPatient = json,
         error => console.log('Error: ', error),
         () => this.onFinishedUpdate.emit("You can send the update list retrieved from db , to avoid hittig the db for second time.")
-        // console.log("call emitter") 
       );
       
-        
-
     this.activeModal.close();
   }
 
@@ -211,13 +205,11 @@ export class PatientUpdateComponent implements OnInit {
       .map((res: Response) => res.json())
   }
 
-
   getHeaders() {
     let headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', this.token);
-
 
     let options = new RequestOptions();
     options.headers = headers
@@ -225,9 +217,4 @@ export class PatientUpdateComponent implements OnInit {
     return options;
   }
 
-  testPrintCapturedValue() {
-
-    console.log(this.form.value);
-  }
-  
 }

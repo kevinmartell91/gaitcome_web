@@ -104,7 +104,7 @@ export class TherapistAddComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
   }
@@ -116,11 +116,6 @@ export class TherapistAddComponent implements OnInit {
   }
 
   onSubmit() {
-    let jsonAdd = this.form.value;
-
-    // jsonAdd.birth =  new Date(this.model.year,this.model.month,this.model.day);
-
-    console.log(jsonAdd);
 
     this._postJSON(environment.URL_WEB_SERVICE_THERAPISTS, this.form.value, this.getHeaders())
       .subscribe(
@@ -152,9 +147,4 @@ export class TherapistAddComponent implements OnInit {
     return options;
   }
 
-  testPrintCapturedValue() {
-
-    console.log(this.form.value);
-  }
-  
 }

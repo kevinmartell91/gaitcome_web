@@ -30,13 +30,8 @@ export class TherapistListDashboardComponent implements OnInit {
           this.medical_center_id = environment.medical_center_id;    
           this.medical_center_name = environment.medical_center_name;    
         }
-
-     console.log("this.medical_center_id",this.medical_center_id);
-     console.log("this.medical_center_name",this.medical_center_name);
    
   }
-
-
 
 }
 

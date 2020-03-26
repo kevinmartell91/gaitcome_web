@@ -116,14 +116,6 @@ export class ResultAddComponent implements OnInit {
       })
     });	
 
-
-    // this.form.controls['medical_center_id'].setValue(this.medical_center_id);
-    // this.form.controls['medical_center_name'].setValue(this.medical_center_name);
-
-
-  	// console.log(this.therapist);
-    // this.model = this.getDatefromModel();
-    // console.log("this.form.value.patient_full_name",this.form.value.patient_full_name);
     this.form.valueChanges
       .map((formValues) => {
         // formValues.names = formValues.names.toUpperCase();
@@ -141,7 +133,7 @@ export class ResultAddComponent implements OnInit {
       })
       // .filter((formValues) => this.form.valid)
       .subscribe((formValues) => {
-        console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
+        // console.log(`Model Driven Form valid: ${this.form.valid} value:`, JSON.stringify(formValues));
       });
 
     
@@ -165,7 +157,7 @@ export class ResultAddComponent implements OnInit {
 
     this._postJSON(environment.URL_WEB_SERVICE + '/kinematics_analysis/' , this.form.value, this.getHeaders())
       .subscribe(
-        json => console.log(json),
+        // json => console.log(json),
         error => console.log('Error: ', error),
         // () => console.log('Finished')
         () => this.onFinishedAdd.emit("appointment_created")
@@ -214,16 +206,12 @@ export class ResultAddComponent implements OnInit {
   // updating the currentPatient in this 
   // component 
   patientSelected(patient: any) {
-    // console.log("patientSelected notified" , patient )  
     this.currentPatient= patient;
-    
     this.form.controls['patient_id'].setValue(patient._id);
     this.form.controls['patient_full_name'].setValue(patient.names + " " + patient.lastname);
-    // console.log("this.form.patient_full_name",this.form.controls['patient_full_name']);
   }
 
   onChange(change:any){
-    console.log("Change dtectedd");
     this.form.controls['date_requested'].setValue(this.getDatefromModel());
   }
 
@@ -303,18 +291,5 @@ export class ResultAddComponent implements OnInit {
     console.log("this.treadmills_icon_title",this.treadmills_icon_title);
 
   }
-
-  // clearFields() {
-  //   this.form.reset();
-  //   this.currentPatient = null;
-  //   this.currentTherapist = null;
-  //   this.form.controls['patient_full_name'].setValue('Seleccione un paciente, un terapueta y la fecha del análisis.');
-  //   this.form.controls['date_requested'].setValue('');
-  //   this.model = 'yyyy-mm-dd';
-
-  //   console.log(this.form.value);
-  // }
-
-
 
 }

@@ -48,7 +48,6 @@ export class NewAppointmentComponent implements OnInit {
     let options = new RequestOptions();
     options.headers = headers;
     options.search = params;
-    console.log("Parent - getHeaders()", options);
 
     return options;
   }

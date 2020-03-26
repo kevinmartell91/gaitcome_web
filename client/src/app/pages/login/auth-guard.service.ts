@@ -31,13 +31,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canLoad(route: Route): boolean {
     let url = `/${route.path}`;
-    console.log(`auth-guard.service.url : ${url}`);
+    // console.log(`auth-guard.service.url : ${url}`);
     return this.checkLogin(url);
   }
 
   checkLogin(url: string): boolean {
 
-    console.log('this.authService', this.authService);
+    // console.log('this.authService', this.authService);
     if (this.authService.isLoggedIn) { return true; }
 
     // Store the attempted URL for redirecting
@@ -47,6 +47,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     this.router.navigate(['/login']);
     return false;
 
+    // TO DO: Create a dummy session id 
     // let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     
     // if(! currentUser) {
