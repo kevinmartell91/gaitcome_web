@@ -1,29 +1,25 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs/observable';
-import { map, filter } from 'rxjs/operators';
+import {FormControl} from '@angular/forms';
 
-declare var gtag;
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'app';
+  date = new FormControl(new Date());
+   serializedDate = new FormControl((new Date()).toISOString());
 
-  constructor(public router: Router) {
-  	
-  	const navEndEvents$ = this.router.events
-  	.pipe(
-  	  filter(event => event instanceof NavigationEnd)
-  	);
-
-  	navEndEvents$.subscribe((event: NavigationEnd) => {
-  	  gtag('config', 'UA-161416223-1', {
-  	    'page_path': event.urlAfterRedirects
-  	  });
-  	});
-  }
+   foods: Food[] = [
+       {value: 'steak-0', viewValue: 'Steak'},
+       {value: 'pizza-1', viewValue: 'Pizza'},
+       {value: 'tacos-2', viewValue: 'Tacos'}
+     ];
 }
