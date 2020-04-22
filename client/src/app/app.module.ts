@@ -2,7 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module'; 
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +19,6 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
   imports: [
     BrowserModule,
     SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
     BrowserAnimationsModule,    
     AppRoutingModule
   ],

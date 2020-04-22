@@ -1,7 +1,16 @@
 // https://medium.com/better-programming/angular-4-shared-modules-18ac50f24852
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+// rows and col
 import { FlexLayoutModule } from '@angular/flex-layout'
+
+// forms
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+
+// services
+import { HttpClientModule } from '@angular/common/http';
+
 
 // importing angular material components
 
@@ -102,11 +111,16 @@ const listMatModules = [
   imports: [
   	CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule, 
+    FormsModule,
     ...listMatModules
   ],
   exports: [
     listMatModules,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule, 
+    FormsModule,
+    HttpClientModule
   ],
   providers: []
 })
