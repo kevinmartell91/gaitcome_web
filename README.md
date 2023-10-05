@@ -1,22 +1,21 @@
-# Gaitcome Web Platform
+# Gaitcome
 
-Gaitcome MEAN app (Mongodb, Espress, Angular2-cli, Node) + Material Design
+Gaitcome is a low-cost 3D tracking system that extracts objective (medical industry) data using computer vision.
 
-This site is still under construction; however, you can clone the repo and see what is under development.
+## Gaitcome Web 
+[Gaitcome Web](https://gaitcome.com/homepage) is a web platform that presents kinematic results (extracted objective data) in an understandable user interface using interactive graphics (time v.s angles) of the knee, hip, ankle, and heels.
 
-### View App
+[![Watch the video](https://img.youtube.com/vi/NFk2cXIQ0Aw/maxresdefault.jpg)](https://youtu.be/NFk2cXIQ0Aw)
 
-Sample view in client folder
+### Technologies Used
+Gaitcome is built using the MEAN stack (MongoDB, Express, Angular, Node) and Material Design. We also utilize Matlab, Typescript, Highchart, Postman, and AWS.
 
-### Usage
+### App Functionalities
 
-1: clone the repo
-
-2: `npm install` in outer directory & inner Client directory
-
-3: return root diretory and run `npm start` or `nodemon` from the terminal, and navigate to localhost:8080 in the browser
-
-4:  Some help if working with remotes && branchs
-
-https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches
-https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+- Handled client inquiries and requirements during the construction of the web platform.
+- Implemented frontend and backend for multiple role registrations and logins (patient and medical center).
+- Created the ability to ingest objective kinematics data from infrared camera sensors.
+- Developed a dashboard displaying kinematics results for patients, medical centers, and therapists.
+- Implemented a new appointment interface with the option to reschedule appointments.
+- Created visualizations for time vs. angles and graphics depicting sagittal, transversal, and frontal views of the knee, hip, ankle, and heels.
+- Developed a desktop application version of the web solution for specific customers (REST API access).
